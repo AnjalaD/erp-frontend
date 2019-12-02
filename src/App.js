@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { guestRoutes, adminRoutes, hrRoutes, employeeRoutes } from './routes';
-import { ADMIN, HR } from './constants/constants';
+import { guestRoutes, levelOneRoutes, levelTwoRoutes, levelThreeRoutes, adminRoutes } from './routes';
+import { ADMIN, LEVEL1, LEVEL2, LEVEL3 } from './constants/constants';
 
 
 function App() {
-  const { loggedIn, user } = useSelector(state => state.user);
+  const { loggedIn, userType } = useSelector(state => state.status);
 
   const createRoute = (routes) => routes.map(
     (route, index) => (
@@ -15,15 +15,27 @@ function App() {
     )
   );
 
+  useEffect(() => {
+    const user = window.sessionStorage.getItem('user') || null;
+    console.log(JSON.parse(user));
+    return () => {
+
+    };
+  }, [])
+
 
   const userRouteSelector = (type) => {
     switch (type) {
       case ADMIN:
         return createRoute(adminRoutes);
-      case HR:
-        return createRoute(hrRoutes);
+      case LEVEL3:
+        return createRoute(levelThreeRoutes);
+      case LEVEL2:
+        return createRoute(levelTwoRoutes);
+      case LEVEL1:
+        return createRoute(levelOneRoutes);
       default:
-        return createRoute(employeeRoutes);
+        return createRoute(guestRoutes);
     }
   }
 
@@ -31,7 +43,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        {loggedIn ? userRouteSelector(user.type) : createRoute(guestRoutes)}
+        {loggedIn ? userRouteSelector(userType) : createRoute(guestRoutes)}
       </Switch>
     </BrowserRouter>
   );

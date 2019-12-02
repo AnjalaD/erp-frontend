@@ -1,6 +1,7 @@
 import Login from "./views/guest/Login";
 import Loading from "./views/guest/Loading";
 import Navbar from "./views/guest/AppNavbar";
+import EmpHome from "./views/employee/EmpHome";
 
 export const guestRoutes = [
     {
@@ -17,11 +18,18 @@ export const guestRoutes = [
     }
 ];
 
-export const employeeRoutes = [
+export const levelOneRoutes = [
+    {
+        path: '/',
+        component: EmpHome,
+    }
+];
+
+export const levelTwoRoutes = [
 
 ];
 
-export const hrRoutes = [
+export const levelThreeRoutes = [
 
 ];
 
