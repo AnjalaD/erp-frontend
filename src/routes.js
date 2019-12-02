@@ -1,4 +1,5 @@
 import Login from "./views/guest/Login";
+import EmpHome from "./views/employee/EmpHome";
 
 export const guestRoutes = [
     {
@@ -7,11 +8,18 @@ export const guestRoutes = [
     }
 ];
 
-export const employeeRoutes = [
+export const levelOneRoutes = [
+    {
+        path: '/',
+        component: EmpHome,
+    }
+];
+
+export const levelTwoRoutes = [
 
 ];
 
-export const hrRoutes = [
+export const levelThreeRoutes = [
 
 ];
 
