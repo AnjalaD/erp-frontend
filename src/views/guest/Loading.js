@@ -3,6 +3,10 @@ import Spinner from '@material-ui/core/CircularProgress'
 
 export default function Loading() {
     return (
-        <Spinner/>
+        <div>
+            <Spinner />
+            <h1>LOADING .... </h1>
+        </div>
     );
+       
 }
