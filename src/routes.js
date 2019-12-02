@@ -1,9 +1,14 @@
 import Login from "./views/guest/Login";
+import Loading from "./views/guest/Loading";
 
 export const guestRoutes = [
     {
         path: '/',
-        component: Login,
+        component: Login
+    },
+    {
+        path: '/load',
+        component: Loading
     }
 ];
 
