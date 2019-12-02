@@ -10,7 +10,7 @@ function App() {
   const { loggedIn, user } = useSelector(state => state.user);
 
   const createRoute = (routes) => routes.map(
-    (index, route) => (
+    (route, index) => (
       <Route path={route.path} component={route.component} key={index} />
     )
   );
