@@ -1,6 +1,8 @@
 const initialState = {
     loggedIn: false,
-    user: null,
+    user: {
+        type: ''
+    },
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -11,10 +13,7 @@ export default (state = initialState, { type, payload }) => {
                 user: payload.user,
             };
         case 'LOGOUT':
-            return {
-                loggedIn: false,
-                user: null
-            };
+            return initialState;
         default:
             return state;
     }
