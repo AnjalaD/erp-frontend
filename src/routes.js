@@ -1,5 +1,6 @@
 import Login from "./views/guest/Login";
 import Loading from "./views/guest/Loading";
+import Navbar from "./views/guest/AppNavbar";
 
 export const guestRoutes = [
     {
@@ -9,6 +10,10 @@ export const guestRoutes = [
     {
         path: '/load',
         component: Loading
+    },
+    {
+        path: '/navbar',
+        component: Navbar
     }
 ];
 
