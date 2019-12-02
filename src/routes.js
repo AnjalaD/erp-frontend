@@ -5,4 +5,16 @@ export const guestRoutes = [
         path: '/',
         component: Login,
     }
-]
+];
+
+export const employeeRoutes = [
+
+];
+
+export const hrRoutes = [
+
+];
+
+export const adminRoutes = [
+
+];
