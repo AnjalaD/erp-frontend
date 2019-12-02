@@ -11,7 +11,7 @@ function App() {
 
   const createRoute = (routes) => routes.map(
     (route, index) => (
-      <Route path={route.path} component={route.component} key={index} />
+      <Route path={route.path} component={route.component} key={index} exact />
     )
   );
 
