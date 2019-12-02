@@ -1,5 +1,5 @@
 import Login from "./views/guest/Login";
-import Loading from "./views/guest/Loading";
+import Loading from "./views/shared/Loading";
 import Navbar from "./views/guest/AppNavbar";
 import EmpHome from "./views/employee/EmpHome";
 

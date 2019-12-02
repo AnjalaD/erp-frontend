@@ -1,7 +1,7 @@
 const initialState = {
     loggedIn: false,
     token: null,
-    type: null,
+    access_level: null,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -10,7 +10,7 @@ export default (state = initialState, { type, payload }) => {
             return {
                 loggedIn: true,
                 token: payload.erp_token,
-                type: payload.user_type,
+                access_level: payload.access_level,
             };
         case 'LOGOUT':
             return initialState;

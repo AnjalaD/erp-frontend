@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { guestRoutes, levelOneRoutes, levelTwoRoutes, levelThreeRoutes, adminRoutes } from './routes';
 import { ADMIN, LEVEL1, LEVEL2, LEVEL3 } from './constants/constants';
+import Loading from './views/shared/Loading';
+import { login } from './redux/actions';
 
 
 function App() {
-  const { loggedIn, userType } = useSelector(state => state.status);
+  const { loggedIn, access_level } = useSelector(state => state.status);
+  const isLoading = useSelector(state => state.loading.isLoading);
+
+  const dispatch = useDispatch();
 
   const createRoute = (routes) => routes.map(
     (route, index) => (
@@ -17,11 +22,11 @@ function App() {
 
   useEffect(() => {
     const user = window.sessionStorage.getItem('user') || null;
-    console.log(JSON.parse(user));
-    return () => {
-
-    };
-  }, [])
+    console.log('session user', user)
+    if (user) {
+      dispatch(login(JSON.parse(user)));
+    }
+  }, [dispatch])
 
 
   const userRouteSelector = (type) => {
@@ -39,14 +44,16 @@ function App() {
     }
   }
 
-
-  return (
+  const notLoading = (
     <BrowserRouter>
       <Switch>
-        {loggedIn ? userRouteSelector(userType) : createRoute(guestRoutes)}
+        {loggedIn ? userRouteSelector(access_level) : createRoute(guestRoutes)}
+        <Redirect from='/' to='/' />
       </Switch>
     </BrowserRouter>
   );
+
+  return isLoading ? <Loading /> : notLoading;
 }
 
 export default App;
