@@ -1,7 +1,11 @@
+import React from 'react'
+
 import Login from "./views/guest/Login";
 import Loading from "./views/shared/Loading";
 import Navbar from "./views/guest/AppNavbar";
-import EmpHome from "./views/employee/EmpHome";
+import LevelOneHome from "./views/level_1/LevelOneHome";
+
+import HomeIcon from '@material-ui/icons/Home';
 
 export const guestRoutes = [
     {
@@ -21,7 +25,9 @@ export const guestRoutes = [
 export const levelOneRoutes = [
     {
         path: '/',
-        component: EmpHome,
+        component: LevelOneHome,
+        title: 'Home',
+        icon: <HomeIcon />
     }
 ];
 

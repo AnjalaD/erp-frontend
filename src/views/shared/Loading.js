@@ -10,13 +10,18 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        '&:focus': {
+            outline: 'none'
+        }
     }
+
+
 }));
 
 export default function Loading() {
     const classes = useStyles();
 
-    const isLoading = useSelector(state => state.loading.isLoading);
+    const isLoading = useSelector(state => state.loading);
 
     return (
         <Modal
@@ -24,11 +29,9 @@ export default function Loading() {
             aria-describedby="simple-modal-description"
             open={isLoading}
         >
-            <div className={classes.paper}>
-                <div className={classes.outbox}>
-                    <CircularProgress />
-                    <h1>LOADING.... </h1>
-                </div>
+            <div className={classes.outbox}>
+                <CircularProgress />
+                <h1>LOADING.... </h1>
             </div>
         </Modal>
     );

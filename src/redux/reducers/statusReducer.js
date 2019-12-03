@@ -1,8 +1,16 @@
+// import { LEVEL1 } from "../../constants/constants";
+
 const initialState = {
     loggedIn: false,
     token: null,
     access_level: null,
 };
+
+// const initialState = {
+//     loggedIn: true,
+//     token: null,
+//     access_level: LEVEL1,
+// };
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {

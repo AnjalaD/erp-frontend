@@ -6,19 +6,26 @@ import { guestRoutes, levelOneRoutes, levelTwoRoutes, levelThreeRoutes, adminRou
 import { ADMIN, LEVEL1, LEVEL2, LEVEL3 } from './constants/constants';
 import Loading from './views/shared/Loading';
 import { login } from './redux/actions';
+import CustomDrawer from './views/shared/CustomDrawer';
 
 
 function App() {
   const { loggedIn, access_level } = useSelector(state => state.status);
-  const isLoading = useSelector(state => state.loading.isLoading);
 
   const dispatch = useDispatch();
 
-  const createRoute = (routes) => routes.map(
+  const createRoutes = (routes) => routes.map(
     (route, index) => (
       <Route path={route.path} component={route.component} key={index} exact />
     )
   );
+
+  const routes = {
+    [ADMIN]: adminRoutes,
+    [LEVEL3]: levelThreeRoutes,
+    [LEVEL2]: levelTwoRoutes,
+    [LEVEL1]: levelOneRoutes,
+  }
 
   useEffect(() => {
     const user = window.sessionStorage.getItem('user') || null;
@@ -28,32 +35,18 @@ function App() {
     }
   }, [dispatch])
 
-
-  const userRouteSelector = (type) => {
-    switch (type) {
-      case ADMIN:
-        return createRoute(adminRoutes);
-      case LEVEL3:
-        return createRoute(levelThreeRoutes);
-      case LEVEL2:
-        return createRoute(levelTwoRoutes);
-      case LEVEL1:
-        return createRoute(levelOneRoutes);
-      default:
-        return createRoute(guestRoutes);
-    }
-  }
-
-  const notLoading = (
-    <BrowserRouter>
-      <Switch>
-        {loggedIn ? userRouteSelector(access_level) : createRoute(guestRoutes)}
-        <Redirect from='/' to='/' />
-      </Switch>
-    </BrowserRouter>
+  return (
+    <div>
+      <Loading />
+      <BrowserRouter>
+        {loggedIn ? <CustomDrawer routes={routes[access_level] || []} /> : null}
+        <Switch>
+          {loggedIn ? createRoutes(routes[access_level] || []) : createRoutes(guestRoutes)}
+          <Redirect from='/' to='/' />
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
-
-  return isLoading ? <Loading /> : notLoading;
 }
 
 export default App;
