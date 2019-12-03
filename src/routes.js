@@ -2,6 +2,7 @@ import Login from "./views/guest/Login";
 import Loading from "./views/guest/Loading";
 import Navbar from "./views/guest/AppNavbar";
 import EmpHome from "./views/employee/EmpHome";
+import RouterError from "./views/guest/RouterError"
 
 export const guestRoutes = [
     {
@@ -15,6 +16,10 @@ export const guestRoutes = [
     {
         path: '/navbar',
         component: Navbar
+    },
+    {
+        path: '/error',
+        component: RouterError
     }
 ];
 
