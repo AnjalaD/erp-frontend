@@ -1,8 +1,16 @@
+// import { LEVEL1 } from "../../constants/constants";
+
 const initialState = {
     loggedIn: false,
     token: null,
-    type: null,
+    access_level: null,
 };
+
+// const initialState = {
+//     loggedIn: true,
+//     token: null,
+//     access_level: LEVEL1,
+// };
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
@@ -10,7 +18,7 @@ export default (state = initialState, { type, payload }) => {
             return {
                 loggedIn: true,
                 token: payload.erp_token,
-                type: payload.user_type,
+                access_level: payload.access_level,
             };
         case 'LOGOUT':
             return initialState;

@@ -6,3 +6,8 @@ export const login = (status) => ({
 export const logout = () => ({
     type: 'LOGOUT'
 });
+
+export const loading = (isLoading = true) => ({
+    type: 'SET_LOADING',
+    payload: isLoading
+});

@@ -1,51 +1,51 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { guestRoutes, levelOneRoutes, levelTwoRoutes, levelThreeRoutes, adminRoutes } from './routes';
 import { ADMIN, LEVEL1, LEVEL2, LEVEL3 } from './constants/constants';
+import Loading from './views/shared/Loading';
+import { login } from './redux/actions';
+import CustomDrawer from './views/shared/CustomDrawer';
 
 
 function App() {
-  const { loggedIn, userType } = useSelector(state => state.status);
+  const { loggedIn, access_level } = useSelector(state => state.status);
 
-  const createRoute = (routes) => routes.map(
+  const dispatch = useDispatch();
+
+  const createRoutes = (routes) => routes.map(
     (route, index) => (
       <Route path={route.path} component={route.component} key={index} exact />
     )
   );
 
-  useEffect(() => {
-    const user = window.sessionStorage.getItem('user') || null;
-    console.log(JSON.parse(user));
-    return () => {
-
-    };
-  }, [])
-
-
-  const userRouteSelector = (type) => {
-    switch (type) {
-      case ADMIN:
-        return createRoute(adminRoutes);
-      case LEVEL3:
-        return createRoute(levelThreeRoutes);
-      case LEVEL2:
-        return createRoute(levelTwoRoutes);
-      case LEVEL1:
-        return createRoute(levelOneRoutes);
-      default:
-        return createRoute(guestRoutes);
-    }
+  const routes = {
+    [ADMIN]: adminRoutes,
+    [LEVEL3]: levelThreeRoutes,
+    [LEVEL2]: levelTwoRoutes,
+    [LEVEL1]: levelOneRoutes,
   }
 
+  useEffect(() => {
+    const user = window.sessionStorage.getItem('user') || null;
+    console.log('session user', user)
+    if (user) {
+      dispatch(login(JSON.parse(user)));
+    }
+  }, [dispatch])
 
   return (
-    <BrowserRouter>
-      <Switch>
-        {loggedIn ? userRouteSelector(userType) : createRoute(guestRoutes)}
-      </Switch>
-    </BrowserRouter>
+    <div>
+      <Loading />
+      <BrowserRouter>
+        {loggedIn ? <CustomDrawer routes={routes[access_level] || []} /> : null}
+        <Switch>
+          {loggedIn ? createRoutes(routes[access_level] || []) : createRoutes(guestRoutes)}
+          <Redirect from='/' to='/error' />
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
 }
 
