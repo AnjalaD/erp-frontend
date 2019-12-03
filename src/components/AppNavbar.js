@@ -68,7 +68,10 @@ export default function AppNavbar(props) {
                 </div>
                 {props.loggedIn ? user : guest}
             </Navbar>
-            <CustomDrawer routes={props.routes} isOpen={isOpen} onClose={toggleNavbar} />
+            {
+                props.loggedIn ?
+                    <CustomDrawer routes={props.routes} isOpen={isOpen} onClose={toggleNavbar} /> : null
+            }
         </div>
     );
 }

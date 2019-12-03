@@ -24,9 +24,6 @@ function CustomDrawer(props) {
         ))
     );
 
-    console.log(typeof props.routes[0].icon);
-
-
     return (
         <Drawer
             anchor='left'
@@ -39,7 +36,9 @@ function CustomDrawer(props) {
         >
             <List
                 style={{
-                    marginTop: 75
+                    marginTop: 75,
+                    width: '20vw',
+                    minWidth: 240,
                 }}
             >
                 {createNavLink(props.routes)}

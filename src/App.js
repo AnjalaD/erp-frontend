@@ -48,7 +48,7 @@ function App() {
     <div>
       <Loading />
       <BrowserRouter>
-        <AppNavbar loggedIn={loggedIn} routes={routes[access_level] || null} />
+        <AppNavbar loggedIn={loggedIn} routes={routes[access_level] || []} />
         <Switch>
           {loggedIn ? createRoutes(routes[access_level] || []) : createRoutes(guestRoutes)}
           <Route path='/error' component={RouterError} exact />
