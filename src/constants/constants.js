@@ -14,12 +14,12 @@ export const COMPANY_NAME = 'JUPITER';
 
 export const COLOURS = {
     primary: {
-        light: '#ffffff',
-        dark: '#999999'
+        lighter: '#C5CAE9',
+        light: '#7986CB',
+        medium: '#3F51B5',
+        dark: '#303F9F',
+        darker: '#1A237E'
     },
     secondary: {
-        light: '#125588',
-        dark: '#006633',
-        darker: '#0A4532'
     }
 }
