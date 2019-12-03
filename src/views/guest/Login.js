@@ -14,6 +14,7 @@ import Container from '@material-ui/core/Container';
 import { LOGIN } from '../../constants/constants';
 import { useDispatch } from 'react-redux';
 import { login, loading } from '../../redux/actions';
+import Cookies from 'js-cookie';
 
 
 const useStyles = makeStyles(theme => ({
@@ -70,7 +71,8 @@ export default function SignIn() {
                                 erp_token: res.headers.get('erp-auth-token'),
                                 access_level: data.access_level,
                             };
-                            window.sessionStorage.setItem('user', JSON.stringify(userData));
+                            Cookies.set('user', JSON.stringify(userData), { path: '/' });
+                            // window.sessionStorage.setItem('user', JSON.stringify(userData));
                             dispatch(login(userData));
                         } else {
                             setError(data.error);

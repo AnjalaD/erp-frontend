@@ -16,8 +16,8 @@ const RouterError = props => {
     const classes = useStyles();
     return (
         <div>
-            <h1 className={classes.outbox}>{props.errorCode}</h1>
-            <h4 className={classes.outbox}>{props.errorMessage}</h4>
+            <h1 className={classes.outbox}>{props.errorCode || 404}</h1>
+            <h4 className={classes.outbox}>{props.errorMessage || 'You took a wrong turn'}</h4>
         </div>
     );
 }

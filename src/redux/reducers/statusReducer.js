@@ -1,16 +1,17 @@
-// import { LEVEL1 } from "../../constants/constants";
-
-const initialState = {
-    loggedIn: false,
-    token: null,
-    access_level: null,
-};
+import { LEVEL1 } from "../../constants/constants";
+import Cookies from 'js-cookie';
 
 // const initialState = {
-//     loggedIn: true,
+//     loggedIn: false,
 //     token: null,
-//     access_level: LEVEL1,
+//     access_level: null,
 // };
+
+const initialState = {
+    loggedIn: true,
+    token: null,
+    access_level: LEVEL1,
+};
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
@@ -21,6 +22,7 @@ export default (state = initialState, { type, payload }) => {
                 access_level: payload.access_level,
             };
         case 'LOGOUT':
+            Cookies.remove('user');
             return initialState;
         default:
             return state;
