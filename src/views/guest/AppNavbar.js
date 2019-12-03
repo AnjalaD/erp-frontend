@@ -23,11 +23,13 @@ export default function AppNavbar() {
                     <NavbarBrand href="/">Jupiter</NavbarBrand>
                     <NavbarToggler onClick={e => toggleNavbar(!isOpen)} />
                     <Collapse isOpen={isOpen} navbar >
-                        <NavbarItem name = "View Details" link = "http://google.com" bcol = "success" />
-                        <NavbarItem name="Apply Leave" link="http://facebook.com" bcol="primary" />
+                        <span className="nav navbar-nav navbar-right">
+                            <NavbarItem name = "View Details" link = "/error"  />
+                            <NavbarItem name="Apply Leave" link="http://facebook.com"  />
+                        </span>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <h5 color="success" >My Name</h5>
+                                <h5>My Name</h5>
                             </NavItem>
                         </Nav>
                     </Collapse>

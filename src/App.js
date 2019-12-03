@@ -42,7 +42,7 @@ function App() {
         {loggedIn ? <CustomDrawer routes={routes[access_level] || []} /> : null}
         <Switch>
           {loggedIn ? createRoutes(routes[access_level] || []) : createRoutes(guestRoutes)}
-          <Redirect from='/' to='/' />
+          <Redirect from='/' to='/error' />
         </Switch>
       </BrowserRouter>
     </div>

@@ -14,7 +14,7 @@ const NavbarItem = (props) => {
     return (
         <Nav className="ml-auto" navbar>
             <NavItem>
-                <Button color={props.bcol} >
+                <Button className='navbar-btn' style={{ margin: 5}}>
                     <NavLink color = "dark" href={props.link}>{props.name}</NavLink>
                 </Button>
             </NavItem>
