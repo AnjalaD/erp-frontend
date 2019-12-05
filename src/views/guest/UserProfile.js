@@ -2,6 +2,7 @@ import { Avatar, Container, Typography, FormControlLabel, CssBaseline, TextField
 import React, { } from 'react';
 import ProfileRow from './UserProfilerow';
 import { COLOURS } from '../../constants/constants';
+import { faCoffee, faHome } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -36,8 +37,8 @@ const Profile = (props) => {
                 <Typography component="h1" variant="h5">
                     Anjala Dilhara
                 </Typography>
-                <ProfileRow name="dkvadvadkvalv" />
-                <ProfileRow name="feGG" />
+                <ProfileRow name="dkvadvadkvalv" icon={faCoffee} />
+                <ProfileRow name="feGG" icon={faHome} />
                     <TextField
                         variant="outlined"
                         margin="normal"
