@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { COLOURS } from '../constants/constants'
+import { COLOURS } from '../../constants/constants'
 
 const useStyles = makeStyles(theme => ({
     dropdown: {

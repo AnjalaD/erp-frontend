@@ -6,7 +6,7 @@ import { guestRoutes, levelOneRoutes, levelTwoRoutes, levelThreeRoutes, adminRou
 import { ADMIN, LEVEL1, LEVEL2, LEVEL3, DIVIDER } from './constants/constants';
 import Loading from './views/shared/Loading';
 import { login } from './redux/actions';
-import AppNavbar from './components/AppNavbar';
+import AppNavbar from './components/navbar/AppNavbar';
 import Cookies from 'js-cookie';
 import RouterError from './views/shared/RouterError';
 

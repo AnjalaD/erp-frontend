@@ -1,7 +1,7 @@
 import { Box, Grid } from '@material-ui/core';
 import { Person } from '@material-ui/icons';
 import React from 'react';
-import { COLOURS } from '../../constants/constants'
+import { COLOURS } from '../../constants/constants';
 
 const ProfileRow = (props) => {
     return (
@@ -20,7 +20,6 @@ const ProfileRow = (props) => {
                     {props.value || '--'}
                 </div>
             </Box>
-            {/* <i className="fa fa-address-card" aria-hidden="true"></i> */}
         </Grid>
     );
 }
