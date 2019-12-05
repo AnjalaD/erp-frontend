@@ -1,4 +1,4 @@
-import { LEVEL1 } from "../../constants/constants";
+// import { LEVEL1 } from "../../constants/constants";
 import Cookies from 'js-cookie';
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
     access_level: null,
 };
 
-//initialState = {
+// const initialState = {
 //     loggedIn: true,
 //     token: null,
 //     access_level: LEVEL1,
