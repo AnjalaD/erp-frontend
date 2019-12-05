@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
-import { COLOURS, COMPANY_NAME } from '../constants/constants';
+import { COLOURS, COMPANY_NAME } from '../../constants/constants';
 import { makeStyles } from '@material-ui/core/styles';
 import Person from '@material-ui/icons/Person';
 import { NavLink } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { logout } from '../redux/actions';
+import { logout } from '../../redux/actions';
 import { Button } from '@material-ui/core';
 import CustomDrawer from './CustomDrawer';
 
