@@ -1,4 +1,5 @@
 // import { LEVEL1 } from "../../constants/constants";
+import Cookies from 'js-cookie';
 
 const initialState = {
     loggedIn: false,
@@ -21,6 +22,7 @@ export default (state = initialState, { type, payload }) => {
                 access_level: payload.access_level,
             };
         case 'LOGOUT':
+            Cookies.remove('user');
             return initialState;
         default:
             return state;
