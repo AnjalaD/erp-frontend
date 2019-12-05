@@ -1,19 +1,29 @@
-import { Box, Container } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import { Person } from '@material-ui/icons';
 import React from 'react';
-import { COLOURS } from '../../constants/constants'
-import 'react-fontawesome'
+import { COLOURS } from '../../constants/constants';
+import { } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ProfileRow = (props) => {
     return (
-        <Container style={{ backgroundColor: COLOURS.primary.lighter, marginTop: 10 }} maxWidth="sm">
-            <FontAwesomeIcon icon={props.icon} />
-            <Box component="span" display="block" p={1} bgcolor="dark">
-                {props.name}
+        <Grid item xs={props.xs || 12}>
+            <Box component="span"
+                style={{ backgroundColor: COLOURS.primary.lighter, margin: 5 }}
+                display="block"
+                p={1}
+                bgcolor="dark"
+            >
+                <div><FontAwesomeIcon icon={props.icon}/>{props.name}</div>
+                <div style={{
+                    fontSize: 20,
+                    color: COLOURS.primary.dark
+                }}>
+                    {props.value || '--'}
+                </div>
             </Box>
-            <i class="fa fa-address-card" aria-hidden="true"></i>
-        </Container>
+            {/* <i className="fa fa-address-card" aria-hidden="true"></i> */}
+        </Grid>
     );
 }
 export default ProfileRow;
