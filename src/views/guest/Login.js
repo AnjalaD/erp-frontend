@@ -15,6 +15,7 @@ import { LOGIN } from '../../constants/constants';
 import { useDispatch } from 'react-redux';
 import { login, loading } from '../../redux/actions';
 import Cookies from 'js-cookie';
+import { COLOURS } from '../../constants/constants';
 
 
 const useStyles = makeStyles(theme => ({
@@ -26,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
     avatar: {
         margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: COLOURS.primary.dark,
     },
     form: {
         width: '100%',
@@ -89,7 +90,7 @@ export default function SignIn() {
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
+                <Avatar className={classes.avatar} >
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
