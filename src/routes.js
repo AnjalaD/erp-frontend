@@ -8,7 +8,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import RouterError from "./views/shared/RouterError";
 import { DIVIDER } from './constants/constants';
 import UserProfile from "./views/shared/UserProfile";
-import UserForm from "./views/guest/UserForm";
+import LevelTwoHome from './views/level_2/LevelTwoHome';
+import LevelThreeHome from './views/level_3/LevelThreeHome';
 
 export const guestRoutes = [
     {
@@ -27,20 +28,16 @@ export const guestRoutes = [
         path: '/userprofile',
         component: UserProfile
     },
-    {
-        path: '/form',
-        component: UserForm
-    }
 ];
 
 export const levelOneRoutes = [
-    DIVIDER,
     {
         path: '/',
         component: LevelOneHome,
         title: 'Home',
         icon: <HomeIcon />
     },
+    DIVIDER,
     {
         path: '/applyleave',
         component: LevelOneHome,
@@ -55,10 +52,21 @@ export const levelOneRoutes = [
 ];
 
 export const levelTwoRoutes = [
+    {
+        path: '/',
+        component: LevelTwoHome,
+        title: 'Home',
+        icon: <HomeIcon />
+    },
 ];
 
 export const levelThreeRoutes = [
-
+    {
+        path: '/',
+        component: LevelThreeHome,
+        title: 'Home',
+        icon: <HomeIcon />
+    },
 ];
 
 export const adminRoutes = [
