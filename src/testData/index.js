@@ -1,33 +1,45 @@
 export const TEST_USER_DATA = {
-    first_name: 'Anjala',
-    last_name: 'Dilhara',
-    email: [
-        'anjala@gmail.com',
-        'dilhara@gmail.com'
+    "employee_id": "03179",
+    "first_name": "Alanna",
+    "last_name": "Russo",
+    "addr_house_no": "PO Box 288",
+    "addr_line_1": "7th FL",
+    "addr_line_2": "Mannford",
+    "addr_city": "Oakhurst",
+    "dob": "1949-02-26T18:30:00.000Z",
+    "marital_status": "Married",
+    "employment_status": "Permanent-FT",
+    "active_status": 1,
+    "job_title": "Sales Agent",
+    "dept_name": "Facilities",
+    "pay_grade": "Grade-1",
+    "supervisor_id": "27381",
+    "contact_no": [
+        "0272485069"
     ],
-    contact_no: [
-        '071122213',
-        '071232142'
+    "email": [
+        "WilburnDiehl75@nowhere.com"
     ],
-    marital_state: 'Single',
-    dob: '1997-11-12',
-    addr_house_no: '23',
-    addr_line_1: 'seqew rd',
-    addr_line_2: 'Dwadkw',
-    addr_city: null,
-    employment_status: 'Permanent-FT',
-    pay_grade: 'Grade-1',
-    nic: '3794920334v',
-    job_title: 'employee',
-    dept_name: 'Tldse',
-    custom_attributes: [
+    "custom": [],
+    "dependents": [
         {
-            attribute: 'Adjwj',
-            value: 'asdwqw'
-        },
+            "nic": "751607055610",
+            "first_name": "Dong",
+            "last_name": "Hankins",
+            "relationship": "mother",
+            "addr_house_no": "54144",
+            "addr_line_1": "4th FL",
+            "addr_line_2": "Banff",
+            "addr_city": "Biglerville",
+            "contact_no": "0870924114",
+            "email": "mcvgy02@example.com"
+        }
+    ],
+    "emergency_contacts": [
         {
-            attribute: 'fauwk',
-            value: 'sfwawqa'
+            "nic": "514706558736",
+            "name": "Mccloud",
+            "contact_no": "0288140693"
         }
     ]
-}
+};
