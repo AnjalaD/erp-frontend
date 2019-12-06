@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import { Grid, Card, Typography } from '@material-ui/core';
 import TextInput from './TextInput';
 import MultiTextInput from './MultiTextInput';
+import SelectInput from './SelectInput';
 
 function UserForm(props) {
     const { email, setEmail, contact, setContact, user, setUser } = props;
@@ -40,7 +41,7 @@ function UserForm(props) {
             <Typography variant="h4" style={{ width: '100%', textAlign: 'center' }}>
                 User Detailes
             </Typography>
-            <Grid container spacing={1} >
+            <Grid container spacing={1} alignItems='center'>
                 <TextInput
                     label="First Name"
                     value={user.first_name}
@@ -82,26 +83,37 @@ function UserForm(props) {
                     value={user.addr_city}
                     onChange={userHandler('addr_city')}
                 />
-                <TextInput
+                <SelectInput
                     label="Marital Status"
                     value={user.marital_status}
                     onChange={userHandler('marital_status')}
+                    selection={[
+                        { label: 'Single', value: 'single' },
+                        { label: 'Married', value: 'married' }
+                    ]}
                 />
-                <TextInput
+                <SelectInput
                     label="Job Title"
                     value={user.job_title}
+                    onChange={userHandler('job_title')}
+                    selection={[]}
                 />
-                <TextInput
+                <SelectInput
                     label="Pay Grade"
                     value={user.pay_grade}
+                    onChange={userHandler('pay_grade')}
+                    selection={[]}
                 />
-                <TextInput
-                    label="Employment Status"
+                <SelectInput
+                    label="Employement Status"
                     value={user.employement_status}
+                    onChange={userHandler('employement_status')}
+                    selection={[]}
                 />
                 <MultiTextInput
                     label="Email"
                     value={email}
+                    type='email'
                     add={() => setEmail([...email, ''])}
                     onChange={onMultiChange(email, setEmail)}
                     remove={multiRemove(email, setEmail)}

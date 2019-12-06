@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import { Grid, Card } from '@material-ui/core';
 import TextInput from './TextInput';
 import { Add, Delete } from '@material-ui/icons';
+import SelectInput from './SelectInput';
 
 
 function DepForm(props) {
@@ -63,10 +64,17 @@ function DepForm(props) {
                                     value={obj.nic}
                                     onChange={onChange('nic', key)}
                                 />
-                                <TextInput
+                                <SelectInput
                                     label="Relationship"
-                                    value={obj.dob}
+                                    value={obj.relationship}
                                     onChange={onChange('relationship', key)}
+                                    selection={[
+                                        { label: 'Father', value: 'father' },
+                                        { label: 'Mother', value: 'mother' },
+                                        { label: 'Son', value: 'son' },
+                                        { label: 'Daughter', value: 'daughter' },
+                                        { label: 'Other', value: 'other' },
+                                    ]}
                                 />
                                 <TextInput
                                     label="Address-House No."

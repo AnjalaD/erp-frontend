@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { loading } from '../../redux/actions';
 import UserForm from './UserForm';
 import DepForm from './DepForm';
-import Confirm from '../../views/guest/Confirm';
-import Success from '../../views/guest/Success';
+import Confirm from './Confirm';
 import EmgForm from './EmgFrom';
 
+
 function UserFormManager(props) {
+    const disptch = useDispatch();
+
     const initUser = {
         "first_name": "ssfaf",
         "last_name": "",
@@ -52,7 +56,7 @@ function UserFormManager(props) {
         "email": ""
     };
 
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(4);
 
     const [email, setEmail] = useState(['']);
     const [contact, setContact] = useState(['']);
@@ -62,6 +66,22 @@ function UserFormManager(props) {
 
     //load field -(custom,job-title,...)
     useEffect(() => { }, []);
+
+    const submit = () => {
+        disptch(loading());
+        const data = {};
+
+        const options = {
+            method: 'POST',
+
+        }
+
+        fetch()
+            .then()
+            .catch(err => console.log(err))
+            .finally(() => disptch(loading(false)))
+
+    }
 
 
     // Proceed to next step
@@ -118,12 +138,10 @@ function UserFormManager(props) {
                         email: email,
                         contact_no: contact,
                     }} dep={dep} emg={emg}
-                    nextStep={nextStep}
+                    submit={submit}
                     prevStep={prevStep}
                 />
             );
-        case 5:
-            return <Success />;
         default:
             return null;
     }
