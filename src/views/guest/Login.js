@@ -11,7 +11,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { LOGIN } from '../../constants/constants';
+import { LOGIN } from '../../constants/api';
 import { useDispatch } from 'react-redux';
 import { login, loading } from '../../redux/actions';
 import Cookies from 'js-cookie';
