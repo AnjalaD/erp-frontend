@@ -11,3 +11,12 @@ export const loading = (isLoading = true) => ({
     type: 'SET_LOADING',
     payload: isLoading
 });
+
+export const add_user = (user) => ({
+    type: 'SET_USER',
+    payload: user
+})
+
+export const remove_user = () => ({
+    type: 'REMOVE_USER'
+})
