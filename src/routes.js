@@ -10,6 +10,7 @@ import { DIVIDER } from './constants/constants';
 import UserProfile from "./views/shared/UserProfile";
 import LevelTwoHome from './views/level_2/LevelTwoHome';
 import LevelThreeHome from './views/level_3/LevelThreeHome';
+import OrgDetails from './views/level_3/OrgDetails';
 
 export const guestRoutes = [
     {
@@ -65,6 +66,12 @@ export const levelThreeRoutes = [
         path: '/',
         component: LevelThreeHome,
         title: 'Home',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/org',
+        component: OrgDetails,
+        title: 'Org',
         icon: <HomeIcon />
     },
 ];

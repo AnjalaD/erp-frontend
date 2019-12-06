@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 export default function AppNavbar(props) {
     const dispatch = useDispatch();
 
-    const [isOpen, toggleNavbar] = useState(true);
+    const [isOpen, toggleNavbar] = useState(false);
     const classes = useStyles();
 
     const user = (

@@ -1,4 +1,4 @@
-import { LEVEL1, LEVEL3 } from "../../constants/constants";
+import { LEVEL3 } from "../../constants/constants";
 import Cookies from 'js-cookie';
 
 // const initialState = {

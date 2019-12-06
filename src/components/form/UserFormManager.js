@@ -68,7 +68,7 @@ function UserFormManager(props) {
     useEffect(() => { }, []);
 
     const submit = () => {
-        disptch(loading());
+        disptch(loading(true));
         const data = {};
 
         const options = {
@@ -76,7 +76,7 @@ function UserFormManager(props) {
 
         }
 
-        fetch()
+        fetch('', options)
             .then()
             .catch(err => console.log(err))
             .finally(() => disptch(loading(false)))

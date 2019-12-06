@@ -3,7 +3,7 @@ import { Grid, TextField, Button, Card } from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
 
 
-function TextInput(props) {
+function MultiTextInput(props) {
     return (
         <Grid item xs={12}>
             <Card
@@ -45,4 +45,4 @@ function TextInput(props) {
     )
 }
 
-export default TextInput;
+export default MultiTextInput;

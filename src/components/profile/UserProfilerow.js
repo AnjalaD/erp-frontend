@@ -1,9 +1,9 @@
 import { Box, Grid } from '@material-ui/core';
-import { Person } from '@material-ui/icons';
 import React from 'react';
 import { COLOURS } from '../../constants/constants';
 import { } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDotCircle } from '@fortawesome/free-solid-svg-icons';
 
 const ProfileRow = (props) => {
     return (
@@ -12,11 +12,12 @@ const ProfileRow = (props) => {
                 style={{ backgroundColor: COLOURS.primary.lighter, margin: 5 }}
                 display="block"
                 p={1}
-                bgcolor="dark"
             >
-                <div><FontAwesomeIcon icon={props.icon}/> {props.name}</div>
+                <div style={{ fontSize: 14 }}>
+                    <FontAwesomeIcon icon={props.icon || faDotCircle} /> {props.name}
+                </div>
                 <div style={{
-                    fontSize: 20,
+                    fontSize: 18,
                     color: COLOURS.primary.dark
                 }}>
                     {props.value || '--'}

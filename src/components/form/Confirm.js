@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Grid, Typography, Button } from '@material-ui/core/';
 import Profile from '../profile/Profile';
+import EmgContact from '../profile/EmgContact';
 
 function Confirm(props) {
     const { user, emg, dep } = props;
@@ -41,6 +42,7 @@ function Confirm(props) {
                             <Typography variant="h6" style={{ width: '100%', textAlign: 'center' }}>
                                 Emergency Contact-{i + 1}
                             </Typography>
+                            <EmgContact data={user} />
 
                         </Grid>
                     ))
