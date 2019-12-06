@@ -13,28 +13,12 @@ function UserForm(props) {
         }))
     }
 
-    const customHandler = (key) => (e) => {
+    const customHandler = (index) => (e) => {
         const newCustom = user.custom_attributes;
-        newCustom[key] = e.target.value;
+        newCustom[index]['value'] = e.target.value;
         setUser(Object.assign({}, user, {
             custom_attributes: newCustom
         }))
-    }
-
-    const custom_attr_fields = () => {
-        const custom = [];
-        if (user.custom_attributes) {
-            Object.keys(user.custom_attributes).forEach((key, i) =>
-                custom.push(
-                    <TextInput key={i} xs={12}
-                        label={key}
-                        value={user.custom_attributes[key]}
-                        onChange={customHandler(key)}
-                    />
-                )
-            )
-        }
-        return custom;
     }
 
     const onMultiChange = (value, setter) => (e, i) => {
@@ -129,7 +113,15 @@ function UserForm(props) {
                     onChange={onMultiChange(contact, setContact)}
                     remove={multiRemove(contact, setContact)}
                 />
-                {custom_attr_fields()}
+                {user.custom_attributes.map(({ attribute, value }, i) =>
+                    (
+                        <TextInput key={i} xs={12}
+                            label={attribute}
+                            value={value}
+                            onChange={customHandler(i)}
+                        />
+                    )
+                )}
                 <Grid item xs={12}>
                     <Button
                         color="primary"

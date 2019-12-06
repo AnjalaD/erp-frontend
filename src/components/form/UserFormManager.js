@@ -7,8 +7,9 @@ import EmgForm from './EmgFrom';
 
 function UserFormManager(props) {
     const initUser = {
-        "first_name": "",
+        "first_name": "ssfaf",
         "last_name": "",
+        "nic": "",
         "addr_house_no": "",
         "addr_line_1": "",
         "addr_line_2": "",
@@ -19,10 +20,16 @@ function UserFormManager(props) {
         "job_title": "",
         "dept_name": "",
         "pay_grade": "",
-        "custom_attributes": {
-            abc: '',
-            rtw: ''
-        }
+        "custom_attributes": [
+            {
+                attribute: 'attr',
+                value: ''
+            },
+            {
+                attribute: 'addwd',
+                value: ''
+            }
+        ]
     }
 
     const initEmg = {
@@ -106,6 +113,11 @@ function UserFormManager(props) {
         case 4:
             return (
                 <Confirm
+                    user={{
+                        ...user,
+                        email: email,
+                        contact_no: contact,
+                    }} dep={dep} emg={emg}
                     nextStep={nextStep}
                     prevStep={prevStep}
                 />

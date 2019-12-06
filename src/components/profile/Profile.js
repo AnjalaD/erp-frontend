@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Profile = (props) => {
-    const data = TEST_USER_DATA;
+    const data = props.data;
     const classes = useStyles();
     return (
         <Container component="main" maxWidth="sm">
