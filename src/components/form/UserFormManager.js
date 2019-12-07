@@ -11,7 +11,7 @@ function UserFormManager(props) {
     const disptch = useDispatch();
 
     const initUser = {
-        "first_name": "ssfaf",
+        "first_name": "",
         "last_name": "",
         "nic": "",
         "addr_house_no": "",
@@ -56,7 +56,7 @@ function UserFormManager(props) {
         "email": ""
     };
 
-    const [step, setStep] = useState(4);
+    const [step, setStep] = useState(1);
 
     const [email, setEmail] = useState(['']);
     const [contact, setContact] = useState(['']);
