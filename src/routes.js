@@ -10,7 +10,9 @@ import { DIVIDER } from './constants/constants';
 import UserProfile from "./views/shared/UserProfile";
 import LevelTwoHome from './views/level_2/LevelTwoHome';
 import LevelThreeHome from './views/level_3/LevelThreeHome';
-import OrgDetails from './views/level_3/OrgDetails';
+import OrgDetails from './views/admin/OrgDetails';
+import AdminHome from './views/admin/AdminHome';
+import AddHR from './views/admin/AddHR';
 
 export const guestRoutes = [
     {
@@ -68,14 +70,26 @@ export const levelThreeRoutes = [
         title: 'Home',
         icon: <HomeIcon />
     },
-    {
-        path: '/org',
-        component: OrgDetails,
-        title: 'Org',
-        icon: <HomeIcon />
-    },
+
 ];
 
 export const adminRoutes = [
-
+    {
+        path: '/',
+        component: AdminHome,
+        title: 'Home',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/org',
+        component: OrgDetails,
+        title: 'Organization',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/add-hr',
+        component: AddHR,
+        title: 'Add HR Manager',
+        icon: <HomeIcon />
+    },
 ];
