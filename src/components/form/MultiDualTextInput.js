@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, TextField, Button, Card, IconButton } from '@material-ui/core';
+import { Grid, TextField, Button, Card, IconButton, Typography } from '@material-ui/core';
 import { Add, RemoveCircleOutline, Save } from '@material-ui/icons';
 
 
@@ -8,9 +8,9 @@ function MultiDualTextInput(props) {
     console.log('build');
     const { values, save, remove, onChange, add } = props;
     return (
-        <Grid container justify='center' style={{ pointerEvents: 'all' }}>
-
-
+        <Grid container justify='center'
+            style={{ pointerEvents: 'all', paddingLeft: 20, paddingRight: 20 }}
+        >
             <Card
                 style={{
 
@@ -67,6 +67,9 @@ function MultiDualTextInput(props) {
                             </Grid >
                         </Grid>
                     ))}
+                </Grid>
+                <Grid item xs={12}>
+                    <Typography color='error'>{props.error ? '*' + props.error : null}</Typography>
                 </Grid>
             </Card>
         </Grid>
