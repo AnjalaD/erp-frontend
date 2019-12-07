@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import UserFormManager from '../../components/form/UserFormManager'
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, Typography } from '@material-ui/core';
 import TextInput from '../../components/form/TextInput';
 import { TEST_USER_DATA } from '../../testData';
 import Profile from '../../components/profile/Profile';
@@ -34,28 +34,24 @@ function AddHR() {
     );
 
     const selectFromEmployee = (
-        <Grid container>
-            <Grid item xs={12}>
-                <TextInput
-                    value={empId}
-                    label='Employee ID'
-                    onChange={(e) => setEmpId(e.target.value)}
-                />
-            </Grid>
-            <Grid item xs={12}>
-                <Button onClick={() => findEmp(empId)}>Find Employee</Button>
-            </Grid>
+        <Grid container direction='column' justify='center'>
+
+            <TextInput
+                value={empId}
+                label='Employee ID'
+                onChange={(e) => setEmpId(e.target.value)}
+            />
+
+            <Button onClick={() => findEmp(empId)}>Find Employee</Button>
         </Grid>
     );
 
     const changeHR = (
-        <Grid container>
-            <Grid item xs={12}>
-                <Button onClick={() => setHasHR(0)}>Change HR Manager</Button>
-            </Grid>
-            <Grid item xs={12}>
-                <Profile data={TEST_USER_DATA} />
-            </Grid>
+        <Grid container direction='column' justify='center'>
+            <Button onClick={() => setHasHR(0)}>Change HR Manager</Button>
+            <Typography align='center'>Current HR Manager</Typography>
+            <Profile data={TEST_USER_DATA} />
+
         </Grid>
     );
 
@@ -81,4 +77,4 @@ function AddHR() {
     )
 }
 
-export default AddHR
+export default AddHR;
