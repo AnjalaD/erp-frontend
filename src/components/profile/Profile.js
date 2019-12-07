@@ -19,31 +19,38 @@ const Profile = (props) => {
                     />
                     <ProfileRow name="City" icon={faCity} value={data.addr_city} />
                     {
-                        data.marital_state ?
+                        data.marital_status ?
                             <div style={{ width: "100%", display: "flex", flexWrap: "wrap" }}>
                                 <ProfileRow name='Date of Birth' icon={faCalendarAlt} value={data.dob} xs={6} />
-                                <ProfileRow name='Marital State' icon={faRing} value={data.marital_state} xs={6} />
+                                <ProfileRow name='Marital State' icon={faRing} value={data.marital_status} xs={6} />
                                 <ProfileRow name='Department' icon={faBuilding} value={data.dept_name} />
+                                <ProfileRow name='Job Title' icon={faBuilding} value={data.job_title} xs={6} />
+                                <ProfileRow name='Pay Grade' icon={faBuilding} value={data.pay_grade} xs={6} />
+                                <ProfileRow name='Employement Status' icon={faBuilding} value={data.employment_status} />
                             </div>
                             :
                             <ProfileRow name='RelationShip' icon={faBaby} value={data.relationship} xs={12} />
 
                     }
-                    {Array.isArray(data.email) ? data.email.map((email, i) => (
-                        <ProfileRow name={'Email-' + (i + 1)} icon={faAt} value={email} key={i} />
-                    ))
-                        :
-                        <ProfileRow name='Email' icon={faAt} value={data.email} />}
-                    {Array.isArray(data.contact_no) ?
-                        data.contact_no.map((contact, i) => (
-                            <ProfileRow name={'Contact No-' + (i + 1)} icon={faPhone} value={contact} xs={6} key={i} />
+                    {
+                        Array.isArray(data.email) ? data.email.map((email, i) => (
+                            <ProfileRow name={'Email-' + (i + 1)} icon={faAt} value={email} key={i} />
                         ))
-                        :
-                        <ProfileRow name='Contact No' icon={faPhone} value={data.contact_no} />
+                            :
+                            <ProfileRow name='Email' icon={faAt} value={data.email} />
                     }
-                    {data.custom_attributes ? data.custom_attributes.map(({ attribute, value }, i) => (
-                        <ProfileRow name={attribute} icon={faDotCircle} value={value} key={i} />
-                    )) : null
+                    {
+                        Array.isArray(data.contact_no) ?
+                            data.contact_no.map((contact, i) => (
+                                <ProfileRow name={'Contact No-' + (i + 1)} icon={faPhone} value={contact} xs={6} key={i} />
+                            ))
+                            :
+                            <ProfileRow name='Contact No' icon={faPhone} value={data.contact_no} />
+                    }
+                    {
+                        data.custom_attributes ? data.custom_attributes.map(({ attribute, value }, i) => (
+                            <ProfileRow name={attribute} icon={faDotCircle} value={value} key={i} />
+                        )) : null
                     }
                 </Grid>
             </Card>

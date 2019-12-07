@@ -1,6 +1,7 @@
 export const TEST_USER_DATA = {
     "employee_id": "03179",
     "first_name": "Alanna",
+    "nic": "123123123V",
     "last_name": "Russo",
     "addr_house_no": "PO Box 288",
     "addr_line_1": "7th FL",
