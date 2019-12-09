@@ -15,6 +15,8 @@ import LevelThreeHome from './views/level_3/LevelThreeHome';
 import OrgDetails from './views/admin/OrgDetails';
 import AdminHome from './views/admin/AdminHome';
 import AddHR from './views/admin/AddHR';
+import AddNewEmp from './views/level_3/AddNewEmp';
+import EditEmp from './views/level_3/EditEmp';
 
 export const guestRoutes = [
     {
@@ -80,6 +82,18 @@ export const levelThreeRoutes = [
         title: 'Home',
         icon: <HomeIcon />
     },
+    {
+        path: '/add-new-employee',
+        component: AddNewEmp,
+        title: 'New Employee',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/edit-employee',
+        component: EditEmp,
+        title: 'Edit Employee',
+        icon: <HomeIcon />
+    },
 
 ];
 
@@ -97,9 +111,9 @@ export const adminRoutes = [
         icon: <HomeIcon />
     },
     {
-        path: '/add-hr',
+        path: '/hr-manager',
         component: AddHR,
-        title: 'Add HR Manager',
+        title: 'HR Manager',
         icon: <HomeIcon />
     },
 ];
