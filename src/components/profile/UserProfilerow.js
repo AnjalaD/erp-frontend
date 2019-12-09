@@ -1,5 +1,4 @@
 import { Box, Grid } from '@material-ui/core';
-import { Person } from '@material-ui/icons';
 import React from 'react';
 import { COLOURS } from '../../constants/constants';
 import { } from '@fortawesome/fontawesome-svg-core';

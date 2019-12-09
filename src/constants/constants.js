@@ -23,5 +23,21 @@ export const COLOURS = {
         darker: '#1A237E'
     },
     secondary: {
+        lighter: '#FFECB3',
+        light: '#FFD54F',
+        medium: '#FFC107',
+        dark: '#FFA000',
+        darker: '##FFA000'
+    },
+    text: {
+        white: '#ffffff',
+        black: '#000000'
     }
+}
+
+export const DETAILS = {
+    name: "JUPITER",
+    address: "34, Union Place",
+    city: "Colombo 02",
+    contact: "0113452987",
 }

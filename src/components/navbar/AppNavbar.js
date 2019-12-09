@@ -54,7 +54,7 @@ export default function AppNavbar(props) {
         <div>
             <Navbar
                 style={{
-                    backgroundColor: COLOURS.primary.medium,
+                    backgroundColor: COLOURS.primary.dark,
                     zIndex: 12001,
                     paddingLeft: '4vw',
                     paddingRight: '4vw',

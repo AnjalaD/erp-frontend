@@ -9,6 +9,7 @@ import RouterError from "./views/shared/RouterError";
 import { DIVIDER } from './constants/constants';
 import UserProfile from "./views/shared/UserProfile";
 import UserForm from "./views/guest/UserForm";
+import footer from './components/footer/footer';
 
 export const guestRoutes = [
     {
@@ -30,6 +31,10 @@ export const guestRoutes = [
     {
         path: '/form',
         component: UserForm
+    },
+    {
+        path: '/footer',
+        component: footer
     }
 ];
 

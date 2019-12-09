@@ -1,11 +1,9 @@
-import { Avatar, Container, Typography, CssBaseline, makeStyles, Grid } from "@material-ui/core";
-import React, { } from 'react';
+import {Container,makeStyles, Grid } from "@material-ui/core";
+import React from 'react';
 import ProfileRow from './UserProfilerow';
 import { COLOURS } from '../../constants/constants';
 import { faUser, faPassport, faHome, faCalendarAlt, faRing, faBaby, faBuilding, faCity, faAt, faPhone, faDotCircle } from '@fortawesome/free-solid-svg-icons';
 import { TEST_USER_DATA } from "../../testData";
-import { display, flexbox } from "@material-ui/system";
-import { HorizontalSplitSharp } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
     paper: {
