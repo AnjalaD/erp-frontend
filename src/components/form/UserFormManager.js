@@ -69,7 +69,6 @@ function UserFormManager(props) {
 
     const submit = () => {
         disptch(loading(true));
-        const data = {};
 
         const options = {
             method: 'POST',

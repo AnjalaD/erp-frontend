@@ -8,7 +8,7 @@ import Cookies from 'js-cookie';
 // };
 
 const initialState = {
-    loggedIn: true,
+    loggedIn: false,
     token: null,
     access_level: LEVEL3,
 };

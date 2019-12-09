@@ -14,13 +14,12 @@ const styles = theme => ({
         backgroundColor: COLOURS.primary.dark,
         colour: COLOURS.secondary.medium,
         paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2,
     },
     footer: {
         backgroundColor: COLOURS.primary.darker,
         colour: COLOURS.secondary.medium,
-        marginTop: theme.spacing.unit * 8,
-        padding: `${theme.spacing.unit * 6}px 0`,
+        marginTop: theme.spacing.unit * 2,
+        padding: `${theme.spacing.unit * 2}px 0`,
     },
     text: {
         color: COLOURS.secondary.medium,
@@ -31,6 +30,11 @@ const styles = theme => ({
         paddingTop: 2,
         paddingLeft:10,
         color:COLOURS.secondary.lighter
+    },
+    right: {
+        padding: 20,
+        color: COLOURS.secondary.medium,
+
     }
 });
 
@@ -48,6 +52,9 @@ function Footer(props) {
                 </Typography>
                 <Typography variant="h6" component="p" className={classes.details}>
                     <FontAwesomeIcon icon={faPhone} /> {DETAILS.contact}
+                </Typography>
+                <Typography variant="h6" className={classes.right} align="right" component="h5" >
+                    <i>developed by</i>: <br/> <b>devSoft</b>
                 </Typography>
             </Paper>
         </footer>

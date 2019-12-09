@@ -7,17 +7,14 @@ import LevelOneHome from "./views/level_1/LevelOneHome";
 import HomeIcon from '@material-ui/icons/Home';
 import RouterError from "./views/shared/RouterError";
 import { DIVIDER } from './constants/constants';
+import UserForm from "./components/form/UserFormManager";
 import UserProfile from "./views/shared/UserProfile";
-<<<<<<< HEAD
-import UserForm from "./views/guest/UserForm";
 import footer from './components/footer/footer';
-=======
 import LevelTwoHome from './views/level_2/LevelTwoHome';
 import LevelThreeHome from './views/level_3/LevelThreeHome';
 import OrgDetails from './views/admin/OrgDetails';
 import AdminHome from './views/admin/AdminHome';
 import AddHR from './views/admin/AddHR';
->>>>>>> 2e55c51e7f27dccd02b670b64371124e2c037f80
 
 export const guestRoutes = [
     {

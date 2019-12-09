@@ -1,28 +1,8 @@
-import {Container,makeStyles, Grid } from "@material-ui/core";
+import {Container, Grid, Card } from "@material-ui/core";
 import React from 'react';
 import ProfileRow from './UserProfilerow';
 import { faUser, faPassport, faHome, faCalendarAlt, faRing, faBaby, faBuilding, faCity, faAt, faPhone, faDotCircle } from '@fortawesome/free-solid-svg-icons';
-import { TEST_USER_DATA } from "../../testData";
 
-const useStyles = makeStyles(theme => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: COLOURS.primary.dark,
-    },
-    form: {
-        width: '100%',
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
-}));
 
 const Profile = (props) => {
     const data = props.data;
