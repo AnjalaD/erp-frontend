@@ -21,7 +21,7 @@ export const COLOURS = {
         light: '#FFD54F',
         medium: '#FFC107',
         dark: '#FFA000',
-        darker: '##FFA000'
+        darker: '#FFA000'
     },
     text: {
         white: '#ffffff',

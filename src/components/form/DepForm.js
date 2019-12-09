@@ -4,6 +4,7 @@ import { Grid, Card } from '@material-ui/core';
 import TextInput from './TextInput';
 import { Add, Delete } from '@material-ui/icons';
 import SelectInput from './SelectInput';
+import { COLOURS } from '../../constants/constants';
 
 
 function DepForm(props) {
@@ -124,22 +125,19 @@ function DepForm(props) {
                         </Card>
                     ))}
                 </Grid>
-                <Grid item xs={12}>
-                    <Button
-                        color="secondary"
+                <Grid item xs={12} style={{ margin: 30, padding: 10 }} align="right">
+                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.lighter, color:COLOURS.primary.darker}}
                         variant="contained"
                         onClick={props.prevStep}
                     >Back</Button>
 
-                    <Button
-                        color="primary"
+                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color:COLOURS.primary.lighter}}
                         variant="contained"
                         onClick={props.nextStep}
                     >Continue</Button>
                 </Grid>
             </Grid >
         </Card>
-
     );
 
 }

@@ -4,6 +4,7 @@ import { Grid, Card, Typography } from '@material-ui/core';
 import TextInput from './TextInput';
 import MultiTextInput from './MultiTextInput';
 import SelectInput from './SelectInput';
+import { COLOURS } from '../../constants/constants';
 
 function UserForm(props) {
     const { email, setEmail, contact, setContact, user, setUser } = props;
@@ -134,9 +135,8 @@ function UserForm(props) {
                         />
                     )
                 )}
-                <Grid item xs={12}>
-                    <Button
-                        color="primary"
+                <Grid item xs={12} style={{margin:30, padding:10}} align="right">
+                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color:COLOURS.primary.lighter}}
                         variant="contained"
                         onClick={props.nextStep}
                     >Continue</Button>
