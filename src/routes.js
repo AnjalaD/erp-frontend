@@ -8,6 +8,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import RouterError from "./views/shared/RouterError";
 import { DIVIDER } from './constants/constants';
 import UserProfile from "./views/shared/UserProfile";
+import UserForm from "./views/guest/UserForm";
+import footer from './components/footer/footer';
 import LevelTwoHome from './views/level_2/LevelTwoHome';
 import LevelThreeHome from './views/level_3/LevelThreeHome';
 import OrgDetails from './views/admin/OrgDetails';
@@ -33,6 +35,14 @@ export const guestRoutes = [
         path: '/userprofile',
         component: UserProfile
     },
+    {
+        path: '/form',
+        component: UserForm
+    },
+    {
+        path: '/footer',
+        component: footer
+    }
 ];
 
 export const levelOneRoutes = [
