@@ -4,29 +4,46 @@ import { Grid, Button, Typography } from '@material-ui/core';
 import TextInput from '../../components/form/TextInput';
 import { TEST_USER_DATA } from '../../testData';
 import Profile from '../../components/profile/Profile';
+import { COLOURS } from '../../constants/constants';
 
-const buttonStyle = {
-    fontSize: 24,
-    width: '100%',
+const button0Style = {
+    fontSize: 22,
+    height: 100,
+    width: '50vw',
+    minWidth: '300px',
     textAlign: 'center',
-    margin: 10
+    margin: 10,
+    backgroundColor: COLOURS.primary.light,
+    color: COLOURS.primary.darker
+};
+
+const button1Style = {
+    marginLeft: 10,
+    fontSize: 18,
+    height: 60,
+    backgroundColor: COLOURS.primary.light,
+    color: COLOURS.primary.darker
 };
 
 function AddHR() {
-    const [hasHR, setHasHR] = useState(1);
+    const [hasHR, setHasHR] = useState(0);
     const [empId, setEmpId] = useState('');
 
     const findEmp = (id) => { }
 
     const noHR = (
-        <Grid container direction='column' justify='center'>
+        <Grid container direction='column'
+            alignItems='center'
+            justify='center'
+            style={{ paddingTop: 40 }}
+        >
             <Grid item >
-                <Button onClick={() => setHasHR(3)} style={buttonStyle} >
+                <Button onClick={() => setHasHR(3)} style={button0Style} >
                     Add New HR Manager
                     </Button>
             </Grid>
             <Grid item>
-                <Button onClick={() => setHasHR(2)} style={buttonStyle}>
+                <Button onClick={() => setHasHR(2)} style={button0Style}>
                     Choose New HR from Employees
                 </Button>
             </Grid>
@@ -34,7 +51,12 @@ function AddHR() {
     );
 
     const selectFromEmployee = (
-        <Grid container direction='column' justify='center'>
+        <Grid container
+            direction='row'
+            justify='center'
+            alignItems='center'
+            style={{ paddingTop: 50 }}
+        >
 
             <TextInput
                 value={empId}
@@ -42,7 +64,9 @@ function AddHR() {
                 onChange={(e) => setEmpId(e.target.value)}
             />
 
-            <Button onClick={() => findEmp(empId)}>Find Employee</Button>
+            <Button onClick={() => findEmp(empId)} style={button1Style}>
+                Find Employee
+            </Button>
         </Grid>
     );
 

@@ -1,4 +1,4 @@
-import { LEVEL3 } from "../../constants/constants";
+import { LEVEL3, ADMIN } from "../../constants/constants";
 import Cookies from 'js-cookie';
 
 // const initialState = {
@@ -10,7 +10,7 @@ import Cookies from 'js-cookie';
 const initialState = {
     loggedIn: true,
     token: null,
-    access_level: LEVEL3,
+    access_level: ADMIN,
 };
 
 export default (state = initialState, { type, payload }) => {

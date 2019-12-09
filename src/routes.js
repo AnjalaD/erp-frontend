@@ -101,9 +101,9 @@ export const adminRoutes = [
         icon: <HomeIcon />
     },
     {
-        path: '/add-hr',
+        path: '/hr-manager',
         component: AddHR,
-        title: 'Add HR Manager',
+        title: 'HR Manager',
         icon: <HomeIcon />
     },
 ];
