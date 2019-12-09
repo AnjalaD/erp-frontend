@@ -6,7 +6,7 @@ import Person from '@material-ui/icons/Person';
 import { NavLink } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { logout } from '../../redux/actions';
+import { logout, remove_user } from '../../redux/actions';
 import { Button } from '@material-ui/core';
 import CustomDrawer from './CustomDrawer';
 
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 export default function AppNavbar(props) {
     const dispatch = useDispatch();
 
-    const [isOpen, toggleNavbar] = useState(true);
+    const [isOpen, toggleNavbar] = useState(false);
     const classes = useStyles();
 
     const user = (
@@ -41,7 +41,10 @@ export default function AppNavbar(props) {
             </NavLink></Button>
             <Button
                 className={classes.link}
-                onClick={() => dispatch(logout())}
+                onClick={() => {
+                    dispatch(logout());
+                    dispatch(remove_user());
+                }}
             >
                 Logout
             </Button>

@@ -8,8 +8,16 @@ import HomeIcon from '@material-ui/icons/Home';
 import RouterError from "./views/shared/RouterError";
 import { DIVIDER } from './constants/constants';
 import UserProfile from "./views/shared/UserProfile";
+<<<<<<< HEAD
 import UserForm from "./views/guest/UserForm";
 import footer from './components/footer/footer';
+=======
+import LevelTwoHome from './views/level_2/LevelTwoHome';
+import LevelThreeHome from './views/level_3/LevelThreeHome';
+import OrgDetails from './views/admin/OrgDetails';
+import AdminHome from './views/admin/AdminHome';
+import AddHR from './views/admin/AddHR';
+>>>>>>> 2e55c51e7f27dccd02b670b64371124e2c037f80
 
 export const guestRoutes = [
     {
@@ -39,13 +47,13 @@ export const guestRoutes = [
 ];
 
 export const levelOneRoutes = [
-    DIVIDER,
     {
         path: '/',
         component: LevelOneHome,
         title: 'Home',
         icon: <HomeIcon />
     },
+    DIVIDER,
     {
         path: '/applyleave',
         component: LevelOneHome,
@@ -60,12 +68,41 @@ export const levelOneRoutes = [
 ];
 
 export const levelTwoRoutes = [
+    {
+        path: '/',
+        component: LevelTwoHome,
+        title: 'Home',
+        icon: <HomeIcon />
+    },
 ];
 
 export const levelThreeRoutes = [
+    {
+        path: '/',
+        component: LevelThreeHome,
+        title: 'Home',
+        icon: <HomeIcon />
+    },
 
 ];
 
 export const adminRoutes = [
-
+    {
+        path: '/',
+        component: AdminHome,
+        title: 'Home',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/org',
+        component: OrgDetails,
+        title: 'Organization',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/add-hr',
+        component: AddHR,
+        title: 'Add HR Manager',
+        icon: <HomeIcon />
+    },
 ];
