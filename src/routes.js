@@ -24,6 +24,7 @@ import LeaveTypeManger from './views/level_3/LeaveTypeManger';
 import LeaveLimitManager from './views/level_3/LeaveLimitManager';
 import ApplyLeave from './views/level_1/ApplyLeave';
 import { Home } from '@material-ui/icons';
+import ViewEmployees from './views/level_3/ViewEmployees';
 
 export const guestRoutes = [
     {
@@ -92,6 +93,19 @@ export const levelTwoRoutes = [
         title: 'Profile',
         icon: <Home />
     },
+    DIVIDER,
+    {
+        path: '/view-all-employees',
+        component: ViewEmployees,
+        title: 'View Employees',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/edit-employee',
+        component: EditEmp,
+        title: 'Edit Employee',
+        icon: <HomeIcon />
+    },
 ];
 
 export const levelThreeRoutes = [
@@ -108,6 +122,12 @@ export const levelThreeRoutes = [
         icon: <Home />
     },
     DIVIDER,
+    {
+        path: '/view-all-employees',
+        component: ViewEmployees,
+        title: 'View Employees',
+        icon: <HomeIcon />
+    },
     {
         path: '/add-new-employee',
         component: AddNewEmp,

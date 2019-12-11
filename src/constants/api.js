@@ -7,6 +7,8 @@ export const GET_USER = HOST + '/employee/by-id';
 
 export const GET_LEAVES = HOST + '/';
 
+export const GET_EMPLOYEES = HOST + '';
+
 export const ORG_INSERT = HOST + '/organization-info/insert';
 export const ORG_VIEW = HOST + '/organization-info/view';
 export const ORG_DELETE = HOST + '/organization-info/delete';
