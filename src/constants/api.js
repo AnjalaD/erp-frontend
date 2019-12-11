@@ -5,7 +5,7 @@ const HOST = 'http://localhost:8888';
 export const LOGIN = HOST + '/user/login';
 export const GET_USER = HOST + '/employee/by-id';
 
-export const GET_LEAVES = HOST + '';
+export const GET_LEAVES = HOST + '/';
 
 export const ORG_INSERT = HOST + '/organization-info/insert';
 export const ORG_VIEW = HOST + '/organization-info/view';

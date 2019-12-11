@@ -23,6 +23,7 @@ import PayGradeManager from './views/level_3/PayGradeManager';
 import LeaveTypeManger from './views/level_3/LeaveTypeManger';
 import LeaveLimitManager from './views/level_3/LeaveLimitManager';
 import ApplyLeave from './views/level_1/ApplyLeave';
+import { Home } from '@material-ui/icons';
 
 export const guestRoutes = [
     {
@@ -60,6 +61,12 @@ export const levelOneRoutes = [
     },
     DIVIDER,
     {
+        path: '/userprofile',
+        component: UserProfile,
+        title: 'Profile',
+        icon: <Home />
+    },
+    {
         path: '/applyleave',
         component: ApplyLeave,
         title: 'Apply Leave',
@@ -79,6 +86,12 @@ export const levelTwoRoutes = [
         title: 'Home',
         icon: <HomeIcon />
     },
+    {
+        path: '/userprofile',
+        component: UserProfile,
+        title: 'Profile',
+        icon: <Home />
+    },
 ];
 
 export const levelThreeRoutes = [
@@ -88,6 +101,13 @@ export const levelThreeRoutes = [
         title: 'Home',
         icon: <HomeIcon />
     },
+    {
+        path: '/userprofile',
+        component: UserProfile,
+        title: 'Profile',
+        icon: <Home />
+    },
+    DIVIDER,
     {
         path: '/add-new-employee',
         component: AddNewEmp,
@@ -100,6 +120,7 @@ export const levelThreeRoutes = [
         title: 'Edit Employee',
         icon: <HomeIcon />
     },
+    DIVIDER,
     {
         path: '/custom-form-fields',
         component: FormFieldManager,
