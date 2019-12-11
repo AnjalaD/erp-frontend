@@ -2,9 +2,11 @@ import React from 'react'
 import UserFormManager from '../../components/form/UserFormManager'
 
 function AddNewEmp() {
+    const submit = () => { }
+
     return (
         <div>
-            <UserFormManager />
+            <UserFormManager submit={submit} />
         </div>
     )
 }

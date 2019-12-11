@@ -17,6 +17,12 @@ import AdminHome from './views/admin/AdminHome';
 import AddHR from './views/admin/AddHR';
 import AddNewEmp from './views/level_3/AddNewEmp';
 import EditEmp from './views/level_3/EditEmp';
+import FormFieldManager from './views/level_3/FormFieldManager';
+import JobTitleManager from './views/level_3/JobTitleManager';
+import PayGradeManager from './views/level_3/PayGradeManager';
+import LeaveTypeManger from './views/level_3/LeaveTypeManger';
+import LeaveLimitManager from './views/level_3/LeaveLimitManager';
+import ApplyLeave from './views/level_1/ApplyLeave';
 
 export const guestRoutes = [
     {
@@ -55,7 +61,7 @@ export const levelOneRoutes = [
     DIVIDER,
     {
         path: '/applyleave',
-        component: LevelOneHome,
+        component: ApplyLeave,
         title: 'Apply Leave',
         icon: <HomeIcon />
     }, {
@@ -94,7 +100,35 @@ export const levelThreeRoutes = [
         title: 'Edit Employee',
         icon: <HomeIcon />
     },
-
+    {
+        path: '/custom-form-fields',
+        component: FormFieldManager,
+        title: 'Custom Fields',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/job-title',
+        component: JobTitleManager,
+        title: 'Job Titles',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/pay-grade',
+        component: PayGradeManager,
+        title: 'Pay Grades',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/leave-type',
+        component: LeaveTypeManger,
+        title: 'Leave Types',
+        icon: <HomeIcon />
+    }, {
+        path: '/leave-limit',
+        component: LeaveLimitManager,
+        title: 'Leave Limits',
+        icon: <HomeIcon />
+    },
 ];
 
 export const adminRoutes = [

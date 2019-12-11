@@ -7,7 +7,7 @@ import Confirm from './Confirm';
 import EmgForm from './EmgFrom';
 
 
-function UserFormManager(props) {
+function UserFormManager({ oldUser, submit = null }) {
     const disptch = useDispatch();
 
     const initUser = {
@@ -58,29 +58,14 @@ function UserFormManager(props) {
 
     const [step, setStep] = useState(1);
 
-    const [email, setEmail] = useState(['']);
-    const [contact, setContact] = useState(['']);
-    const [user, setUser] = useState(initUser);
-    const [dep, setDep] = useState([initDep]);
-    const [emg, setEmg] = useState([initEmg]);
+    const [email, setEmail] = useState([oldUser ? oldUser.email : '']);
+    const [contact, setContact] = useState([oldUser ? oldUser.contact : '']);
+    const [user, setUser] = useState(oldUser ? oldUser : initUser);
+    const [dep, setDep] = useState([oldUser ? oldUser.dependent : initDep]);
+    const [emg, setEmg] = useState([oldUser ? oldUser.emg : initEmg]);
 
     //load field -(custom,job-title,...)
     useEffect(() => { }, []);
-
-    const submit = () => {
-        disptch(loading(true));
-
-        const options = {
-            method: 'POST',
-
-        }
-
-        fetch('', options)
-            .then()
-            .catch(err => console.log(err))
-            .finally(() => disptch(loading(false)))
-
-    }
 
 
     // Proceed to next step

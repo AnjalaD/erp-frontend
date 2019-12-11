@@ -30,6 +30,7 @@ function AddHR() {
     const [empId, setEmpId] = useState('');
 
     const findEmp = (id) => { }
+    const submitNewEmp = () => { }
 
     const noHR = (
         <Grid container direction='column'
@@ -88,7 +89,7 @@ function AddHR() {
             case 2:
                 return selectFromEmployee;
             case 3:
-                return <UserFormManager />
+                return <UserFormManager submit={submitNewEmp} />
             default:
                 return null;
         }

@@ -25,7 +25,7 @@ function EmgForm(props) {
     return (
         <Card
             elevation={4}
-            style={{ padding: 10, margin: 10 }}
+            style={{ padding: 10, margin: 10, width: '100%' }}
         >
             <Grid container spacing={1} >
                 <Grid container direction='row' alignItems='center'>
