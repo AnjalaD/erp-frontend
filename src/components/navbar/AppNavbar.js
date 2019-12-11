@@ -60,9 +60,9 @@ export default function AppNavbar(props) {
             <Navbar
                 style={{
                     backgroundColor: COLOURS.primary.dark,
-                    zIndex: 12001,
-                    paddingLeft: 50,
-                    paddingRight: 50,
+                    zIndex: 1201,
+                    paddingLeft: '4vw',
+                    paddingRight: '2vw',
                     height: 80
                 }}
                 dark

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, TextField, Card, IconButton } from '@material-ui/core';
+import { Grid, TextField, Card, IconButton, Typography } from '@material-ui/core';
 import { RemoveCircleOutline, AddCircleOutline } from '@material-ui/icons';
 
 
@@ -15,7 +15,7 @@ function MultiTextInput(props) {
                 }}
             >
                 <Grid container direction='row' alignItems='center'>
-                    {props.label}
+                    <Typography variant='body1'>{props.label}</Typography>
                     <IconButton onClick={props.add}>
                         <AddCircleOutline color='primary' />
                     </IconButton>

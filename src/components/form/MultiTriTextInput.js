@@ -1,7 +1,7 @@
 import React from 'react';
-import { Grid, Button, Card } from '@material-ui/core';
+import { Grid, Card, IconButton, Typography } from '@material-ui/core';
 import SelectInput from './SelectInput';
-import { Add, Remove } from '@material-ui/icons';
+import { AddCircleOutline, RemoveCircleOutline } from '@material-ui/icons';
 import TextInput from './TextInput';
 
 
@@ -17,10 +17,13 @@ function MultiTriTextInput(props) {
                 }}
             >
                 <Grid container direction='row' alignItems='center'>
-                    {props.title} <Button onClick={props.add}><Add /></Button>
+                    <Typography variant='body1'>New Leave Limit</Typography>
+                    <IconButton onClick={props.add}>
+                        <AddCircleOutline color='primary' />
+                    </IconButton>
                 </Grid>
                 {props.value.map((value, key) => (
-                    <Grid container direction='row' alignItems='center' key={key} spacing={1}>
+                    <Grid container direction='row' alignItems='center' justify='center' key={key} spacing={1}>
                         <SelectInput xs={4}
                             label='Pay Grade'
                             onChange={(e) => props.onChange(e, key, 'pay_grade')}
@@ -40,9 +43,9 @@ function MultiTriTextInput(props) {
                             type={props.type}
                         />
                         <Grid item xs={1}>
-                            <Button onClick={() => props.remove(key)}>
-                                <Remove />
-                            </Button>
+                            <IconButton onClick={() => props.remove(key)}>
+                                <RemoveCircleOutline color='error' />
+                            </IconButton>
                         </Grid >
                     </Grid>
                 ))}

@@ -9,8 +9,9 @@ const button1Style = {
     marginTop: 5,
     fontSize: 18,
     height: 55,
-    backgroundColor: COLOURS.primary.lighter,
-    color: COLOURS.primary.darker
+    padding: 10,
+    color: COLOURS.primary.darker,
+    backgroundColor: COLOURS.primary.lighter
 };
 
 function EditEmp() {
@@ -18,7 +19,7 @@ function EditEmp() {
     const [user, setUser] = useState(null);
     const findEmp = (id) => { };
 
-    const submit = () => {
+    const submit = (user) => {
 
     }
 
@@ -37,7 +38,7 @@ function EditEmp() {
                     onChange={(e) => setEmpId(e.target.value)}
                 />
 
-                <Button onClick={() => findEmp(empId)} style={button1Style}>
+                <Button variant='contained' onClick={() => findEmp(empId)} style={button1Style}>
                     Find Employee
                 </Button>
                 {user ? <UserFormManager oldUser={user} submit={submit} /> : null}

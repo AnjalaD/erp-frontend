@@ -1,7 +1,7 @@
 import React from 'react';
-import { Grid, Button, Card } from '@material-ui/core';
+import { Grid, Card, IconButton, Typography } from '@material-ui/core';
 import SelectInput from './SelectInput';
-import { Add, Remove } from '@material-ui/icons';
+import { AddCircleOutline, RemoveCircleOutline } from '@material-ui/icons';
 
 
 function MultiDuoInput(props) {
@@ -16,7 +16,10 @@ function MultiDuoInput(props) {
                 }}
             >
                 <Grid container direction='row' alignItems='center'>
-                    {props.title} <Button onClick={props.add}><Add /></Button>
+                    <Typography variant='body1'>New Job Title</Typography>
+                    <IconButton onClick={props.add}>
+                        <AddCircleOutline color='primary' />
+                    </IconButton>
                 </Grid>
                 {props.value.map((value, key) => (
                     <Grid container direction='row' alignItems='center' key={key} spacing={1}>
@@ -33,9 +36,9 @@ function MultiDuoInput(props) {
                             value={value.access_level}
                         />
                         <Grid item xs={1}>
-                            <Button onClick={() => props.remove(key)}>
-                                <Remove />
-                            </Button>
+                            <IconButton onClick={() => props.remove(key)}>
+                                <RemoveCircleOutline color='error' />
+                            </IconButton>
                         </Grid >
                     </Grid>
                 ))}
