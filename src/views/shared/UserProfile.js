@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { add_user, loading } from '../../redux/actions';
 import Profile from '../../components/profile/Profile';
 import { GET_USER } from '../../constants/api';
-import { Grid } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
 import EmgContact from '../../components/profile/EmgContact';
 import { fetchData, makeOptions } from '../../util/helper';
 
@@ -20,10 +20,10 @@ function UserProfile() {
             (res) => res.json().then(res => setProfile(res))
         );
         dispatch(loading());
-    }, [dispatch])
+    }, [dispatch, token])
 
     return (
-        <div>
+        <Container maxWidth='md'>
             {
                 profile ?
                     <Grid container direction='column' alignItems='center'>
@@ -49,7 +49,7 @@ function UserProfile() {
                     :
                     'Error retriving data'
             }
-        </div>
+        </Container>
     )
 }
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Card, Grid, IconButton, Container } from '@material-ui/core';
 import ProfileRow from '../../components/profile/UserProfilerow';
 import { Delete } from '@material-ui/icons';
-import MultiTriTextInput from '../../components/form/MultiTriTextInput';
 import MultiDuoInput from '../../components/form/MultiDuoInput';
 
 

@@ -89,8 +89,7 @@ function UserForm(props) {
                     value={user.marital_status}
                     onChange={userHandler('marital_status')}
                     selection={[
-                        { label: 'Single', value: 'single' },
-                        { label: 'Married', value: 'married' }
+                        'Single', 'Married'
                     ]}
                 />
                 <SelectInput
@@ -135,8 +134,8 @@ function UserForm(props) {
                         />
                     )
                 )}
-                <Grid item xs={12} style={{margin:30, padding:10}} align="right">
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color:COLOURS.primary.lighter}}
+                <Grid item xs={12} style={{ margin: 30, padding: 10 }} align="right">
+                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color: COLOURS.primary.lighter }}
                         variant="contained"
                         onClick={props.nextStep}
                     >Continue</Button>
