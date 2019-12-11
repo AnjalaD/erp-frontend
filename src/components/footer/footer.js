@@ -13,12 +13,12 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         backgroundColor: COLOURS.primary.dark,
         colour: COLOURS.secondary.medium,
-        paddingTop: theme.spacing.unit * 2,
+        paddingTop: theme.spacing.unit * 2
     },
     footer: {
         backgroundColor: COLOURS.primary.darker,
         colour: COLOURS.secondary.medium,
-        marginTop: theme.spacing.unit * 2,
+        marginTop: theme.spacing.unit * 25,
         padding: `${theme.spacing.unit * 2}px 0`,
     },
     text: {
