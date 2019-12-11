@@ -4,7 +4,7 @@ import { loading } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import { ORG_VIEW, ORG_INSERT, ORG_DELETE } from '../../constants/api';
 import OrgDetailsCard from '../../components/profile/OrgDetails';
-import { Card } from '@material-ui/core';
+import { Card, Container } from '@material-ui/core';
 import { COLOURS } from '../../constants/constants';
 
 
@@ -97,26 +97,28 @@ export default function OrgDetails() {
 
     }
     return (
-        <Card
-            style={{
-                padding: 20,
-                borderStyle: 'groove',
-                borderColor: COLOURS.primary.lighter,
-                borderWidth: 1
-            }}
-        >
-            <OrgDetailsCard
-                values={dbkv}
-                deleteHandler={permDelete}
-            />
-            <MultiDualTextInput
-                values={kv}
-                add={add}
-                remove={remove}
-                save={save}
-                onChange={onChange}
-                error={error}
-            />
-        </Card>
+        <Container maxWidth='md'>
+            <Card
+                style={{
+                    padding: 20,
+                    borderStyle: 'groove',
+                    borderColor: COLOURS.primary.lighter,
+                    borderWidth: 1
+                }}
+            >
+                <OrgDetailsCard
+                    values={dbkv}
+                    deleteHandler={permDelete}
+                />
+                <MultiDualTextInput
+                    values={kv}
+                    add={add}
+                    remove={remove}
+                    save={save}
+                    onChange={onChange}
+                    error={error}
+                />
+            </Card>
+        </Container>
     )
 }

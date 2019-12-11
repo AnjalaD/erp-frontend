@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import UserFormManager from '../../components/form/UserFormManager'
-import { Grid, Button, Typography } from '@material-ui/core';
+import { Grid, Button, Typography, Container } from '@material-ui/core';
 import TextInput from '../../components/form/TextInput';
 import { TEST_USER_DATA } from '../../testData';
 import Profile from '../../components/profile/Profile';
@@ -96,9 +96,9 @@ function AddHR() {
     }
 
     return (
-        <div>
+        <Container maxWidth='md'>
             {display()}
-        </div>
+        </Container>
     )
 }
 

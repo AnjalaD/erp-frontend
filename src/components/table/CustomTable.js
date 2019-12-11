@@ -39,8 +39,10 @@ function CustomTable(props) {
                             ))
                             :
                             <TableRow>
-                                No data availble
-                        </TableRow>
+                                <TableCell>
+                                    No data availble
+                                </TableCell>
+                            </TableRow>
                     }
                 </TableBody>
             </Table>

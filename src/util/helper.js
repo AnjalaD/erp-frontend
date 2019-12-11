@@ -24,6 +24,6 @@ export const fetchData = (
             else onFail()
         })
         .catch(err => onError(err))
-        .finally(dispatch(loading(false)));
+        .finally(() => dispatch(loading(false)));
 
 }

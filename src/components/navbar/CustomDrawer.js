@@ -7,7 +7,7 @@ function CustomDrawer(props) {
         data.map((route, key) => (
 
             route === 'divider' ?
-                <Divider />
+                <Divider key={key} />
                 :
                 <NavLink exact key={key}
                     to={route.path}

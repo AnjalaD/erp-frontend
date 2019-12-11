@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Grid, IconButton } from '@material-ui/core';
+import { Card, Grid, IconButton, Container } from '@material-ui/core';
 import ProfileRow from '../../components/profile/UserProfilerow';
 import { Delete } from '@material-ui/icons';
 import MultiTriTextInput from '../../components/form/MultiTriTextInput';
@@ -34,37 +34,39 @@ function LeaveLimitManager() {
     }
 
     return (
-        <Card
-            elevation={4}
-            style={{ padding: 10, margin: 10 }}
-        >
-            <Grid container justify='center' alignItems='center'>
-                <Grid item xs={12}>
-                    {
-                        dbLeaveLimits.map((field, i) => (
-                            <Grid container direction='row'>
-                                <Grid item xs={11}>
-                                    <ProfileRow value={field} />
+        <Container maxWidth='md'>
+            <Card
+                elevation={4}
+                style={{ padding: 10, margin: 10 }}
+            >
+                <Grid container justify='center' alignItems='center'>
+                    <Grid item xs={12}>
+                        {
+                            dbLeaveLimits.map((field, i) => (
+                                <Grid container direction='row'>
+                                    <Grid item xs={11}>
+                                        <ProfileRow value={field} />
+                                    </Grid>
+                                    <Grid item xs={1}>
+                                        <IconButton onClick={del(field)}><Delete /></IconButton>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={1}>
-                                    <IconButton onClick={del(field)}><Delete /></IconButton>
-                                </Grid>
-                            </Grid>
-                        ))
-                    }
+                            ))
+                        }
+                    </Grid>
+                    <Grid item xs={12}>
+                        <MultiTriTextInput
+                            value={leaveLimits}
+                            onChange={onMultiChange(leaveLimits, setLeaveLimits)}
+                            selection1={[]}
+                            selection2={[]}
+                            add={multiAdd(leaveLimits, setLeaveLimits)}
+                            remove={multiRemove(leaveLimits, setLeaveLimits)}
+                        />
+                    </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                    <MultiTriTextInput
-                        value={leaveLimits}
-                        onChange={onMultiChange(leaveLimits, setLeaveLimits)}
-                        selection1={[]}
-                        selection2={[]}
-                        add={multiAdd(leaveLimits, setLeaveLimits)}
-                        remove={multiRemove(leaveLimits, setLeaveLimits)}
-                    />
-                </Grid>
-            </Grid>
-        </Card>
+            </Card>
+        </Container>
     )
 }
 
