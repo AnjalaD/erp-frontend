@@ -19,7 +19,7 @@ function LeaveForm(props) {
                 <TextInput
                     label="Reason"
                 />
-                <Grid item xs={12} style={{ margin: 30, padding: 10 }} align="right">
+                <Grid item xs={12} style={{ margin: 20, padding: 5 }} align="right">
                     <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.lighter, color: COLOURS.primary.darker }}
                         variant="contained"
                         onClick={props.prevStep}
