@@ -29,7 +29,7 @@ function CustomDrawer(props) {
             anchor='left'
             open={props.isOpen}
             onClose={() => props.onClose(!props.isOpen)}
-            variant='persistent'
+            variant="persistent"
             PaperProps={{
                 elevation: 2,
             }}
