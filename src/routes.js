@@ -19,6 +19,13 @@ import AddNewEmp from './views/level_3/AddNewEmp';
 import EditEmp from './views/level_3/EditEmp';
 import ColourPicker from './components/settings/ColourPicker';
 import LeaveCheck from './views/shared/LeaveForm/LeaveCheck';
+import FormFieldManager from './views/level_3/FormFieldManager';
+import JobTitleManager from './views/level_3/JobTitleManager';
+import PayGradeManager from './views/level_3/PayGradeManager';
+import LeaveTypeManger from './views/level_3/LeaveTypeManger';
+import LeaveLimitManager from './views/level_3/LeaveLimitManager';
+import ApplyLeave from './views/level_1/ApplyLeave';
+import { Home } from '@material-ui/icons';
 
 export const guestRoutes = [
     {
@@ -64,8 +71,14 @@ export const levelOneRoutes = [
     },
     DIVIDER,
     {
+        path: '/userprofile',
+        component: UserProfile,
+        title: 'Profile',
+        icon: <Home />
+    },
+    {
         path: '/applyleave',
-        component: LevelOneHome,
+        component: ApplyLeave,
         title: 'Apply Leave',
         icon: <HomeIcon />
     }, {
@@ -83,6 +96,12 @@ export const levelTwoRoutes = [
         title: 'Home',
         icon: <HomeIcon />
     },
+    {
+        path: '/userprofile',
+        component: UserProfile,
+        title: 'Profile',
+        icon: <Home />
+    },
 ];
 
 export const levelThreeRoutes = [
@@ -92,6 +111,13 @@ export const levelThreeRoutes = [
         title: 'Home',
         icon: <HomeIcon />
     },
+    {
+        path: '/userprofile',
+        component: UserProfile,
+        title: 'Profile',
+        icon: <Home />
+    },
+    DIVIDER,
     {
         path: '/add-new-employee',
         component: AddNewEmp,
@@ -104,7 +130,36 @@ export const levelThreeRoutes = [
         title: 'Edit Employee',
         icon: <HomeIcon />
     },
-
+    DIVIDER,
+    {
+        path: '/custom-form-fields',
+        component: FormFieldManager,
+        title: 'Custom Fields',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/job-title',
+        component: JobTitleManager,
+        title: 'Job Titles',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/pay-grade',
+        component: PayGradeManager,
+        title: 'Pay Grades',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/leave-type',
+        component: LeaveTypeManger,
+        title: 'Leave Types',
+        icon: <HomeIcon />
+    }, {
+        path: '/leave-limit',
+        component: LeaveLimitManager,
+        title: 'Leave Limits',
+        icon: <HomeIcon />
+    },
 ];
 
 export const adminRoutes = [

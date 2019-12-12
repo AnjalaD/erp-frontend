@@ -1,10 +1,12 @@
 import React from 'react'
+import { Container } from '@material-ui/core';
 
 function LevelThreeHome() {
     console.log('emp home');
     return (
-        <div>
-        </div>
+        <Container maxWidth='md'>
+
+        </Container>
     )
 }
 

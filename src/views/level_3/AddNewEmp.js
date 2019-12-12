@@ -1,11 +1,14 @@
 import React from 'react'
 import UserFormManager from '../../components/form/UserFormManager'
+import { Container } from '@material-ui/core'
 
 function AddNewEmp() {
+    const submit = () => { }
+
     return (
-        <div>
-            <UserFormManager />
-        </div>
+        <Container maxWidth='md'>
+            <UserFormManager submit={submit} />
+        </Container>
     )
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import UserFormManager from '../../components/form/UserFormManager'
-import { Grid, Button, Typography } from '@material-ui/core';
+import { Grid, Button, Typography, Container } from '@material-ui/core';
 import TextInput from '../../components/form/TextInput';
 import { TEST_USER_DATA } from '../../testData';
 import Profile from '../../components/profile/Profile';
@@ -30,6 +30,7 @@ function AddHR() {
     const [empId, setEmpId] = useState('');
 
     const findEmp = (id) => { }
+    const submitNewEmp = () => { }
 
     const noHR = (
         <Grid container direction='column'
@@ -88,16 +89,16 @@ function AddHR() {
             case 2:
                 return selectFromEmployee;
             case 3:
-                return <UserFormManager />
+                return <UserFormManager submit={submitNewEmp} />
             default:
                 return null;
         }
     }
 
     return (
-        <div>
+        <Container maxWidth='md'>
             {display()}
-        </div>
+        </Container>
     )
 }
 

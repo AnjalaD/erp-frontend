@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { COLOURS, DETAILS } from '../../constants/constants';
-import { faBuilding,faPhone} from '@fortawesome/free-solid-svg-icons';
+import { faBuilding, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -16,10 +16,13 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit * 2
     },
     footer: {
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
         backgroundColor: COLOURS.primary.darker,
         colour: COLOURS.secondary.medium,
-        marginTop: theme.spacing.unit * 25,
-        padding: `${theme.spacing.unit * 2}px 0`,
+        marginTop: theme.spacing(25),
+        padding: `${theme.spacing(2)}px 0`,
     },
     text: {
         color: COLOURS.secondary.medium,
@@ -28,8 +31,8 @@ const styles = theme => ({
     },
     details: {
         paddingTop: 2,
-        paddingLeft:10,
-        color:COLOURS.secondary.lighter
+        paddingLeft: 10,
+        color: COLOURS.secondary.lighter
     },
     right: {
         padding: 20,
@@ -46,15 +49,15 @@ function Footer(props) {
             <Paper className={classes.root} elevation={1}>
                 <Typography variant="h4" className={classes.text} component="h2" >
                     {DETAILS.name}
-        </Typography>
+                </Typography>
                 <Typography component="p" className={classes.details}>
-                    <FontAwesomeIcon icon={faBuilding} /> {DETAILS.address}<br/>{DETAILS.city}
+                    <FontAwesomeIcon icon={faBuilding} /> {DETAILS.address}<br />{DETAILS.city}
                 </Typography>
                 <Typography variant="h6" component="p" className={classes.details}>
                     <FontAwesomeIcon icon={faPhone} /> {DETAILS.contact}
                 </Typography>
                 <Typography variant="h6" className={classes.right} align="right" component="h5" >
-                    <i>developed by</i>: <br/> <b>devSoft</b>
+                    <i>developed by</i>: <br /> <b>devSoft</b>
                 </Typography>
             </Paper>
         </footer>
