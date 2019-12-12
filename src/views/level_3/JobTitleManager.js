@@ -1,71 +1,79 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Grid, IconButton, Container } from '@material-ui/core';
-import ProfileRow from '../../components/profile/UserProfilerow';
-import { Delete } from '@material-ui/icons';
-import MultiDuoInput from '../../components/form/MultiDuoInput';
-
+import { Container } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchData, makeOptions } from '../../util/helper';
+import { JOB_TITLES } from '../../constants/api';
+import EditableTable from '../../components/table/EditableTable';
 
 function JobTitleManager() {
-    const initState = {
-        job_title: '',
-        access_level: '',
-    }
-    const [jobs, setJobs] = useState([initState]);
-    const [dbJobs, setDbJobs] = useState([]);
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.status.token);
+
+    const [dbJobTitles, setDbJobTitles] = useState([]);
 
     //fetch leaveLimit from db
-    useEffect(() => { }, []);
+    useEffect(() => {
+        fetchData(
+            JOB_TITLES,
+            makeOptions(token),
+            dispatch,
+            (res) => res.json().then(res => setDbJobTitles(res))
+        );
+    }, [dispatch, token]);
 
-    const del = (index) => () => { };
+    const del = (oldData, onSuccess, onFail) => {
+        console.log('oldData', oldData);
+        fetchData(
+            JOB_TITLES,
+            makeOptions(token, 'DELETE', {}),
+            null,
+            onSuccess,
+            onFail
+        )
+    };
 
-    const insert = (value) => () => { };
+    const update = (newData, oldData, onSuccess, onFail) => {
+        console.log('newData', newData, oldData);
+        fetchData(
+            JOB_TITLES,
+            makeOptions(token, 'POST', {}),
+            null,
+            onSuccess,
+            onFail
+        )
+    };
 
-    const onMultiChange = (value, setter) => (e, i, key) => {
-        const newMulti = value.slice(0)
-        newMulti[i][key] = e.target.value;
-        setter(newMulti);
-    }
-    const multiAdd = (value, setter) => () => setter([...value, initState]);
-
-    const multiRemove = (value, setter) => (i) => {
-        const newVal = value.slice(0);
-        newVal.splice(i, 1);
-        setter(newVal);
-    }
+    const insert = (newData, onSuccess, onFail) => {
+        console.log('newData', newData);
+        fetchData(
+            JOB_TITLES,
+            makeOptions(token, 'POST', {}),
+            null,
+            onSuccess,
+            onFail
+        )
+    };
 
     return (
         <Container maxWidth='md'>
-            <Card
-                elevation={4}
-                style={{ padding: 10, margin: 10 }}
-            >
-                <Grid container justify='center' alignItems='center'>
-                    <Grid item xs={12}>
-                        {
-                            dbJobs.map((field, i) => (
-                                <Grid container direction='row'>
-                                    <Grid item xs={11}>
-                                        <ProfileRow value={field} />
-                                    </Grid>
-                                    <Grid item xs={1}>
-                                        <IconButton onClick={del(field)}><Delete /></IconButton>
-                                    </Grid>
-                                </Grid>
-                            ))
-                        }
-                    </Grid>
-                    <Grid item xs={12}>
-                        <MultiDuoInput
-                            value={jobs}
-                            onChange={onMultiChange(jobs, setJobs)}
-                            selection1={[]}
-                            selection2={[]}
-                            add={multiAdd(jobs, setJobs)}
-                            remove={multiRemove(jobs, setJobs)}
-                        />
-                    </Grid>
-                </Grid>
-            </Card>
+            <EditableTable
+                title='Job Titles'
+                columns={[
+                    {
+                        title: 'Job Title',
+                        field: 'job_title',
+                    },
+                    {
+                        title: 'Access Level',
+                        field: 'access_level',
+                        lookup: { L1: 'L1', L2: 'L2', L3: 'L3', A: 'A' }
+                    }
+                ]}
+                data={dbJobTitles}
+                insert={insert}
+                update={update}
+                delete={del}
+            />
         </Container>
     )
 

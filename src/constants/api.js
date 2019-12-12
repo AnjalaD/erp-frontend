@@ -11,7 +11,7 @@ export const GET_EMPLOYEE = HOST + '/employee/by-id';
 export const GET_EMPLOYEES = HOST + '';
 
 export const JOB_TITLES = HOST + '/job-title/view'; //get
-export const PAY_GRADE = HOST + '/pay-grade/view'; //get
+export const PAY_GRADES = HOST + '/pay-grade/view'; //get
 
 
 export const HR_AVAILABILITY = HOST + '/employee/hr'; //get

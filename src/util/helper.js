@@ -28,13 +28,15 @@ export const fetchData = (
     onFail = () => { },
     onError = () => { }
 ) => {
-    dispatch(loading());
+    if (dispatch) dispatch(loading());
     fetch(url, options)
         .then(res => {
             if (res.status === 200) onSuccess(res)
             else onFail()
         })
         .catch(err => onError(err))
-        .finally(() => dispatch(loading(false)));
+        .finally(() => {
+            if (dispatch) dispatch(loading(false))
+        });
 
 }

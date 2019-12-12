@@ -3,13 +3,26 @@ import { Card, Grid, IconButton, Container } from '@material-ui/core';
 import ProfileRow from '../../components/profile/UserProfilerow';
 import { Delete } from '@material-ui/icons';
 import MultiTextInput from '../../components/form/MultiTextInput';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchData, makeOptions } from '../../util/helper';
+import { PAY_GRADES } from '../../constants/api';
 
 function PayGradeManager() {
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.status.token);
+
     const [payGrades, setPayGrades] = useState(['']);
     const [dbPayGrades, setDbPayGrades] = useState([]);
 
     //fetch payGrades from db
-    useEffect(() => { }, []);
+    useEffect(() => {
+        fetchData(
+            PAY_GRADES,
+            makeOptions(token),
+            dispatch,
+            res => res.json().then(res => setDbPayGrades(res))
+        );
+    }, [dispatch, token]);
 
     const del = (index) => () => { };
 
@@ -43,7 +56,7 @@ function PayGradeManager() {
                                         <ProfileRow value={field} />
                                     </Grid>
                                     <Grid item xs={1}>
-                                        <IconButton onClick={del(field)}><Delete /></IconButton>
+                                        <IconButton onClick={del(field)}><Delete color='error' /></IconButton>
                                     </Grid>
                                 </Grid>
                             ))
