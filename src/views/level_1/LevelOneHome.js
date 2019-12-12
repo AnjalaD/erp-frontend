@@ -5,7 +5,7 @@ function LevelOneHome() {
     console.log('emp home');
     return (
         <div>
-            <UserProfile />
+            <UserProfile/>
         </div>
     )
 }

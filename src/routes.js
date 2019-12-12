@@ -17,6 +17,8 @@ import AdminHome from './views/admin/AdminHome';
 import AddHR from './views/admin/AddHR';
 import AddNewEmp from './views/level_3/AddNewEmp';
 import EditEmp from './views/level_3/EditEmp';
+import ColourPicker from './components/settings/ColourPicker';
+import LeaveCheck from './views/shared/LeaveForm/LeaveCheck';
 
 export const guestRoutes = [
     {
@@ -42,6 +44,14 @@ export const guestRoutes = [
     {
         path: '/footer',
         component: footer
+    },
+    {
+        path: '/colour',
+        component: ColourPicker
+    },
+    {
+        path: '/leavecheck',
+        component: LeaveCheck
     }
 ];
 
