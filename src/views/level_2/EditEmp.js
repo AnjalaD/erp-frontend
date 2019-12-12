@@ -3,6 +3,9 @@ import { Grid, Button, Container } from '@material-ui/core'
 import TextInput from '../../components/form/TextInput'
 import { COLOURS } from '../../constants/constants';
 import UserFormManager from '../../components/form/UserFormManager';
+import { fetchData, makeOptions } from '../../util/helper';
+import { GET_EMPLOYEE } from '../../constants/api';
+import { useSelector, useDispatch } from 'react-redux';
 
 const button1Style = {
     marginLeft: 10,
@@ -15,12 +18,19 @@ const button1Style = {
 };
 
 function EditEmp() {
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.status.token);
     const [empId, setEmpId] = useState('');
     const [user, setUser] = useState(null);
     const findEmp = (id) => { };
 
     const submit = (user) => {
-
+        fetchData(
+            GET_EMPLOYEE,
+            makeOptions(token, 'POST', {}),
+            dispatch,
+            (res) => res.json().then(res => setUser(res.data))
+        );
     }
 
     return (

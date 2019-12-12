@@ -1,4 +1,4 @@
-import {Container, Grid, Card } from "@material-ui/core";
+import { Container, Grid, Card } from "@material-ui/core";
 import React from 'react';
 import ProfileRow from './UserProfilerow';
 import { faUser, faPassport, faHome, faCalendarAlt, faRing, faBaby, faBuilding, faCity, faAt, faPhone, faDotCircle } from '@fortawesome/free-solid-svg-icons';
@@ -7,7 +7,7 @@ import { faUser, faPassport, faHome, faCalendarAlt, faRing, faBaby, faBuilding, 
 const Profile = (props) => {
     const data = props.data;
     return (
-        <Container maxWidth="sm" style={{ marginBottom: 32 }}>
+        <Container maxWidth="sm">
             <Card>
                 <Grid container>
                     <ProfileRow name='First Name' icon={faUser} value={data.first_name} xs={6} />
@@ -16,13 +16,17 @@ const Profile = (props) => {
                     <ProfileRow
                         name="Address"
                         icon={faHome}
-                        value={data.addr_house_no + (', ' + data.addr_line_1 || null) + (', ' + data.addr_line_2 || null)}
+                        value={
+                            data.addr_house_no
+                            + (data.addr_line1 ? ', ' + data.addr_line_1 : '')
+                            + (data.addr_line_2 ? ', ' + data.addr_line_2 : '')
+                        }
                     />
                     <ProfileRow name="City" icon={faCity} value={data.addr_city} />
                     {
-                        data.marital_status ?
+                        typeof data.marital_status !== 'undefined' ?
                             <div style={{ width: "100%", display: "flex", flexWrap: "wrap" }}>
-                                <ProfileRow name='Date of Birth' icon={faCalendarAlt} value={data.dob} xs={6} />
+                                <ProfileRow name='Date of Birth' icon={faCalendarAlt} value={data.dob.slice(0, 10)} xs={6} />
                                 <ProfileRow name='Marital State' icon={faRing} value={data.marital_status} xs={6} />
                                 <ProfileRow name='Department' icon={faBuilding} value={data.dept_name} />
                                 <ProfileRow name='Job Title' icon={faBuilding} value={data.job_title} xs={6} />

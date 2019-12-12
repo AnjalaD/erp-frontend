@@ -13,7 +13,7 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         backgroundColor: COLOURS.primary.dark,
         colour: COLOURS.secondary.medium,
-        paddingTop: theme.spacing.unit * 2
+        paddingTop: theme.spacing(2)
     },
     footer: {
         position: 'absolute',

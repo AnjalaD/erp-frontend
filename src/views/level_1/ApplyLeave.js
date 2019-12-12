@@ -12,10 +12,11 @@ function ApplyLeave() {
 
     const formatTableData = (data) => (
         data.map(obj => (
-            [obj.leave_type, obj.limit, obj.leaves_taken]
+            [obj.leave_type, obj.limit, obj.leaves_taken ? obj.leaves_taken : 0]
         ))
     )
-    //fetch leaves
+
+    // fetch leaves
     useEffect(() => {
         fetchData(GET_LEAVES,
             makeOptions(token),
@@ -24,6 +25,7 @@ function ApplyLeave() {
         )
     }, [dispatch, token]);
 
+    console.log(leaves);
     return (
         <Container maxWidth='md'>
             <CustomTable
