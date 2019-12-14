@@ -7,9 +7,9 @@ import { COLOURS } from '../../../constants/constants';
 function LeaveForm(props) {
 
     return (
-        <Card style={{ width: '60%'}}
+        <Card
             elevation={4}
-            style={{ padding: 10, margin: 10, marginLeft: 30}}
+            style={{ width: '90%', padding: 10, margin: 10, marginLeft: 30}}
         >
             <Typography variant="h4" style={{ width: '100%', textAlign: 'center' }}>
                 Apply Leave
@@ -18,6 +18,7 @@ function LeaveForm(props) {
             <Grid container spacing={1} alignItems='center'>
                 <TextInput
                     label="Reason"
+                    style = {{width: '90%'}}
                 />
                 <Grid item xs={12} style={{ margin: 20, padding: 5 }} align="right">
                     <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.lighter, color: COLOURS.primary.darker }}

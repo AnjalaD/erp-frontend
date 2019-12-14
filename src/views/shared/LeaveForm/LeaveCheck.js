@@ -1,7 +1,6 @@
-import { Typography, Grid, Button, Select, MenuItem, Card, InputLabel } from '@material-ui/core';
+import { Button, Select, MenuItem, Card, InputLabel } from '@material-ui/core';
 import React, {useState} from 'react';
 import { COLOURS } from '../../../constants/constants'
-import { minWidth } from '@material-ui/system';
 
 
 const LeaveCheck = (props) => {
