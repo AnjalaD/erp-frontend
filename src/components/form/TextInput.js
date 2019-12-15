@@ -15,6 +15,7 @@ function TextInput(props) {
                 inputProps={{
                     type: props.type || 'text'
                 }}
+                {...props}
             />
         </Grid>
     )

@@ -7,7 +7,7 @@ import Loading from "./views/shared/Loading";
 import LevelOneHome from "./views/level_1/LevelOneHome";
 import RouterError from "./views/shared/RouterError";
 import UserForm from "./components/form/UserFormManager";
-import UserProfile from "./views/shared/UserProfile";
+import UserProfile from "./views/level_1/UserProfile";
 import footer from './components/footer/footer';
 import LevelTwoHome from './views/level_2/LevelTwoHome';
 import LevelThreeHome from './views/level_3/LevelThreeHome';
@@ -18,7 +18,7 @@ import AddNewEmp from './views/level_3/AddNewEmp';
 import EditEmp from './views/level_2/EditEmp';
 import ColourPicker from './components/settings/ColourPicker';
 import LeaveCheck from './views/shared/LeaveForm/LeaveCheck';
-import LeaveForm from './views/shared/LeaveForm/LeaveForm';
+import LeaveForm from './components/form/LeaveForm';
 import FormFieldManager from './views/level_3/FormFieldManager';
 import JobTitleManager from './views/level_3/JobTitleManager';
 import PayGradeManager from './views/level_3/PayGradeManager';
@@ -44,10 +44,6 @@ export const guestRoutes = [
         component: RouterError
     },
     {
-        path: '/userprofile',
-        component: UserProfile
-    },
-    {
         path: '/form',
         component: UserForm
     },
@@ -62,10 +58,6 @@ export const guestRoutes = [
     {
         path: '/leavecheck',
         component: LeaveCheck
-    },
-    {
-        path: '/leaveform',
-        component: LeaveForm
     }
 ];
 
@@ -76,20 +68,20 @@ export const levelOneRoutes = [
         title: 'Home',
         icon: <HomeIcon />
     },
-    DIVIDER,
     {
         path: '/userprofile',
         component: UserProfile,
         title: 'Profile',
         icon: <HomeIcon />
     },
+    DIVIDER,
     {
-        path: '/applyleave',
+        path: '/apply-leave',
         component: ApplyLeave,
         title: 'Apply Leave',
         icon: <HomeIcon />
     }, {
-        path: '/myleaves',
+        path: '/my-leaves',
         component: LevelOneHome,
         title: 'My Leaves',
         icon: <HomeIcon />
@@ -104,19 +96,19 @@ export const levelTwoRoutes = [
         icon: <HomeIcon />
     },
     {
-        path: '/userprofile',
+        path: '/user-profile',
         component: UserProfile,
         title: 'Profile',
         icon: <HomeIcon />
     },
     DIVIDER,
     {
-        path: '/applyleave',
+        path: '/apply-leave',
         component: ApplyLeave,
         title: 'Apply Leave',
         icon: <HomeIcon />
     }, {
-        path: '/myleaves',
+        path: '/my-leaves',
         component: LevelOneHome,
         title: 'My Leaves',
         icon: <HomeIcon />
