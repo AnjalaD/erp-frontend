@@ -16,6 +16,9 @@ import AdminHome from './views/admin/AdminHome';
 import AddHR from './views/admin/AddHR';
 import AddNewEmp from './views/level_3/AddNewEmp';
 import EditEmp from './views/level_2/EditEmp';
+import ColourPicker from './components/settings/ColourPicker';
+import LeaveCheck from './views/shared/LeaveForm/LeaveCheck';
+import LeaveForm from './views/shared/LeaveForm/LeaveForm';
 import FormFieldManager from './views/level_3/FormFieldManager';
 import JobTitleManager from './views/level_3/JobTitleManager';
 import PayGradeManager from './views/level_3/PayGradeManager';
@@ -51,6 +54,18 @@ export const guestRoutes = [
     {
         path: '/footer',
         component: footer
+    },
+    {
+        path: '/colour',
+        component: ColourPicker
+    },
+    {
+        path: '/leavecheck',
+        component: LeaveCheck
+    },
+    {
+        path: '/leaveform',
+        component: LeaveForm
     }
 ];
 
