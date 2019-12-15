@@ -39,6 +39,7 @@ function AddHR() {
         fetchData(
             HR_AVAILABILITY,
             makeOptions(token),
+            dispatch,
             res => res.json().then(res => {
                 setHR(res);
                 setHasHR(1);
