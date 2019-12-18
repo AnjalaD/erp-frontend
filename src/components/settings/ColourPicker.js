@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { SketchPicker, SliderPicker } from 'react-color';
+import {SliderPicker } from 'react-color';
 import { COLOURS } from '../../constants/constants';
 import { Button } from '@material-ui/core';
 
