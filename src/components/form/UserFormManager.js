@@ -115,14 +115,17 @@ function UserFormManager({ oldUser, submit = null }) {
                 />
             );
         case 4:
+            const newuser = {
+                ...user,
+                email: email,
+                contact_no: contact,
+                dependents: dep,
+                emergency_contacts: emg
+            }
             return (
                 <Confirm
-                    user={{
-                        ...user,
-                        email: email,
-                        contact_no: contact,
-                    }} dep={dep} emg={emg}
-                    submit={submit}
+                    user={newuser} dep={dep} emg={emg}
+                    submit={newuser => submit}
                     prevStep={prevStep}
                 />
             );

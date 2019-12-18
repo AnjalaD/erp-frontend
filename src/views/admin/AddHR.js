@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import UserFormManager from '../../components/form/UserFormManager'
 import { Grid, Button, Typography, Container } from '@material-ui/core';
 import TextInput from '../../components/form/TextInput';
-import { TEST_USER_DATA } from '../../testData';
 import Profile from '../../components/profile/Profile';
 import { COLOURS } from '../../constants/constants';
+import { HR_AVAILABILITY } from '../../constants/api';
+import { makeOptions, fetchData } from '../../util/helper';
 
 const button0Style = {
     fontSize: 22,
@@ -28,6 +30,23 @@ const button1Style = {
 function AddHR() {
     const [hasHR, setHasHR] = useState(0);
     const [empId, setEmpId] = useState('');
+    const [hr, setHR] = useState(null);
+
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.status.token)
+
+    useEffect(() => {
+        fetchData(
+            HR_AVAILABILITY,
+            makeOptions(token),
+            dispatch,
+            res => res.json().then(res => {
+                setHR(res);
+                setHasHR(1);
+
+            })
+        );
+    }, [dispatch, token]);
 
     const findEmp = (id) => { }
     const submitNewEmp = () => { }
@@ -75,7 +94,7 @@ function AddHR() {
         <Grid container direction='column' justify='center'>
             <Button onClick={() => setHasHR(0)}>Change HR Manager</Button>
             <Typography align='center'>Current HR Manager</Typography>
-            <Profile data={TEST_USER_DATA} />
+            <Profile data={hr} />
 
         </Grid>
     );

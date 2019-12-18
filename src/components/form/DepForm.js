@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { Grid, Card } from '@material-ui/core';
+import { Grid, Card, IconButton } from '@material-ui/core';
 import TextInput from './TextInput';
-import { Add, Delete } from '@material-ui/icons';
+import { AddCircleOutline, RemoveCircleOutline } from '@material-ui/icons';
 import SelectInput from './SelectInput';
 import { COLOURS } from '../../constants/constants';
 
@@ -34,7 +34,10 @@ function DepForm(props) {
         >
             <Grid container spacing={1} >
                 <Grid container direction='row' alignItems='center'>
-                    Dependents Detailes <Button onClick={add}><Add /></Button>
+                    Dependents Detailes
+                    <IconButton onClick={add}>
+                        <AddCircleOutline color='primary' />
+                    </IconButton>
                 </Grid>
                 <Grid item xs={12}>
                     {dep.map((obj, key) => (
@@ -70,11 +73,7 @@ function DepForm(props) {
                                     value={obj.relationship}
                                     onChange={onChange('relationship', key)}
                                     selection={[
-                                        { label: 'Father', value: 'father' },
-                                        { label: 'Mother', value: 'mother' },
-                                        { label: 'Son', value: 'son' },
-                                        { label: 'Daughter', value: 'daughter' },
-                                        { label: 'Other', value: 'other' },
+                                        'Father', 'Mother', 'Son', 'Daughter', 'Other'
                                     ]}
                                 />
                                 <TextInput
@@ -109,29 +108,27 @@ function DepForm(props) {
                                     onChange={onChange('contact_no', key)}
                                 />
                             </Grid>
-                            <Button
-                                variant='outlined'
+                            <IconButton
                                 onClick={() => remove(key)}
                                 style={{
-                                    borderColor: '#000000',
                                     margin: 0,
                                     position: 'absolute',
                                     bottom: 0,
                                     right: 0
                                 }}
                             >
-                                <Delete />
-                            </Button>
+                                <RemoveCircleOutline color='error' />
+                            </IconButton>
                         </Card>
                     ))}
                 </Grid>
                 <Grid item xs={12} style={{ margin: 30, padding: 10 }} align="right">
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.lighter, color:COLOURS.primary.darker}}
+                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.lighter, color: COLOURS.primary.darker }}
                         variant="contained"
                         onClick={props.prevStep}
                     >Back</Button>
 
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color:COLOURS.primary.lighter}}
+                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color: COLOURS.primary.lighter }}
                         variant="contained"
                         onClick={props.nextStep}
                     >Continue</Button>

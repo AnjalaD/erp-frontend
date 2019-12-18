@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import AppNavbar from './components/navbar/AppNavbar';
 import Footer from './components/footer/footer';
@@ -14,10 +14,9 @@ import Cookies from 'js-cookie';
 
 
 function App() {
-  console.log('node_env', process.env);
   const { loggedIn, access_level } = useSelector(state => state.status);
-
   const dispatch = useDispatch();
+  const [checking, setChecking] = useState(true);
 
   const createRoutes = (routes) => routes.map(
     (route, index) => (
@@ -42,21 +41,25 @@ function App() {
     if (user) {
       dispatch(login(JSON.parse(user)));
     }
+    setChecking(false);
   }, [dispatch])
-
-  console.log(routes[access_level]);
 
   return (
     <div>
       <Loading />
-      <BrowserRouter>
-        <AppNavbar loggedIn={loggedIn} routes={routes[access_level] || []} />
-        <Switch>
-          {loggedIn ? createRoutes(routes[access_level] || []) : createRoutes(guestRoutes)}
-          <Route path='/error' component={RouterError} exact />
-          <Redirect from='/' to='/error' />
-        </Switch>
-      </BrowserRouter>
+      {
+        checking ?
+          null
+          :
+          <BrowserRouter>
+            <AppNavbar loggedIn={loggedIn} routes={routes[access_level] || []} />
+            <Switch>
+              {loggedIn ? createRoutes(routes[access_level] || []) : createRoutes(guestRoutes)}
+              <Route path='/error' component={RouterError} exact />
+              <Redirect from='/' to='/error' />
+            </Switch>
+          </BrowserRouter>
+      }
       <Footer />
     </div>
   );

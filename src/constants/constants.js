@@ -2,7 +2,7 @@
 export const LEVEL3 = 'L3';
 export const LEVEL2 = 'L2';
 export const LEVEL1 = 'L1';
-export const ADMIN = 'ADMIN';
+export const ADMIN = 'A';
 
 export const DIVIDER = 'divider';
 

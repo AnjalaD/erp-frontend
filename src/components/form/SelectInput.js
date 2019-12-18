@@ -2,12 +2,12 @@ import React from 'react';
 import { Grid, Select, FormControl, InputLabel, MenuItem } from '@material-ui/core';
 
 function SelectInput(props) {
-    const inputLabel = React.useRef(null);
-
     return (
-        <Grid item xs={props.xs || 6} style={{ marginTop: 8 }}>
+        <Grid item xs={props.xs || 6} style={{ marginTop: 16 }}>
             <FormControl variant='outlined' fullWidth={true}>
-                <InputLabel ref={inputLabel}>{props.label}</InputLabel>
+                <InputLabel>
+                    {props.label}
+                </InputLabel>
                 <Select
                     onChange={props.onChange}
                     value={props.value}
@@ -16,8 +16,8 @@ function SelectInput(props) {
                         <em>None</em>
                     </MenuItem>
                     {
-                        props.selection.map(({ value, label }, key) => (
-                            <MenuItem key={key} value={value}>{label}</MenuItem>
+                        props.selection.map((value, key) => (
+                            <MenuItem key={key} value={value}>{value}</MenuItem>
                         ))
                     }
                 </Select>

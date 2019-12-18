@@ -1,14 +1,13 @@
 import React from 'react'
+import { DIVIDER } from './constants/constants';
+import HomeIcon from '@material-ui/icons/Home';
 
 import Login from "./views/guest/Login";
 import Loading from "./views/shared/Loading";
 import LevelOneHome from "./views/level_1/LevelOneHome";
-
-import HomeIcon from '@material-ui/icons/Home';
 import RouterError from "./views/shared/RouterError";
-import { DIVIDER } from './constants/constants';
 import UserForm from "./components/form/UserFormManager";
-import UserProfile from "./views/shared/UserProfile";
+import UserProfile from "./views/level_1/UserProfile";
 import footer from './components/footer/footer';
 import LevelTwoHome from './views/level_2/LevelTwoHome';
 import LevelThreeHome from './views/level_3/LevelThreeHome';
@@ -16,17 +15,20 @@ import OrgDetails from './views/admin/OrgDetails';
 import AdminHome from './views/admin/AdminHome';
 import AddHR from './views/admin/AddHR';
 import AddNewEmp from './views/level_3/AddNewEmp';
-import EditEmp from './views/level_3/EditEmp';
+import EditEmp from './views/level_2/EditEmp';
 import ColourPicker from './components/settings/ColourPicker';
 import LeaveCheck from './views/shared/LeaveForm/LeaveCheck';
-import LeaveForm from './views/shared/LeaveForm/LeaveForm';
+import LeaveForm from './components/form/LeaveForm';
 import FormFieldManager from './views/level_3/FormFieldManager';
 import JobTitleManager from './views/level_3/JobTitleManager';
 import PayGradeManager from './views/level_3/PayGradeManager';
 import LeaveTypeManger from './views/level_3/LeaveTypeManger';
 import LeaveLimitManager from './views/level_3/LeaveLimitManager';
 import ApplyLeave from './views/level_1/ApplyLeave';
-import { Home } from '@material-ui/icons';
+import ViewEmployees from './views/level_2/ViewEmployees';
+import Reports from './views/level_3/Reports';
+import RequestedLeaves from './views/supervisor/RequestedLeaves';
+import SuperEmployees from './views/supervisor/SuperEmployees';
 
 export const guestRoutes = [
     {
@@ -40,10 +42,6 @@ export const guestRoutes = [
     {
         path: '/error',
         component: RouterError
-    },
-    {
-        path: '/userprofile',
-        component: UserProfile
     },
     {
         path: '/form',
@@ -60,10 +58,6 @@ export const guestRoutes = [
     {
         path: '/leavecheck',
         component: LeaveCheck
-    },
-    {
-        path: '/leaveform',
-        component: LeaveForm
     }
 ];
 
@@ -74,20 +68,20 @@ export const levelOneRoutes = [
         title: 'Home',
         icon: <HomeIcon />
     },
-    DIVIDER,
     {
         path: '/userprofile',
         component: UserProfile,
         title: 'Profile',
-        icon: <Home />
+        icon: <HomeIcon />
     },
+    DIVIDER,
     {
-        path: '/applyleave',
+        path: '/apply-leave',
         component: ApplyLeave,
         title: 'Apply Leave',
         icon: <HomeIcon />
     }, {
-        path: '/myleaves',
+        path: '/my-leaves',
         component: LevelOneHome,
         title: 'My Leaves',
         icon: <HomeIcon />
@@ -102,10 +96,35 @@ export const levelTwoRoutes = [
         icon: <HomeIcon />
     },
     {
-        path: '/userprofile',
+        path: '/user-profile',
         component: UserProfile,
         title: 'Profile',
-        icon: <Home />
+        icon: <HomeIcon />
+    },
+    DIVIDER,
+    {
+        path: '/apply-leave',
+        component: ApplyLeave,
+        title: 'Apply Leave',
+        icon: <HomeIcon />
+    }, {
+        path: '/my-leaves',
+        component: LevelOneHome,
+        title: 'My Leaves',
+        icon: <HomeIcon />
+    },
+    DIVIDER,
+    {
+        path: '/view-all-employees',
+        component: ViewEmployees,
+        title: 'View Employees',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/edit-employee',
+        component: EditEmp,
+        title: 'Edit Employee',
+        icon: <HomeIcon />
     },
 ];
 
@@ -120,9 +139,27 @@ export const levelThreeRoutes = [
         path: '/userprofile',
         component: UserProfile,
         title: 'Profile',
-        icon: <Home />
+        icon: <HomeIcon />
     },
     DIVIDER,
+    {
+        path: '/applyleave',
+        component: ApplyLeave,
+        title: 'Apply Leave',
+        icon: <HomeIcon />
+    }, {
+        path: '/myleaves',
+        component: LevelOneHome,
+        title: 'My Leaves',
+        icon: <HomeIcon />
+    },
+    DIVIDER,
+    {
+        path: '/view-all-employees',
+        component: ViewEmployees,
+        title: 'View Employees',
+        icon: <HomeIcon />
+    },
     {
         path: '/add-new-employee',
         component: AddNewEmp,
@@ -165,6 +202,13 @@ export const levelThreeRoutes = [
         title: 'Leave Limits',
         icon: <HomeIcon />
     },
+    DIVIDER,
+    {
+        path: 'reports',
+        component: Reports.js,
+        title: 'Reports',
+        icon: <HomeIcon />
+    }
 ];
 
 export const adminRoutes = [
@@ -184,6 +228,21 @@ export const adminRoutes = [
         path: '/hr-manager',
         component: AddHR,
         title: 'HR Manager',
+        icon: <HomeIcon />
+    },
+];
+
+export const supervisorRoutes = [
+    {
+        path: '/requested-leaves',
+        component: RequestedLeaves,
+        title: 'Requested Leaves',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/employees-under-supervisor',
+        component: SuperEmployees,
+        title: 'Employees',
         icon: <HomeIcon />
     },
 ];

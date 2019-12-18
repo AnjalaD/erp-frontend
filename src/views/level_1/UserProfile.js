@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { add_user, loading } from '../../redux/actions';
+import { loading } from '../../redux/actions';
 import Profile from '../../components/profile/Profile';
 import { GET_USER } from '../../constants/api';
-import { Grid } from '@material-ui/core';
+import { Grid, Container, Typography } from '@material-ui/core';
 import EmgContact from '../../components/profile/EmgContact';
 import { fetchData, makeOptions } from '../../util/helper';
 
@@ -20,27 +20,41 @@ function UserProfile() {
             (res) => res.json().then(res => setProfile(res))
         );
         dispatch(loading());
-    }, [dispatch])
+    }, [dispatch, token])
 
     return (
-        <div>
+        <Container maxWidth='md'>
             {
                 profile ?
                     <Grid container direction='column' alignItems='center'>
-
+                        <Grid item xs={12}>
+                            <Typography variant='h5'>
+                                Basic Info
+                            </Typography>
+                        </Grid>
                         < Grid item xs={12} >
                             <Profile data={profile} />
-                        </Grid >
+                        </ Grid>
+                        <Grid item xs={12}>
+                            <Typography variant='h6' style={{ marginTop: 32 }}>
+                                Dependents Info
+                            </Typography>
+                        </Grid>
                         {
                             profile.dependents.map((dep, i) => (
-                                <Grid itme xs={12} key={i}>
+                                <Grid item xs={12} key={i}>
                                     <Profile data={dep} />
                                 </Grid>
                             ))
                         }
+                        <Grid item xs={12} style={{ marginTop: 32 }}>
+                            <Typography variant='h6'>
+                                Emergency Contacts
+                            </Typography>
+                        </Grid>
                         {
                             profile.emergency_contacts.map((emg, i) => (
-                                <Grid itme xs={12} key={i}>
+                                <Grid item xs={12} key={i}>
                                     <EmgContact data={emg} />
                                 </Grid>
                             ))
@@ -49,7 +63,7 @@ function UserProfile() {
                     :
                     'Error retriving data'
             }
-        </div>
+        </Container>
     )
 }
 

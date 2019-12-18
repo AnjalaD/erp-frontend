@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table, TableHead, TableRow, TableCell, TableBody, Card } from '@material-ui/core'
+import { COLOURS } from '../../constants/constants'
 
 function CustomTable(props) {
 
@@ -11,12 +12,22 @@ function CustomTable(props) {
                 margin: 10
             }}
         >
-            <Table size={props.size || 'small'}>
-                <TableHead>
+            <Table size={props.size || 'medium'}>
+                <TableHead
+                    style={{
+                        backgroundColor: COLOURS.primary.lighter,
+                    }}
+                >
                     <TableRow>
                         {
                             props.headers.map((header, i) => (
-                                <TableCell key={i}>
+                                <TableCell
+                                    style={{
+                                        color: COLOURS.primary.darker
+                                    }}
+                                    align='center'
+                                    key={i}
+                                >
                                     {header}
                                 </TableCell>
                             ))
@@ -25,12 +36,12 @@ function CustomTable(props) {
                 </TableHead>
                 <TableBody>
                     {
-                        props.body && props.body.lenght === 0 ?
+                        props.body ?
                             props.body.map((row, i) => (
                                 <TableRow key={i}>
                                     {
                                         row.map((cell, j) => (
-                                            <TableCell key={j}>
+                                            <TableCell align='center' key={j}>
                                                 {cell}
                                             </TableCell>
                                         ))

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, TextField, Button, Card } from '@material-ui/core';
-import { Add, Remove } from '@material-ui/icons';
+import { Grid, TextField, Card, IconButton, Typography } from '@material-ui/core';
+import { RemoveCircleOutline, AddCircleOutline } from '@material-ui/icons';
 
 
 function MultiTextInput(props) {
@@ -15,11 +15,14 @@ function MultiTextInput(props) {
                 }}
             >
                 <Grid container direction='row' alignItems='center'>
-                    {props.label} <Button onClick={props.add}><Add /></Button>
+                    <Typography variant='body1'>{props.label}</Typography>
+                    <IconButton onClick={props.add}>
+                        <AddCircleOutline color='primary' />
+                    </IconButton>
                 </Grid>
                 {props.value.map((value, key) => (
                     <Grid container alignItems='center' key={key}>
-                        <Grid item xs={10}>
+                        <Grid item xs={11}>
                             <TextField
                                 variant="outlined"
                                 label={props.label}
@@ -34,9 +37,9 @@ function MultiTextInput(props) {
                             />
                         </Grid>
                         <Grid item xs={1}>
-                            <Button onClick={() => props.remove(key)}>
-                                <Remove />
-                            </Button>
+                            <IconButton onClick={() => props.remove(key)}>
+                                <RemoveCircleOutline color='error' />
+                            </IconButton>
                         </Grid >
                     </Grid>
                 ))}

@@ -29,16 +29,18 @@ export default function AppNavbar(props) {
 
     const user = (
         <Nav>
-            <Button><NavLink
-                to='/error'
-                style={{
-                    color: '#ffffff',
-                    textDecoration: 'none'
-                }}
-            >
-                <Person />
-                Profile
-            </NavLink></Button>
+            <Button>
+                <NavLink
+                    to='/userprofile'
+                    style={{
+                        color: '#ffffff',
+                        textDecoration: 'none'
+                    }}
+                >
+                    <Person />
+                    Profile
+            </NavLink>
+            </Button>
             <Button
                 className={classes.link}
                 onClick={() => {
@@ -58,16 +60,16 @@ export default function AppNavbar(props) {
             <Navbar
                 style={{
                     backgroundColor: COLOURS.primary.dark,
-                    zIndex: 12001,
+                    zIndex: 1201,
                     paddingLeft: '4vw',
-                    paddingRight: '4vw',
-                    height: 75
+                    paddingRight: '2vw',
+                    height: 80
                 }}
                 dark
             >
                 <div>
                     <NavbarToggler onClick={e => toggleNavbar(!isOpen)} />
-                    <NavbarBrand style={{ marginLeft: '10px' }} href="/" className={classes.topic}>{COMPANY_NAME}</NavbarBrand>
+                    <NavbarBrand style={{ marginLeft: 20 }} href="/" className={classes.topic}>{COMPANY_NAME}</NavbarBrand>
                 </div>
                 {props.loggedIn ? user : guest}
             </Navbar>
