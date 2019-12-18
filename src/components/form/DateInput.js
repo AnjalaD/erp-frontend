@@ -11,11 +11,21 @@ export default function DateInput(props) {
     // The first commit of Material-UI
 
     return (
-        <Grid item xs={props.xs || 6}>
+        <Grid item xs={props.xs || 6} >
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <Grid container justify="space-around">
                     <KeyboardDatePicker
-                        className="MuiInputBase-fullWidth MuiOutlinedInput-root"
+                        style={{
+                            border: 'solid',
+                            borderColor: 'darkgray',
+                            borderRadius: 3,
+                            borderWidth: 1,
+                            height: 55,
+                            '.MuiInputBase-input': {
+                                content: 'none'
+                            }
+                        }}
+                        className="MuiInputBase-fullWidth"
                         disableToolbar
                         variant='inline'
                         format="MM/dd/yyyy"
