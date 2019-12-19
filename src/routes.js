@@ -6,9 +6,7 @@ import Login from "./views/guest/Login";
 import Loading from "./views/shared/Loading";
 import LevelOneHome from "./views/level_1/LevelOneHome";
 import RouterError from "./views/shared/RouterError";
-import UserForm from "./components/form/UserFormManager";
 import UserProfile from "./views/level_1/UserProfile";
-import footer from './components/footer/footer';
 import LevelTwoHome from './views/level_2/LevelTwoHome';
 import LevelThreeHome from './views/level_3/LevelThreeHome';
 import OrgDetails from './views/admin/OrgDetails';
@@ -17,8 +15,6 @@ import AddHR from './views/admin/AddHR';
 import AddNewEmp from './views/level_3/AddNewEmp';
 import EditEmp from './views/level_2/EditEmp';
 import ColourPicker from './components/settings/ColourPicker';
-import LeaveCheck from './views/shared/LeaveForm/LeaveCheck';
-import LeaveForm from './components/form/LeaveForm';
 import FormFieldManager from './views/level_3/FormFieldManager';
 import JobTitleManager from './views/level_3/JobTitleManager';
 import PayGradeManager from './views/level_3/PayGradeManager';
@@ -29,6 +25,22 @@ import ViewEmployees from './views/level_2/ViewEmployees';
 import Reports from './views/level_3/Reports';
 import RequestedLeaves from './views/supervisor/RequestedLeaves';
 import SuperEmployees from './views/supervisor/SuperEmployees';
+import LeaveHistory from './views/level_1/LeaveHistory';
+
+export const supervisorRoutes = [
+    {
+        path: '/requested-leaves',
+        component: RequestedLeaves,
+        title: 'Requested Leaves',
+        icon: <HomeIcon />
+    },
+    {
+        path: '/employees-under-supervisor',
+        component: SuperEmployees,
+        title: 'Employees',
+        icon: <HomeIcon />
+    },
+];
 
 export const guestRoutes = [
     {
@@ -44,20 +56,8 @@ export const guestRoutes = [
         component: RouterError
     },
     {
-        path: '/form',
-        component: UserForm
-    },
-    {
-        path: '/footer',
-        component: footer
-    },
-    {
         path: '/colour',
         component: ColourPicker
-    },
-    {
-        path: '/leavecheck',
-        component: LeaveCheck
     }
 ];
 
@@ -82,7 +82,7 @@ export const levelOneRoutes = [
         icon: <HomeIcon />
     }, {
         path: '/my-leaves',
-        component: LevelOneHome,
+        component: LeaveHistory,
         title: 'My Leaves',
         icon: <HomeIcon />
     },
@@ -109,7 +109,7 @@ export const levelTwoRoutes = [
         icon: <HomeIcon />
     }, {
         path: '/my-leaves',
-        component: LevelOneHome,
+        component: LeaveHistory,
         title: 'My Leaves',
         icon: <HomeIcon />
     },
@@ -126,6 +126,8 @@ export const levelTwoRoutes = [
         title: 'Edit Employee',
         icon: <HomeIcon />
     },
+    DIVIDER,
+    ...supervisorRoutes
 ];
 
 export const levelThreeRoutes = [
@@ -149,7 +151,7 @@ export const levelThreeRoutes = [
         icon: <HomeIcon />
     }, {
         path: '/myleaves',
-        component: LevelOneHome,
+        component: LeaveHistory,
         title: 'My Leaves',
         icon: <HomeIcon />
     },
@@ -208,7 +210,9 @@ export const levelThreeRoutes = [
         component: Reports.js,
         title: 'Reports',
         icon: <HomeIcon />
-    }
+    },
+    DIVIDER,
+    ...supervisorRoutes
 ];
 
 export const adminRoutes = [
@@ -232,17 +236,3 @@ export const adminRoutes = [
     },
 ];
 
-export const supervisorRoutes = [
-    {
-        path: '/requested-leaves',
-        component: RequestedLeaves,
-        title: 'Requested Leaves',
-        icon: <HomeIcon />
-    },
-    {
-        path: '/employees-under-supervisor',
-        component: SuperEmployees,
-        title: 'Employees',
-        icon: <HomeIcon />
-    },
-];
