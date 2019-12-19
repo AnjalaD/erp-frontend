@@ -7,7 +7,7 @@ import SelectInput from './SelectInput';
 import { COLOURS } from '../../constants/constants';
 
 function UserForm(props) {
-    const { email, setEmail, contact, setContact, user, setUser } = props;
+    const { email, setEmail, contact, setContact, user, setUser, formFields } = props;
 
     const userHandler = (key) => (e) => {
         setUser(Object.assign({}, user, {
@@ -96,19 +96,19 @@ function UserForm(props) {
                     label="Job Title"
                     value={user.job_title}
                     onChange={userHandler('job_title')}
-                    selection={[]}
+                    selection={formFields.job_title.map(obj => obj.job_title)}
                 />
                 <SelectInput
                     label="Pay Grade"
                     value={user.pay_grade}
                     onChange={userHandler('pay_grade')}
-                    selection={[]}
+                    selection={formFields.pay_grade}
                 />
                 <SelectInput
-                    label="Employement Status"
-                    value={user.employement_status}
-                    onChange={userHandler('employement_status')}
-                    selection={[]}
+                    label="Employment Status"
+                    value={user.employment_status}
+                    onChange={userHandler('employment_status')}
+                    selection={formFields.employment_status}
                 />
                 <MultiTextInput
                     label="Email"
@@ -125,7 +125,7 @@ function UserForm(props) {
                     onChange={onMultiChange(contact, setContact)}
                     remove={multiRemove(contact, setContact)}
                 />
-                {user.custom_attributes.map(({ attribute, value }, i) =>
+                {user.custom.map(({ attribute, value }, i) =>
                     (
                         <TextInput key={i} xs={12}
                             label={attribute}

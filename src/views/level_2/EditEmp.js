@@ -4,7 +4,7 @@ import TextInput from '../../components/form/TextInput'
 import { COLOURS } from '../../constants/constants';
 import UserFormManager from '../../components/form/UserFormManager';
 import { fetchData, makeOptions } from '../../util/helper';
-import { GET_EMPLOYEE } from '../../constants/api';
+import { EMPLOYEE_BY_ID } from '../../constants/api';
 import { useSelector, useDispatch } from 'react-redux';
 
 const button1Style = {
@@ -22,14 +22,25 @@ function EditEmp() {
     const token = useSelector(state => state.status.token);
     const [empId, setEmpId] = useState('');
     const [user, setUser] = useState(null);
-    const findEmp = (id) => { };
+    const findEmp = () => {
+        fetchData(
+            EMPLOYEE_BY_ID,
+            makeOptions(token, 'POST', {
+                "employee_id": empId
+            }),
+            dispatch,
+            (res) => res.json().then(res => setUser(res))
+        );
+    };
 
     const submit = (user) => {
         fetchData(
-            GET_EMPLOYEE,
-            makeOptions(token, 'POST', {}),
+            EMPLOYEE_BY_ID,
+            makeOptions(token, 'POST', {
+                "employee_id": empId
+            }),
             dispatch,
-            (res) => res.json().then(res => setUser(res.data))
+            (res) => res.json().then(res => setUser(res))
         );
     }
 
@@ -48,7 +59,7 @@ function EditEmp() {
                     onChange={(e) => setEmpId(e.target.value)}
                 />
 
-                <Button variant='contained' onClick={() => findEmp(empId)} style={button1Style}>
+                <Button variant='contained' onClick={findEmp} style={button1Style}>
                     Find Employee
                 </Button>
                 {user ? <UserFormManager oldUser={user} submit={submit} /> : null}
