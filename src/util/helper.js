@@ -28,14 +28,23 @@ export const fetchData = (
     onFail = () => { },
     onError = () => { }
 ) => {
+    console.log('fetching..')
+
     if (dispatch) dispatch(loading());
+
     fetch(url, options)
         .then(res => {
-            if (res.status === 200) onSuccess(res)
-            else onFail()
+            if (res.status === 200) {
+                res.clone().json()
+                    .then(res => console.log(url, res));
+                onSuccess(res);
+                console.log('success');
+            }
+            else onFail();
         })
         .catch(err => onError(err))
         .finally(() => {
+            console.log('finaly');
             if (dispatch) dispatch(loading(false))
         });
 
