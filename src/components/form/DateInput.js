@@ -20,10 +20,7 @@ export default function DateInput(props) {
                             borderColor: 'darkgray',
                             borderRadius: 3,
                             borderWidth: 1,
-                            height: 55,
-                            '.MuiInputBase-input': {
-                                content: 'none'
-                            }
+                            height: 55
                         }}
                         className="MuiInputBase-fullWidth"
                         disableToolbar

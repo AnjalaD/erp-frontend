@@ -6,6 +6,7 @@ import { COLOURS } from '../../constants/constants';
 import DateInput from './DateInput';
 import SelectInput from './SelectInput';
 import { fetchData, makeOptions } from '../../util/helper';
+import { APPLY_LEAVE } from '../../constants/api';
 
 function toISOStringLocal(d) {
     function z(n) { return (n < 10 ? '0' : '') + n }
@@ -35,7 +36,7 @@ function LeaveForm(props) {
 
     const submit = () => {
         fetchData(
-            '',
+            APPLY_LEAVE,
             makeOptions(token),
             dispatch
         )

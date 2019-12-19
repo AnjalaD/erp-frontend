@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Container } from '@material-ui/core'
 import CustomTable from '../../components/table/CustomTable'
 import { fetchData, makeOptions } from '../../util/helper';
-import { GET_EMPLOYEES } from '../../constants/api';
+import { ALL_EMPLOYEES } from '../../constants/api';
 
 function ViewEmployees() {
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function ViewEmployees() {
 
     useEffect(() => {
         fetchData(
-            GET_EMPLOYEES,
+            ALL_EMPLOYEES,
             makeOptions(token),
             dispatch,
             (res) => res.json()
