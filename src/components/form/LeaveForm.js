@@ -6,6 +6,7 @@ import { COLOURS } from '../../constants/constants';
 import DateInput from './DateInput';
 import SelectInput from './SelectInput';
 import { fetchData, makeOptions } from '../../util/helper';
+import { APPLY_LEAVE } from '../../constants/api';
 
 function toISOStringLocal(d) {
     function z(n) { return (n < 10 ? '0' : '') + n }
@@ -22,7 +23,7 @@ function LeaveForm(props) {
     const [state, setState] = useState({
         leave_type: '',
         start: currentDate,
-        end: currentDate,
+        num_of_days: '',
         reason: ''
     });
 
@@ -35,7 +36,7 @@ function LeaveForm(props) {
 
     const submit = () => {
         fetchData(
-            '',
+            APPLY_LEAVE,
             makeOptions(token),
             dispatch
         )
@@ -58,20 +59,23 @@ function LeaveForm(props) {
             />
             <Grid container spacing={1} alignItems='center'>
                 <Grid item xs={12}>
-                    <Grid container >
+                    <Grid container spacing={1}>
                         <DateInput
                             label="Starting Date"
                             value={state.start}
                             onChange={val => onChange('start')(toISOStringLocal(new Date(val)))}
                         />
-                        <DateInput
-                            label="Ending Date"
-                            value={state.end}
-                            onChange={val => onChange('end')(toISOStringLocal(new Date(val)))}
+                        <TextInput
+                            style={{ marginBottom: 0 }}
+                            label="Num of Days"
+                            value={state.num_of_days}
+                            onChange={e => onChange('num_of_days')(e.target.value)}
+                            type='number'
                         />
                     </Grid>
                 </Grid>
                 <TextInput xs={12}
+                    style={{ marginTop: 5 }}
                     label="Reason"
                     value={state.reason}
                     onChange={e => onChange('reason')(e.target.value)}

@@ -5,10 +5,14 @@ const HOST = 'http://localhost:8888';
 export const LOGIN = HOST + '/user/login';
 export const GET_USER = HOST + '/employee/profile'; //get
 
-export const GET_LEAVES = HOST + '/employee/leave';
+export const EMPLOYEE_BY_ID = HOST + '/employee/view';
+export const ALL_EMPLOYEES = HOST + '';
 
-export const GET_EMPLOYEE = HOST + '/employee/by-id';
-export const GET_EMPLOYEES = HOST + '';
+export const LEAVES_SUMMERY = HOST + '/leave/taken';
+export const APPLY_LEAVE = HOST + '/leave/apply';
+export const LEAVES_HISTORY = HOST + '/leave/history';
+
+export const EMP_FORM_FIELDS = HOST + '/employee/form-attributes';
 
 export const JOB_TITLES = HOST + '/job-title/view'; //get
 export const PAY_GRADES = HOST + '/pay-grade/view'; //get

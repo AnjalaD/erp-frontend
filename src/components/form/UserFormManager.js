@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { loading } from '../../redux/actions';
 import UserForm from './UserForm';
 import DepForm from './DepForm';
 import Confirm from './Confirm';
-import EmgForm from './EmgFrom';
+import EmgForm from './EmgForm';
+import { fetchData, makeOptions } from '../../util/helper';
+import { useDispatch, useSelector } from 'react-redux';
+import { EMP_FORM_FIELDS } from '../../constants/api';
+
 
 
 function UserFormManager({ oldUser, submit = null }) {
-    const disptch = useDispatch();
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.status.token);
 
     const initUser = {
         "first_name": "",
@@ -24,7 +27,7 @@ function UserFormManager({ oldUser, submit = null }) {
         "job_title": "",
         "dept_name": "",
         "pay_grade": "",
-        "custom_attributes": [
+        "custom": [
             {
                 attribute: 'attr',
                 value: ''
@@ -42,7 +45,6 @@ function UserFormManager({ oldUser, submit = null }) {
         "contact_no": ""
     };
 
-
     const initDep = {
         "nic": "",
         "first_name": "",
@@ -56,17 +58,29 @@ function UserFormManager({ oldUser, submit = null }) {
         "email": ""
     };
 
+    const initFormFields = {
+        job_title: [],
+        marital_status: [],
+        pay_grade: [],
+        employment_status: []
+    }
+
     const [step, setStep] = useState(1);
+    const [email, setEmail] = useState(oldUser ? oldUser.email.slice(0) : ['']);
+    const [contact, setContact] = useState(oldUser ? oldUser.contact_no.slice(0) : ['']);
+    const [user, setUser] = useState(oldUser ? Object.assign({}, oldUser) : initUser);
+    const [dep, setDep] = useState(oldUser ? oldUser.dependents.slice(0) : [initDep]);
+    const [emg, setEmg] = useState(oldUser ? oldUser.emergency_contacts.slice(0) : [initEmg]);
+    const [formFields, setFormFields] = useState(initFormFields);
 
-    const [email, setEmail] = useState([oldUser ? oldUser.email : '']);
-    const [contact, setContact] = useState([oldUser ? oldUser.contact : '']);
-    const [user, setUser] = useState(oldUser ? oldUser : initUser);
-    const [dep, setDep] = useState([oldUser ? oldUser.dependent : initDep]);
-    const [emg, setEmg] = useState([oldUser ? oldUser.emg : initEmg]);
-
-    //load field -(custom,job-title,...)
-    useEffect(() => { }, []);
-
+    useEffect(() => {
+        fetchData(
+            EMP_FORM_FIELDS,
+            makeOptions(token),
+            dispatch,
+            res => res.json().then(res => setFormFields(res))
+        )
+    }, [dispatch, token]);
 
     // Proceed to next step
     const nextStep = (data) => {
@@ -77,9 +91,6 @@ function UserFormManager({ oldUser, submit = null }) {
     const prevStep = () => {
         setStep(step - 1);
     };
-
-    // Handle fields change
-
 
     switch (step) {
         case 1:
@@ -92,6 +103,7 @@ function UserFormManager({ oldUser, submit = null }) {
                     user={user}
                     setUser={setUser}
                     nextStep={nextStep}
+                    formFields={formFields}
                 />
             );
         case 2:
@@ -125,7 +137,7 @@ function UserFormManager({ oldUser, submit = null }) {
             return (
                 <Confirm
                     user={newuser} dep={dep} emg={emg}
-                    submit={newuser => submit}
+                    submit={newuser => submit(newuser)}
                     prevStep={prevStep}
                 />
             );

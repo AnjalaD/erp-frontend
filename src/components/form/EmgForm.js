@@ -51,7 +51,7 @@ function EmgForm(props) {
                             <Grid container spacing={1}>
                                 <TextInput
                                     label="Name"
-                                    value={obj.first_name}
+                                    value={obj.name}
                                     onChange={onChange('name', key)}
                                 />
                                 <TextInput

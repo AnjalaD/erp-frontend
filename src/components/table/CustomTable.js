@@ -1,64 +1,23 @@
 import React from 'react'
-import { Table, TableHead, TableRow, TableCell, TableBody, Card } from '@material-ui/core'
-import { COLOURS } from '../../constants/constants'
+import MaterialTable from 'material-table'
+import { COLOURS } from '../../constants/constants';
 
 function CustomTable(props) {
-
     return (
-        <Card
-            elevation={4}
-            style={{
-                padding: 10,
-                margin: 10
+        <MaterialTable
+            title={props.title}
+            columns={props.columns}
+            data={props.data}
+            options={{
+                pageSize: props.pageSize || 10,
+                pageSizeOptions: [5, 10, 50],
+                rowStyle: row => ({
+                    backgroundColor: row.tableData.id % 2 === 0 ? COLOURS.primary.lighter : '#FFF'
+                })
             }}
-        >
-            <Table size={props.size || 'medium'}>
-                <TableHead
-                    style={{
-                        backgroundColor: COLOURS.primary.lighter,
-                    }}
-                >
-                    <TableRow>
-                        {
-                            props.headers.map((header, i) => (
-                                <TableCell
-                                    style={{
-                                        color: COLOURS.primary.darker
-                                    }}
-                                    align='center'
-                                    key={i}
-                                >
-                                    {header}
-                                </TableCell>
-                            ))
-                        }
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {
-                        props.body ?
-                            props.body.map((row, i) => (
-                                <TableRow key={i}>
-                                    {
-                                        row.map((cell, j) => (
-                                            <TableCell align='center' key={j}>
-                                                {cell}
-                                            </TableCell>
-                                        ))
-                                    }
-                                </TableRow>
-                            ))
-                            :
-                            <TableRow>
-                                <TableCell>
-                                    No data availble
-                                </TableCell>
-                            </TableRow>
-                    }
-                </TableBody>
-            </Table>
-        </Card>
-    )
+            {...props}
+        />
+    );
 }
 
 export default CustomTable
