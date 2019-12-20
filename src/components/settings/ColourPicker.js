@@ -5,9 +5,9 @@ import { Button } from '@material-ui/core';
 
 function ColourPicker() {
 
-    const [black, setBlack] = useState('#000000');
+    const [black, setBlack] = useState('#830245');
 
-    const changeBlack = (colour,event) => {
+    const changeBlack = (colour) => {
         setBlack(colour.hex)
         console.log(colour)
     }
