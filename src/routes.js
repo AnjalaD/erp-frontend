@@ -26,6 +26,7 @@ import Reports from './views/level_3/Reports';
 import RequestedLeaves from './views/supervisor/RequestedLeaves';
 import SuperEmployees from './views/supervisor/SuperEmployees';
 import LeaveHistory from './views/level_1/LeaveHistory';
+import DepartmentManager from './views/level_3/DepartmentManager';
 
 export const supervisorRoutes = [
     {
@@ -175,6 +176,12 @@ export const levelThreeRoutes = [
         icon: <HomeIcon />
     },
     DIVIDER,
+    {
+        path: '/departments',
+        component: DepartmentManager,
+        title: 'Departments',
+        icon: <HomeIcon />
+    },
     {
         path: '/custom-form-fields',
         component: FormFieldManager,
