@@ -7,7 +7,7 @@ import SelectInput from './SelectInput';
 import { COLOURS } from '../../constants/constants';
 
 function UserForm(props) {
-    const { email, setEmail, contact, setContact, user, setUser, formFields } = props;
+    const { email, setEmail, contact, setContact, user, setUser, formFields, custom, setCustom } = props;
 
     const userHandler = (key) => (e) => {
         setUser(Object.assign({}, user, {
@@ -15,12 +15,10 @@ function UserForm(props) {
         }))
     }
 
-    const customHandler = (index) => (e) => {
-        const newCustom = user.custom_attributes;
-        newCustom[index]['value'] = e.target.value;
-        setUser(Object.assign({}, user, {
-            custom_attributes: newCustom
-        }))
+    const customHandler = (key, i) => (e) => {
+        const newArr = custom.slice(0);
+        newArr[i][key] = e.target.value;
+        setCustom(newArr);
     }
 
     const onMultiChange = (value, setter) => (e, i) => {
@@ -125,7 +123,7 @@ function UserForm(props) {
                     onChange={onMultiChange(contact, setContact)}
                     remove={multiRemove(contact, setContact)}
                 />
-                {user.custom.map(({ attribute, value }, i) =>
+                {custom.map(({ attribute, value }, i) =>
                     (
                         <TextInput key={i} xs={12}
                             label={attribute}

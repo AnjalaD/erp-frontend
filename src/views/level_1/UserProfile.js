@@ -33,7 +33,10 @@ function UserProfile() {
                             </Typography>
                         </Grid>
                         < Grid item xs={12} >
-                            <Profile data={profile} />
+                            <Profile data={{
+                                ...profile.employee,
+                                custom: profile.custom
+                            }} />
                         </ Grid>
                         <Grid item xs={12}>
                             <Typography variant='h6' style={{ marginTop: 32 }}>

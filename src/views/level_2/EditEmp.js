@@ -33,16 +33,7 @@ function EditEmp() {
         );
     };
 
-    const submit = (user) => {
-        fetchData(
-            EMPLOYEE_BY_ID,
-            makeOptions(token, 'POST', {
-                "employee_id": empId
-            }),
-            dispatch,
-            (res) => res.json().then(res => setUser(res))
-        );
-    }
+    const submit = (newUser) => { }
 
     return (
         <Container maxWidth='md'>

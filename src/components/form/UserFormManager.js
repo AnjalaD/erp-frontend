@@ -26,18 +26,8 @@ function UserFormManager({ oldUser, submit = null }) {
         "employment_status": "",
         "job_title": "",
         "dept_name": "",
-        "pay_grade": "",
-        "custom": [
-            {
-                attribute: 'attr',
-                value: ''
-            },
-            {
-                attribute: 'addwd',
-                value: ''
-            }
-        ]
-    }
+        "pay_grade": ""
+    };
 
     const initEmg = {
         "nic": "",
@@ -69,6 +59,7 @@ function UserFormManager({ oldUser, submit = null }) {
     const [email, setEmail] = useState(oldUser ? oldUser.email.slice(0) : ['']);
     const [contact, setContact] = useState(oldUser ? oldUser.contact_no.slice(0) : ['']);
     const [user, setUser] = useState(oldUser ? Object.assign({}, oldUser) : initUser);
+    const [custom, setCustom] = useState(oldUser ? oldUser.custom.slice(0) : []);
     const [dep, setDep] = useState(oldUser ? oldUser.dependents.slice(0) : [initDep]);
     const [emg, setEmg] = useState(oldUser ? oldUser.emergency_contacts.slice(0) : [initEmg]);
     const [formFields, setFormFields] = useState(initFormFields);
@@ -102,6 +93,8 @@ function UserFormManager({ oldUser, submit = null }) {
                     setContact={setContact}
                     user={user}
                     setUser={setUser}
+                    custom={custom}
+                    setCustom={setCustom}
                     nextStep={nextStep}
                     formFields={formFields}
                 />
