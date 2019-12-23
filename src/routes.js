@@ -27,6 +27,7 @@ import RequestedLeaves from './views/supervisor/RequestedLeaves';
 import SuperEmployees from './views/supervisor/SuperEmployees';
 import LeaveHistory from './views/level_1/LeaveHistory';
 import DepartmentManager from './views/level_3/DepartmentManager';
+import LeaveActionHistory from './views/supervisor/LeaveActionHistory';
 
 export const supervisorRoutes = [
     {
@@ -36,9 +37,15 @@ export const supervisorRoutes = [
         icon: <HomeIcon />
     },
     {
+        path: '/leaves-history',
+        component: LeaveActionHistory,
+        title: 'Leaves History',
+        icon: <HomeIcon />
+    },
+    {
         path: '/employees-under-supervisor',
         component: SuperEmployees,
-        title: 'Employees',
+        title: 'My Employees',
         icon: <HomeIcon />
     },
 ];
