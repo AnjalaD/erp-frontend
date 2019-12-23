@@ -24,7 +24,7 @@ function ExtendedEditableTable(props) {
         fetchData(
             props.deleteApi,
             makeOptions(token, 'DELETE', {}),
-            null,
+            dispatch,
             onSuccess,
             onFail
         )
@@ -35,7 +35,7 @@ function ExtendedEditableTable(props) {
         fetchData(
             props.updateApi,
             makeOptions(token, 'POST', {}),
-            null,
+            dispatch,
             onSuccess,
             onFail
         )
@@ -46,7 +46,7 @@ function ExtendedEditableTable(props) {
         fetchData(
             props.insertApi,
             makeOptions(token, 'POST', {}),
-            null,
+            dispatch,
             onSuccess,
             onFail
         )
