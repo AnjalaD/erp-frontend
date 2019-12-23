@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Grid, Button, Container } from '@material-ui/core'
 import TextInput from '../../components/form/TextInput'
 import { COLOURS } from '../../constants/constants';
-import UserFormManager from '../../components/form/UserFormManager';
 import { fetchData, makeOptions } from '../../util/helper';
 import { EMPLOYEE_BY_ID } from '../../constants/api';
 import { useSelector, useDispatch } from 'react-redux';
+import EditUserFormManager from '../../components/form/EditUserFormManager';
 
 const button1Style = {
     marginLeft: 10,
@@ -53,7 +53,7 @@ function EditEmp() {
                 <Button variant='contained' onClick={findEmp} style={button1Style}>
                     Find Employee
                 </Button>
-                {user ? <UserFormManager oldUser={user} submit={submit} /> : null}
+                {user ? <EditUserFormManager oldUser={user} /> : null}
             </Grid>
         </Container>
     )

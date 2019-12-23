@@ -15,6 +15,12 @@ export const LEAVES_HISTORY = HOST + '/leave/history';
 
 export const EMP_FORM_FIELDS = HOST + '/employee/form-attributes';
 
+export const EDIT_EMP_BASIC_INFO = HOST + '';
+export const EDIT_EMP_EMAILS = HOST + '';
+export const EDIT_EMP_CONTACTS = HOST + '';
+export const EDIT_EMP_DEPENDENTS = HOST + '';
+export const EDIT_EMP_EMG_CONTACTS = HOST + '';
+
 export const JOB_TITLES = HOST + '/job-title/view';
 export const PAY_GRADES = HOST + '/pay-grade/view';
 export const LEAVE_LIMITS = HOST + '/leave-limit/view';
