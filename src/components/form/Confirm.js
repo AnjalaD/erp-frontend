@@ -3,6 +3,7 @@ import { Card, Grid, Typography, Button } from '@material-ui/core/';
 import Profile from '../profile/Profile';
 import EmgContact from '../profile/EmgContact';
 import { COLOURS } from '../../constants/constants';
+import ActionBar from './ActionBar';
 
 function Confirm(props) {
     const { user, emg, dep } = props;
@@ -57,18 +58,11 @@ function Confirm(props) {
                         </Typography>
                     </Grid>
                 }
-
-                <Grid item xs={12} style={{ margin: 30, padding: 10 }} align="right">
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.lighter, color: COLOURS.primary.darker }}
-                        variant="contained"
-                        onClick={props.prevStep}
-                    >Back</Button>
-
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color: COLOURS.primary.lighter }}
-                        variant="contained"
-                        onClick={props.submit}
-                    >Confirm & Continue</Button>
-                </Grid>
+                <ActionBar
+                    b1={props.prevStep}
+                    label2='Confirm'
+                    b2={props.submit}
+                />
             </Grid>
         </Card>
     );

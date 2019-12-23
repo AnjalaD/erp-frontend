@@ -5,6 +5,7 @@ import TextInput from './TextInput';
 import MultiTextInput from './MultiTextInput';
 import SelectInput from './SelectInput';
 import { COLOURS } from '../../constants/constants';
+import ActionBar from './ActionBar';
 
 function UserForm(props) {
     const { email, setEmail, contact, setContact, user, setUser, formFields, custom, setCustom } = props;
@@ -108,21 +109,29 @@ function UserForm(props) {
                     onChange={userHandler('employment_status')}
                     selection={formFields.employment_status}
                 />
-                <MultiTextInput
-                    label="Email"
-                    value={email}
-                    type='email'
-                    add={() => setEmail([...email, ''])}
-                    onChange={onMultiChange(email, setEmail)}
-                    remove={multiRemove(email, setEmail)}
-                />
-                <MultiTextInput
-                    label="Contact No"
-                    value={contact}
-                    add={() => setContact([...contact, ''])}
-                    onChange={onMultiChange(contact, setContact)}
-                    remove={multiRemove(contact, setContact)}
-                />
+                {
+                    email ?
+                        <MultiTextInput
+                            label="Email"
+                            value={email}
+                            type='email'
+                            add={() => setEmail([...email, ''])}
+                            onChange={onMultiChange(email, setEmail)}
+                            remove={multiRemove(email, setEmail)}
+                        />
+                        : null
+                }
+                {
+                    contact ?
+                        <MultiTextInput
+                            label="Contact No"
+                            value={contact}
+                            add={() => setContact([...contact, ''])}
+                            onChange={onMultiChange(contact, setContact)}
+                            remove={multiRemove(contact, setContact)}
+                        />
+                        : null
+                }
                 {custom.map(({ attribute, value }, i) =>
                     (
                         <TextInput key={i} xs={12}
@@ -132,12 +141,10 @@ function UserForm(props) {
                         />
                     )
                 )}
-                <Grid item xs={12} style={{ margin: 30, padding: 10 }} align="right">
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color: COLOURS.primary.lighter }}
-                        variant="contained"
-                        onClick={props.nextStep}
-                    >Continue</Button>
-                </Grid>
+                <ActionBar
+                    b1={props.nextStep}
+                    b2={props.prevStep}
+                />
             </Grid >
         </Card>
     );

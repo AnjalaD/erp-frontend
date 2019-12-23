@@ -4,6 +4,7 @@ import { Grid, Card, IconButton } from '@material-ui/core';
 import TextInput from './TextInput';
 import { AddCircleOutline, RemoveCircleOutline } from '@material-ui/icons';
 import { COLOURS } from '../../constants/constants';
+import ActionBar from './ActionBar';
 
 function EmgForm(props) {
     const { emg, setEmg, init } = props;
@@ -81,17 +82,10 @@ function EmgForm(props) {
                         </Card>
                     ))}
                 </Grid>
-                <Grid item xs={12} style={{ margin: 30, padding: 10 }} align="right">
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.lighter, color: COLOURS.primary.darker }}
-                        variant="contained"
-                        onClick={props.prevStep}
-                    >Back</Button>
-
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color: COLOURS.primary.lighter }}
-                        variant="contained"
-                        onClick={props.nextStep}
-                    >Continue</Button>
-                </Grid>
+                <ActionBar
+                    b1={props.nextStep}
+                    b2={props.prevStep}
+                />
             </Grid >
         </Card>
     );
