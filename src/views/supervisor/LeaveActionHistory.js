@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Container } from '@material-ui/core'
 import CustomTable from '../../components/table/CustomTable'
 import { fetchData, makeOptions } from '../../util/helper';
 
-function SuperEmployees() {
+function LeaveActionHistory() {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
     const [tableData, setTableData] = useState([]);
@@ -28,26 +28,22 @@ function SuperEmployees() {
                         field: 'employee_id'
                     },
                     {
-                        title: 'First-Name',
-                        field: 'first_name'
+                        title: 'Date',
+                        field: 'date'
                     },
                     {
-                        title: 'Last-Name',
-                        field: 'last_name'
+                        title: 'Leave Type',
+                        field: 'leave_type'
                     },
                     {
-                        title: 'Contact-No.',
-                        field: 'contact_no'
-                    }, {
-                        title: 'Email',
-                        field: 'email'
+                        title: 'Status',
+                        field: 'status'
                     }
                 ]}
                 data={tableData}
             />
         </Container>
     )
-
 }
 
-export default SuperEmployees
+export default LeaveActionHistory

@@ -53,7 +53,7 @@ const Profile = (props) => {
                             <ProfileRow name='Contact No' icon={faPhone} value={data.contact_no} />
                     }
                     {
-                        data.custom_attributes ? data.custom_attributes.map(({ attribute, value }, i) => (
+                        data.custom ? data.custom.map(({ attribute, value }, i) => (
                             <ProfileRow name={attribute} icon={faDotCircle} value={value} key={i} />
                         )) : null
                     }

@@ -1,9 +1,22 @@
-import React from 'react'
-import UserFormManager from '../../components/form/UserFormManager'
-import { Container } from '@material-ui/core'
+import React from 'react';
+import UserFormManager from '../../components/form/UserFormManager';
+import { Container } from '@material-ui/core';
+import { fetchData, makeOptions } from '../../util/helper';
+import { useDispatch, useSelector } from 'react-redux';
+import { NEW_EMPLOYEE } from '../../constants/api';
+
 
 function AddNewEmp() {
-    const submit = () => { }
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.status.token);
+
+    const submit = (newUser) => {
+        fetchData(
+            NEW_EMPLOYEE,
+            makeOptions(token, 'POST', {}),
+            dispatch,
+        );
+    }
 
     return (
         <Container maxWidth='md'>

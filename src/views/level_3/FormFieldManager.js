@@ -4,8 +4,6 @@ import ExtendedEditableTable from '../../components/table/ExtendedEditableTable'
 import { FORM_FIELDS } from '../../constants/api';
 
 function FormFieldManager() {
-
-
     return (
         <Container maxWidth='md'>
             <ExtendedEditableTable
