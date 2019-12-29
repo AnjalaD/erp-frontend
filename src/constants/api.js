@@ -23,10 +23,12 @@ export const EDIT_EMP_EMG_CONTACTS = HOST + '';
 
 export const JOB_TITLES = HOST + '/job-title/view';
 export const PAY_GRADES = HOST + '/pay-grade/view';
-export const LEAVE_LIMITS = HOST + '/leave-limit/view';
-export const LEAVE_TYPES = HOST + '/leave-type/view';
+export const LEAVE_LIMITS = HOST + '/leave/limits';
+export const LEAVE_TYPES = HOST + '/leave/type';
 export const FORM_FIELDS = HOST + '/form-field/view';
 export const DEPARTMENTS = HOST + '/department/view';
+export const CUSTOM_FIELDS = HOST + '/custom/view';
+export const EMP_STATUS = HOST + '/employement-status/view';
 
 export const HR_AVAILABILITY = HOST + '/employee/hr';
 export const ORG_INSERT = HOST + '/organization-info/insert';

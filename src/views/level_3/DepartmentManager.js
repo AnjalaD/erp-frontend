@@ -10,11 +10,11 @@ function DepartmentManager() {
         <div>
             <Container maxWidth='md'>
                 <ExtendedEditableTable
-                    title='Custom Form Fields'
+                    title='Department Names'
                     columns={[
                         {
-                            title: 'Field',
-                            field: 'attribute',
+                            title: 'Department Name',
+                            field: 'dept_name',
                         }
                     ]}
                     dataApi={DEPARTMENTS}
