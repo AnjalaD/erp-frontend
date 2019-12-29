@@ -12,8 +12,9 @@ function EmgForm(props) {
     }
 
     const remove = (i) => {
-        const len = emg.length;
-        setEmg([...emg.slice(0, i), ...emg.slice(i === len ? len : i + 1)])
+        const newVal = [...emg];
+        newVal.splice(i, 1);
+        setEmg(newVal);
     }
 
     const onChange = (key, i) => (e) => {
@@ -81,8 +82,8 @@ function EmgForm(props) {
                     ))}
                 </Grid>
                 <ActionBar
-                    b1={props.nextStep}
-                    b2={props.prevStep}
+                    b1={props.prevStep}
+                    b2={props.nextStep}
                 />
             </Grid >
         </Card>

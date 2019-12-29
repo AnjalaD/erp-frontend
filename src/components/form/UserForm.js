@@ -140,8 +140,8 @@ function UserForm(props) {
                     )
                 )}
                 <ActionBar
-                    b1={props.nextStep}
-                    b2={props.prevStep}
+                    b1={props.prevStep}
+                    b2={props.nextStep}
                 />
             </Grid >
         </Card>
