@@ -22,6 +22,7 @@ function EditEmp(props) {
     const token = useSelector(state => state.status.token);
     const [empId, setEmpId] = useState(props.match.params.id || '');
     const [user, setUser] = useState(null);
+    const [counter, setCounter] = useState(0);
 
 
     const findEmp = () => {
@@ -31,13 +32,13 @@ function EditEmp(props) {
                 "employee_id": empId
             }),
             dispatch,
-            (res) => res.json().then(res => setUser(res))
+            (res) => res.json().then(res => setUser(res)),
+            () => setUser(null)
         );
     };
 
-    useEffect(findEmp, [])
+    useEffect(findEmp, [counter])
 
-    const submit = (newUser) => { }
 
     return (
         <Container maxWidth='md'>
@@ -47,7 +48,6 @@ function EditEmp(props) {
                 alignItems='center'
                 style={{ paddingTop: 50 }}
             >
-
                 <TextInput
                     value={empId}
                     label='Employee ID'
@@ -57,7 +57,7 @@ function EditEmp(props) {
                 <Button variant='contained' onClick={findEmp} style={button1Style}>
                     Find Employee
                 </Button>
-                {user ? <EditUserFormManager oldUser={user} /> : null}
+                {user ? <EditUserFormManager oldUser={user} reload={setCounter} /> : null}
             </Grid>
         </Container>
     )

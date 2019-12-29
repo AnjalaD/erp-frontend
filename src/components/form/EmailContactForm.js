@@ -1,23 +1,100 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, Grid } from '@material-ui/core'
-import MultiTextInput from './MultiTextInput'
 import ActionBar from './ActionBar'
+import EditMultiTextInput from './EditMultiTextInput'
+import { fetchData, makeOptions } from '../../util/helper';
+import { useDispatch, useSelector } from 'react-redux';
 
-function EmailContactForm({ value, setter, init, nextStep, prevStep }) {
+function EmailContactForm({ id, type, label, value, prevStep, api }) {
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.status.token);
+
+    const initState = {
+        value: '',
+        old: '',
+        isNew: true,
+        isEdit: true
+    }
+
+    const setSaved = (i) => {
+        const newVal = [...state];
+        newVal[i].isNew = false;
+        newVal[i].isEdit = false;
+        setState(newVal);
+    }
+
+    const edit = (i) => {
+        const newVal = [...state];
+        newVal[i].isEdit = true;
+        setState(newVal);
+    }
+
+    const [state, setState] = useState(value.map(item => ({
+        value: item[type],
+        old: item[type],
+        isNew: false,
+        isEdit: false
+    })))
 
     const onChange = (e, i) => {
-        const newVal = [...value];
-        newVal[i] = e.targer.value;
-        setter(newVal);
+        const newVal = [...state];
+        newVal[i].value = e.target.value;
+        setState(newVal);
     }
 
     const remove = (i) => {
-        const newVal = [...value];
+        const newVal = [...state];
         newVal.splice(i, 1);
-        setter(newVal);
+        setState(newVal);
     }
 
-    const add = () => setter([...value, init])
+    const add = () => setState([...state, initState])
+
+    const save = (i) => {
+        if (state[i].isNew) {
+            fetchData(
+                api,
+                makeOptions(token, 'POST', {
+                    email: [{
+                        employee_id: id,
+                        [type]: state[i].value
+                    }]
+                }),
+                dispatch,
+                () => setSaved(i)
+            )
+        } else {
+            fetchData(
+                api,
+                makeOptions(token, 'PATCH', {
+                    new: {
+                        employee_id: id,
+                        [type]: state[i].value
+                    },
+                    old: {
+                        employee_id: id,
+                        [type]: state[i].old
+                    }
+                }),
+                dispatch,
+                () => setSaved(i)
+            )
+        }
+    }
+
+    const del = (i) => {
+        fetchData(
+            api,
+            makeOptions(token, 'DELETE', {
+                employee_id: id,
+                email: state[i].value
+            }),
+            dispatch,
+            () => remove(i)
+        )
+    }
+
+
 
     return (
         <Card
@@ -25,16 +102,18 @@ function EmailContactForm({ value, setter, init, nextStep, prevStep }) {
             style={{ padding: 10, margin: 10, width: '100%' }}
         >
             <Grid container spacing={1} >
-                <MultiTextInput
-                    label='Email'
+                <EditMultiTextInput
+                    label={label}
                     onChange={onChange}
-                    value={value}
+                    value={state}
                     remove={remove}
+                    delete={del}
                     add={add}
+                    edit={edit}
+                    save={save}
                 />
                 <ActionBar
-                    b1={nextStep}
-                    b2={prevStep}
+                    b1={prevStep}
                 />
             </Grid >
         </Card>
