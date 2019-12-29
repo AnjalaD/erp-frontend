@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid, Button, Container } from '@material-ui/core'
 import TextInput from '../../components/form/TextInput'
 import { COLOURS } from '../../constants/constants';
@@ -17,11 +17,13 @@ const button1Style = {
     backgroundColor: COLOURS.primary.lighter
 };
 
-function EditEmp() {
+function EditEmp(props) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
-    const [empId, setEmpId] = useState('');
+    const [empId, setEmpId] = useState(props.match.params.id || '');
     const [user, setUser] = useState(null);
+
+
     const findEmp = () => {
         fetchData(
             EMPLOYEE_BY_ID,
@@ -32,6 +34,8 @@ function EditEmp() {
             (res) => res.json().then(res => setUser(res))
         );
     };
+
+    useEffect(findEmp, [])
 
     const submit = (newUser) => { }
 

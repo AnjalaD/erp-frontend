@@ -30,6 +30,7 @@ import DepartmentManager from './views/level_3/DepartmentManager';
 import LeaveActionHistory from './views/supervisor/LeaveActionHistory';
 import EmpStatusManager from './views/level_3/EmpStatusManager';
 
+
 export const supervisorRoutes = [
     {
         path: '/requested-leaves',
@@ -72,12 +73,6 @@ export const guestRoutes = [
 
 export const levelOneRoutes = [
     {
-        path: '/',
-        component: LevelOneHome,
-        title: 'Home',
-        icon: <HomeIcon />
-    },
-    {
         path: '/userprofile',
         component: UserProfile,
         title: 'Profile',
@@ -98,30 +93,7 @@ export const levelOneRoutes = [
 ];
 
 export const levelTwoRoutes = [
-    {
-        path: '/',
-        component: LevelTwoHome,
-        title: 'Home',
-        icon: <HomeIcon />
-    },
-    {
-        path: '/user-profile',
-        component: UserProfile,
-        title: 'Profile',
-        icon: <HomeIcon />
-    },
-    DIVIDER,
-    {
-        path: '/apply-leave',
-        component: ApplyLeave,
-        title: 'Apply Leave',
-        icon: <HomeIcon />
-    }, {
-        path: '/my-leaves',
-        component: LeaveHistory,
-        title: 'My Leaves',
-        icon: <HomeIcon />
-    },
+    ...levelOneRoutes,
     DIVIDER,
     {
         path: '/view-all-employees',
@@ -130,7 +102,7 @@ export const levelTwoRoutes = [
         icon: <HomeIcon />
     },
     {
-        path: '/edit-employee',
+        path: '/edit-employee/:id',
         component: EditEmp,
         title: 'Edit Employee',
         icon: <HomeIcon />
@@ -147,30 +119,7 @@ export const levelTwoRoutes = [
 ];
 
 export const levelThreeRoutes = [
-    {
-        path: '/',
-        component: LevelThreeHome,
-        title: 'Home',
-        icon: <HomeIcon />
-    },
-    {
-        path: '/userprofile',
-        component: UserProfile,
-        title: 'Profile',
-        icon: <HomeIcon />
-    },
-    DIVIDER,
-    {
-        path: '/applyleave',
-        component: ApplyLeave,
-        title: 'Apply Leave',
-        icon: <HomeIcon />
-    }, {
-        path: '/myleaves',
-        component: LeaveHistory,
-        title: 'My Leaves',
-        icon: <HomeIcon />
-    },
+    ...levelOneRoutes,
     DIVIDER,
     {
         path: '/view-all-employees',
@@ -185,7 +134,7 @@ export const levelThreeRoutes = [
         icon: <HomeIcon />
     },
     {
-        path: '/edit-employee',
+        path: '/edit-employee/:id',
         component: EditEmp,
         title: 'Edit Employee',
         icon: <HomeIcon />
