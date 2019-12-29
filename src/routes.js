@@ -4,11 +4,8 @@ import HomeIcon from '@material-ui/icons/Home';
 
 import Login from "./views/guest/Login";
 import Loading from "./views/shared/Loading";
-import LevelOneHome from "./views/level_1/LevelOneHome";
 import RouterError from "./views/shared/RouterError";
 import UserProfile from "./views/level_1/UserProfile";
-import LevelTwoHome from './views/level_2/LevelTwoHome';
-import LevelThreeHome from './views/level_3/LevelThreeHome';
 import OrgDetails from './views/admin/OrgDetails';
 import AdminHome from './views/admin/AdminHome';
 import AddHR from './views/admin/AddHR';
