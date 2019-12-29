@@ -11,6 +11,7 @@ function TextInput(props) {
                 value={props.value}
                 margin="normal"
                 fullWidth={true}
+                disabled={props.disabled || false}
                 required={props.required || true}
                 inputProps={{
                     type: props.type || 'text'

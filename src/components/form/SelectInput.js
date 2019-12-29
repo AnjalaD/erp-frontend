@@ -9,6 +9,7 @@ function SelectInput(props) {
                     {props.label}
                 </InputLabel>
                 <Select
+                    disabled={props.disabled || false}
                     onChange={props.onChange}
                     value={props.value}
                 >
