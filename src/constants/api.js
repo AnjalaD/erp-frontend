@@ -7,7 +7,8 @@ export const GET_USER = HOST + '/employee/profile';
 
 export const NEW_EMPLOYEE = '/employee/add';
 export const EMPLOYEE_BY_ID = HOST + '/employee/view';
-export const ALL_EMPLOYEES = HOST + '';
+
+export const FILTER_EMPLOYEES = HOST + '/report/filter';
 
 export const LEAVES_SUMMERY = HOST + '/leave/taken';
 export const APPLY_LEAVE = HOST + '/leave/apply';
