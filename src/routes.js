@@ -22,12 +22,13 @@ import LeaveTypeManger from './views/level_3/LeaveTypeManger';
 import LeaveLimitManager from './views/level_3/LeaveLimitManager';
 import ApplyLeave from './views/level_1/ApplyLeave';
 import ViewEmployees from './views/level_2/ViewEmployees';
-import Reports from './views/level_3/Reports';
+import Reports from './views/level_2/Reports';
 import RequestedLeaves from './views/supervisor/RequestedLeaves';
 import SuperEmployees from './views/supervisor/SuperEmployees';
 import LeaveHistory from './views/level_1/LeaveHistory';
 import DepartmentManager from './views/level_3/DepartmentManager';
 import LeaveActionHistory from './views/supervisor/LeaveActionHistory';
+import EmpStatusManager from './views/level_3/EmpStatusManager';
 
 export const supervisorRoutes = [
     {
@@ -135,6 +136,13 @@ export const levelTwoRoutes = [
         icon: <HomeIcon />
     },
     DIVIDER,
+    {
+        path: 'reports',
+        component: Reports,
+        title: 'Reports',
+        icon: <HomeIcon />
+    },
+    DIVIDER,
     ...supervisorRoutes
 ];
 
@@ -212,16 +220,23 @@ export const levelThreeRoutes = [
         component: LeaveTypeManger,
         title: 'Leave Types',
         icon: <HomeIcon />
-    }, {
+    },
+    {
         path: '/leave-limit',
         component: LeaveLimitManager,
         title: 'Leave Limits',
         icon: <HomeIcon />
     },
+    {
+        path: '/employement-status',
+        component: EmpStatusManager,
+        title: 'Employement Status',
+        icon: <HomeIcon />
+    },
     DIVIDER,
     {
         path: 'reports',
-        component: Reports.js,
+        component: Reports,
         title: 'Reports',
         icon: <HomeIcon />
     },
