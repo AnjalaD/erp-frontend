@@ -1,10 +1,8 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import { Grid, Card, IconButton } from '@material-ui/core';
 import TextInput from './TextInput';
 import { AddCircleOutline, RemoveCircleOutline } from '@material-ui/icons';
 import SelectInput from './SelectInput';
-import { COLOURS } from '../../constants/constants';
 import ActionBar from './ActionBar';
 
 

@@ -1,10 +1,8 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import { Grid, Card, Typography } from '@material-ui/core';
 import TextInput from './TextInput';
 import MultiTextInput from './MultiTextInput';
 import SelectInput from './SelectInput';
-import { COLOURS } from '../../constants/constants';
 import ActionBar from './ActionBar';
 
 function UserForm(props) {
