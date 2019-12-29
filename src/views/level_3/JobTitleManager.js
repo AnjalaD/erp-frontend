@@ -16,7 +16,7 @@ function JobTitleManager() {
                     {
                         title: 'Access Level',
                         field: 'access_level',
-                        lookup: { L1: 'L1', L2: 'L2', L3: 'L3', A: 'A' }
+                        lookup: { L1: 'L1', L2: 'L2', L3: 'L3' }
                     }
                 ]}
                 dataApi={JOB_TITLES}
