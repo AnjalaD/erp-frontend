@@ -11,7 +11,7 @@ export default function DateInput(props) {
     // The first commit of Material-UI
 
     return (
-        <Grid item xs={props.xs || 6} >
+        <Grid item xs={props.xs || 6} style={{ marginTop: 8 }}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <Grid container justify="space-around">
                     <KeyboardDatePicker

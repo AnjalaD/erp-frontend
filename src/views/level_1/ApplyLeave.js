@@ -20,14 +20,12 @@ function ApplyLeave() {
         ))
     )
 
-
-
     // fetch leaves
     useEffect(() => {
         fetchData(LEAVES_SUMMERY,
             makeOptions(token),
             dispatch,
-            (res) => res.json().then(res => setLeaves(formatTableData(res.result)))
+            (res) => res.json().then(res => setLeaves(formatTableData(res)))
         )
     }, [dispatch, token]);
 
