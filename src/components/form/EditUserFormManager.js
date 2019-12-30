@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import UserForm from './UserForm';
-import DepForm from './DepForm';
-import EmgForm from './EmgForm';
 import { fetchData, makeOptions } from '../../util/helper';
 import { useDispatch, useSelector } from 'react-redux';
-import { EMP_FORM_FIELDS, EDIT_EMP_BASIC_INFO, EDIT_EMP_CONTACTS, EDIT_EMP_EMAILS, EDIT_EMP_DEPENDENTS, EDIT_EMP_EMG_CONTACTS } from '../../constants/api';
+import { EMP_FORM_FIELDS, EDIT_EMP_BASIC_INFO, EDIT_EMP_CONTACTS, EDIT_EMP_EMAILS } from '../../constants/api';
 import Profile from '../profile/Profile';
 import { Grid, Button } from '@material-ui/core';
 import { COLOURS } from '../../constants/constants';
 import ActionBar from './ActionBar';
-import EmgContact from '../profile/EmgContact';
 import EmailContactForm from './EmailContactForm';
-import EmailContact from '../profile/EmailContact';
+import EditEmgForm from './EditEmgForm';
+import EditDepForm from './EditDepForm';
 
 const button2Style = {
     width: '100%',
@@ -19,28 +17,9 @@ const button2Style = {
     backgroundColor: COLOURS.primary.lighter
 }
 
-function EditUserFormManager({ oldUser }) {
+function EditUserFormManager({ oldUser, reload }) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
-
-    const initEmg = {
-        "nic": "",
-        "name": "",
-        "contact_no": ""
-    };
-
-    const initDep = {
-        "nic": "",
-        "first_name": "",
-        "last_name": "",
-        "relationship": "",
-        "addr_house_no": "",
-        "addr_line_1": "",
-        "addr_line_2": "",
-        "addr_city": "",
-        "contact_no": "",
-        "email": ""
-    };
 
     const initFormFields = {
         job_title: [],
@@ -49,6 +28,7 @@ function EditUserFormManager({ oldUser }) {
         employment_status: []
     }
 
+    const id = oldUser.employee.employee_id;
     const [step, setStep] = useState(0);
     const [email, setEmail] = useState([...oldUser.email]);
     const [contact, setContact] = useState([...oldUser.contact_no]);
@@ -59,6 +39,15 @@ function EditUserFormManager({ oldUser }) {
     const [formFields, setFormFields] = useState(initFormFields);
 
     useEffect(() => {
+        setEmail([...oldUser.email]);
+        setContact([...oldUser.contact_no]);
+        setUser(Object.assign({}, oldUser.employee));
+        setCustom([...oldUser.custom]);
+        setDep([...oldUser.dependents]);
+        setEmg([...oldUser.emergency_contacts]);
+    }, [oldUser])
+
+    useEffect(() => {
         fetchData(
             EMP_FORM_FIELDS,
             makeOptions(token),
@@ -67,12 +56,17 @@ function EditUserFormManager({ oldUser }) {
         )
     }, [dispatch, token]);
 
+    const home = () => {
+        reload(prev => prev + 1);
+        setStep(0);
+    }
+
     const submit = (url, data) => {
         fetchData(
             url,
             makeOptions(token, 'POST', data),
             dispatch,
-            () => setStep(0)
+            () => home()
         );
     }
 
@@ -110,11 +104,13 @@ function EditUserFormManager({ oldUser }) {
         case 1:
             return (
                 <UserForm
+                    id={id}
                     user={user}
                     setUser={setUser}
                     custom={custom}
                     setCustom={setCustom}
                     nextStep={() => setStep(2)}
+                    prevStep={() => home()}
                     formFields={formFields}
                 />
             );
@@ -138,121 +134,40 @@ function EditUserFormManager({ oldUser }) {
         case 3:
             return (
                 <EmailContactForm
+                    id={id}
+                    type='email'
+                    label='Email'
                     value={email}
-                    setter={setEmail}
-                    init=''
-                    prevStep={() => setStep(0)}
-                    nextStep={() => setStep(4)}
+                    prevStep={() => home()}
+                    api={EDIT_EMP_EMAILS}
                 />
-            );
-        case 4:
-            return (
-                <Grid container>
-                    <Grid item xs={12}>
-                        <EmailContact
-                            data={email}
-                            label='Email'
-                            type='email'
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-
-                        <ActionBar
-                            b1={() => setStep(7)}
-                            b2={() => submit(EDIT_EMP_EMAILS, {
-                                email: email
-                            })}
-                        />
-                    </Grid>
-                </Grid>
             );
         case 5:
             return (
                 <EmailContactForm
+                    id={id}
+                    label='Contact-No.'
+                    type='contact_no'
                     value={contact}
-                    setter={setContact}
-                    init=''
-                    prevStep={() => setStep(0)}
-                    nextStep={() => setStep(6)}
+                    prevStep={() => home()}
+                    api={EDIT_EMP_CONTACTS}
                 />
-            );
-        case 6:
-            return (
-                <Grid container>
-                    <Grid item xs={12}>
-                        <EmailContact
-                            data={contact}
-                            label='Contact'
-                            type='contact'
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-
-                        <ActionBar
-                            b1={() => setStep(7)}
-                            b2={() => submit(EDIT_EMP_CONTACTS, {
-                                contact_no: contact
-                            })}
-                        />
-                    </Grid>
-                </Grid>
             );
         case 7:
             return (
-                <DepForm
-                    nextStep={() => setStep(8)}
-                    prevStep={() => setStep(0)}
+                <EditDepForm
+                    id={id}
+                    prevStep={() => home()}
                     dep={dep}
-                    setDep={setDep}
-                    init={initDep}
                 />
-            );
-        case 8:
-            return (
-                <Grid container>
-                    <Grid item xs={12}>
-                        <Profile data={dep} />
-                    </Grid>
-                    <Grid item xs={12}>
-
-                        <ActionBar
-                            b1={() => setStep(7)}
-                            b2={() => submit(EDIT_EMP_DEPENDENTS, {
-                                dependents: dep
-                            })}
-                        />
-                    </Grid>
-                </Grid>
-
             );
         case 9:
             return (
-                <EmgForm
+                <EditEmgForm
+                    id={id}
                     emg={emg}
-                    setEmg={setEmg}
-                    nextStep={() => setStep(10)}
-                    prevStep={() => setStep(9)}
-                    init={initEmg}
+                    prevStep={() => home()}
                 />
-            );
-        case 10:
-            return (
-                <Grid container>
-                    <Grid item xs={12}>
-                        <EmgContact
-                            data={emg}
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-
-                        <ActionBar
-                            b1={() => setStep(9)}
-                            b2={() => submit(EDIT_EMP_EMG_CONTACTS, {
-                                emergency_contacts: emg
-                            })}
-                        />
-                    </Grid>
-                </Grid>
             );
         default:
             return null;

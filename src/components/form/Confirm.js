@@ -1,8 +1,7 @@
 import React from 'react';
-import { Card, Grid, Typography, Button } from '@material-ui/core/';
+import { Card, Grid, Typography } from '@material-ui/core/';
 import Profile from '../profile/Profile';
 import EmgContact from '../profile/EmgContact';
-import { COLOURS } from '../../constants/constants';
 import ActionBar from './ActionBar';
 
 function Confirm(props) {

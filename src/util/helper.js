@@ -1,6 +1,6 @@
 import { loading } from "../redux/actions";
 
-export const makeOptions = (token, method = 'GET', data = null) => (
+export const makeOptions = (token, method = 'GET', data = {}) => (
     method === 'GET' ?
         {
             method: method,

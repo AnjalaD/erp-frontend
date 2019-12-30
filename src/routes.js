@@ -4,11 +4,8 @@ import HomeIcon from '@material-ui/icons/Home';
 
 import Login from "./views/guest/Login";
 import Loading from "./views/shared/Loading";
-import LevelOneHome from "./views/level_1/LevelOneHome";
 import RouterError from "./views/shared/RouterError";
 import UserProfile from "./views/level_1/UserProfile";
-import LevelTwoHome from './views/level_2/LevelTwoHome';
-import LevelThreeHome from './views/level_3/LevelThreeHome';
 import OrgDetails from './views/admin/OrgDetails';
 import AdminHome from './views/admin/AdminHome';
 import AddHR from './views/admin/AddHR';
@@ -22,12 +19,14 @@ import LeaveTypeManger from './views/level_3/LeaveTypeManger';
 import LeaveLimitManager from './views/level_3/LeaveLimitManager';
 import ApplyLeave from './views/level_1/ApplyLeave';
 import ViewEmployees from './views/level_2/ViewEmployees';
-import Reports from './views/level_3/Reports';
+import Reports from './views/level_2/Reports';
 import RequestedLeaves from './views/supervisor/RequestedLeaves';
 import SuperEmployees from './views/supervisor/SuperEmployees';
 import LeaveHistory from './views/level_1/LeaveHistory';
 import DepartmentManager from './views/level_3/DepartmentManager';
 import LeaveActionHistory from './views/supervisor/LeaveActionHistory';
+import EmpStatusManager from './views/level_3/EmpStatusManager';
+
 
 export const supervisorRoutes = [
     {
@@ -71,12 +70,6 @@ export const guestRoutes = [
 
 export const levelOneRoutes = [
     {
-        path: '/',
-        component: LevelOneHome,
-        title: 'Home',
-        icon: <HomeIcon />
-    },
-    {
         path: '/userprofile',
         component: UserProfile,
         title: 'Profile',
@@ -97,30 +90,7 @@ export const levelOneRoutes = [
 ];
 
 export const levelTwoRoutes = [
-    {
-        path: '/',
-        component: LevelTwoHome,
-        title: 'Home',
-        icon: <HomeIcon />
-    },
-    {
-        path: '/user-profile',
-        component: UserProfile,
-        title: 'Profile',
-        icon: <HomeIcon />
-    },
-    DIVIDER,
-    {
-        path: '/apply-leave',
-        component: ApplyLeave,
-        title: 'Apply Leave',
-        icon: <HomeIcon />
-    }, {
-        path: '/my-leaves',
-        component: LeaveHistory,
-        title: 'My Leaves',
-        icon: <HomeIcon />
-    },
+    ...levelOneRoutes,
     DIVIDER,
     {
         path: '/view-all-employees',
@@ -129,9 +99,16 @@ export const levelTwoRoutes = [
         icon: <HomeIcon />
     },
     {
-        path: '/edit-employee',
+        path: '/edit-employee/:id',
         component: EditEmp,
         title: 'Edit Employee',
+        icon: <HomeIcon />
+    },
+    DIVIDER,
+    {
+        path: '/reports',
+        component: Reports,
+        title: 'Reports',
         icon: <HomeIcon />
     },
     DIVIDER,
@@ -139,30 +116,7 @@ export const levelTwoRoutes = [
 ];
 
 export const levelThreeRoutes = [
-    {
-        path: '/',
-        component: LevelThreeHome,
-        title: 'Home',
-        icon: <HomeIcon />
-    },
-    {
-        path: '/userprofile',
-        component: UserProfile,
-        title: 'Profile',
-        icon: <HomeIcon />
-    },
-    DIVIDER,
-    {
-        path: '/applyleave',
-        component: ApplyLeave,
-        title: 'Apply Leave',
-        icon: <HomeIcon />
-    }, {
-        path: '/myleaves',
-        component: LeaveHistory,
-        title: 'My Leaves',
-        icon: <HomeIcon />
-    },
+    ...levelOneRoutes,
     DIVIDER,
     {
         path: '/view-all-employees',
@@ -177,7 +131,7 @@ export const levelThreeRoutes = [
         icon: <HomeIcon />
     },
     {
-        path: '/edit-employee',
+        path: '/edit-employee/:id',
         component: EditEmp,
         title: 'Edit Employee',
         icon: <HomeIcon />
@@ -212,16 +166,23 @@ export const levelThreeRoutes = [
         component: LeaveTypeManger,
         title: 'Leave Types',
         icon: <HomeIcon />
-    }, {
+    },
+    {
         path: '/leave-limit',
         component: LeaveLimitManager,
         title: 'Leave Limits',
         icon: <HomeIcon />
     },
+    {
+        path: '/employement-status',
+        component: EmpStatusManager,
+        title: 'Employement Status',
+        icon: <HomeIcon />
+    },
     DIVIDER,
     {
-        path: 'reports',
-        component: Reports.js,
+        path: '/reports',
+        component: Reports,
         title: 'Reports',
         icon: <HomeIcon />
     },

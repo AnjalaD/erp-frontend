@@ -8,24 +8,17 @@ import SelectInput from './SelectInput';
 import { fetchData, makeOptions } from '../../util/helper';
 import { APPLY_LEAVE } from '../../constants/api';
 
-function toISOStringLocal(d) {
-    function z(n) { return (n < 10 ? '0' : '') + n }
-    return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' +
-        z(d.getDate()) + 'T12:00:00';
-
-}
-
 function LeaveForm(props) {
+    const currentDate = new Date().toISOString();
+    const initState = {
+        leave_type: '',
+        date: currentDate,
+        reason: ''
+    };
+
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
-
-    const currentDate = toISOStringLocal(new Date());
-    const [state, setState] = useState({
-        leave_type: '',
-        start: currentDate,
-        num_of_days: '',
-        reason: ''
-    });
+    const [state, setState] = useState(initState);
 
     const onChange = key => value => {
         setState(state => ({
@@ -37,8 +30,9 @@ function LeaveForm(props) {
     const submit = () => {
         fetchData(
             APPLY_LEAVE,
-            makeOptions(token),
-            dispatch
+            makeOptions(token, 'POST', state),
+            dispatch,
+            () => setState(initState)
         )
     }
 
@@ -50,30 +44,20 @@ function LeaveForm(props) {
             <Typography variant="h5" style={{ width: '100%', textAlign: 'center' }}>
                 Apply Leave
             </Typography>
-            <SelectInput
-                xs={12}
-                label='Leave Type'
-                value={state.leave_type}
-                onChange={e => onChange('leave_type')(e.target.value)}
-                selection={[props.leaveTypes]}
-            />
+
             <Grid container spacing={1} alignItems='center'>
-                <Grid item xs={12}>
-                    <Grid container spacing={1}>
-                        <DateInput
-                            label="Starting Date"
-                            value={state.start}
-                            onChange={val => onChange('start')(toISOStringLocal(new Date(val)))}
-                        />
-                        <TextInput
-                            style={{ marginBottom: 0 }}
-                            label="Num of Days"
-                            value={state.num_of_days}
-                            onChange={e => onChange('num_of_days')(e.target.value)}
-                            type='number'
-                        />
-                    </Grid>
-                </Grid>
+                <SelectInput
+                    xs={6}
+                    label='Leave Type'
+                    value={state.leave_type}
+                    onChange={e => onChange('leave_type')(e.target.value)}
+                    selection={props.leaveTypes}
+                />
+                <DateInput
+                    label="Starting Date"
+                    value={state.start}
+                    onChange={val => onChange('date')(new Date(val))}
+                />
                 <TextInput xs={12}
                     style={{ marginTop: 5 }}
                     label="Reason"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid, Button, Container } from '@material-ui/core'
 import TextInput from '../../components/form/TextInput'
 import { COLOURS } from '../../constants/constants';
@@ -17,11 +17,14 @@ const button1Style = {
     backgroundColor: COLOURS.primary.lighter
 };
 
-function EditEmp() {
+function EditEmp(props) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
-    const [empId, setEmpId] = useState('');
+    const [empId, setEmpId] = useState(props.match.params.id || '');
     const [user, setUser] = useState(null);
+    const [counter, setCounter] = useState(0);
+
+
     const findEmp = () => {
         fetchData(
             EMPLOYEE_BY_ID,
@@ -29,11 +32,13 @@ function EditEmp() {
                 "employee_id": empId
             }),
             dispatch,
-            (res) => res.json().then(res => setUser(res))
+            (res) => res.json().then(res => setUser(res)),
+            () => setUser(null)
         );
     };
 
-    const submit = (newUser) => { }
+    useEffect(findEmp, [counter])
+
 
     return (
         <Container maxWidth='md'>
@@ -43,7 +48,6 @@ function EditEmp() {
                 alignItems='center'
                 style={{ paddingTop: 50 }}
             >
-
                 <TextInput
                     value={empId}
                     label='Employee ID'
@@ -53,7 +57,7 @@ function EditEmp() {
                 <Button variant='contained' onClick={findEmp} style={button1Style}>
                     Find Employee
                 </Button>
-                {user ? <EditUserFormManager oldUser={user} /> : null}
+                {user ? <EditUserFormManager oldUser={user} reload={setCounter} /> : null}
             </Grid>
         </Container>
     )

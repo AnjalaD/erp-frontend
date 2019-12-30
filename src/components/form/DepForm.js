@@ -1,10 +1,8 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import { Grid, Card, IconButton } from '@material-ui/core';
 import TextInput from './TextInput';
 import { AddCircleOutline, RemoveCircleOutline } from '@material-ui/icons';
 import SelectInput from './SelectInput';
-import { COLOURS } from '../../constants/constants';
 import ActionBar from './ActionBar';
 
 
@@ -124,8 +122,8 @@ function DepForm(props) {
                     ))}
                 </Grid>
                 <ActionBar
-                    b1={props.nextStep}
-                    b2={props.prevStep}
+                    b1={props.prevStep}
+                    b2={props.nextStep}
                 />
             </Grid >
         </Card>
