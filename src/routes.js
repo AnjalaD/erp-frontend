@@ -106,7 +106,7 @@ export const levelTwoRoutes = [
     },
     DIVIDER,
     {
-        path: 'reports',
+        path: '/reports',
         component: Reports,
         title: 'Reports',
         icon: <HomeIcon />
@@ -181,7 +181,7 @@ export const levelThreeRoutes = [
     },
     DIVIDER,
     {
-        path: 'reports',
+        path: '/reports',
         component: Reports,
         title: 'Reports',
         icon: <HomeIcon />

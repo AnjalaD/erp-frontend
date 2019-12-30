@@ -30,7 +30,7 @@ export const LEAVE_TYPES = HOST + '/leave/type';
 export const FORM_FIELDS = HOST + '/form-field/view';
 export const DEPARTMENTS = HOST + '/department/view';
 export const CUSTOM_FIELDS = HOST + '/custom/view';
-export const EMP_STATUS = HOST + '/employement-status/view';
+export const EMP_STATUS = HOST + '/employment-status/view';
 
 export const HR_AVAILABILITY = HOST + '/employee/hr';
 export const ORG_INSERT = HOST + '/organization-info/insert';
