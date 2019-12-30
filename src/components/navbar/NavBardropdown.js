@@ -9,25 +9,23 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const NavBardropdown = (props) => {
+const NavBardropdown = ({tasks}) => {
     const classes = useStyles();
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
+    const taskList = tasks.map(task => (
+        <DropdownItem>{task.name}</DropdownItem>
+    ))
+
     return (
         <Dropdown className={classes.dropdown} isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle className={classes.dropdown} caret>
                 Dropdown
-        </DropdownToggle>
+            </DropdownToggle>
             <DropdownMenu>
-                <DropdownItem header>Header</DropdownItem>
-                <DropdownItem>Some Action</DropdownItem>
-                <DropdownItem disabled>Action (disabled)</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Foo Action</DropdownItem>
-                <DropdownItem>Bar Action</DropdownItem>
-                <DropdownItem>Quo Action</DropdownItem>
+                {taskList}
             </DropdownMenu>
         </Dropdown>
     );

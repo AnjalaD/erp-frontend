@@ -26,6 +26,9 @@ import LeaveHistory from './views/level_1/LeaveHistory';
 import DepartmentManager from './views/level_3/DepartmentManager';
 import LeaveActionHistory from './views/supervisor/LeaveActionHistory';
 import EmpStatusManager from './views/level_3/EmpStatusManager';
+import NestedList from './components/navbar/NestedList'
+import { faPaperclip} from '@fortawesome/free-solid-svg-icons';
+
 
 
 export const supervisorRoutes = [
@@ -33,7 +36,7 @@ export const supervisorRoutes = [
         path: '/requested-leaves',
         component: RequestedLeaves,
         title: 'Requested Leaves',
-        icon: <HomeIcon />
+        icon: faPaperclip
     },
     {
         path: '/leaves-history',
@@ -53,6 +56,10 @@ export const guestRoutes = [
     {
         path: '/',
         component: Login
+    },
+    {
+        path: '/nest',
+        component: NestedList
     },
     {
         path: '/load',

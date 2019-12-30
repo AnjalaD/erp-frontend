@@ -34,28 +34,27 @@ function ColourPicker(props) {
 
     const colours = [
         {
-            colour: 'ff0000',
+            colourCode: '#ff0000',
             colourName: 'Red'
         },
         {
-            colour: '00ff00',
+            colourCode: '#00ff00',
             colourName: 'Green'
         },
         {
-            colour: '0000ff',
+            colourCode: '#0000ff',
             colourName: 'Blue'
         }
     ]
 
     const colourList = colours.map(colour => (
-        <ColourButton colour={colour} />
+        <ColourButton colour={colour} key={colour.colourName} />
     ))
 
     const [selectedColour, setSelectedColour] = useState('#237614')
 
     const changeSelectedColour = (colour) => {
-        console.log("wer")
-        setSelectedColour('#767579')
+        setSelectedColour(colour)
     }
 
     return (
