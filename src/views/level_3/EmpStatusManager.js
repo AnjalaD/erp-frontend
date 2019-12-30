@@ -7,11 +7,11 @@ function EmpStatusManager() {
     return (
         <Container maxWidth='md'>
             <ExtendedEditableTable
-                title='Employement Status'
+                title='Employment Status'
                 columns={[
                     {
-                        title: 'Employement Status',
-                        field: 'employement_status',
+                        title: 'Employment Status',
+                        field: 'employment_status',
                     }
                 ]}
                 dataApi={EMP_STATUS}
