@@ -14,7 +14,7 @@ import AdminHome from './views/admin/AdminHome';
 import AddHR from './views/admin/AddHR';
 import AddNewEmp from './views/level_3/AddNewEmp';
 import EditEmp from './views/level_2/EditEmp';
-import ColourPicker from './components/settings/ColourPicker';
+import ColourChanger from './components/settings/ColourChanger';
 import FormFieldManager from './views/level_3/FormFieldManager';
 import JobTitleManager from './views/level_3/JobTitleManager';
 import PayGradeManager from './views/level_3/PayGradeManager';
@@ -65,7 +65,7 @@ export const guestRoutes = [
     },
     {
         path: '/colour',
-        component: ColourPicker
+        component: ColourChanger
     }
 ];
 
