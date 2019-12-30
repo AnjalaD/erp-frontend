@@ -14,7 +14,8 @@ function CustomTable(props) {
                 actionsColumnIndex: -1,
                 rowStyle: row => ({
                     backgroundColor: row.tableData.id % 2 === 0 ? COLOURS.primary.lighter : '#FFF'
-                })
+                }),
+                ...props.options
             }}
             {...props}
         />
