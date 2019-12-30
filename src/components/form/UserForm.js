@@ -90,6 +90,18 @@ function UserForm(props) {
                     ]}
                 />
                 <SelectInput
+                    label="Employment Status"
+                    value={user.employment_status}
+                    onChange={userHandler('employment_status')}
+                    selection={formFields.employment_status}
+                />
+                <SelectInput
+                    label="Department"
+                    value={user.dept_name}
+                    onChange={userHandler('dept_name')}
+                    selection={formFields.dept_name}
+                />
+                <SelectInput
                     label="Job Title"
                     value={user.job_title}
                     onChange={userHandler('job_title')}
@@ -101,12 +113,7 @@ function UserForm(props) {
                     onChange={userHandler('pay_grade')}
                     selection={formFields.pay_grade}
                 />
-                <SelectInput
-                    label="Employment Status"
-                    value={user.employment_status}
-                    onChange={userHandler('employment_status')}
-                    selection={formFields.employment_status}
-                />
+
                 {
                     email ?
                         <MultiTextInput

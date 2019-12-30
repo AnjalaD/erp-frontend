@@ -50,9 +50,9 @@ function UserFormManager({ oldUser, submit = null }) {
 
     const initFormFields = {
         job_title: [],
-        marital_status: [],
         pay_grade: [],
-        employment_status: []
+        employment_status: [],
+        dept_name: []
     }
 
     const [step, setStep] = useState(1);
