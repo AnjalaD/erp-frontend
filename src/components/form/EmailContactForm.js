@@ -16,10 +16,18 @@ function EmailContactForm({ id, type, label, value, prevStep, api }) {
         isEdit: true
     }
 
+    const [state, setState] = useState(value.map(item => ({
+        value: item[type],
+        old: item[type],
+        isNew: false,
+        isEdit: false
+    })))
+
     const setSaved = (i) => {
         const newVal = [...state];
         newVal[i].isNew = false;
         newVal[i].isEdit = false;
+        newVal[i].old = state[i].value;
         setState(newVal);
     }
 
@@ -28,13 +36,6 @@ function EmailContactForm({ id, type, label, value, prevStep, api }) {
         newVal[i].isEdit = true;
         setState(newVal);
     }
-
-    const [state, setState] = useState(value.map(item => ({
-        value: item[type],
-        old: item[type],
-        isNew: false,
-        isEdit: false
-    })))
 
     const onChange = (e, i) => {
         const newVal = [...state];
@@ -55,7 +56,7 @@ function EmailContactForm({ id, type, label, value, prevStep, api }) {
             fetchData(
                 api,
                 makeOptions(token, 'POST', {
-                    email: [{
+                    [type]: [{
                         employee_id: id,
                         [type]: state[i].value
                     }]
@@ -87,7 +88,7 @@ function EmailContactForm({ id, type, label, value, prevStep, api }) {
             api,
             makeOptions(token, 'DELETE', {
                 employee_id: id,
-                email: state[i].value
+                [type]: state[i].old
             }),
             dispatch,
             () => remove(i)

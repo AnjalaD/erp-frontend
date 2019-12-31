@@ -1,4 +1,5 @@
 import { loading } from "../redux/actions";
+import { TIMEZONE } from "../constants/constants";
 
 export const makeOptions = (token, method = 'GET', data = {}) => (
     method === 'GET' ?
@@ -48,4 +49,14 @@ export const fetchData = (
             if (dispatch) dispatch(loading(false))
         });
 
+}
+
+export const getLocalDate = function (inputDate) {
+    var new_date = new Date(inputDate).toLocaleDateString('en-US', {
+        timeZone: TIMEZONE,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+    return "".concat(new_date.slice(6, 10), "-", new_date.slice(0, 2), "-", new_date.slice(3, 5));
 }

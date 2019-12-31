@@ -44,7 +44,14 @@ function EditEmgForm({ emg, prevStep, nextStep, id }) {
     }
 
     const onSave = (i) => {
+        const { nic, name, contact_no } = state[i];
         const newVal = [...state];
+        newVal[i].old = {
+            nic: nic,
+            name: name,
+            contact_no: contact_no,
+            employee_id: id
+        }
         newVal[i].isNew = false;
         newVal[i].isEdit = false;
         setState(newVal);
@@ -57,11 +64,15 @@ function EditEmgForm({ emg, prevStep, nextStep, id }) {
     }
 
     const save = (i) => {
+        const { nic, name, contact_no } = state[i]
+
         if (state[i].isNew) {
             fetchData(
                 EDIT_EMP_EMG_CONTACTS,
                 makeOptions(token, 'POST', {
-                    ...state[i],
+                    nic: nic,
+                    name: name,
+                    contact_no: contact_no,
                     employee_id: id
                 }),
                 dispatch,
@@ -72,7 +83,9 @@ function EditEmgForm({ emg, prevStep, nextStep, id }) {
                 EDIT_EMP_EMG_CONTACTS,
                 makeOptions(token, 'PATCH', {
                     new: {
-                        ...state[i],
+                        nic: nic,
+                        name: name,
+                        contact_no: contact_no,
                         employee_id: id
                     },
                     old: {
@@ -86,7 +99,20 @@ function EditEmgForm({ emg, prevStep, nextStep, id }) {
         }
     }
 
-    const del = (i) => { }
+    const del = (i) => {
+        const { nic, name, contact_no } = state[i].old;
+        fetchData(
+            EDIT_EMP_EMG_CONTACTS,
+            makeOptions(token, 'DELETE', {
+                nic: nic,
+                name: name,
+                contact_no: contact_no,
+                employee_id: id,
+            }),
+            dispatch,
+            () => remove(i)
+        )
+    }
 
     return (
         <Card
@@ -140,7 +166,7 @@ function EditEmgForm({ emg, prevStep, nextStep, id }) {
                                     bottom: 0,
                                     right: 0,
                                     display: 'flex',
-                                    flexDirection: 'row'
+                                    flexDirection: 'row-reverse'
                                 }}>
                                 {
                                     obj.isNew ?

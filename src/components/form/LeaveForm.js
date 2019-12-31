@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Card, Typography, Button } from '@material-ui/core';
 import TextInput from './TextInput';
 import { COLOURS } from '../../constants/constants';
-import DateInput from './DateInput';
 import SelectInput from './SelectInput';
-import { fetchData, makeOptions } from '../../util/helper';
+import { fetchData, makeOptions, getLocalDate } from '../../util/helper';
 import { APPLY_LEAVE } from '../../constants/api';
 
 function LeaveForm(props) {
-    const currentDate = new Date().toISOString();
+    const currentDate = getLocalDate(new Date());
+    console.log(currentDate);
     const initState = {
         leave_type: '',
         date: currentDate,
@@ -53,10 +53,11 @@ function LeaveForm(props) {
                     onChange={e => onChange('leave_type')(e.target.value)}
                     selection={props.leaveTypes}
                 />
-                <DateInput
-                    label="Starting Date"
-                    value={state.start}
-                    onChange={val => onChange('date')(new Date(val))}
+                <TextInput
+                    label="Leave Date"
+                    type="date"
+                    value={state.date}
+                    onChange={e => onChange('date')(e.target.value)}
                 />
                 <TextInput xs={12}
                     style={{ marginTop: 5 }}

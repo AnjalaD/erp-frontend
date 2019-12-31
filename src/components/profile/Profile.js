@@ -6,6 +6,7 @@ import { faUser, faPassport, faHome, faCalendarAlt, faRing, faBaby, faBuilding, 
 
 const Profile = (props) => {
     const data = props.data;
+    console.log('data', data);
     return (
         <Container maxWidth="sm">
             <Card>
@@ -39,18 +40,20 @@ const Profile = (props) => {
                     }
                     {
                         Array.isArray(data.email) ? data.email.map((email, i) => (
-                            <ProfileRow name={'Email-' + (i + 1)} icon={faAt} value={email} key={i} />
+                            <ProfileRow name={'Email-' + (i + 1)} icon={faAt} value={email.email} key={i} />
                         ))
-                            :
-                            <ProfileRow name='Email' icon={faAt} value={data.email} />
+                            : data.email ?
+                                <ProfileRow name='Email' icon={faAt} value={data.email} />
+                                : null
                     }
                     {
                         Array.isArray(data.contact_no) ?
                             data.contact_no.map((contact, i) => (
-                                <ProfileRow name={'Contact No-' + (i + 1)} icon={faPhone} value={contact} xs={6} key={i} />
+                                <ProfileRow name={'Contact No-' + (i + 1)} icon={faPhone} value={contact.contact_no} xs={6} key={i} />
                             ))
-                            :
-                            <ProfileRow name='Contact No' icon={faPhone} value={data.contact_no} />
+                            : data.contact_no ?
+                                <ProfileRow name='Contact No' icon={faPhone} value={data.contact_no} />
+                                : null
                     }
                     {
                         data.custom ? data.custom.map(({ attribute, value }, i) => (

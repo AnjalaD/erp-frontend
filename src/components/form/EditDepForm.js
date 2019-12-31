@@ -13,6 +13,14 @@ function EditDepForm({ dep, prevStep, id }) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
 
+    const cleanDep = (dep) => {
+        const newDep = Object.assign(dep);
+        delete newDep.isNew;
+        delete newDep.isEdit;
+        delete newDep.old;
+        return newDep;
+    }
+
     const initDep = {
         employee_id: id,
         isNew: true,
@@ -31,6 +39,7 @@ function EditDepForm({ dep, prevStep, id }) {
 
     const [state, setState] = useState(dep.map(item => ({
         ...item,
+        old: item,
         isNew: false,
         isEdit: false,
         employee_id: id
@@ -53,6 +62,7 @@ function EditDepForm({ dep, prevStep, id }) {
 
     const onSave = (i) => {
         const newVal = [...state];
+        newVal[i].old = cleanDep(state[i]);
         newVal[i].isNew = false;
         newVal[i].isEdit = false;
         setState(newVal);
@@ -69,7 +79,7 @@ function EditDepForm({ dep, prevStep, id }) {
             fetchData(
                 EDIT_EMP_DEPENDENTS,
                 makeOptions(token, 'POST', {
-                    ...state[i],
+                    ...cleanDep(state[i]),
                     employee_id: id
                 }),
                 dispatch,
@@ -80,11 +90,11 @@ function EditDepForm({ dep, prevStep, id }) {
                 EDIT_EMP_DEPENDENTS,
                 makeOptions(token, 'PATCH', {
                     new: {
-                        ...state[i],
+                        ...cleanDep(state[i]),
                         employee_id: id
                     },
                     old: {
-                        ...state[i].old,
+                        ...cleanDep(state[i].old),
                         employee_id: id
                     }
                 }),
@@ -94,7 +104,17 @@ function EditDepForm({ dep, prevStep, id }) {
         }
     }
 
-    const del = (i) => { }
+    const del = (i) => {
+        fetchData(
+            EDIT_EMP_DEPENDENTS,
+            makeOptions(token, 'DELETE', {
+                ...cleanDep(state[i].old),
+                employee_id: id,
+            }),
+            dispatch,
+            () => remove(i)
+        )
+    }
 
     return (
         <Card

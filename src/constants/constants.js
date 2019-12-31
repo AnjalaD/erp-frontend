@@ -1,6 +1,8 @@
 //front end url
 export const URL = 'http://localhost:3000';
 
+export const TIMEZONE = "Asia/Kolkata";
+
 //employee types
 export const LEVEL3 = 'L3';
 export const LEVEL2 = 'L2';
