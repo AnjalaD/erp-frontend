@@ -13,8 +13,6 @@ import { } from '@fortawesome/free-solid-svg-icons';
 import { Divider } from '@material-ui/core';
 
 function CollapsingListItem(props) {
-    console.log(props);
-
     const [open, setOpen] = useState(false);
 
     const handleClick = () => {

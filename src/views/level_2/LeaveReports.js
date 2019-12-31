@@ -3,7 +3,7 @@ import { Container, Grid, Button } from '@material-ui/core';
 import SelectInput from '../../components/form/SelectInput';
 import { fetchData, makeOptions, getLocalDate } from '../../util/helper';
 import { useDispatch, useSelector } from 'react-redux';
-import { FILTER_EMPLOYEES, DEPARTMENTS, LEAVE_REPORT } from '../../constants/api';
+import { DEPARTMENTS, LEAVE_REPORT } from '../../constants/api';
 import CustomTable from '../../components/table/CustomTable';
 import { COLOURS } from '../../constants/constants';
 import TextInput from '../../components/form/TextInput';

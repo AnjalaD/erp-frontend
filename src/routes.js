@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Login from "./views/guest/Login";
 import Loading from "./views/shared/Loading";
 import RouterError from "./views/shared/RouterError";
