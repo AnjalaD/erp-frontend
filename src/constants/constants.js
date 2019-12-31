@@ -9,6 +9,11 @@ export const LEVEL2 = 'L2';
 export const LEVEL1 = 'L1';
 export const ADMIN = 'A';
 
+//leave states
+export const APPROVED = 'APPROVE';
+export const PENDING = 'PENDING';
+export const REJECTED = 'REJECTED';
+
 export const DIVIDER = 'divider';
 
 export const COMPANY_NAME = 'JUPITER';

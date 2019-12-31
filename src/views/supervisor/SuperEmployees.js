@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Container } from '@material-ui/core'
 import CustomTable from '../../components/table/CustomTable'
 import { fetchData, makeOptions } from '../../util/helper';
+import { SUPER_EMPLOYEES } from '../../constants/api';
 
 function SuperEmployees() {
     const dispatch = useDispatch();
@@ -11,7 +12,7 @@ function SuperEmployees() {
 
     useEffect(() => {
         fetchData(
-            '',
+            SUPER_EMPLOYEES,
             makeOptions(token),
             dispatch,
             (res) => res.json()
@@ -36,11 +37,11 @@ function SuperEmployees() {
                         field: 'last_name'
                     },
                     {
-                        title: 'Contact-No.',
-                        field: 'contact_no'
+                        title: 'Department',
+                        field: 'dept_name'
                     }, {
-                        title: 'Email',
-                        field: 'email'
+                        title: 'Job-Title',
+                        field: 'job_title'
                     }
                 ]}
                 data={tableData}
