@@ -10,6 +10,7 @@ export const SUPER_REJECT_LEAVE = HOST + '/supervisor/subs';
 
 //guest
 export const LOGIN = HOST + '/user/login';
+export const ADMIN_LOGIN = HOST + '/user/login-admin';
 export const GET_USER = HOST + '/employee/profile';
 
 //level2
