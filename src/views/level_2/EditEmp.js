@@ -39,7 +39,7 @@ function EditEmp(props) {
         );
     };
 
-    useEffect(findEmp, [counter])
+    useEffect(() => empId ? findEmp() : null, [counter])
 
 
     return (

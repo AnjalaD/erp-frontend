@@ -1,4 +1,4 @@
-import { loading } from "../redux/actions";
+import { loading, new_message } from "../redux/actions";
 import { TIMEZONE } from "../constants/constants";
 
 export const makeOptions = (token, method = 'GET', data = {}) => (
@@ -39,13 +39,39 @@ export const fetchData = (
                 res.clone().json()
                     .then(res => console.log(url, res));
                 onSuccess(res);
-                console.log('success');
+                dispatch(new_message({
+                    type: 'success',
+                    message: 'Success!'
+                }));
+                console.log('##success...');
             }
-            else onFail();
+            else {
+                onFail();
+                if (res.status === 400) {
+                    res.json().then(res => dispatch(new_message({
+                        type: 'error',
+                        message: res.error
+                    })))
+                } else if (res.status === 500) {
+                    res.json().then(res => dispatch(new_message({
+                        type: 'error',
+                        message: res.error
+                    })))
+                }
+                console.log('##fail...')
+
+            }
         })
-        .catch(err => onError(err))
+        .catch(err => {
+            onError(err);
+            dispatch(new_message({
+                type: 'error',
+                message: 'Network Error!'
+            }))
+            console.log('##error...');
+
+        })
         .finally(() => {
-            console.log('finaly');
             if (dispatch) dispatch(loading(false))
         });
 

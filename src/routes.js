@@ -24,10 +24,30 @@ import LeaveHistory from './views/level_1/LeaveHistory';
 import DepartmentManager from './views/level_3/DepartmentManager';
 import LeaveActionHistory from './views/supervisor/LeaveActionHistory';
 import EmpStatusManager from './views/level_3/EmpStatusManager';
-import NestedList from './components/navbar/NestedList'
-import { faPaperclip, faStickyNote, faUsers, faScroll, faUserEdit, faFileAlt, faUserPlus, faUniversity, faDotCircle, faUserTie, faFileInvoiceDollar, faBars, faBuilding, faHome, faUserTag, faArrowsAltH, faUser, faTasks, faPager, faEye, faUserCircle} from '@fortawesome/free-solid-svg-icons';
+import { faPaperclip, faStickyNote, faUsers, faScroll, faUserEdit, faFileAlt, faUserPlus, faUniversity, faDotCircle, faUserTie, faFileInvoiceDollar, faBars, faBuilding, faHome, faUserTag, faArrowsAltH, faUser, faTasks, faPager, faEye, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import LeaveReports from './views/level_2/LeaveReports';
 
-
+const reports = {
+    title: 'Reports',
+    icon: faUser,
+    root: false,
+    children: [
+        {
+            path: '/employee-reports',
+            component: Reports,
+            title: 'Employee Reports',
+            root: true,
+            icon: faFileAlt
+        },
+        {
+            path: '/leave-reports',
+            component: LeaveReports,
+            title: 'Leave Reports',
+            root: true,
+            icon: faFileAlt
+        },
+    ]
+};
 
 export const supervisorRoutes = [
     {
@@ -63,10 +83,6 @@ export const guestRoutes = [
     {
         path: '/',
         component: Login
-    },
-    {
-        path: '/nest',
-        component: NestedList
     },
     {
         path: '/load',
@@ -113,7 +129,7 @@ export const levelOneRoutes = [
 
 export const levelTwoRoutes = [
     ...levelOneRoutes,
-    
+
     {
         title: 'Employee',
         icon: faUser,
@@ -133,15 +149,8 @@ export const levelTwoRoutes = [
                 root: true,
                 icon: faUserEdit
             }]
-},
-    
-    {
-        path: '/reports',
-        component: Reports,
-        title: 'Reports',
-        root: true,
-        icon: faFileAlt
     },
+    reports,
     ...supervisorRoutes
 ];
 
@@ -229,13 +238,7 @@ export const levelThreeRoutes = [
                 icon: faUserTag
             }]
     },
-    {
-        path: '/reports',
-        component: Reports,
-        title: 'Reports',
-        root: true,
-        icon: faFileAlt
-    },
+    reports,
     ...supervisorRoutes
 ];
 

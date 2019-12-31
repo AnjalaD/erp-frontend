@@ -4,25 +4,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchData, makeOptions } from '../../util/helper';
 import CustomTable from '../../components/table/CustomTable';
 import { MTableToolbar } from 'material-table';
+import { SUPER_GET_LEAVES, SUPER_REJECT_LEAVE, SUPER_APPROVE_LEAVE } from '../../constants/api';
+import { REJECTED, APPROVED } from '../../constants/constants';
 
 function RequestedLeaves() {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
     const [error, setError] = useState(null);
 
-    const [tableData, setTableData] = useState([
-        {
-            employee_id: 1234,
-            date: '120204',
-            leave_type: 'annual',
-        }
-    ]);
+    const [tableData, setTableData] = useState([]);
 
     const rejectR = (resolve, reject, leaveRequest) => {
         fetchData(
-            '',
+            SUPER_REJECT_LEAVE,
             makeOptions(token, 'POST', {
-                leaveRequest: leaveRequest
+                ...leaveRequest,
+                state: REJECTED
             }),
             dispatch,
             () => resolve(),
@@ -32,9 +29,10 @@ function RequestedLeaves() {
 
     const approve = (resolve, reject, leaveRequest) => {
         fetchData(
-            '',
+            SUPER_APPROVE_LEAVE,
             makeOptions(token, 'POST', {
-                leaveRequest: leaveRequest
+                ...leaveRequest,
+                state: APPROVED
             }),
             dispatch,
             () => resolve(),
@@ -44,7 +42,7 @@ function RequestedLeaves() {
 
     useEffect(() => {
         fetchData(
-            '',
+            SUPER_GET_LEAVES,
             makeOptions(token),
             dispatch,
             (res) => res.json()

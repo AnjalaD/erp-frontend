@@ -20,3 +20,8 @@ export const add_user = (user) => ({
 export const remove_user = () => ({
     type: 'REMOVE_USER'
 })
+
+export const new_message = message => ({
+    type: 'NEW_MESSAGE',
+    payload: message
+})

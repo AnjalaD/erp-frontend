@@ -72,7 +72,7 @@ function DepForm(props) {
                                     value={obj.relationship}
                                     onChange={onChange('relationship', key)}
                                     selection={[
-                                        'Father', 'Mother', 'Son', 'Daughter', 'Other'
+                                        'Spouse', 'Father', 'Mother', 'Son', 'Daughter', 'Other'
                                     ]}
                                 />
                                 <TextInput

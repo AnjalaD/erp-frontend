@@ -11,6 +11,7 @@ import { ADMIN, LEVEL1, LEVEL2, LEVEL3, DIVIDER } from './constants/constants';
 import Loading from './views/shared/Loading';
 import { login } from './redux/actions';
 import Cookies from 'js-cookie';
+import NotificationBar from './components/notification/NotificationBar';
 
 
 function App() {
@@ -20,10 +21,14 @@ function App() {
 
   const createRoutes = (routes) => routes.map(
     (route, index) => (
-      route === DIVIDER ?
-        null
-        :
+      route.root ?
         <Route path={route.path} component={route.component} key={index} exact />
+        :
+        route.children.map((route, index) => (
+          route.root ?
+            <Route path={route.path} component={route.component} key={index} exact />
+            : null
+        ))
     )
   );
 
@@ -60,6 +65,7 @@ function App() {
             </Switch>
           </BrowserRouter>
       }
+      <NotificationBar />
       <Footer />
     </div>
   );

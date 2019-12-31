@@ -25,6 +25,7 @@ export default function Loading() {
 
     return (
         <Modal
+            style={{ transition: '1s' }}
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
             open={isLoading}
