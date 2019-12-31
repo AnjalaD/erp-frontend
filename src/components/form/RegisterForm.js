@@ -13,10 +13,10 @@ function RegisterForm(props) {
 
     const [state, setState] = useState(initState);
 
-    const onChange = key => e => {
+    const onChange = key => value => {
         setState(state => ({
             ...state,
-            [key]: e.target.value
+            [key]: value
         }))
     }
 
@@ -35,24 +35,24 @@ function RegisterForm(props) {
                     label="Employee ID"
                     type="employee_id"
                     value={state.employee_id}
-                    onChange={onChange('employee_id')}
+                    onChange={e => onChange('employee_id')(e.target.value)}
                 />
                 <TextInput xs={12}
                     label="Username"
                     value={state.username}
-                    onChange={onChange('username')}
+                    onChange={e => onChange('username')(e.target.value)}
                 />
                 <TextInput xs={12}
                     label="Password"
                     type="password"
                     value={state.password}
-                    onChange={onChange('password')}
+                    onChange={e => onChange('password')(e.target.value)}
                 />
                 <TextInput xs={12}
                     label="Confirm Password"
                     type="password"
                     value={state.confirm_password}
-                    onChange={onChange('confirm_password')}
+                    onChange={e => onChange('confirm_password')(e.target.value)}
                 />
                 <Grid item xs={12} style={{ margin: 20, padding: 5 }} align="right">
                     <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color: COLOURS.primary.lighter }}
