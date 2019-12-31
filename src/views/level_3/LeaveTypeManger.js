@@ -18,6 +18,7 @@ function LeaveTypeManger() {
                 insertApi={LEAVE_TYPES}
                 updateApi={LEAVE_TYPES}
                 deleteApi={LEAVE_TYPES}
+                insertMethod='PUT'
             />
         </Container>
     )

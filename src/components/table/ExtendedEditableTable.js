@@ -4,6 +4,7 @@ import { fetchData, makeOptions } from '../../util/helper';
 import EditableTable from '../../components/table/EditableTable';
 
 function ExtendedEditableTable(props) {
+    const { deleteMethod, insertMethod, updateMethod } = props;
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
 
@@ -23,7 +24,7 @@ function ExtendedEditableTable(props) {
         console.log('oldData', oldData);
         fetchData(
             props.deleteApi,
-            makeOptions(token, 'DELETE', oldData),
+            makeOptions(token, deleteMethod || 'DELETE', oldData),
             dispatch,
             onSuccess,
             onFail
@@ -34,7 +35,7 @@ function ExtendedEditableTable(props) {
         console.log('newData', newData, oldData);
         fetchData(
             props.updateApi,
-            makeOptions(token, 'PATCH', {
+            makeOptions(token, updateMethod || 'PATCH', {
                 new: newData,
                 old: oldData
             }),
@@ -48,7 +49,7 @@ function ExtendedEditableTable(props) {
         console.log('newData', newData);
         fetchData(
             props.insertApi,
-            makeOptions(token, 'POST', newData),
+            makeOptions(token, insertMethod || 'POST', newData),
             dispatch,
             onSuccess,
             onFail

@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MaterialTable, { MTableToolbar } from 'material-table'
 import { Typography } from '@material-ui/core';
 import { COLOURS } from '../../constants/constants';
 
 function EditableTable(props) {
     const [state, setState] = useState({
-        columns: props.columns,
-        data: props.data
+        columns: [...props.columns],
+        data: [...props.data]
     });
     const [error, setError] = useState(null);
+
+    useEffect(() => {
+        setState({
+            columns: [...props.columns],
+            data: [...props.data]
+        })
+    }, [props.data, props.columns])
 
     return (
         <MaterialTable

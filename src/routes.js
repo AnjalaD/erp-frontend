@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Login from "./views/guest/Login";
 import Loading from "./views/shared/Loading";
 import RouterError from "./views/shared/RouterError";
@@ -26,6 +24,8 @@ import LeaveActionHistory from './views/supervisor/LeaveActionHistory';
 import EmpStatusManager from './views/level_3/EmpStatusManager';
 import { faPaperclip, faStickyNote, faUsers, faScroll, faUserEdit, faFileAlt, faUserPlus, faUniversity, faDotCircle, faUserTie, faFileInvoiceDollar, faBars, faBuilding, faHome, faUserTag, faArrowsAltH, faUser, faTasks, faPager, faEye, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import LeaveReports from './views/level_2/LeaveReports';
+import RegisterEmployee from "./views/level_3/RegisterEmployee";
+import ResetPassword from "./views/level_3/ResetPassword";
 
 const reports = {
     title: 'Reports',
@@ -82,19 +82,23 @@ export const supervisorRoutes = [
 export const guestRoutes = [
     {
         path: '/',
-        component: Login
+        component: Login,
+        root: true
     },
     {
         path: '/load',
-        component: Loading
+        component: Loading,
+        root: true
     },
     {
         path: '/error',
-        component: RouterError
+        component: RouterError,
+        root: true
     },
     {
         path: '/colour',
-        component: ColourChanger
+        component: ColourChanger,
+        root: true
     }
 ];
 
@@ -181,7 +185,22 @@ export const levelThreeRoutes = [
                 title: 'Edit Employee',
                 root: true,
                 icon: faUserEdit
-            }]
+            },
+            {
+                path: '/register-employee',
+                component: RegisterEmployee,
+                title: 'Register Employee',
+                root: true,
+                icon: faUserEdit
+            },
+            {
+                path: '/user-pass-reset',
+                component: ResetPassword,
+                title: 'Reset Password',
+                root: true,
+                icon: faUserEdit
+            }
+        ]
     },
     {
         title: 'Management',

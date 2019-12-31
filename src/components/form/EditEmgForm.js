@@ -82,6 +82,7 @@ function EditEmgForm({ emg, prevStep, nextStep, id }) {
             fetchData(
                 EDIT_EMP_EMG_CONTACTS,
                 makeOptions(token, 'PATCH', {
+                    employee_id: id,
                     new: {
                         nic: nic,
                         name: name,

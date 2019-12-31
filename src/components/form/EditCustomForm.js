@@ -29,6 +29,7 @@ function EditCustomForm({ id, value, prevStep, nexStep }) {
         fetchData(
             EDIT_EMP_CUSTOM,
             makeOptions(token, 'PATCH', {
+                employee_id: id,
                 attributes: data.map(item => ({
                     attribute: item.attribute,
                     value: item.value,

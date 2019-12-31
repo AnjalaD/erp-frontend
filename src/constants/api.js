@@ -31,12 +31,15 @@ export const EDIT_EMP_EMG_CONTACTS = HOST + '/employee/emergency';
 
 //level3
 export const NEW_EMPLOYEE = '/employee/add';
+export const REGISTER_EMPLOYEE = '/user/register';
+export const RESET_PASSWORD = '/user/password-reset'
 
 export const JOB_TITLES = HOST + '/job-title/view';
 export const JOB_TITLES_ADD = HOST + '/job-title/add';
 export const PAY_GRADES = HOST + '/pay-grade/view';
 export const PAY_GRADES_ADD = HOST + '/pay-grade/add';
 export const LEAVE_LIMITS = HOST + '/leave/limits';
+export const LEAVE_LIMITS_ADD = HOST + '/leave/limit';
 export const LEAVE_TYPES = HOST + '/leave/type';
 export const FORM_FIELDS = HOST + '/form-field/view';
 export const FORM_FIELDS_ADD = HOST + '/form-field/add';

@@ -68,6 +68,7 @@ function EmailContactForm({ id, type, label, value, prevStep, api }) {
             fetchData(
                 api,
                 makeOptions(token, 'PATCH', {
+                    employee_id: id,
                     new: {
                         employee_id: id,
                         [type]: state[i].value

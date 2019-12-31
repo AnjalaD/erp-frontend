@@ -7,7 +7,7 @@ import RouterError from './views/shared/RouterError';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { guestRoutes, levelOneRoutes, levelTwoRoutes, levelThreeRoutes, adminRoutes } from './routes';
-import { ADMIN, LEVEL1, LEVEL2, LEVEL3, DIVIDER } from './constants/constants';
+import { ADMIN, LEVEL1, LEVEL2, LEVEL3 } from './constants/constants';
 import Loading from './views/shared/Loading';
 import { login } from './redux/actions';
 import Cookies from 'js-cookie';
