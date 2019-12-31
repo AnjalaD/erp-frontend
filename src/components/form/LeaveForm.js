@@ -9,7 +9,6 @@ import { APPLY_LEAVE } from '../../constants/api';
 
 function LeaveForm(props) {
     const currentDate = getLocalDate(new Date());
-    console.log(currentDate);
     const initState = {
         leave_type: '',
         date: currentDate,
