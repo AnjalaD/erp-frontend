@@ -37,6 +37,7 @@ export const JOB_TITLES_ADD = HOST + '/job-title/add';
 export const PAY_GRADES = HOST + '/pay-grade/view';
 export const PAY_GRADES_ADD = HOST + '/pay-grade/add';
 export const LEAVE_LIMITS = HOST + '/leave/limits';
+export const LEAVE_LIMITS_ADD = HOST + '/leave/limit';
 export const LEAVE_TYPES = HOST + '/leave/type';
 export const FORM_FIELDS = HOST + '/form-field/view';
 export const FORM_FIELDS_ADD = HOST + '/form-field/add';

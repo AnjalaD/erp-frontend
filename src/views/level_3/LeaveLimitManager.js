@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '@material-ui/core';
-import { LEAVE_LIMITS, PAY_GRADES, LEAVE_TYPES } from '../../constants/api';
+import { LEAVE_LIMITS, PAY_GRADES, LEAVE_TYPES, LEAVE_LIMITS_ADD } from '../../constants/api';
 import ExtendedEditableTable from '../../components/table/ExtendedEditableTable';
 import { fetchData, makeOptions } from '../../util/helper';
 
@@ -57,13 +57,13 @@ function LeaveLimitManager() {
                     {
                         title: 'Pay Grade',
                         field: 'pay_grade',
-                        editable: 'never',
+                        editable: 'onAdd',
                         lookup: state.pay_grade
                     },
                     {
                         title: 'Leave Type',
                         field: 'leave_type',
-                        editable: 'never',
+                        editable: 'onAdd',
                         lookup: state.leave_type
                     },
                     {
@@ -72,9 +72,10 @@ function LeaveLimitManager() {
                     }
                 ]}
                 dataApi={LEAVE_LIMITS}
-                insertApi={LEAVE_LIMITS}
+                insertApi={LEAVE_LIMITS_ADD}
                 updateApi={LEAVE_LIMITS}
                 deleteApi={LEAVE_LIMITS}
+                insertMethod='PUT'
             />
         </Container>
     )
