@@ -87,7 +87,7 @@ function UserForm(props) {
                     value={user.marital_status}
                     onChange={userHandler('marital_status')}
                     selection={[
-                        'Single', 'Married'
+                        'Single', 'Married', 'Divorsed'
                     ]}
                 />
                 <SelectInput
