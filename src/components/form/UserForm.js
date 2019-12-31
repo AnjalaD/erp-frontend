@@ -56,6 +56,7 @@ function UserForm(props) {
                     onChange={userHandler('nic')}
                 />
                 <TextInput
+                    type="date"
                     label="Birthday"
                     value={user.dob}
                     onChange={userHandler('dob')}
