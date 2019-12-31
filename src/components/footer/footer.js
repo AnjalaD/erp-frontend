@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { COLOURS, DETAILS } from '../../constants/constants';
-import { faBuilding, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { COLOURS } from '../../constants/constants';
+import { faBuilding, faPhone, faRegistered } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -42,19 +42,50 @@ const styles = theme => ({
 });
 
 function Footer(props) {
-    const { classes } = props;
+    const { classes, data } = props;
+    // console.log('data', data);
+
+    const temp = data.filter(item =>
+        item.key === 'Name' ||
+        item.key === 'Reg No.' ||
+        item.key === 'Address Line 1' ||
+        item.key === 'Address Line 2' ||
+        item.key === 'Address Line 3' ||
+        item.key === 'Contact No.'
+    );
+    const details = {};
+    temp.forEach(item => {
+        details[item.key] = item.value;
+    });
 
     return (
         <footer className={classes.footer}>
             <Paper className={classes.root} elevation={1}>
                 <Typography variant="h4" className={classes.text} component="h2" >
-                    {DETAILS.name}
+                    {details['Name']}
+                </Typography>
+                <Typography className={classes.details} component="p" >
+                    <FontAwesomeIcon icon={faRegistered} />{details['Reg No.']}
                 </Typography>
                 <Typography component="p" className={classes.details}>
-                    <FontAwesomeIcon icon={faBuilding} /> {DETAILS.address}<br />{DETAILS.city}
+                    <FontAwesomeIcon icon={faBuilding} /> {details['Address Line 1']}
                 </Typography>
+                {
+                    details['Address Line 2'] ?
+                        <Typography component="p" className={classes.details}>
+                            <FontAwesomeIcon icon={faBuilding} /> {details['Address Line 2']}
+                        </Typography>
+                        : null
+                }
+                {
+                    details['Address Line 3'] ?
+                        <Typography component="p" className={classes.details}>
+                            <FontAwesomeIcon icon={faBuilding} /> {details['Address Line 3']}
+                        </Typography>
+                        : null
+                }
                 <Typography variant="h6" component="p" className={classes.details}>
-                    <FontAwesomeIcon icon={faPhone} /> {DETAILS.contact}
+                    <FontAwesomeIcon icon={faPhone} /> {details['Contact No.']}
                 </Typography>
                 <Typography variant="h6" className={classes.right} align="right" component="h5" >
                     <i>developed by</i>: <br /> <b>devSoft</b>

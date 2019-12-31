@@ -7,7 +7,6 @@ export const SUPER_GET_LEAVES = HOST + '/supervisor/sub-leaves';
 export const SUPER_APPROVE_LEAVE = HOST + '/supervisor/subs';
 export const SUPER_REJECT_LEAVE = HOST + '/supervisor/subs';
 
-
 //guest
 export const LOGIN = HOST + '/user/login';
 export const ADMIN_LOGIN = HOST + '/user/login-admin';
@@ -53,6 +52,4 @@ export const EMP_STATUS_ADD = HOST + '/employment-status/add';
 
 //admin
 export const HR_AVAILABILITY = HOST + '/employee/hr';
-export const ORG_INSERT = HOST + '/organization-info/insert';
-export const ORG_VIEW = HOST + '/organization-info/view';
-export const ORG_DELETE = HOST + '/organization-info/delete';
+export const ORG_DETAILS = HOST + '/organization-info';

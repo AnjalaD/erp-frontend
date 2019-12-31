@@ -12,12 +12,15 @@ import Loading from './views/shared/Loading';
 import { login } from './redux/actions';
 import Cookies from 'js-cookie';
 import NotificationBar from './components/notification/NotificationBar';
+import { ORG_DETAILS } from './constants/api';
 
 
 function App() {
+
   const { loggedIn, access_level } = useSelector(state => state.status);
   const dispatch = useDispatch();
   const [checking, setChecking] = useState(true);
+  const [orgDetails, setOrgDetails] = useState([]);
 
   const createRoutes = (routes) => routes.map(
     (route, index) => (
@@ -47,6 +50,12 @@ function App() {
       dispatch(login(JSON.parse(user)));
     }
     setChecking(false);
+
+    fetch(ORG_DETAILS).
+      then(res => {
+        if (res.status === 200) res.json().then(res => setOrgDetails(res));
+      })
+      .catch(err => console.log(err));
   }, [dispatch])
 
   return (
@@ -66,7 +75,7 @@ function App() {
           </BrowserRouter>
       }
       <NotificationBar />
-      <Footer />
+      <Footer data={orgDetails} />
     </div>
   );
 }
