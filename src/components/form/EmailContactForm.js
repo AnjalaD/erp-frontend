@@ -27,6 +27,7 @@ function EmailContactForm({ id, type, label, value, prevStep, api }) {
         const newVal = [...state];
         newVal[i].isNew = false;
         newVal[i].isEdit = false;
+        newVal[i].old = state[i].value;
         setState(newVal);
     }
 
@@ -87,7 +88,7 @@ function EmailContactForm({ id, type, label, value, prevStep, api }) {
             api,
             makeOptions(token, 'DELETE', {
                 employee_id: id,
-                [type]: state[i].value
+                [type]: state[i].old
             }),
             dispatch,
             () => remove(i)

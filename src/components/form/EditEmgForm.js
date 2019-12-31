@@ -44,7 +44,14 @@ function EditEmgForm({ emg, prevStep, nextStep, id }) {
     }
 
     const onSave = (i) => {
+        const { nic, name, contact_no } = state[i];
         const newVal = [...state];
+        newVal[i].old = {
+            nic: nic,
+            name: name,
+            contact_no: contact_no,
+            employee_id: id
+        }
         newVal[i].isNew = false;
         newVal[i].isEdit = false;
         setState(newVal);
@@ -93,7 +100,7 @@ function EditEmgForm({ emg, prevStep, nextStep, id }) {
     }
 
     const del = (i) => {
-        const { nic, name, contact_no } = state[i]
+        const { nic, name, contact_no } = state[i].old;
         fetchData(
             EDIT_EMP_EMG_CONTACTS,
             makeOptions(token, 'DELETE', {

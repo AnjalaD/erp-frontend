@@ -62,6 +62,7 @@ function EditDepForm({ dep, prevStep, id }) {
 
     const onSave = (i) => {
         const newVal = [...state];
+        newVal[i].old = cleanDep(state[i]);
         newVal[i].isNew = false;
         newVal[i].isEdit = false;
         setState(newVal);
@@ -107,7 +108,7 @@ function EditDepForm({ dep, prevStep, id }) {
         fetchData(
             EDIT_EMP_DEPENDENTS,
             makeOptions(token, 'DELETE', {
-                ...cleanDep(state[i]),
+                ...cleanDep(state[i].old),
                 employee_id: id,
             }),
             dispatch,
