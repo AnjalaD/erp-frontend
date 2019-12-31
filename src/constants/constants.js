@@ -7,7 +7,7 @@ export const TIMEZONE = "Asia/Kolkata";
 export const LEVEL3 = 'L3';
 export const LEVEL2 = 'L2';
 export const LEVEL1 = 'L1';
-export const ADMIN = 'A';
+export const ADMIN = 'Admin';
 
 //leave states
 export const APPROVED = 'APPROVE';
