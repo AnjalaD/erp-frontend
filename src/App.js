@@ -21,10 +21,14 @@ function App() {
 
   const createRoutes = (routes) => routes.map(
     (route, index) => (
-      route === DIVIDER ?
-        null
-        :
+      route.root ?
         <Route path={route.path} component={route.component} key={index} exact />
+        :
+        route.children.map((route, index) => (
+          route.root ?
+            <Route path={route.path} component={route.component} key={index} exact />
+            : null
+        ))
     )
   );
 
