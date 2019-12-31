@@ -3,12 +3,12 @@ import { Container, Grid, Button } from '@material-ui/core';
 import SelectInput from '../../components/form/SelectInput';
 import { fetchData, makeOptions, getLocalDate } from '../../util/helper';
 import { useDispatch, useSelector } from 'react-redux';
-import { FILTER_EMPLOYEES, DEPARTMENTS } from '../../constants/api';
+import { FILTER_EMPLOYEES, DEPARTMENTS, LEAVE_REPORT } from '../../constants/api';
 import CustomTable from '../../components/table/CustomTable';
 import { COLOURS } from '../../constants/constants';
 import TextInput from '../../components/form/TextInput';
 
-function Reports() {
+function LeaveReports() {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
     const currentDate = getLocalDate(new Date());
@@ -33,7 +33,7 @@ function Reports() {
 
     const onSubmit = () => {
         fetchData(
-            FILTER_EMPLOYEES,
+            LEAVE_REPORT,
             makeOptions(token, 'POST', state),
             dispatch,
             res => res.json().then(res => setTableData(res))
@@ -48,9 +48,9 @@ function Reports() {
             res => res.json().then(res => {
                 setState(prev => ({
                     ...prev,
-                    department: res[0]
+                    department: res[0].dept_name
                 }))
-                setFields(res);
+                setFields(res.map(item => item.dept_name));
             })
         );
     }, [dispatch, token]);
@@ -67,9 +67,9 @@ function Reports() {
                     <SelectInput
                         xs={4}
                         label='Employement-Status'
-                        value={state.employment_status}
+                        value={state.department}
                         selection={fields}
-                        onChange={onChange('employment_status')}
+                        onChange={onChange('department')}
                     />
                     <TextInput
                         xs={3}
@@ -118,28 +118,20 @@ function Reports() {
                                 field: 'last_name'
                             },
                             {
-                                title: 'NIC',
-                                field: 'nic'
-                            },
-                            {
-                                title: 'Department',
-                                field: 'dept_name'
-                            },
-                            {
                                 title: 'Job Title',
                                 field: 'job_title'
                             },
                             {
-                                title: 'Pay-Grade',
-                                field: 'pay_grade'
+                                title: 'Leave Type',
+                                field: 'leave_type'
                             },
                             {
-                                title: 'Emp Status',
-                                field: 'employment_status'
+                                title: 'Leave State',
+                                field: 'state'
                             },
                             {
-                                title: 'Active',
-                                field: 'active_status'
+                                title: 'Leave Date',
+                                field: 'date'
                             }
                         ]}
                         data={tableData}
@@ -153,4 +145,4 @@ function Reports() {
     )
 }
 
-export default Reports
+export default LeaveReports
