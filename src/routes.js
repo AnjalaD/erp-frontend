@@ -1,6 +1,4 @@
 import React from 'react'
-import { DIVIDER } from './constants/constants';
-import HomeIcon from '@material-ui/icons/Home';
 
 import Login from "./views/guest/Login";
 import Loading from "./views/shared/Loading";
@@ -27,29 +25,38 @@ import DepartmentManager from './views/level_3/DepartmentManager';
 import LeaveActionHistory from './views/supervisor/LeaveActionHistory';
 import EmpStatusManager from './views/level_3/EmpStatusManager';
 import NestedList from './components/navbar/NestedList'
-import { faPaperclip, faStickyNote, faUsers, faUserAlt, faScroll, faUserEdit, faFileAlt, faUserPlus, faUniversity, faDotCircle, faUserTie, faFileInvoiceDollar, faBars, faBuilding, faHome, faUserTag, faArrowsAltH} from '@fortawesome/free-solid-svg-icons';
+import { faPaperclip, faStickyNote, faUsers, faScroll, faUserEdit, faFileAlt, faUserPlus, faUniversity, faDotCircle, faUserTie, faFileInvoiceDollar, faBars, faBuilding, faHome, faUserTag, faArrowsAltH, faUser, faTasks, faPager, faEye, faUserCircle} from '@fortawesome/free-solid-svg-icons';
 
 
 
 export const supervisorRoutes = [
     {
-        path: '/requested-leaves',
-        component: RequestedLeaves,
-        title: 'Requested Leaves',
-        icon: faPaperclip
-    },
-    {
-        path: '/leaves-history',
-        component: LeaveActionHistory,
-        title: 'Leaves History',
-        icon: faStickyNote
-    },
-    {
-        path: '/employees-under-supervisor',
-        component: SuperEmployees,
-        title: 'My Supervisees',
-        icon: faUsers
-    },
+        title: 'Supervise',
+        icon: faEye,
+        root: false,
+        children: [
+            {
+                path: '/requested-leaves',
+                component: RequestedLeaves,
+                title: 'Requested Leaves',
+                root: true,
+                icon: faPaperclip
+            },
+            {
+                path: '/leaves-history',
+                component: LeaveActionHistory,
+                title: 'Leaves History',
+                root: true,
+                icon: faStickyNote
+            },
+            {
+                path: '/employees-under-supervisor',
+                component: SuperEmployees,
+                title: 'My Supervisees',
+                root: true,
+                icon: faUsers
+            }]
+    }
 ];
 
 export const guestRoutes = [
@@ -80,120 +87,155 @@ export const levelOneRoutes = [
         path: '/userprofile',
         component: UserProfile,
         title: 'My Profile',
-        icon: faUserAlt
+        root: true,
+        icon: faUserCircle
     },
-    DIVIDER,
     {
-        path: '/apply-leave',
-        component: ApplyLeave,
-        title: 'Apply Leave',
-        icon: faPaperclip
-    }, {
-        path: '/my-leaves',
-        component: LeaveHistory,
-        title: 'My Leaves',
-        icon: faScroll
-    },
+        title: 'Leave',
+        icon: faPager,
+        root: false,
+        children: [
+            {
+                path: '/apply-leave',
+                component: ApplyLeave,
+                title: 'Apply Leave',
+                root: true,
+                icon: faPaperclip
+            }, {
+                path: '/my-leaves',
+                component: LeaveHistory,
+                title: 'My Leaves',
+                root: true,
+                icon: faScroll
+            }]
+    }
 ];
 
 export const levelTwoRoutes = [
     ...levelOneRoutes,
-    DIVIDER,
+    
     {
-        path: '/view-all-employees',
-        component: ViewEmployees,
-        title: 'View Employees',
-        icon: faUsers
-    },
-    {
-        path: '/edit-employee/:id',
-        component: EditEmp,
-        title: 'Edit Employee',
-        icon: faUserEdit
-    },
-    DIVIDER,
+        title: 'Employee',
+        icon: faUser,
+        root: false,
+        children: [
+            {
+                path: '/view-all-employees',
+                component: ViewEmployees,
+                title: 'View Employees',
+                root: true,
+                icon: faUsers
+            },
+            {
+                path: '/edit-employee/:id',
+                component: EditEmp,
+                title: 'Edit Employee',
+                root: true,
+                icon: faUserEdit
+            }]
+},
+    
     {
         path: '/reports',
         component: Reports,
         title: 'Reports',
+        root: true,
         icon: faFileAlt
     },
-    DIVIDER,
     ...supervisorRoutes
 ];
 
 export const levelThreeRoutes = [
     ...levelOneRoutes,
-    DIVIDER,
     {
-        path: '/view-all-employees',
-        component: ViewEmployees,
-        title: 'View Employees',
-        icon: faUsers
+        title: 'Employee',
+        icon: faUser,
+        root: false,
+        children: [
+            {
+                path: '/view-all-employees',
+                component: ViewEmployees,
+                title: 'View Employees',
+                root: true,
+                icon: faUsers
+            },
+            {
+                path: '/add-new-employee',
+                component: AddNewEmp,
+                title: 'Add Employee',
+                root: true,
+                icon: faUserPlus
+            },
+            {
+                path: '/edit-employee/:id',
+                component: EditEmp,
+                title: 'Edit Employee',
+                root: true,
+                icon: faUserEdit
+            }]
     },
     {
-        path: '/add-new-employee',
-        component: AddNewEmp,
-        title: 'Add Employee',
-        icon: faUserPlus
+        title: 'Management',
+        icon: faTasks,
+        root: false,
+        children: [
+            {
+                path: '/departments',
+                component: DepartmentManager,
+                title: 'Departments',
+                root: true,
+                icon: faUniversity
+            },
+            {
+                path: '/custom-form-fields',
+                component: FormFieldManager,
+                title: 'Custom Fields',
+                root: true,
+                icon: faDotCircle
+            },
+            {
+                path: '/job-title',
+                component: JobTitleManager,
+                title: 'Job Titles',
+                root: true,
+                icon: faUserTie
+            },
+            {
+                path: '/pay-grade',
+                component: PayGradeManager,
+                title: 'Pay Grades',
+                root: true,
+                icon: faFileInvoiceDollar
+            },
+            {
+                path: '/leave-type',
+                component: LeaveTypeManger,
+                title: 'Leave Types',
+                root: true,
+                icon: faBars
+            },
+            {
+                path: '/leave-limit',
+                component: LeaveLimitManager,
+                title: 'Leave Limits',
+                root: true,
+                icon: faArrowsAltH
+            },
+            {
+                path: '/employement-status',
+                component: EmpStatusManager,
+                title: 'Employement Status',
+                root: true,
+                icon: faUserTag
+            }]
     },
-    {
-        path: '/edit-employee/:id',
-        component: EditEmp,
-        title: 'Edit Employee',
-        icon: faUserEdit
-    },
-    DIVIDER,
-    {
-        path: '/departments',
-        component: DepartmentManager,
-        title: 'Departments',
-        icon: faUniversity
-    },
-    {
-        path: '/custom-form-fields',
-        component: FormFieldManager,
-        title: 'Custom Fields',
-        icon: faDotCircle
-    },
-    {
-        path: '/job-title',
-        component: JobTitleManager,
-        title: 'Job Titles',
-        icon: faUserTie
-    },
-    {
-        path: '/pay-grade',
-        component: PayGradeManager,
-        title: 'Pay Grades',
-        icon: faFileInvoiceDollar
-    },
-    {
-        path: '/leave-type',
-        component: LeaveTypeManger,
-        title: 'Leave Types',
-        icon: faBars
-    },
-    {
-        path: '/leave-limit',
-        component: LeaveLimitManager,
-        title: 'Leave Limits',
-        icon: faArrowsAltH
-    },
-    {
-        path: '/employement-status',
-        component: EmpStatusManager,
-        title: 'Employement Status',
-        icon: faUserTag
-    },
-    DIVIDER,
     {
         path: '/reports',
         component: Reports,
         title: 'Reports',
+        root: true,
         icon: faFileAlt
     },
-    DIVIDER,
     ...supervisorRoutes
 ];
 
@@ -202,18 +244,21 @@ export const adminRoutes = [
         path: '/',
         component: AdminHome,
         title: 'Home',
+        root: true,
         icon: faHome
     },
     {
         path: '/org',
         component: OrgDetails,
         title: 'Organization',
+        root: true,
         icon: faBuilding
     },
     {
         path: '/hr-manager',
         component: AddHR,
         title: 'HR Manager',
+        root: true,
         icon: faUserPlus
     },
 ];

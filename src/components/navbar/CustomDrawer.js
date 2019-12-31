@@ -28,10 +28,14 @@ function CustomDrawer(props) {
     const createNavLink = (data) => (
         data.map((route, key) => (
 
-            route === 'divider' ?
-                <Divider key={key} />
-                :
-                <CollapsingListItem task={route.title} icon={route.icon} children={supervisors} key={key} />
+            // route === 'divider' ?
+            //     <Divider key={key} />
+            //     :
+                !route.root ?
+                    <CollapsingListItem task={route.title} icon={route.icon} childs={route.children} key={key} />
+                    :
+                    <NestedListItem task={route.title} icon={route.icon} key={key} path={route.path}/>
+                
                 // <NavLink exact key={key}
                 //     to={route.path}
                 // >

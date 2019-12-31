@@ -5,6 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
     nested: {
@@ -27,13 +28,16 @@ function NestedListItem(props) {
                 </ListItem>
             )
             :
-            (
+            (<div>
                 <ListItem button >
                     <ListItemIcon>
                         <FontAwesomeIcon icon={props.icon} />
                     </ListItemIcon>
                     <ListItemText primary={props.task} />
+                    
                 </ListItem>
+                <Divider />
+                </div>
             )}
     </NavLink>)
 

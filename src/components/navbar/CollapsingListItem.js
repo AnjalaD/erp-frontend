@@ -10,18 +10,22 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import {  } from '@fortawesome/free-solid-svg-icons';
+import { Divider } from '@material-ui/core';
 
 function CollapsingListItem(props) {
+    console.log(props);
+    
     const [open, setOpen] = useState(false);
 
     const handleClick = () => {
         setOpen(!open);
     };
 
-    const children = props.children;
+   const childs = props.childs;
 
-    const childrenlist = children.map(child => (
-        <NestedListItem task={child.task} icon={child.icon} nested={true} path={child.path} key={props.key} />
+    const childrenlist = childs.map(child => (
+
+        <NestedListItem task={child.title} icon={child.icon} nested={true} path={child.path} key={props.key} />
     ))
     return (
         <div>
@@ -39,6 +43,7 @@ function CollapsingListItem(props) {
                     {childrenlist}
             </List>
             </Collapse>
+            <Divider/>
             </div>
     )
 }
