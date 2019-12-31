@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import UserForm from './UserForm';
 import { fetchData, makeOptions } from '../../util/helper';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,8 +10,11 @@ import ActionBar from './ActionBar';
 import EmailContactForm from './EmailContactForm';
 import EditEmgForm from './EditEmgForm';
 import EditDepForm from './EditDepForm';
+import EditCustomForm from './EditCustomForm';
+import FullProfile from '../profile/FullProfile';
 
 const button2Style = {
+    height: 40,
     width: '100%',
     color: COLOURS.primary.darker,
     backgroundColor: COLOURS.primary.lighter
@@ -64,42 +67,52 @@ function EditUserFormManager({ oldUser, reload }) {
     const submit = (url, data) => {
         fetchData(
             url,
-            makeOptions(token, 'POST', data),
+            makeOptions(token, 'PATCH', {
+                new: data,
+            }),
             dispatch,
-            () => home()
+            home
         );
     }
 
     switch (step) {
         case 0:
             return (
-                <Grid container spacing={2}>
-                    <Grid item xs={6} >
-                        <Button variant='contained' style={button2Style} onClick={() => setStep(1)}>
-                            Edit Basic Details
+                <Fragment>
+                    <Grid container spacing={2} style={{ marginTop: 24 }} justify='center'>
+                        <Grid item xs={5} >
+                            <Button variant='contained' style={button2Style} onClick={() => setStep(1)}>
+                                Edit Basic Details
                         </Button>
-                    </Grid>
-                    <Grid item xs={6} >
-                        <Button variant='contained' style={button2Style} onClick={() => setStep(3)} >
-                            Edit Emails
+                        </Grid>
+                        <Grid item xs={5} >
+                            <Button variant='contained' style={button2Style} onClick={() => setStep(3)} >
+                                Edit Custom Details
                         </Button>
-                    </Grid>
-                    <Grid item xs={6} >
-                        <Button variant='contained' style={button2Style} onClick={() => setStep(5)} >
-                            Edit Contact No.
+                        </Grid>
+                        <Grid item xs={5} >
+                            <Button variant='contained' style={button2Style} onClick={() => setStep(4)} >
+                                Edit Emails
                         </Button>
-                    </Grid>
-                    <Grid item xs={6} >
-                        <Button variant='contained' style={button2Style} onClick={() => setStep(7)}>
-                            Edit Dependent details
+                        </Grid>
+                        <Grid item xs={5} >
+                            <Button variant='contained' style={button2Style} onClick={() => setStep(5)} >
+                                Edit Contact No.
                         </Button>
-                    </Grid>
-                    <Grid item xs={6} >
-                        <Button variant='contained' style={button2Style} onClick={() => setStep(9)} >
-                            Edit Emergency No.
+                        </Grid>
+                        <Grid item xs={5} >
+                            <Button variant='contained' style={button2Style} onClick={() => setStep(7)}>
+                                Edit Dependent details
                         </Button>
+                        </Grid>
+                        <Grid item xs={5} >
+                            <Button variant='contained' style={button2Style} onClick={() => setStep(9)} >
+                                Edit Emergency No.
+                        </Button>
+                        </Grid >
                     </Grid >
-                </Grid >
+                    <FullProfile profile={oldUser} style={{ marginTop: 24 }} />
+                </Fragment>
             )
         case 1:
             return (
@@ -107,7 +120,7 @@ function EditUserFormManager({ oldUser, reload }) {
                     id={id}
                     user={user}
                     setUser={setUser}
-                    custom={custom}
+                    custom={[]}
                     setCustom={setCustom}
                     nextStep={() => setStep(2)}
                     prevStep={() => home()}
@@ -124,14 +137,21 @@ function EditUserFormManager({ oldUser, reload }) {
 
                         <ActionBar
                             b1={() => setStep(1)}
-                            b2={() => submit(EDIT_EMP_BASIC_INFO, {
-                                employee: user
-                            })}
+                            b2={() => submit(EDIT_EMP_BASIC_INFO, user)}
                         />
                     </Grid>
                 </Grid>
             );
         case 3:
+            return (
+                <EditCustomForm
+                    id={id}
+                    value={custom}
+                    prevStep={() => home()}
+                    nexStep={() => { }}
+                />
+            );
+        case 4:
             return (
                 <EmailContactForm
                     id={id}
