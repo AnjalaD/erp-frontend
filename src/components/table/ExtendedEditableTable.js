@@ -4,7 +4,7 @@ import { fetchData, makeOptions } from '../../util/helper';
 import EditableTable from '../../components/table/EditableTable';
 
 function ExtendedEditableTable(props) {
-    const { deleteMethod, inserMethod, updateMethod } = props;
+    const { deleteMethod, insertMethod, updateMethod } = props;
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
 
@@ -49,7 +49,7 @@ function ExtendedEditableTable(props) {
         console.log('newData', newData);
         fetchData(
             props.insertApi,
-            makeOptions(token, inserMethod || 'POST', newData),
+            makeOptions(token, insertMethod || 'POST', newData),
             dispatch,
             onSuccess,
             onFail
