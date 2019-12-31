@@ -3,7 +3,7 @@ import UserForm from './UserForm';
 import DepForm from './DepForm';
 import Confirm from './Confirm';
 import EmgForm from './EmgForm';
-import { fetchData, makeOptions } from '../../util/helper';
+import { fetchData, makeOptions, getLocalDate } from '../../util/helper';
 import { useDispatch, useSelector } from 'react-redux';
 import { EMP_FORM_FIELDS } from '../../constants/api';
 
@@ -12,6 +12,7 @@ import { EMP_FORM_FIELDS } from '../../constants/api';
 function UserFormManager({ oldUser, submit = null }) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
+    const currentDate = getLocalDate(new Date('2000-01-01'));
 
     const initUser = {
         "first_name": "",
@@ -21,7 +22,7 @@ function UserFormManager({ oldUser, submit = null }) {
         "addr_line_1": "",
         "addr_line_2": "",
         "addr_city": "",
-        "dob": "",
+        "dob": currentDate,
         "marital_status": "",
         "employment_status": "",
         "job_title": "",
