@@ -11,6 +11,7 @@ import { ADMIN, LEVEL1, LEVEL2, LEVEL3, DIVIDER } from './constants/constants';
 import Loading from './views/shared/Loading';
 import { login } from './redux/actions';
 import Cookies from 'js-cookie';
+import NotificationBar from './components/notification/NotificationBar';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
             </Switch>
           </BrowserRouter>
       }
+      <NotificationBar />
       <Footer />
     </div>
   );
