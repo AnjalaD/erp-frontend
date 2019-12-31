@@ -9,7 +9,6 @@ import NestedListItem from './NestedListItem'
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import {  } from '@fortawesome/free-solid-svg-icons';
 import { Divider } from '@material-ui/core';
 
 function CollapsingListItem(props) {
@@ -25,7 +24,7 @@ function CollapsingListItem(props) {
 
     const childrenlist = childs.map(child => (
 
-        <NestedListItem task={child.title} icon={child.icon} nested={true} path={child.path} key={props.key} />
+        <NestedListItem task={child.title} icon={child.icon} nested={true} path={child.path} key={props.key}/>
     ))
     return (
         <div>
@@ -38,8 +37,8 @@ function CollapsingListItem(props) {
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-                    {/* <NestedListItem task="cat" icon={faEnvelope} nested={true} />
-                    <NestedListItem task="dog" icon={faStar} nested={true} /> */}
+                    {/* <NestedListItem task="cat" icon={faEnvelope} nested={true} key={props.key} path={'/leave-type'} />
+                    <NestedListItem task="dog" icon={faStar} nested={true} key={props.key} path={'/view-all-employees'} /> */}
                     {childrenlist}
             </List>
             </Collapse>
