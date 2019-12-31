@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from '@material-ui/core';
-import { JOB_TITLES } from '../../constants/api';
+import { JOB_TITLES, JOB_TITLES_ADD } from '../../constants/api';
 import ExtendedEditableTable from '../../components/table/ExtendedEditableTable';
 
 function JobTitleManager() {
@@ -20,7 +20,7 @@ function JobTitleManager() {
                     }
                 ]}
                 dataApi={JOB_TITLES}
-                insertApi={JOB_TITLES}
+                insertApi={JOB_TITLES_ADD}
                 updateApi={JOB_TITLES}
                 deleteApi={JOB_TITLES}
             />

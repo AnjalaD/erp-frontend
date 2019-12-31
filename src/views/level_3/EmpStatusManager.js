@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from '@material-ui/core'
 import ExtendedEditableTable from '../../components/table/ExtendedEditableTable'
-import { EMP_STATUS } from '../../constants/api'
+import { EMP_STATUS, EMP_STATUS_ADD } from '../../constants/api'
 
 function EmpStatusManager() {
     return (
@@ -15,7 +15,7 @@ function EmpStatusManager() {
                     }
                 ]}
                 dataApi={EMP_STATUS}
-                insertApi={EMP_STATUS}
+                insertApi={EMP_STATUS_ADD}
                 updateApi={EMP_STATUS}
                 deleteApi={EMP_STATUS}
             />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from '@material-ui/core';
 import ExtendedEditableTable from '../../components/table/ExtendedEditableTable';
-import { CUSTOM_FIELDS } from '../../constants/api';
+import { CUSTOM_FIELDS, CUSTOM_FIELDS_ADD } from '../../constants/api';
 
 function FormFieldManager() {
     return (
@@ -15,7 +15,7 @@ function FormFieldManager() {
                     }
                 ]}
                 dataApi={CUSTOM_FIELDS}
-                insertApi={CUSTOM_FIELDS}
+                insertApi={CUSTOM_FIELDS_ADD}
                 updateApi={CUSTOM_FIELDS}
                 deleteApi={CUSTOM_FIELDS}
             />

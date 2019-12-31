@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
 import ExtendedEditableTable from '../../components/table/ExtendedEditableTable';
-import { DEPARTMENTS } from '../../constants/api';
+import { DEPARTMENTS, DEPARTMENTS_ADD } from '../../constants/api';
 
 function DepartmentManager() {
 
@@ -18,7 +18,7 @@ function DepartmentManager() {
                         }
                     ]}
                     dataApi={DEPARTMENTS}
-                    insertApi={DEPARTMENTS}
+                    insertApi={DEPARTMENTS_ADD}
                     updateApi={DEPARTMENTS}
                     deleteApi={DEPARTMENTS}
                 />

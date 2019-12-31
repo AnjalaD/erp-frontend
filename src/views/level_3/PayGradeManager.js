@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
 import ExtendedEditableTable from '../../components/table/ExtendedEditableTable';
-import { PAY_GRADES } from '../../constants/api';
+import { PAY_GRADES, PAY_GRADES_ADD } from '../../constants/api';
 
 function PayGradeManager() {
 
@@ -16,7 +16,7 @@ function PayGradeManager() {
                     }
                 ]}
                 dataApi={PAY_GRADES}
-                insertApi={PAY_GRADES}
+                insertApi={PAY_GRADES_ADD}
                 updateApi={PAY_GRADES}
                 deleteApi={PAY_GRADES}
             />
