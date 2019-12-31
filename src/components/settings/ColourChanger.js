@@ -6,8 +6,8 @@ import ColourPicker from './ColourPicker';
 const ColourChanger = () => {
     return (
         <div>
-            <ColourPicker category='Primary' range={COLOURS.primary}/>
-            <ColourPicker category='Secondary' range={COLOURS.secondary}/>
+            <ColourPicker category='Primary' range={COLOURS.primary} />
+            {/* <ColourPicker category='Secondary' range={COLOURS.secondary}/> */}
         </div>
     )
 }
