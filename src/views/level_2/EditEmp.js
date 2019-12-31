@@ -20,7 +20,9 @@ const button1Style = {
 function EditEmp(props) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
-    const [empId, setEmpId] = useState(props.match.params.id || '');
+
+    const id = props.match.params.id;
+    const [empId, setEmpId] = useState(id === ':id' || !id ? '' : id);
     const [user, setUser] = useState(null);
     const [counter, setCounter] = useState(0);
 
