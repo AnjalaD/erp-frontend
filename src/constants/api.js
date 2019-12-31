@@ -19,6 +19,7 @@ export const LEAVES_HISTORY = HOST + '/leave/history';
 
 export const EMPLOYEE_BY_ID = HOST + '/employee/view';
 export const FILTER_EMPLOYEES = HOST + '/report/filter';
+export const LEAVE_REPORT = HOST + '/report/leave-by-dept';
 export const EMP_FORM_FIELDS = HOST + '/employee/form-attributes';
 
 export const EDIT_EMP_BASIC_INFO = HOST + '/employee/basic';
