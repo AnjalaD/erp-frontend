@@ -8,6 +8,12 @@ function ExtendedEditableTable(props) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
 
+    const cleanObj = (obj) => {
+        const newObj = { ...obj }
+        delete newObj.tableData;
+        return newObj;
+    }
+
     const [dbData, setDbData] = useState([]);
 
     //fetch leaveLimit from db
@@ -24,7 +30,7 @@ function ExtendedEditableTable(props) {
         console.log('oldData', oldData);
         fetchData(
             props.deleteApi,
-            makeOptions(token, deleteMethod || 'DELETE', oldData),
+            makeOptions(token, deleteMethod || 'DELETE', cleanObj(oldData)),
             dispatch,
             onSuccess,
             onFail
@@ -36,8 +42,8 @@ function ExtendedEditableTable(props) {
         fetchData(
             props.updateApi,
             makeOptions(token, updateMethod || 'PATCH', {
-                new: newData,
-                old: oldData
+                new: cleanObj(newData),
+                old: cleanObj(oldData)
             }),
             dispatch,
             onSuccess,
@@ -49,7 +55,7 @@ function ExtendedEditableTable(props) {
         console.log('newData', newData);
         fetchData(
             props.insertApi,
-            makeOptions(token, insertMethod || 'POST', newData),
+            makeOptions(token, insertMethod || 'POST', cleanObj(newData)),
             dispatch,
             onSuccess,
             onFail

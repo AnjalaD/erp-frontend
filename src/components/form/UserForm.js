@@ -20,9 +20,11 @@ function UserForm(props) {
         setCustom(newArr);
     }
 
-    const onMultiChange = (value, setter) => (e, i) => {
+    const onMultiChange = (value, setter, type) => (e, i) => {
         const newMulti = value.slice(0)
-        newMulti[i] = e.target.value;
+        newMulti[i] = {
+            [type]: e.target.value
+        };
         setter(newMulti);
     }
     const multiRemove = (value, setter) => (i) => {
@@ -121,8 +123,8 @@ function UserForm(props) {
                             label="Email"
                             value={email}
                             type='email'
-                            add={() => setEmail([...email, ''])}
-                            onChange={onMultiChange(email, setEmail)}
+                            add={() => setEmail([...email, { email: '' }])}
+                            onChange={onMultiChange(email, setEmail, 'email')}
                             remove={multiRemove(email, setEmail)}
                         />
                         : null
@@ -132,8 +134,8 @@ function UserForm(props) {
                         <MultiTextInput
                             label="Contact No"
                             value={contact}
-                            add={() => setContact([...contact, ''])}
-                            onChange={onMultiChange(contact, setContact)}
+                            add={() => setContact([...contact, { contact_no: '' }])}
+                            onChange={onMultiChange(contact, setContact, 'contact_no')}
                             remove={multiRemove(contact, setContact)}
                         />
                         : null
