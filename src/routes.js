@@ -27,7 +27,7 @@ import DepartmentManager from './views/level_3/DepartmentManager';
 import LeaveActionHistory from './views/supervisor/LeaveActionHistory';
 import EmpStatusManager from './views/level_3/EmpStatusManager';
 import NestedList from './components/navbar/NestedList'
-import { faPaperclip} from '@fortawesome/free-solid-svg-icons';
+import { faPaperclip, faStickyNote, faUsers, faUserAlt, faScroll, faUserEdit, faFileAlt, faUserPlus, faUniversity, faDotCircle, faUserTie, faFileInvoiceDollar, faBars, faBuilding, faHome, faUserTag, faArrowsAltH} from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -42,13 +42,13 @@ export const supervisorRoutes = [
         path: '/leaves-history',
         component: LeaveActionHistory,
         title: 'Leaves History',
-        icon: <HomeIcon />
+        icon: faStickyNote
     },
     {
         path: '/employees-under-supervisor',
         component: SuperEmployees,
-        title: 'My Employees',
-        icon: <HomeIcon />
+        title: 'My Supervisees',
+        icon: faUsers
     },
 ];
 
@@ -79,20 +79,20 @@ export const levelOneRoutes = [
     {
         path: '/userprofile',
         component: UserProfile,
-        title: 'Profile',
-        icon: <HomeIcon />
+        title: 'My Profile',
+        icon: faUserAlt
     },
     DIVIDER,
     {
         path: '/apply-leave',
         component: ApplyLeave,
         title: 'Apply Leave',
-        icon: <HomeIcon />
+        icon: faPaperclip
     }, {
         path: '/my-leaves',
         component: LeaveHistory,
         title: 'My Leaves',
-        icon: <HomeIcon />
+        icon: faScroll
     },
 ];
 
@@ -103,20 +103,20 @@ export const levelTwoRoutes = [
         path: '/view-all-employees',
         component: ViewEmployees,
         title: 'View Employees',
-        icon: <HomeIcon />
+        icon: faUsers
     },
     {
         path: '/edit-employee/:id',
         component: EditEmp,
         title: 'Edit Employee',
-        icon: <HomeIcon />
+        icon: faUserEdit
     },
     DIVIDER,
     {
         path: '/reports',
         component: Reports,
         title: 'Reports',
-        icon: <HomeIcon />
+        icon: faFileAlt
     },
     DIVIDER,
     ...supervisorRoutes
@@ -129,69 +129,69 @@ export const levelThreeRoutes = [
         path: '/view-all-employees',
         component: ViewEmployees,
         title: 'View Employees',
-        icon: <HomeIcon />
+        icon: faUsers
     },
     {
         path: '/add-new-employee',
         component: AddNewEmp,
-        title: 'New Employee',
-        icon: <HomeIcon />
+        title: 'Add Employee',
+        icon: faUserPlus
     },
     {
         path: '/edit-employee/:id',
         component: EditEmp,
         title: 'Edit Employee',
-        icon: <HomeIcon />
+        icon: faUserEdit
     },
     DIVIDER,
     {
         path: '/departments',
         component: DepartmentManager,
         title: 'Departments',
-        icon: <HomeIcon />
+        icon: faUniversity
     },
     {
         path: '/custom-form-fields',
         component: FormFieldManager,
         title: 'Custom Fields',
-        icon: <HomeIcon />
+        icon: faDotCircle
     },
     {
         path: '/job-title',
         component: JobTitleManager,
         title: 'Job Titles',
-        icon: <HomeIcon />
+        icon: faUserTie
     },
     {
         path: '/pay-grade',
         component: PayGradeManager,
         title: 'Pay Grades',
-        icon: <HomeIcon />
+        icon: faFileInvoiceDollar
     },
     {
         path: '/leave-type',
         component: LeaveTypeManger,
         title: 'Leave Types',
-        icon: <HomeIcon />
+        icon: faBars
     },
     {
         path: '/leave-limit',
         component: LeaveLimitManager,
         title: 'Leave Limits',
-        icon: <HomeIcon />
+        icon: faArrowsAltH
     },
     {
         path: '/employement-status',
         component: EmpStatusManager,
         title: 'Employement Status',
-        icon: <HomeIcon />
+        icon: faUserTag
     },
     DIVIDER,
     {
         path: '/reports',
         component: Reports,
         title: 'Reports',
-        icon: <HomeIcon />
+        icon: faFileAlt
     },
     DIVIDER,
     ...supervisorRoutes
@@ -202,19 +202,19 @@ export const adminRoutes = [
         path: '/',
         component: AdminHome,
         title: 'Home',
-        icon: <HomeIcon />
+        icon: faHome
     },
     {
         path: '/org',
         component: OrgDetails,
         title: 'Organization',
-        icon: <HomeIcon />
+        icon: faBuilding
     },
     {
         path: '/hr-manager',
         component: AddHR,
         title: 'HR Manager',
-        icon: <HomeIcon />
+        icon: faUserPlus
     },
 ];
 

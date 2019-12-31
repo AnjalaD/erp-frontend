@@ -21,7 +21,7 @@ function CollapsingListItem(props) {
     const children = props.children;
 
     const childrenlist = children.map(child => (
-        <NestedListItem task={child.task} icon={child.icon} nested={true} />
+        <NestedListItem task={child.task} icon={child.icon} nested={true} path={child.path} key={props.key} />
     ))
     return (
         <div>

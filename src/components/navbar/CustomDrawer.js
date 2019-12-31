@@ -1,26 +1,51 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Drawer, ListItem, ListItemIcon, ListItemText, List, Divider } from '@material-ui/core';
+import NestedListItem from './NestedListItem'
+import CollapsingListItem from './CollapsingListItem'
+import { faPaperclip, faStickyNote, faUsers, faUserAlt, faScroll, faUserEdit, faFileAlt, faUserPlus, faUniversity, faDotCircle, faUserTie, faFileInvoiceDollar, faBars, faBuilding, faHome, faUserTag, faArrowsAltH, faPager, faPeopleCarry } from '@fortawesome/free-solid-svg-icons';
+
 
 function CustomDrawer(props) {
+    const supervisors = [
+        {
+            task: 'Requested Leaves',
+            icon: faPaperclip,
+            path:'/requested-leaves'
+        },
+        {
+            task: 'Leaves History',
+            icon: faPager,
+            path: '/leaves-history',
+        },
+        {
+            task: 'My Employees',
+            icon: faPeopleCarry,
+            path: '/employees-under-supervisor',
+        },
+    ];
+
     const createNavLink = (data) => (
         data.map((route, key) => (
 
             route === 'divider' ?
                 <Divider key={key} />
                 :
-                <NavLink exact key={key}
-                    to={route.path}
-                >
-                    <ListItem
-                        style={{
-                            paddingLeft: 20,
-                        }}
-                        button key={key}>
-                        <ListItemIcon >{route.icon}</ListItemIcon>
-                        <ListItemText primary={route.title} />
-                    </ListItem>
-                </NavLink>
+                <CollapsingListItem task={route.title} icon={route.icon} children={supervisors} key={key} />
+                // <NavLink exact key={key}
+                //     to={route.path}
+                // >
+                //     <NestedListItem task={route.title} icon={route.icon}/>
+                //     <CollapsingListItem task={route.title} icon={route.icon} children={supervisors} />
+                //     <ListItem
+                //     style={{
+                //         paddingLeft: 20,
+                //     }}
+                //     button key={key}>
+                //     <ListItemIcon >{route.icon}</ListItemIcon>
+                //     <ListItemText primary={route.title} />
+                // </ListItem>
+                // </NavLink>
         ))
     );
 
