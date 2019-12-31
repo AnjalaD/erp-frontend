@@ -89,6 +89,7 @@ function EditDepForm({ dep, prevStep, id }) {
             fetchData(
                 EDIT_EMP_DEPENDENTS,
                 makeOptions(token, 'PATCH', {
+                    employee_id: id,
                     new: {
                         ...cleanDep(state[i]),
                         employee_id: id
