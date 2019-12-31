@@ -23,7 +23,7 @@ function ExtendedEditableTable(props) {
         console.log('oldData', oldData);
         fetchData(
             props.deleteApi,
-            makeOptions(token, 'DELETE', {}),
+            makeOptions(token, 'DELETE', oldData),
             dispatch,
             onSuccess,
             onFail
@@ -34,7 +34,10 @@ function ExtendedEditableTable(props) {
         console.log('newData', newData, oldData);
         fetchData(
             props.updateApi,
-            makeOptions(token, 'POST', {}),
+            makeOptions(token, 'PATCH', {
+                new: newData,
+                old: oldData
+            }),
             dispatch,
             onSuccess,
             onFail
@@ -45,7 +48,7 @@ function ExtendedEditableTable(props) {
         console.log('newData', newData);
         fetchData(
             props.insertApi,
-            makeOptions(token, 'POST', {}),
+            makeOptions(token, 'POST', newData),
             dispatch,
             onSuccess,
             onFail
