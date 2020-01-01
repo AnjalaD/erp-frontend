@@ -278,7 +278,7 @@ export const levelThreeRoutes = [
 export const adminRoutes = [
     {
         path: '/',
-        component: AdminHome,
+        component: Welcome,
         title: 'Home',
         root: true,
         icon: faHome
