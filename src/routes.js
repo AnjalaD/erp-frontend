@@ -179,9 +179,7 @@ export const levelTwoRoutes = [
                 icon: faUserEdit
             }]
     },
-    reports,
-    ...supervisorRoutes,
-    settings
+    reports
 ];
 
 export const levelThreeRoutes = [
