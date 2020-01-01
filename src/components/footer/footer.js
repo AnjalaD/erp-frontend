@@ -23,7 +23,6 @@ const styles = theme => ({
         // backgroundColor: COLOURS.primary.darker,
         backgroundColor: PrimaryTheme.shades.darker,
         colour: PrimaryTheme.shades.lighter,
-        marginTop: theme.spacing(25),
         padding: `${theme.spacing(2)}px 0`,
     },
     text: {
