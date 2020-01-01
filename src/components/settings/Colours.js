@@ -53,13 +53,13 @@ export const Colours = [{
 ]
 
 export const PrimaryTheme = {
-    name: 'Chrome',
-    code: '#d9aa0d',
+    name: 'Marshmellow',
+    code: '#795f86',
     shades: {
-        darker: '#785e07',
-        dark: '#a8840a',
-        light: '#f2c326',
-        lighter: '#f5d057'
+        darker: '#43354a',
+        dark: '#5e4a68',
+        light: '#9279a0',
+        lighter: '#aa97b5'
     }
 }
 
