@@ -67,45 +67,6 @@ export default function ColourPicker(props) {
                 <Grid container direction='row' alignItems='center'>
                     <Typography varient='h3'  style={{ padding: 10 }} ><b>Select the Preferred Colour Theme</b></Typography>
                 </Grid>
-            
-            {/* <Radio
-                    checked={selectedValue === 'a'}
-                    onChange={handleChange}
-                    value="a"
-                    name="radio-button-demo"
-                    inputProps={{ 'aria-label': 'A' }}
-                />
-                <Radio
-                    checked={selectedValue === 'b'}
-                    onChange={handleChange}
-                    value="b"
-                    name="radio-button-demo"
-                    inputProps={{ 'aria-label': 'B' }}
-                />
-                <ColourRadio
-                    checked={selectedValue === 'c'}
-                    onChange={handleChange}
-                    value="c"
-                    name="radio-button-demo"
-                    inputProps={{ 'aria-label': 'C' }}
-                    pallete = {PrimaryTheme.shades}
-                />
-                <Radio
-                    checked={selectedValue === 'd'}
-                    onChange={handleChange}
-                    value="d"
-                    color="default"
-                    name="radio-button-demo"
-                    inputProps={{ 'aria-label': 'D' }}
-                />
-                <Radio
-                    checked={selectedValue === 'e'}
-                    onChange={handleChange}
-                    value="e"
-                    color="default"
-                    name="radio-button-demo"
-                    inputProps={{ 'aria-label': 'E' }}
-                /> */}
             {Buttons}
             <br />
                 <Button style={{ margin: 10, padding: 10, backgroundColor: PrimaryTheme.shades.light, color: "#000000" }}
@@ -114,5 +75,3 @@ export default function ColourPicker(props) {
     </Card>
     );
 }
-
-// export default ColourPicker

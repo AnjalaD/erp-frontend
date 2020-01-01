@@ -27,6 +27,7 @@ import RegisterEmployee from "./views/level_3/RegisterEmployee";
 import ResetPassword from "./views/level_3/ResetPassword";
 import AdminLogin from "./views/guest/AdminLogin";
 import Welcome from "./views/shared/Welcome";
+import Settings from "./views/shared/Loading"
 
 const reports = {
     title: 'Reports',
@@ -49,6 +50,15 @@ const reports = {
         },
     ]
 };
+
+const settings = {
+    path: '/settings',
+    component: Settings,
+    title: 'Employee Reports',
+    root: true,
+    icon: faUserCog
+
+}
 
 export const supervisorRoutes = [
     {
