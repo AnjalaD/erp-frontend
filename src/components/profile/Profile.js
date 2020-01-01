@@ -13,6 +13,7 @@ const Profile = (props) => {
                 <Grid container>
                     <ProfileRow name='First Name' icon={faUser} value={data.first_name} xs={6} />
                     <ProfileRow name='Last Name' icon={faUser} value={data.last_name} xs={6} />
+                    <ProfileRow name='Employee ID' icon={faPassport} value={data.employee_id} />
                     <ProfileRow name='NIC' icon={faPassport} value={data.nic} />
                     <ProfileRow
                         name="Address"
@@ -36,7 +37,7 @@ const Profile = (props) => {
                                 <ProfileRow name='Employement Status' icon={faBuilding} value={data.employment_status} />
                             </div>
                             :
-                            <ProfileRow name='RelationShip' icon={faBaby} value={data.relationship} xs={12} />
+                            <ProfileRow name='Relationship' icon={faBaby} value={data.relationship} xs={12} />
 
                     }
                     {

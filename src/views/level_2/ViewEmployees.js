@@ -56,6 +56,7 @@ function ViewEmployees() {
                         onClick: (event, row) => window.open(URL + '/edit-employee/' + row.employee_id)
                     }
                 ]}
+                title = "Employee Details"
             />
         </Container>
     )
