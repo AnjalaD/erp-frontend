@@ -33,7 +33,7 @@ const Profile = (props) => {
                                 <ProfileRow name='Department' icon={faBuilding} value={data.dept_name} />
                                 <ProfileRow name='Job Title' icon={faBuilding} value={data.job_title} xs={6} />
                                 <ProfileRow name='Pay Grade' icon={faBuilding} value={data.pay_grade} xs={6} />
-                                <ProfileRow name='Employement Status' icon={faBuilding} value={data.employment_status} />
+                                <ProfileRow name='Employment Status' icon={faBuilding} value={data.employment_status} />
                             </div>
                             :
                             <ProfileRow name='RelationShip' icon={faBaby} value={data.relationship} xs={12} />
