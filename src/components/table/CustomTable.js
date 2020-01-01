@@ -3,6 +3,7 @@ import MaterialTable from 'material-table'
 import { COLOURS } from '../../constants/constants';
 
 function CustomTable(props) {
+    const options = Object.assign(props.options);
     delete props.options;
 
     return (
@@ -20,7 +21,7 @@ function CustomTable(props) {
                 rowStyle: row => ({
                     backgroundColor: row.tableData.id % 2 === 0 ? '#EFE' : '#FFF'
                 }),
-                ...props.options
+                ...options
             }}
             {...props}
         />
