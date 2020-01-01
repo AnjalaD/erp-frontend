@@ -79,6 +79,9 @@ function EditableTable(props) {
                 actionsColumnIndex: -1,
                 pageSize: 10 || props.pageSize,
                 pageSizeOptions: [5, 10, 50],
+                headerStyle: {
+                    backgroundColor: PrimaryTheme.code,
+                },
                 rowStyle: row => ({
                     backgroundColor: row.tableData.id % 2 === 0 ? PrimaryTheme.shades.lighter : '#FFF'
                 })

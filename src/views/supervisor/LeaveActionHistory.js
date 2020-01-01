@@ -41,7 +41,7 @@ function LeaveActionHistory() {
                     },
                     {
                         title: 'Status',
-                        field: 'status'
+                        field: 'state'
                     }
                 ]}
                 data={tableData}

@@ -85,6 +85,14 @@ function UserForm(props) {
                     onChange={userHandler('addr_city')}
                 />
                 <SelectInput
+                    label="Gender"
+                    value={user.gender}
+                    onChange={userHandler('gender')}
+                    selection={[
+                        'Male', 'Female'
+                    ]}
+                />
+                <SelectInput
                     label="Marital Status"
                     value={user.marital_status}
                     onChange={userHandler('marital_status')}

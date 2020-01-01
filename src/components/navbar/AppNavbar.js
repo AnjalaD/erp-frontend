@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
-import {COMPANY_NAME, URL } from '../../constants/constants';
+import {URL } from '../../constants/constants';
 import { makeStyles } from '@material-ui/core/styles';
 import Person from '@material-ui/icons/Person';
 import { NavLink } from 'react-router-dom';
@@ -73,7 +73,7 @@ export default function AppNavbar(props) {
             >
                 <div>
                     <NavbarToggler onClick={e => toggleNavbar(!isOpen)} />
-                    <NavbarBrand style={{ marginLeft: 20 }} href="/" className={classes.topic}>{COMPANY_NAME}</NavbarBrand>
+                    <NavbarBrand style={{ marginLeft: 20 }} href="/" className={classes.topic}>{props.brand || 'ERP system'}</NavbarBrand>
                 </div>
                 {props.loggedIn ? user : guest}
             </Navbar>

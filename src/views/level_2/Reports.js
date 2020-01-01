@@ -62,7 +62,7 @@ function Reports() {
     return (
         <Container maxWidth="lg">
             <Grid container>
-                <Grid container direction="row" 
+                <Grid container direction="row"
                     spacing={1}
                     justify='center'
                 >
@@ -102,10 +102,10 @@ function Reports() {
                         onChange={onChange('active_status')}
                     />
                     <Grid item xs={1}>
-                        <Button style={{ 
-                            marginTop: 16, 
-                            padding: 10, 
-                            height:55, 
+                        <Button style={{
+                            marginTop: 16,
+                            padding: 10,
+                            height: 55,
                             width: '100%',
                             backgroundColor: PrimaryTheme.shades.darker, 
                             color: PrimaryTheme.shades.lighter 

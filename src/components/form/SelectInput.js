@@ -15,9 +15,13 @@ function SelectInput(props) {
                     value={props.value}
                     //labelWidth={labelWidth}
                 >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
+                    {
+                        props.selection.length <= 0 ?
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            : null
+                    }
                     {
                         props.selection.map((value, key) => (
                             <MenuItem key={key} value={value}>{value}</MenuItem>

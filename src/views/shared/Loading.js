@@ -8,8 +8,13 @@ const useStyles = makeStyles(theme => ({
     outbox: {
         color: PrimaryTheme.shades.darker,
         marginTop: theme.spacing(25),
+        backgroundColor: '#000',
+        opacity: '0.5',
+        height: '100vh',
+        width: '100wv',
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'center',
         alignItems: 'center',
         '&:focus': {
             outline: 'none'
@@ -26,7 +31,9 @@ export default function Loading() {
 
     return (
         <Modal
-            style={{ transition: '1s' }}
+            style={{
+                transition: '1s'
+            }}
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
             open={isLoading}
