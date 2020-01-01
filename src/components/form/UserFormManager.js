@@ -58,12 +58,12 @@ function UserFormManager({ oldUser, submit = null }) {
     }
 
     const [step, setStep] = useState(1);
-    const [email, setEmail] = useState(oldUser ? oldUser.email.slice(0) : ['']);
-    const [contact, setContact] = useState(oldUser ? oldUser.contact_no.slice(0) : ['']);
-    const [user, setUser] = useState(oldUser ? Object.assign({}, oldUser) : initUser);
-    const [custom, setCustom] = useState(oldUser ? oldUser.custom.slice(0) : []);
-    const [dep, setDep] = useState(oldUser ? oldUser.dependents.slice(0) : [initDep]);
-    const [emg, setEmg] = useState(oldUser ? oldUser.emergency_contacts.slice(0) : [initEmg]);
+    const [email, setEmail] = useState(['']);
+    const [contact, setContact] = useState(['']);
+    const [user, setUser] = useState(initUser);
+    const [custom, setCustom] = useState([]);
+    const [dep, setDep] = useState([initDep]);
+    const [emg, setEmg] = useState([initEmg]);
     const [formFields, setFormFields] = useState(initFormFields);
 
     useEffect(() => {

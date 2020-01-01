@@ -3,8 +3,8 @@ import MaterialTable from 'material-table'
 import { PrimaryTheme } from '../settings/Colours'
 
 function CustomTable(props) {
-    const options = Object.assign(props.options);
-    delete props.options;
+    const newProps = Object.assign({}, props);
+    delete newProps.options;
 
     return (
         <MaterialTable
@@ -21,9 +21,9 @@ function CustomTable(props) {
                 rowStyle: row => ({
                     backgroundColor: row.tableData.id % 2 === 0 ? PrimaryTheme.shades.lighter : '#FFF'
                 }),
-                ...options
+                ...props.options
             }}
-            {...props}
+            {...newProps}
         />
     );
 }
