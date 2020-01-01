@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { EMP_FORM_FIELDS, EDIT_EMP_BASIC_INFO, EDIT_EMP_CONTACTS, EDIT_EMP_EMAILS } from '../../constants/api';
 import Profile from '../profile/Profile';
 import { Grid, Button } from '@material-ui/core';
-import { COLOURS } from '../../constants/constants';
+import { COLOURS, LEVEL3 } from '../../constants/constants';
 import ActionBar from './ActionBar';
 import EmailContactForm from './EmailContactForm';
 import EditEmgForm from './EditEmgForm';
@@ -13,16 +13,23 @@ import EditDepForm from './EditDepForm';
 import EditCustomForm from './EditCustomForm';
 import FullProfile from '../profile/FullProfile';
 
-const button2Style = {
+const buttonStyle = {
     height: 40,
     width: '100%',
     color: COLOURS.primary.darker,
     backgroundColor: COLOURS.primary.lighter
 }
 
+const dangerButtonStyle = {
+    height: 40,
+    width: '100%',
+    color: 'danger',
+    backgroundColor: COLOURS.primary.lighter
+}
+
 function EditUserFormManager({ oldUser, reload }) {
     const dispatch = useDispatch();
-    const token = useSelector(state => state.status.token);
+    const { access_level, token } = useSelector(state => state.status);
 
     const initFormFields = {
         job_title: [],
@@ -81,35 +88,44 @@ function EditUserFormManager({ oldUser, reload }) {
                 <Fragment>
                     <Grid container spacing={2} style={{ marginTop: 24 }} justify='center'>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(1)}>
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(1)}>
                                 Edit Basic Details
                         </Button>
                         </Grid>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(3)} >
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(3)} >
                                 Edit Custom Details
-                        </Button>
+                            </Button>
                         </Grid>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(4)} >
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(4)} >
                                 Edit Emails
-                        </Button>
+                            </Button>
                         </Grid>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(5)} >
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(5)} >
                                 Edit Contact No.
-                        </Button>
+                            </Button>
                         </Grid>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(7)}>
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(7)}>
                                 Edit Dependent details
-                        </Button>
+                            </Button>
                         </Grid>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(9)} >
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(9)} >
                                 Edit Emergency No.
-                        </Button>
+                            </Button>
                         </Grid >
+                        {
+                            access_level === LEVEL3 ?
+                                <Grid item xs={5} >
+                                    <Button variant='contained' style={dangerButtonStyle} onClick={() => setStep(9)} >
+                                        Remove Employee
+                                    </Button>
+                                </Grid >
+                                : null
+                        }
                     </Grid >
                     <FullProfile profile={oldUser} style={{ marginTop: 24 }} />
                 </Fragment>
