@@ -68,7 +68,8 @@ function EditableTable(props) {
                 )
             }}
             options={{
-                actionsColumnIndex: -1,
+                addRowPosition: 'first',
+                actionsColumnIndex: - 1,
                 pageSize: 10 || props.pageSize,
                 pageSizeOptions: [5, 10, 50],
                 headerStyle: {
