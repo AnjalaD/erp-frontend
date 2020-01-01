@@ -26,8 +26,8 @@ export const Colours = [{
     shades: {
         darker: '#094321',
         dark: '#0f7036',
-        light: '#1bca62',
-        lighter: '#35e47b'
+        light: '#35e47b',
+        lighter: '#8ff0b6'
     }
 },
 {
@@ -37,7 +37,7 @@ export const Colours = [{
         darker: '#771409',
         dark: '#a61d0c',
         light: '#f03e29',
-        lighter: '#f36959'
+        lighter: '#f79488'
     }
 },
 {
@@ -53,13 +53,13 @@ export const Colours = [{
 ]
 
 export const PrimaryTheme = {
-    name: 'Brick',
-    code: '#d6250f',
+    name: 'Chrome',
+    code: '#d9aa0d',
     shades: {
-        darker: '#771409',
-        dark: '#a61d0c',
-        light: '#f03e29',
-        lighter: '#f36959'
+        darker: '#785e07',
+        dark: '#a8840a',
+        light: '#f2c326',
+        lighter: '#f5d057'
     }
 }
 
