@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Button } from '@material-ui/core'
-import { COLOURS } from '../../constants/constants'
+import { PrimaryTheme } from '../settings/Colours'
 
 
 function ActionBar(props) {
@@ -9,7 +9,7 @@ function ActionBar(props) {
         <Grid item xs={12} style={{ margin: 5, padding: 10 }} align="right">
             {
                 props.b1 ?
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.lighter, color: COLOURS.primary.darker }}
+                    <Button style={{ margin: 5, padding: 10, backgroundColor: PrimaryTheme.shades.lighter, color: PrimaryTheme.shades.darker }}
                         variant="contained"
                         onClick={props.b1}
                     >{props.label1 || 'Back'}</Button>
@@ -18,7 +18,7 @@ function ActionBar(props) {
 
             {
                 props.b2 ?
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color: COLOURS.primary.lighter }}
+                    <Button style={{ margin: 5, padding: 10, backgroundColor: PrimaryTheme.shades.darker, color: PrimaryTheme.shades.lighter }}
                         variant="contained"
                         onClick={props.b2}
                     >{props.label2 || 'Continue'}</Button>

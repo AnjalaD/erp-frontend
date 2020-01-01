@@ -32,8 +32,8 @@ function FullProfile({ profile }) {
                         </Grid>
                     ))
                 }
-                <Grid item xs={12} style={{ marginTop: 32 }}>
-                    <Typography variant='h6'>
+                <Grid item xs={12} >
+                    <Typography variant='h6' style={{ marginTop: 32 }}>
                         Emergency Contacts
                 </Typography>
                 </Grid>

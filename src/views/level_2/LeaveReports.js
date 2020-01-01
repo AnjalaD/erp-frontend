@@ -5,7 +5,7 @@ import { fetchData, makeOptions, getLocalDate } from '../../util/helper';
 import { useDispatch, useSelector } from 'react-redux';
 import { DEPARTMENTS, LEAVE_REPORT } from '../../constants/api';
 import CustomTable from '../../components/table/CustomTable';
-import { COLOURS } from '../../constants/constants';
+import { PrimaryTheme } from '../../components/settings/Colours'
 import TextInput from '../../components/form/TextInput';
 
 function LeaveReports() {
@@ -92,8 +92,8 @@ function LeaveReports() {
                             padding: 10,
                             height: 55,
                             width: '100%',
-                            backgroundColor: COLOURS.primary.darker,
-                            color: COLOURS.primary.lighter
+                            backgroundColor: PrimaryTheme.shades.darker,
+                            color: PrimaryTheme.shades.lighter
                         }}
                             variant="contained"
                             onClick={onSubmit}

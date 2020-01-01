@@ -3,16 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Grid, Button, Typography, Container } from '@material-ui/core';
 import TextInput from '../../components/form/TextInput';
 import Profile from '../../components/profile/Profile';
-import { COLOURS } from '../../constants/constants';
 import { HR_AVAILABILITY, EMPLOYEE_BY_ID } from '../../constants/api';
 import { makeOptions, fetchData } from '../../util/helper';
 import AdminUserForm from '../../components/form/AdminUserForm';
+import { PrimaryTheme } from '../../components/settings/Colours';
 
 const buttonStyle = {
     height: 40,
     width: 300,
-    color: COLOURS.primary.darker,
-    backgroundColor: COLOURS.primary.lighter,
+    backgroundColor: PrimaryTheme.shades.light,
+    color: PrimaryTheme.shades.darker
 }
 
 const dangerButtonStyle = {
@@ -28,8 +28,8 @@ const button1Style = {
     fontSize: 18,
     height: 55,
     padding: 10,
-    color: COLOURS.primary.darker,
-    backgroundColor: COLOURS.primary.lighter
+    backgroundColor: PrimaryTheme.shades.light,
+    color: PrimaryTheme.shades.darker
 };
 
 function AddHR() {

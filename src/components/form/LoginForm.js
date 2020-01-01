@@ -7,7 +7,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { COLOURS } from '../../constants/constants';
+import { PrimaryTheme } from '../settings/Colours'
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     },
     avatar: {
         margin: theme.spacing(1),
-        backgroundColor: COLOURS.primary.dark,
+        backgroundColor: PrimaryTheme.shades.dark,
     },
     form: {
         width: '100%',
@@ -81,7 +81,7 @@ function LoginForm(props) {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        color="primary"
+                        style={{ backgroundColor: PrimaryTheme.code}}
                         className={classes.submit}
                         onClick={e => {
                             e.preventDefault();

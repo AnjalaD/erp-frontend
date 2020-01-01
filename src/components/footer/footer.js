@@ -3,40 +3,42 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { COLOURS } from '../../constants/constants';
 import { faBuilding, faPhone, faRegistered } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {PrimaryTheme} from '../settings/Colours'
 
 
 const styles = theme => ({
     root: {
         ...theme.mixins.gutters(),
-        backgroundColor: COLOURS.primary.dark,
-        colour: COLOURS.secondary.medium,
+        // backgroundColor: COLOURS.primary.dark,
+        backgroundColor:PrimaryTheme.shades.dark,
+        colour: PrimaryTheme.shades.lighter,
         paddingTop: theme.spacing(2)
     },
     footer: {
         position: 'absolute',
         bottom: 0,
         width: '100%',
-        backgroundColor: COLOURS.primary.darker,
-        colour: COLOURS.secondary.medium,
+        // backgroundColor: COLOURS.primary.darker,
+        backgroundColor:PrimaryTheme.shades.darker,
+        colour: PrimaryTheme.shades.lighter,
         marginTop: theme.spacing(25),
         padding: `${theme.spacing(2)}px 0`,
     },
     text: {
-        color: COLOURS.secondary.medium,
+        color: '#ffffff',
         paddingBottom: 10,
         paddingTop: 10
     },
     details: {
         paddingTop: 2,
         paddingLeft: 10,
-        color: COLOURS.secondary.lighter
+        color: '#ffffff'
     },
     right: {
         padding: 20,
-        color: COLOURS.secondary.medium,
+        color: '#ffffff',
 
     }
 });

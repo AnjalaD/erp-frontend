@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Grid, Button, Container } from '@material-ui/core'
 import TextInput from '../../components/form/TextInput'
-import { COLOURS } from '../../constants/constants';
 import { fetchData, makeOptions } from '../../util/helper';
 import { EMPLOYEE_BY_ID } from '../../constants/api';
 import { useSelector, useDispatch } from 'react-redux';
 import EditUserFormManager from '../../components/form/EditUserFormManager';
-
+import { PrimaryTheme } from '../../components/settings/Colours'
 const button1Style = {
     marginLeft: 10,
     marginTop: 5,
     fontSize: 18,
     height: 55,
     padding: 10,
-    color: COLOURS.primary.darker,
-    backgroundColor: COLOURS.primary.lighter
+    color: PrimaryTheme.shades.darker,
+    backgroundColor: PrimaryTheme.shades.lighter
 };
 
 function EditEmp(props) {

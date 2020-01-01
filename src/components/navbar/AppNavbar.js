@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
-import { COLOURS, URL } from '../../constants/constants';
+import {URL } from '../../constants/constants';
 import { makeStyles } from '@material-ui/core/styles';
 import Person from '@material-ui/icons/Person';
 import { NavLink } from 'react-router-dom';
-
+import { PrimaryTheme } from '../settings/Colours'
 import { useDispatch } from 'react-redux';
 import { logout, remove_user } from '../../redux/actions';
 import { Button } from '@material-ui/core';
@@ -12,11 +12,13 @@ import CustomDrawer from './CustomDrawer';
 
 const useStyles = makeStyles(theme => ({
     link: {
-        backgroundColor: COLOURS.primary.light,
+        // backgroundColor: COLOURS.primary.light,
+        backgroundColor: PrimaryTheme.shades.light,
         textDecoration: 'none',
         marginLeft: '10px',
         '&:hover': {
-            backgroundColor: COLOURS.primary.lighter,
+            // backgroundColor: COLOURS.primary.lighter,
+            backgroundColor: PrimaryTheme.shades.lighter,
         },
     },
 }));
@@ -60,7 +62,8 @@ export default function AppNavbar(props) {
         <div>
             <Navbar
                 style={{
-                    backgroundColor: COLOURS.primary.dark,
+                    // backgroundColor: COLOURS.primary.dark,
+                    backgroundColor: PrimaryTheme.shades.dark,
                     zIndex: 1201,
                     paddingLeft: '4vw',
                     paddingRight: '2vw',
