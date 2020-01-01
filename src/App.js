@@ -56,7 +56,7 @@ function App() {
       .then(res => {
         if (res.status === 200) res.json().then(res => {
           setOrgDetails(formatOrgDetails(res));
-          dispatch(org_brand(formatOrgDetails(res)['Name']))
+          dispatch(org_brand(formatOrgDetails(res)['Name'] || 'ERP'))
         });
       })
       .catch(err => console.log(err));
