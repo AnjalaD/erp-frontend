@@ -4,7 +4,7 @@ import { fetchData, makeOptions } from '../../util/helper';
 import EditableTable from '../../components/table/EditableTable';
 
 function ExtendedEditableTable(props) {
-    const { deleteMethod, insertMethod, updateMethod } = props;
+    const { insertMethod, updateMethod } = props;
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Card, Typography, Grid, Button } from '@material-ui/core';
+import { Card, Typography, Grid } from '@material-ui/core';
 import TextInput from './TextInput';
-import { COLOURS } from '../../constants/constants';
 import ActionBar from './ActionBar';
 
 function RegisterForm(props) {
