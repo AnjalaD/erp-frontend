@@ -81,8 +81,4 @@ function Footer(props) {
     );
 }
 
-Footer.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
 export default Footer;
