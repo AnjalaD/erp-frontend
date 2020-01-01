@@ -31,6 +31,7 @@ export const EDIT_EMP_EMG_CONTACTS = HOST + '/employee/emergency';
 
 //level3
 export const NEW_EMPLOYEE = HOST + '/employee/add';
+export const DELETE_EMPLOYEE = HOST + '/employee/delete';
 export const REGISTER_EMPLOYEE = HOST + '/user/register';
 export const RESET_PASSWORD = HOST + '/user/password-reset'
 

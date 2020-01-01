@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import UserForm from './UserForm';
 import { fetchData, makeOptions } from '../../util/helper';
 import { useDispatch, useSelector } from 'react-redux';
-import { EMP_FORM_FIELDS, EDIT_EMP_BASIC_INFO, EDIT_EMP_CONTACTS, EDIT_EMP_EMAILS } from '../../constants/api';
+import { EMP_FORM_FIELDS, EDIT_EMP_BASIC_INFO, EDIT_EMP_CONTACTS, EDIT_EMP_EMAILS, DELETE_EMPLOYEE } from '../../constants/api';
 import Profile from '../profile/Profile';
 import { Grid, Button } from '@material-ui/core';
 import { COLOURS, LEVEL3 } from '../../constants/constants';
@@ -26,7 +26,7 @@ const dangerButtonStyle = {
     height: 40,
     width: '100%',
     color: 'danger',
-    backgroundColor: COLOURS.primary.lighter
+    backgroundColor: '#d32f2f'
 }
 
 function EditUserFormManager({ oldUser, reload }) {
@@ -84,6 +84,19 @@ function EditUserFormManager({ oldUser, reload }) {
         );
     }
 
+    const deleteEmp = () => {
+        if (window.confirm('Do you want to delete this employee!')) {
+            fetchData(
+                DELETE_EMPLOYEE,
+                makeOptions(token, 'DELETE', {
+                    employee_id: id,
+                }),
+                dispatch,
+                home
+            );
+        }
+    }
+
     switch (step) {
         case 0:
             return (
@@ -132,20 +145,11 @@ function EditUserFormManager({ oldUser, reload }) {
                                             Reset User Account
                                     </Button>
                                     </Grid >
-                                    {
-                                        oldUser.employee.active_state === 1 ?
-                                            <Grid item xs={5} >
-                                                <Button variant='contained' style={dangerButtonStyle} onClick={() => setStep(9)} >
-                                                    Remove Employee
-                                                </Button>
-                                            </Grid >
-                                            :
-                                            <Grid item xs={5} >
-                                                <Button variant='contained' style={buttonStyle} onClick={() => setStep(9)} >
-                                                    Employee
-                                                </Button>
-                                            </Grid >
-                                    }
+                                    <Grid item xs={5} >
+                                        <Button variant='contained' style={dangerButtonStyle} onClick={deleteEmp} >
+                                            Remove Employee
+                                        </Button>
+                                    </Grid >
                                 </Fragment>
                                 : null
                         }
