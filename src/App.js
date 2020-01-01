@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { guestRoutes, levelOneRoutes, levelTwoRoutes, levelThreeRoutes, adminRoutes } from './routes';
 import { ADMIN, LEVEL1, LEVEL2, LEVEL3 } from './constants/constants';
 import Loading from './views/shared/Loading';
-import { login, org_brand } from './redux/actions';
+import { login, org_brand, set_color } from './redux/actions';
 import Cookies from 'js-cookie';
 import NotificationBar from './components/notification/NotificationBar';
 import { ORG_DETAILS } from './constants/api';
@@ -46,10 +46,15 @@ function App() {
   useEffect(() => {
     // const user = window.sessionStorage.getItem('user') || null;
     const user = Cookies.get('user') || null;
-    console.log('session user', user)
+    // console.log('session user', user)
     if (user) {
       dispatch(login(JSON.parse(user)));
     }
+    const color = Cookies.get('color') || null;
+    if (color) {
+      dispatch(set_color(color));
+    }
+
     setChecking(false);
 
     fetch(ORG_DETAILS)

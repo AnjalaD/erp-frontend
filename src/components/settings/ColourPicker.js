@@ -4,6 +4,8 @@ import { Button, Typography, Card, Grid, FormControlLabel, Container } from '@ma
 import { Colours } from './Colours';
 import { useDispatch, useSelector } from 'react-redux';
 import { set_color } from '../../redux/actions';
+import Cookies from 'js-cookie';
+
 
 const ColourRadio = (props) => <Radio style={{ color: props.pallete.dark }} {...props} />
 
@@ -37,6 +39,7 @@ export default function ColourPicker(props) {
 
     const submit = () => {
         dispatch(set_color(selectedValue))
+        Cookies.set('color', selectedValue, { path: '/' });
     };
 
     return (
