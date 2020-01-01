@@ -26,6 +26,7 @@ function LeaveActionHistory() {
     return (
         <Container maxWidth='md'>
             <CustomTable
+                title="Approved Leaves"
                 columns={[
                     {
                         title: 'Emp. ID',

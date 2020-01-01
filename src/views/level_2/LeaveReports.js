@@ -103,7 +103,7 @@ function LeaveReports() {
                 </Grid>
                 <Grid item xs={12}>
                     <CustomTable
-                        title='Employee-Report'
+                        title='Employee-Leave-Report'
                         columns={[
                             {
                                 title: 'Emp ID',
