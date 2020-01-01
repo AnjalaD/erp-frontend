@@ -78,6 +78,7 @@ function EditUserFormManager({ oldUser, reload }) {
         fetchData(
             url,
             makeOptions(token, 'PATCH', {
+                employee_id: id,
                 new: data,
             }),
             dispatch,
