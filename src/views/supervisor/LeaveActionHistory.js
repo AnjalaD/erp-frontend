@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Container } from '@material-ui/core'
 import CustomTable from '../../components/table/CustomTable'
 import { fetchData, makeOptions } from '../../util/helper';
+import { SUPER_GET_LEAVES } from '../../constants/api';
+import { APPROVED } from '../../constants/constants';
 
 function LeaveActionHistory() {
     const dispatch = useDispatch();
@@ -11,8 +13,10 @@ function LeaveActionHistory() {
 
     useEffect(() => {
         fetchData(
-            '',
-            makeOptions(token),
+            SUPER_GET_LEAVES,
+            makeOptions(token, 'POST', {
+                state: APPROVED
+            }),
             dispatch,
             (res) => res.json()
                 .then(res => setTableData(res))
