@@ -147,7 +147,7 @@ function AddHR() {
             </Grid>
             <Grid item xs={12}>
                 <Button onClick={() => setHasHR(4)} style={buttonStyle}>
-                    Register HRM
+                    Register HRM Account
                 </Button>
             </Grid>
             <Grid item xs={12}>
