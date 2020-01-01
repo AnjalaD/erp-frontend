@@ -4,7 +4,6 @@ import { PrimaryTheme } from '../settings/Colours'
 
 
 function ActionBar(props) {
-    console.log(props);
     return (
         <Grid item xs={12} style={{ margin: 5, padding: 10 }} align="right">
             {
