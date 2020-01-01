@@ -3,7 +3,6 @@ import Loading from "./views/shared/Loading";
 import RouterError from "./views/shared/RouterError";
 import UserProfile from "./views/level_1/UserProfile";
 import OrgDetails from './views/admin/OrgDetails';
-import AdminHome from './views/admin/AdminHome';
 import AddHR from './views/admin/AddHR';
 import AddNewEmp from './views/level_3/AddNewEmp';
 import EditEmp from './views/level_2/EditEmp';
@@ -88,7 +87,7 @@ export const guestRoutes = [
         root: true
     },
     {
-        path: '/login-admin',
+        path: '/admin',
         component: AdminLogin,
         root: true
     },
@@ -278,7 +277,7 @@ export const levelThreeRoutes = [
 
 export const adminRoutes = [
     {
-        path: '/',
+        path: '/admin',
         component: Welcome,
         title: 'Home',
         root: true,

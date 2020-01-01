@@ -5,14 +5,14 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { faBuilding, faPhone, faRegistered } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {PrimaryTheme} from '../settings/Colours'
+import { PrimaryTheme } from '../settings/Colours'
 
 
 const styles = theme => ({
     root: {
         ...theme.mixins.gutters(),
         // backgroundColor: COLOURS.primary.dark,
-        backgroundColor:PrimaryTheme.shades.dark,
+        backgroundColor: PrimaryTheme.shades.dark,
         colour: PrimaryTheme.shades.lighter,
         paddingTop: theme.spacing(2)
     },
@@ -21,7 +21,7 @@ const styles = theme => ({
         bottom: 0,
         width: '100%',
         // backgroundColor: COLOURS.primary.darker,
-        backgroundColor:PrimaryTheme.shades.darker,
+        backgroundColor: PrimaryTheme.shades.darker,
         colour: PrimaryTheme.shades.lighter,
         marginTop: theme.spacing(25),
         padding: `${theme.spacing(2)}px 0`,
@@ -54,22 +54,22 @@ function Footer(props) {
                     {details['Name']}
                 </Typography>
                 <Typography className={classes.details} component="p" >
-                    <FontAwesomeIcon icon={faRegistered} />{details['Reg No.']}
+                    <FontAwesomeIcon icon={faRegistered} /> {details['Reg No.']}
                 </Typography>
                 <Typography component="p" className={classes.details}>
                     <FontAwesomeIcon icon={faBuilding} /> {details['Address Line 1']}
                 </Typography>
                 {
                     details['Address Line 2'] ?
-                        <Typography component="p" className={classes.details}>
-                            <FontAwesomeIcon icon={faBuilding} /> {details['Address Line 2']}
+                        <Typography component="p" className={classes.details} style={{ paddingLeft: 32 }}>
+                            {details['Address Line 2']}
                         </Typography>
                         : null
                 }
                 {
                     details['Address Line 3'] ?
-                        <Typography component="p" className={classes.details}>
-                            <FontAwesomeIcon icon={faBuilding} /> {details['Address Line 3']}
+                        <Typography component="p" className={classes.details} style={{ paddingLeft: 32 }} >
+                            {details['Address Line 3']}
                         </Typography>
                         : null
                 }
@@ -80,7 +80,7 @@ function Footer(props) {
                     <i>developed by</i>: <br /> <b>devSoft</b>
                 </Typography>
             </Paper>
-        </footer>
+        </footer >
     );
 }
 

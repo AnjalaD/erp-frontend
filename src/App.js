@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { guestRoutes, levelOneRoutes, levelTwoRoutes, levelThreeRoutes, adminRoutes } from './routes';
 import { ADMIN, LEVEL1, LEVEL2, LEVEL3 } from './constants/constants';
 import Loading from './views/shared/Loading';
-import { login } from './redux/actions';
+import { login, org_brand } from './redux/actions';
 import Cookies from 'js-cookie';
 import NotificationBar from './components/notification/NotificationBar';
 import { ORG_DETAILS } from './constants/api';
@@ -54,7 +54,10 @@ function App() {
 
     fetch(ORG_DETAILS)
       .then(res => {
-        if (res.status === 200) res.json().then(res => setOrgDetails(res));
+        if (res.status === 200) res.json().then(res => {
+          setOrgDetails(formatOrgDetails(res));
+          dispatch(org_brand(formatOrgDetails(res)['Name']))
+        });
       })
       .catch(err => console.log(err));
   }, [dispatch])
@@ -70,7 +73,7 @@ function App() {
             <AppNavbar
               loggedIn={loggedIn}
               routes={routes[access_level] || []}
-              brand={formatOrgDetails(orgDetails)['Name']}
+              brand={orgDetails['Name']}
             />
             <Switch>
               {loggedIn ? createRoutes(routes[access_level] || []) : createRoutes(guestRoutes)}
@@ -80,7 +83,7 @@ function App() {
           </BrowserRouter>
       }
       <NotificationBar />
-      <Footer details={formatOrgDetails(orgDetails)} />
+      <Footer details={orgDetails} />
     </div>
   );
 }

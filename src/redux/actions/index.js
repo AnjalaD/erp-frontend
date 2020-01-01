@@ -25,3 +25,8 @@ export const new_message = message => ({
     type: 'NEW_MESSAGE',
     payload: message
 })
+
+export const org_brand = brand => ({
+    type: 'ORG_BRAND',
+    payload: brand
+})
