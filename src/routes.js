@@ -22,14 +22,14 @@ import LeaveHistory from './views/level_1/LeaveHistory';
 import DepartmentManager from './views/level_3/DepartmentManager';
 import LeaveActionHistory from './views/supervisor/LeaveActionHistory';
 import EmpStatusManager from './views/level_3/EmpStatusManager';
-import { faPaperclip, faStickyNote, faUsers, faScroll, faUserEdit, faFileAlt, faUserPlus, faUniversity, faDotCircle, faUserTie, faFileInvoiceDollar, faBars, faBuilding, faHome, faUserTag, faArrowsAltH, faUser, faTasks, faPager, faEye, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPaperclip, faStickyNote, faUsers, faScroll, faUserEdit, faFileAlt, faUserPlus, faUniversity, faDotCircle, faUserTie, faFileInvoiceDollar, faBars, faBuilding, faHome, faUserTag, faArrowsAltH, faUser, faTasks, faPager, faEye, faUserCircle, faKey, faUserCog, faPaste } from '@fortawesome/free-solid-svg-icons';
 import LeaveReports from './views/level_2/LeaveReports';
 import RegisterEmployee from "./views/level_3/RegisterEmployee";
 import ResetPassword from "./views/level_3/ResetPassword";
 
 const reports = {
     title: 'Reports',
-    icon: faUser,
+    icon: faFileAlt,
     root: false,
     children: [
         {
@@ -37,14 +37,14 @@ const reports = {
             component: Reports,
             title: 'Employee Reports',
             root: true,
-            icon: faFileAlt
+            icon: faUserCog
         },
         {
             path: '/leave-reports',
             component: LeaveReports,
             title: 'Leave Reports',
             root: true,
-            icon: faFileAlt
+            icon: faPaste
         },
     ]
 };
@@ -189,16 +189,16 @@ export const levelThreeRoutes = [
             {
                 path: '/register-employee',
                 component: RegisterEmployee,
-                title: 'Register Employee',
+                title: 'Register User',
                 root: true,
-                icon: faUserEdit
+                icon: faUserTag
             },
             {
                 path: '/user-pass-reset',
                 component: ResetPassword,
                 title: 'Reset Password',
                 root: true,
-                icon: faUserEdit
+                icon: faKey
             }
         ]
     },
