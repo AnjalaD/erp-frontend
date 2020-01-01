@@ -136,6 +136,7 @@ function AddHR() {
             direction='column'
             justify='center'
             alignItems='center'
+            style={{ marginBottom: 24 }}
         >
             <Grid item xs={8}>
                 <Button onClick={() => setHasHR(0)} style={dangerButtonStyle}>
