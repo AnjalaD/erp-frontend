@@ -1,10 +1,11 @@
 import React from 'react'
-import { Container, Grid } from '@material-ui/core'
-import Background from '../../components/Background' 
+import Background from '../../components/Background';
+import { useSelector } from 'react-redux';
 
 function Welcome() {
+    const brand = useSelector(state => state.orgDetails);
     return (
-        <Background/>
+        <Background brand={brand} />
     )
 }
 
