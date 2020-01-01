@@ -66,7 +66,7 @@ function LeaveReports() {
                 >
                     <SelectInput
                         xs={4}
-                        label='Employement-Status'
+                        label='Department'
                         value={state.department}
                         selection={fields}
                         onChange={onChange('department')}

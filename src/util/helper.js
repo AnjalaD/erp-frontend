@@ -39,10 +39,12 @@ export const fetchData = (
                 res.clone().json()
                     .then(res => console.log(url, res));
                 onSuccess(res);
-                dispatch(new_message({
-                    type: 'success',
-                    message: 'Success!'
-                }));
+                if (options.method !== 'GET') {
+                    dispatch(new_message({
+                        type: 'success',
+                        message: 'Success!'
+                    }));
+                }
                 console.log('##success...');
             }
             else {

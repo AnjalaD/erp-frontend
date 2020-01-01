@@ -9,15 +9,17 @@ function CustomTable(props) {
             columns={props.columns}
             data={props.data}
             options={{
+                actionsColumnIndex: -1,
                 pageSize: props.pageSize || 10,
                 pageSizeOptions: [5, 10, 50],
-                actionsColumnIndex: -1,
+                headerStyle: {
+                    backgroundColor: COLOURS.primary.light,
+                },
                 rowStyle: row => ({
-                    backgroundColor: row.tableData.id % 2 === 0 ? COLOURS.primary.lighter : '#FFF'
+                    backgroundColor: row.tableData.id % 2 === 0 ? '#EFE' : '#FFF'
                 }),
                 ...props.options
             }}
-            {...props}
         />
     );
 }
