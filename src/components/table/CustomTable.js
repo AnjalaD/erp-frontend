@@ -3,7 +3,7 @@ import MaterialTable from 'material-table'
 import { PrimaryTheme } from '../settings/Colours'
 
 function CustomTable(props) {
-    const newProps = Object.assign(props);
+    const newProps = Object.assign({}, props);
     delete newProps.options;
 
     return (
