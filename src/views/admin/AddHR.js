@@ -1,35 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import UserFormManager from '../../components/form/UserFormManager'
 import { Grid, Button, Typography, Container } from '@material-ui/core';
 import TextInput from '../../components/form/TextInput';
 import Profile from '../../components/profile/Profile';
 import { COLOURS } from '../../constants/constants';
-import { HR_AVAILABILITY } from '../../constants/api';
+import { HR_AVAILABILITY, EMPLOYEE_BY_ID } from '../../constants/api';
 import { makeOptions, fetchData } from '../../util/helper';
+import AdminUserForm from '../../components/form/AdminUserForm';
 
-const button0Style = {
-    fontSize: 22,
-    height: 100,
-    width: '50vw',
-    minWidth: '300px',
-    textAlign: 'center',
-    margin: 10,
-    backgroundColor: COLOURS.primary.light,
-    color: COLOURS.primary.darker
-};
+const buttonStyle = {
+    height: 40,
+    width: 300,
+    color: COLOURS.primary.darker,
+    backgroundColor: COLOURS.primary.lighter,
+}
+
+const dangerButtonStyle = {
+    height: 40,
+    width: '100%',
+    color: '#000',
+    backgroundColor: '#d32f2f'
+}
 
 const button1Style = {
     marginLeft: 10,
+    marginTop: 5,
     fontSize: 18,
-    height: 60,
-    backgroundColor: COLOURS.primary.light,
-    color: COLOURS.primary.darker
+    height: 55,
+    padding: 10,
+    color: COLOURS.primary.darker,
+    backgroundColor: COLOURS.primary.lighter
 };
 
 function AddHR() {
     const [hasHR, setHasHR] = useState(0);
     const [empId, setEmpId] = useState('');
+    const [user, setUser] = useState(null);
     const [hr, setHR] = useState(null);
 
     const dispatch = useDispatch();
@@ -43,27 +49,46 @@ function AddHR() {
             res => res.json().then(res => {
                 setHR(res);
                 setHasHR(1);
-
             })
         );
     }, [dispatch, token]);
 
-    const findEmp = (id) => { }
-    const submitNewEmp = () => { }
+    const findEmp = () => {
+        fetchData(
+            EMPLOYEE_BY_ID,
+            makeOptions(token, 'POST', {
+                "employee_id": empId
+            }),
+            dispatch,
+            (res) => res.json().then(res => setUser(res)),
+            () => setUser(null)
+        );
+    };
+
+    const setNewHr = () => {
+        fetchData(
+            HR_AVAILABILITY,
+            makeOptions(token, 'PATCH', {
+                employee_id: user.employee.employee_id
+            }),
+            dispatch,
+            res => res.json().then(() => window.location.reload())
+        );
+    }
 
     const noHR = (
-        <Grid container direction='column'
+        <Grid container direction='column' spacing={3}
             alignItems='center'
             justify='center'
             style={{ paddingTop: 40 }}
         >
-            <Grid item >
-                <Button onClick={() => setHasHR(3)} style={button0Style} >
+            <Grid item xs={8}>
+                <Button onClick={() => setHasHR(3)} style={buttonStyle} >
                     Add New HR Manager
                     </Button>
             </Grid>
-            <Grid item>
-                <Button onClick={() => setHasHR(2)} style={button0Style}>
+            <Grid item xs={8}>
+                <Button onClick={() => setHasHR(2)} style={buttonStyle}>
                     Choose New HR from Employees
                 </Button>
             </Grid>
@@ -77,25 +102,50 @@ function AddHR() {
             alignItems='center'
             style={{ paddingTop: 50 }}
         >
-
             <TextInput
                 value={empId}
                 label='Employee ID'
                 onChange={(e) => setEmpId(e.target.value)}
             />
 
-            <Button onClick={() => findEmp(empId)} style={button1Style}>
+            <Button variant='contained' onClick={findEmp} style={button1Style}>
                 Find Employee
-            </Button>
+                </Button>
+            {
+                user ?
+                    <Grid container
+                        justify='center'
+                        alignItems='center'
+                        spacing={2}
+                        style={{ marginBottom: 24 }}
+                    >
+                        <Profile data={user.employee} />
+                        <Grid item xs={8}>
+                            <Button onClick={setNewHr} style={dangerButtonStyle}>
+                                Select As New HRM
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    : null
+            }
         </Grid>
     );
 
     const changeHR = (
-        <Grid container direction='column' justify='center'>
-            <Button onClick={() => setHasHR(0)}>Change HR Manager</Button>
-            <Typography align='center'>Current HR Manager</Typography>
+        <Grid container
+            direction='column'
+            justify='center'
+            alignItems='center'
+        >
+            <Grid item xs={8}>
+                <Button onClick={() => setHasHR(0)} style={dangerButtonStyle}>
+                    Change HR Manager
+                </Button>
+            </Grid>
+            <Typography align='center' style={{ marginTop: 24 }}>
+                Current HR Manager
+            </Typography>
             <Profile data={hr} />
-
         </Grid>
     );
 
@@ -108,14 +158,17 @@ function AddHR() {
             case 2:
                 return selectFromEmployee;
             case 3:
-                return <UserFormManager submit={submitNewEmp} />
+                return <AdminUserForm
+                    prevStep={() => setHasHR(1)}
+                    nextStep={() => window.location.reload()}
+                />
             default:
                 return null;
         }
     }
 
     return (
-        <Container maxWidth='md'>
+        <Container maxWidth='md' style={{ paddingTop: 24 }}>
             {display()}
         </Container>
     )
