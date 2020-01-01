@@ -124,7 +124,7 @@ function EditDepForm({ dep, prevStep, id }) {
         >
             <Grid container spacing={1} >
                 <Grid container direction='row' alignItems='center'>
-                    Dependents Detailes
+                    Dependents Details
                     <IconButton onClick={add}>
                         <AddCircleOutline color='primary' />
                     </IconButton>

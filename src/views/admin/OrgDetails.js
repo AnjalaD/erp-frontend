@@ -7,7 +7,7 @@ export default function OrgDetails() {
     return (
         <Container maxWidth='md'>
             <ExtendedEditableTable
-                title='Organization Detailes'
+                title='Organization Details'
                 columns={[
                     {
                         title: 'Field',

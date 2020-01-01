@@ -10,10 +10,10 @@ function Background({ brand }) {
         <Box component="span" m={1}>
             <Grid container style={{ margin: 20, padding: 10, marginBottom: -10 }}>
                 <Card elevation={1} style={{ width: '45%', margin: 10, padding: 10, paddingLeft: 40 }} xs={8} >
-                    <Typography component="h3" variant="h6" gutterBottom style={{ color: PrimaryTheme.shades.dark }}><b>Welcome to {brand || 'ERP'}!!</b></Typography>
-                    <Typography component="h3" variant="h5"><b> {brand || 'ERP'} Employee Management System</b></Typography>
+                    <Typography component="h3" variant="h6" gutterBottom style={{ color: PrimaryTheme.shades.dark }}><b>Welcome to Jupiter!!</b></Typography>
+                    <Typography component="h3" variant="h5"><b> Jupiter Employee Management System</b></Typography>
                     <br />
-                    <Typography component="h3">Achive all of your administrative work throuth this system</Typography>
+                    <Typography component="h3">Achieve all of your administrative work through this system</Typography>
                     <br />
                     <Typography component="h5"><FontAwesomeIcon icon={faDotCircle} style={{ color: PrimaryTheme.code }} /> Manage Employee Accounts</Typography>
                     <br />
