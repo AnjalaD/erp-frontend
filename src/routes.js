@@ -21,13 +21,13 @@ import LeaveHistory from './views/level_1/LeaveHistory';
 import DepartmentManager from './views/level_3/DepartmentManager';
 import LeaveActionHistory from './views/supervisor/LeaveActionHistory';
 import EmpStatusManager from './views/level_3/EmpStatusManager';
-import { faPaperclip, faStickyNote, faUsers, faScroll, faUserEdit, faFileAlt, faUserPlus, faUniversity, faDotCircle, faUserTie, faFileInvoiceDollar, faBars, faBuilding, faHome, faUserTag, faArrowsAltH, faUser, faTasks, faPager, faEye, faUserCircle, faKey, faUserCog, faPaste } from '@fortawesome/free-solid-svg-icons';
+import { faPaperclip, faStickyNote, faUsers, faScroll, faUserEdit, faFileAlt, faUserPlus, faUniversity, faDotCircle, faUserTie, faFileInvoiceDollar, faBars, faBuilding, faHome, faUserTag, faArrowsAltH, faUser, faTasks, faPager, faEye, faUserCircle, faKey, faUserCog, faPaste, faCogs } from '@fortawesome/free-solid-svg-icons';
 import LeaveReports from './views/level_2/LeaveReports';
 import RegisterEmployee from "./views/level_3/RegisterEmployee";
 import ResetPassword from "./views/level_3/ResetPassword";
 import AdminLogin from "./views/guest/AdminLogin";
 import Welcome from "./views/shared/Welcome";
-import Settings from "./views/shared/Loading"
+import Settings from "./views/shared/Settings"
 
 const reports = {
     title: 'Reports',
@@ -54,9 +54,9 @@ const reports = {
 const settings = {
     path: '/settings',
     component: Settings,
-    title: 'Employee Reports',
+    title: 'Change Theme',
     root: true,
-    icon: faUserCog
+    icon: faCogs
 
 }
 
@@ -152,7 +152,8 @@ export const levelOneRoutes = [
                 icon: faScroll
             }]
     },
-    ...supervisorRoutes
+    ...supervisorRoutes,
+    settings
 ];
 
 export const levelTwoRoutes = [
@@ -179,7 +180,8 @@ export const levelTwoRoutes = [
             }]
     },
     reports,
-    ...supervisorRoutes
+    ...supervisorRoutes,
+    settings
 ];
 
 export const levelThreeRoutes = [
@@ -282,7 +284,8 @@ export const levelThreeRoutes = [
             }]
     },
     reports,
-    ...supervisorRoutes
+    ...supervisorRoutes,
+    settings
 ];
 
 export const adminRoutes = [
