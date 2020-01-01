@@ -3,6 +3,8 @@ import MaterialTable from 'material-table'
 import { COLOURS } from '../../constants/constants';
 
 function CustomTable(props) {
+    delete props.options;
+
     return (
         <MaterialTable
             title={props.title}
@@ -20,6 +22,7 @@ function CustomTable(props) {
                 }),
                 ...props.options
             }}
+            {...props}
         />
     );
 }
