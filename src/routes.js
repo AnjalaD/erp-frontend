@@ -141,7 +141,8 @@ export const levelOneRoutes = [
                 root: true,
                 icon: faScroll
             }]
-    }
+    },
+    ...supervisorRoutes
 ];
 
 export const levelTwoRoutes = [
