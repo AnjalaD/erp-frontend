@@ -6,7 +6,7 @@ import { faUser, faPassport, faHome, faCalendarAlt, faRing, faBaby, faBuilding, 
 
 const Profile = (props) => {
     const data = props.data;
-    console.log('data', data);
+    // console.log('data', data);
     return (
         <Container maxWidth="sm">
             <Card>
