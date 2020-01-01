@@ -13,6 +13,7 @@ import { login } from './redux/actions';
 import Cookies from 'js-cookie';
 import NotificationBar from './components/notification/NotificationBar';
 import { ORG_DETAILS } from './constants/api';
+import { formatOrgDetails } from './util/helper';
 
 
 function App() {
@@ -66,7 +67,11 @@ function App() {
           null
           :
           <BrowserRouter>
-            <AppNavbar loggedIn={loggedIn} routes={routes[access_level] || []} />
+            <AppNavbar
+              loggedIn={loggedIn}
+              routes={routes[access_level] || []}
+              brand={formatOrgDetails(orgDetails)['Name']}
+            />
             <Switch>
               {loggedIn ? createRoutes(routes[access_level] || []) : createRoutes(guestRoutes)}
               <Route path='/error' component={RouterError} exact />
@@ -75,7 +80,7 @@ function App() {
           </BrowserRouter>
       }
       <NotificationBar />
-      <Footer data={orgDetails} />
+      <Footer details={formatOrgDetails(orgDetails)} />
     </div>
   );
 }

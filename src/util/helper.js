@@ -94,3 +94,19 @@ export const getLocalDate = function (inputDate) {
     });
     return "".concat(new_date.slice(6, 10), "-", new_date.slice(0, 2), "-", new_date.slice(3, 5));
 }
+
+export const formatOrgDetails = (data) => {
+    const temp = data.filter(item =>
+        item.key === 'Name' ||
+        item.key === 'Reg No.' ||
+        item.key === 'Address Line 1' ||
+        item.key === 'Address Line 2' ||
+        item.key === 'Address Line 3' ||
+        item.key === 'Contact No.'
+    );
+    const details = {};
+    temp.forEach(item => {
+        details[item.key] = item.value;
+    });
+    return details;
+}
