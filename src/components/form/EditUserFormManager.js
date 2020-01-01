@@ -131,7 +131,7 @@ function EditUserFormManager({ oldUser, reload }) {
                         </Grid>
                         <Grid item xs={5} >
                             <Button variant='contained' style={buttonStyle} onClick={() => setStep(9)} >
-                                Edit Emergency No.
+                                Edit Emergency Contact
                             </Button>
                         </Grid >
                         {
