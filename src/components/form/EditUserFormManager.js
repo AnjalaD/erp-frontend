@@ -12,6 +12,8 @@ import EditEmgForm from './EditEmgForm';
 import EditDepForm from './EditDepForm';
 import EditCustomForm from './EditCustomForm';
 import FullProfile from '../profile/FullProfile';
+import RegisterEmployee from '../../views/level_3/RegisterEmployee';
+import ResetPassword from '../../views/level_3/ResetPassword';
 
 const buttonStyle = {
     height: 40,
@@ -119,16 +121,37 @@ function EditUserFormManager({ oldUser, reload }) {
                         </Grid >
                         {
                             access_level === LEVEL3 ?
-                                <Grid item xs={5} >
-                                    <Button variant='contained' style={dangerButtonStyle} onClick={() => setStep(9)} >
-                                        Remove Employee
+                                <Fragment>
+                                    <Grid item xs={5} >
+                                        <Button variant='contained' style={buttonStyle} onClick={() => setStep(10)}>
+                                            Register User
                                     </Button>
-                                </Grid >
+                                    </Grid>
+                                    <Grid item xs={5} >
+                                        <Button variant='contained' style={buttonStyle} onClick={() => setStep(11)} >
+                                            Reset User Account
+                                    </Button>
+                                    </Grid >
+                                    {
+                                        oldUser.employee.active_state === 1 ?
+                                            <Grid item xs={5} >
+                                                <Button variant='contained' style={dangerButtonStyle} onClick={() => setStep(9)} >
+                                                    Remove Employee
+                                                </Button>
+                                            </Grid >
+                                            :
+                                            <Grid item xs={5} >
+                                                <Button variant='contained' style={buttonStyle} onClick={() => setStep(9)} >
+                                                    Employee
+                                                </Button>
+                                            </Grid >
+                                    }
+                                </Fragment>
                                 : null
                         }
                     </Grid >
                     <FullProfile profile={oldUser} style={{ marginTop: 24 }} />
-                </Fragment>
+                </Fragment >
             )
         case 1:
             return (
@@ -204,6 +227,14 @@ function EditUserFormManager({ oldUser, reload }) {
                     emg={emg}
                     prevStep={() => home()}
                 />
+            );
+        case 10:
+            return (
+                <RegisterEmployee id={id} back={home} />
+            );
+        case 11:
+            return (
+                <ResetPassword id={id} back={home} />
             );
         default:
             return null;

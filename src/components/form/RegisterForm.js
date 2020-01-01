@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Card, Typography, Grid, Button } from '@material-ui/core';
 import TextInput from './TextInput';
 import { COLOURS } from '../../constants/constants';
+import ActionBar from './ActionBar';
 
 function RegisterForm(props) {
     const initState = {
-        employee_id: '',
+        employee_id: props.id || '',
         username: '',
         password: '',
         confirm_password: ''
@@ -54,14 +55,11 @@ function RegisterForm(props) {
                     value={state.confirm_password}
                     onChange={e => onChange('confirm_password')(e.target.value)}
                 />
-                <Grid item xs={12} style={{ margin: 20, padding: 5 }} align="right">
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color: COLOURS.primary.lighter }}
-                        variant="contained"
-                        onClick={() => props.submit(state)}
-                    >{props.button || 'Register'}</Button>
-                </Grid>
-
-
+                <ActionBar
+                    b1={props.back}
+                    label2={props.button || 'Register'}
+                    b2={() => props.submit(state)}
+                />
             </Grid>
         </Card>
     )

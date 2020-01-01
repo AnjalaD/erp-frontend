@@ -5,7 +5,7 @@ import { fetchData, makeOptions } from '../../util/helper';
 import { useDispatch, useSelector } from 'react-redux';
 import { RESET_PASSWORD } from '../../constants/api';
 
-function ResetPassword() {
+function ResetPassword(props) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
 
@@ -19,7 +19,7 @@ function ResetPassword() {
 
     return (
         <Container maxWidth='sm'>
-            <RegisterForm submit={submit} label='Reset User Account' button='Reset' />
+            <RegisterForm submit={submit} label='Reset User Account' button='Reset' {...props} />
         </Container>
     )
 }
