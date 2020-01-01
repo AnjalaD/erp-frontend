@@ -13,7 +13,7 @@ function Confirm(props) {
             <Grid container>
                 <Grid item xs={12}>
                     <Typography variant="h6" style={{ width: '100%', textAlign: 'center' }}>
-                        User Detailes
+                        User Details
                     </Typography>
                     <Profile data={user} />
                 </Grid>
@@ -29,7 +29,7 @@ function Confirm(props) {
                     :
                     <Grid item xs={12}>
                         <Typography variant="h6" style={{ width: '100%', textAlign: 'center' }}>
-                            User Detailes
+                            User Details
                         </Typography>
                         <Typography variant="body1" style={{ width: '100%', textAlign: 'center' }}>
                             --no-data--

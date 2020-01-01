@@ -30,7 +30,7 @@ function EmgForm(props) {
         >
             <Grid container spacing={1} >
                 <Grid container direction='row' alignItems='center'>
-                    Emergency Detailes
+                    Emergency Details
                     <IconButton onClick={add}>
                         <AddCircleOutline color='primary' />
                     </IconButton>

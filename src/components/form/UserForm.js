@@ -39,7 +39,7 @@ function UserForm(props) {
             style={{ padding: 10, margin: 10 }}
         >
             <Typography variant="h4" style={{ width: '100%', textAlign: 'center' }}>
-                User Detailes
+                User Details
             </Typography>
             <Grid container spacing={1} alignItems='center'>
                 <TextInput
