@@ -1,7 +1,7 @@
 import { Container, Grid, Card } from "@material-ui/core";
 import React from 'react';
 import ProfileRow from './UserProfilerow';
-import { faUser, faPassport, faHome, faCalendarAlt, faRing, faBaby, faBuilding, faCity, faAt, faPhone, faDotCircle, faPersonBooth } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faPassport, faHome, faCalendarAlt, faRing, faBaby, faBuilding, faCity, faAt, faPhone, faDotCircle, faPersonBooth, faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 
 const Profile = (props) => {
@@ -13,7 +13,11 @@ const Profile = (props) => {
                 <Grid container>
                     <ProfileRow name='First Name' icon={faUser} value={data.first_name} xs={6} />
                     <ProfileRow name='Last Name' icon={faUser} value={data.last_name} xs={6} />
-                    <ProfileRow name='Employee ID' icon={faPassport} value={data.employee_id} />
+                    {
+                        data.employee_id ?
+                            <ProfileRow name='Employee ID' icon={faPassport} value={data.employee_id} />
+                            : null
+                    }
                     <ProfileRow name='NIC' icon={faPassport} value={data.nic} />
                     <ProfileRow
                         name="Address"
@@ -35,6 +39,7 @@ const Profile = (props) => {
                                 <ProfileRow name='Job Title' icon={faBuilding} value={data.job_title} xs={6} />
                                 <ProfileRow name='Pay Grade' icon={faBuilding} value={data.pay_grade} xs={6} />
                                 <ProfileRow name='Employment Status' icon={faBuilding} value={data.employment_status} />
+                                <ProfileRow name='Supervisor ID' icon={faUserTie} value={data.supervisor_id} />
                             </div>
                             :
                             <ProfileRow name='Relationship' icon={faBaby} value={data.relationship} xs={12} />
