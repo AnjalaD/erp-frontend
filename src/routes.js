@@ -88,7 +88,7 @@ export const guestRoutes = [
         root: true
     },
     {
-        path: '/login-admin',
+        path: '/admin',
         component: AdminLogin,
         root: true
     },
@@ -277,7 +277,7 @@ export const levelThreeRoutes = [
 
 export const adminRoutes = [
     {
-        path: '/',
+        path: '/admin',
         component: Welcome,
         title: 'Home',
         root: true,
