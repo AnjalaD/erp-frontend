@@ -3,7 +3,8 @@ import MaterialTable from 'material-table'
 import { COLOURS } from '../../constants/constants';
 
 function CustomTable(props) {
-    delete props.options;
+    const newProps = Object.assign(props);
+    delete newProps.options;
 
     return (
         <MaterialTable
@@ -22,7 +23,7 @@ function CustomTable(props) {
                 }),
                 ...props.options
             }}
-            {...props}
+            {...newProps}
         />
     );
 }
