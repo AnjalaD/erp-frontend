@@ -10,9 +10,9 @@ export const LEVEL1 = 'L1';
 export const ADMIN = 'Admin';
 
 //leave states
-export const APPROVED = 'APPROVE';
-export const PENDING = 'PENDING';
-export const REJECTED = 'REJECTED';
+export const APPROVED = 'Approve';
+export const PENDING = 'Pending';
+export const REJECTED = 'Rejected';
 
 export const DIVIDER = 'divider';
 
