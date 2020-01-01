@@ -51,8 +51,8 @@ function App() {
     }
     setChecking(false);
 
-    fetch(ORG_DETAILS).
-      then(res => {
+    fetch(ORG_DETAILS)
+      .then(res => {
         if (res.status === 200) res.json().then(res => setOrgDetails(res));
       })
       .catch(err => console.log(err));
