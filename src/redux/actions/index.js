@@ -30,3 +30,8 @@ export const org_brand = brand => ({
     type: 'ORG_BRAND',
     payload: brand
 })
+
+export const set_color = color => ({
+    type: 'SET_COLOR',
+    payload: color
+})
