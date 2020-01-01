@@ -2,15 +2,18 @@ import React from 'react';
 import Radio from '@material-ui/core/Radio';
 import { Button, Typography, Card, Grid, FormControlLabel } from '@material-ui/core';
 import { Colours, PrimaryTheme } from './Colours';
+import { useDispatch } from 'react-redux';
 
 const ColourRadio = (props) => <Radio style={{ color: props.pallete.dark }} {...props} />
 
 export default function ColourPicker(props) {
+    const dispatch = useDispatch();
     const [selectedValue, setSelectedValue] = React.useState('a');
 
     const handleChange = event => {
         setSelectedValue(event.target.value);
     };
+
     const Buttons = Colours.map((colour, key) => (
         <FormControlLabel
             value="bottom"
