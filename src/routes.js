@@ -203,7 +203,7 @@ export const levelThreeRoutes = [
             {
                 path: '/register-employee',
                 component: RegisterEmployee,
-                title: 'Register User',
+                title: 'Create User Account',
                 root: true,
                 icon: faUserTag
             },

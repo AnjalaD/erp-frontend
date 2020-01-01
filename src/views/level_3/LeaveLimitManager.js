@@ -67,7 +67,7 @@ function LeaveLimitManager() {
                         lookup: state.leave_type
                     },
                     {
-                        title: 'Max. Limit',
+                        title: 'Annual Limit',
                         field: 'limit',
                     }
                 ]}
