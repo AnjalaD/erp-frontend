@@ -124,11 +124,15 @@ function UserForm(props) {
                     onChange={userHandler('pay_grade')}
                     selection={formFields.pay_grade}
                 />
-                <TextInput
-                    label="Supervisor ID"
-                    value={user.supervisor_id}
-                    onChange={userHandler('supervisor_id')}
-                />
+                {
+                    user.supervisor_id ?
+                        <TextInput
+                            label="Supervisor ID"
+                            value={user.supervisor_id}
+                            onChange={userHandler('supervisor_id')}
+                        />
+                        : null
+                }
 
                 {
                     email ?
