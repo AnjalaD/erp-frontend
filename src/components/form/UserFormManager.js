@@ -28,7 +28,8 @@ function UserFormManager({ oldUser, submit = null }) {
         "job_title": "",
         "dept_name": "",
         "pay_grade": "",
-        "gender": ''
+        "gender": '',
+        "supervisor_id": '',
     };
 
     const initEmg = {
@@ -54,12 +55,13 @@ function UserFormManager({ oldUser, submit = null }) {
         job_title: [],
         pay_grade: [],
         employment_status: [],
-        dept_name: []
+        dept_name: [],
+        custom: []
     }
 
     const [step, setStep] = useState(1);
-    const [email, setEmail] = useState(['']);
-    const [contact, setContact] = useState(['']);
+    const [email, setEmail] = useState([{ email: '' }]);
+    const [contact, setContact] = useState([{ contact_no: '' }]);
     const [user, setUser] = useState(initUser);
     const [custom, setCustom] = useState([]);
     const [dep, setDep] = useState([initDep]);
@@ -71,7 +73,13 @@ function UserFormManager({ oldUser, submit = null }) {
             EMP_FORM_FIELDS,
             makeOptions(token),
             dispatch,
-            res => res.json().then(res => setFormFields(res))
+            res => res.json().then(res => {
+                setFormFields(res);
+                setCustom(res.custom_attributes.map(item => ({
+                    attribute: item,
+                    value: ''
+                })))
+            })
         )
     }, [dispatch, token]);
 
@@ -132,7 +140,14 @@ function UserFormManager({ oldUser, submit = null }) {
             return (
                 <Confirm
                     user={newuser} dep={dep} emg={emg}
-                    submit={newuser => submit(newuser)}
+                    submit={() => submit({
+                        employee: user,
+                        custom: custom,
+                        email: email,
+                        contact: contact,
+                        dependents: dep,
+                        emergency_contacts: emg
+                    })}
                     prevStep={prevStep}
                 />
             );

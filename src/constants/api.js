@@ -4,8 +4,8 @@ const HOST = 'http://localhost:8888';
 //supervisor
 export const SUPER_EMPLOYEES = HOST + '/supervisor/subs';
 export const SUPER_GET_LEAVES = HOST + '/supervisor/sub-leaves';
-export const SUPER_APPROVE_LEAVE = HOST + '/supervisor/subs';
-export const SUPER_REJECT_LEAVE = HOST + '/supervisor/subs';
+export const SUPER_APPROVE_LEAVE = HOST + '/supervisor/sub-leave';
+export const SUPER_REJECT_LEAVE = HOST + '/supervisor/sub-leave';
 
 //guest
 export const LOGIN = HOST + '/user/login';

@@ -14,9 +14,9 @@ function UserForm(props) {
         }))
     }
 
-    const customHandler = (key, i) => (e) => {
+    const customHandler = (i) => (e) => {
         const newArr = custom.slice(0);
-        newArr[i][key] = e.target.value;
+        newArr[i].value = e.target.value;
         setCustom(newArr);
     }
 
@@ -124,12 +124,17 @@ function UserForm(props) {
                     onChange={userHandler('pay_grade')}
                     selection={formFields.pay_grade}
                 />
+                <TextInput
+                    label="Supervisor ID"
+                    value={user.supervisor_id}
+                    onChange={userHandler('supervisor_id')}
+                />
 
                 {
                     email ?
                         <MultiTextInput
                             label="Email"
-                            value={email}
+                            value={email.map(item => item.email)}
                             type='email'
                             add={() => setEmail([...email, { email: '' }])}
                             onChange={onMultiChange(email, setEmail, 'email')}
@@ -141,7 +146,7 @@ function UserForm(props) {
                     contact ?
                         <MultiTextInput
                             label="Contact No"
-                            value={contact}
+                            value={contact.map(item => item.contact_no)}
                             add={() => setContact([...contact, { contact_no: '' }])}
                             onChange={onMultiChange(contact, setContact, 'contact_no')}
                             remove={multiRemove(contact, setContact)}

@@ -18,7 +18,9 @@ function RequestedLeaves() {
         fetchData(
             SUPER_REJECT_LEAVE,
             makeOptions(token, 'POST', {
-                ...leaveRequest,
+                employee_id: leaveRequest.employee_id,
+                date: leaveRequest.date,
+                leave_type: leaveRequest.leave_type,
                 state: REJECTED
             }),
             dispatch,
@@ -31,7 +33,9 @@ function RequestedLeaves() {
         fetchData(
             SUPER_APPROVE_LEAVE,
             makeOptions(token, 'POST', {
-                ...leaveRequest,
+                employee_id: leaveRequest.employee_id,
+                date: leaveRequest.date,
+                leave_type: leaveRequest.leave_type,
                 state: APPROVED
             }),
             dispatch,
