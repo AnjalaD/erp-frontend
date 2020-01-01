@@ -28,7 +28,8 @@ function UserFormManager({ oldUser, submit = null }) {
         "job_title": "",
         "dept_name": "",
         "pay_grade": "",
-        "gender": ''
+        "gender": '',
+        "supervisor_id": '',
     };
 
     const initEmg = {
