@@ -26,17 +26,6 @@ function ExtendedEditableTable(props) {
         );
     }, [dispatch, token, props.dataApi]);
 
-    const del = (oldData, onSuccess, onFail) => {
-        console.log('oldData', oldData);
-        fetchData(
-            props.deleteApi,
-            makeOptions(token, deleteMethod || 'DELETE', cleanObj(oldData)),
-            dispatch,
-            onSuccess,
-            onFail
-        )
-    };
-
     const update = (newData, oldData, onSuccess, onFail) => {
         console.log('newData', newData, oldData);
         fetchData(
@@ -69,7 +58,6 @@ function ExtendedEditableTable(props) {
             data={dbData}
             insert={insert}
             update={update}
-            delete={del}
         />
     )
 

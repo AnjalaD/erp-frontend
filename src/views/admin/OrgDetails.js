@@ -22,7 +22,6 @@ export default function OrgDetails() {
                 dataApi={ORG_DETAILS}
                 insertApi={ORG_DETAILS}
                 updateApi={ORG_DETAILS}
-                deleteApi={ORG_DETAILS}
             />
         </Container>
     )

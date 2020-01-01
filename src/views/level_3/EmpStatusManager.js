@@ -16,8 +16,7 @@ function EmpStatusManager() {
                 ]}
                 dataApi={EMP_STATUS}
                 insertApi={EMP_STATUS_ADD}
-                updateApi={EMP_STATUS}
-                deleteApi={EMP_STATUS}
+                updateApi={EMP_STATUS_ADD}
             />
         </Container>
     )

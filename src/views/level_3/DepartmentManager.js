@@ -19,8 +19,7 @@ function DepartmentManager() {
                     ]}
                     dataApi={DEPARTMENTS}
                     insertApi={DEPARTMENTS_ADD}
-                    updateApi={DEPARTMENTS}
-                    deleteApi={DEPARTMENTS}
+                    updateApi={DEPARTMENTS_ADD}
                 />
             </Container>
         </div>

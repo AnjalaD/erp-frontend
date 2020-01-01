@@ -17,8 +17,7 @@ function PayGradeManager() {
                 ]}
                 dataApi={PAY_GRADES}
                 insertApi={PAY_GRADES_ADD}
-                updateApi={PAY_GRADES}
-                deleteApi={PAY_GRADES}
+                updateApi={PAY_GRADES_ADD}
             />
         </Container>
     )

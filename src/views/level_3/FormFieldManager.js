@@ -16,8 +16,7 @@ function FormFieldManager() {
                 ]}
                 dataApi={CUSTOM_FIELDS}
                 insertApi={CUSTOM_FIELDS_ADD}
-                updateApi={CUSTOM_FIELDS}
-                deleteApi={CUSTOM_FIELDS}
+                updateApi={CUSTOM_FIELDS_ADD}
             />
         </Container>
     )
