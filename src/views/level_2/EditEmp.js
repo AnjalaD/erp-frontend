@@ -39,7 +39,9 @@ function EditEmp(props) {
         );
     };
 
-    useEffect(() => empId ? findEmp() : null, [counter])
+    const onLoad = () => empId ? findEmp : null;
+
+    useEffect(onLoad, [counter])
 
 
     return (
