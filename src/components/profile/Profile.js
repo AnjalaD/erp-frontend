@@ -1,7 +1,7 @@
 import { Container, Grid, Card } from "@material-ui/core";
 import React from 'react';
 import ProfileRow from './UserProfilerow';
-import { faUser, faPassport, faHome, faCalendarAlt, faRing, faBaby, faBuilding, faCity, faAt, faPhone, faDotCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faPassport, faHome, faCalendarAlt, faRing, faBaby, faBuilding, faCity, faAt, faPhone, faDotCircle, faPersonBooth } from '@fortawesome/free-solid-svg-icons';
 
 
 const Profile = (props) => {
@@ -28,6 +28,7 @@ const Profile = (props) => {
                         typeof data.marital_status !== 'undefined' ?
                             <div style={{ width: "100%", display: "flex", flexWrap: "wrap" }}>
                                 <ProfileRow name='Date of Birth' icon={faCalendarAlt} value={data.dob.slice(0, 10)} xs={6} />
+                                <ProfileRow name='Gender' icon={faPersonBooth} value={data.gender} xs={6} />
                                 <ProfileRow name='Marital State' icon={faRing} value={data.marital_status} xs={6} />
                                 <ProfileRow name='Department' icon={faBuilding} value={data.dept_name} />
                                 <ProfileRow name='Job Title' icon={faBuilding} value={data.job_title} xs={6} />
