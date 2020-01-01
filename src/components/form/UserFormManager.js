@@ -27,7 +27,8 @@ function UserFormManager({ oldUser, submit = null }) {
         "employment_status": "",
         "job_title": "",
         "dept_name": "",
-        "pay_grade": ""
+        "pay_grade": "",
+        "gender": ''
     };
 
     const initEmg = {
