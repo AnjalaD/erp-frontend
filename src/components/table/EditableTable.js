@@ -30,11 +30,7 @@ function EditableTable(props) {
                             () => {
                                 setError(null);
                                 resolve();
-                                setState(prevState => {
-                                    const data = [...prevState.data];
-                                    data.push(newData);
-                                    return { ...prevState, data };
-                                });
+                                window.location.reload();
                             },
                             () => {
                                 setError('Error in adding row!')
@@ -51,11 +47,7 @@ function EditableTable(props) {
                                 setError(null);
                                 resolve();
                                 console.log('resolved')
-                                setState(prevState => {
-                                    const data = [...prevState.data];
-                                    data[data.indexOf(oldData)] = newData;
-                                    return { ...prevState, data };
-                                });
+                                window.location.reload();
                             },
                             () => {
                                 setError('Error in updating row!')
