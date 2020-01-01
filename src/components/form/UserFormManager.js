@@ -64,8 +64,8 @@ function UserFormManager({ oldUser, submit = null }) {
     const [contact, setContact] = useState([{ contact_no: '' }]);
     const [user, setUser] = useState(initUser);
     const [custom, setCustom] = useState([]);
-    const [dep, setDep] = useState([initDep]);
-    const [emg, setEmg] = useState([initEmg]);
+    const [dep, setDep] = useState([]);
+    const [emg, setEmg] = useState([]);
     const [formFields, setFormFields] = useState(initFormFields);
 
     useEffect(() => {
@@ -144,7 +144,7 @@ function UserFormManager({ oldUser, submit = null }) {
                         employee: user,
                         custom: custom,
                         email: email,
-                        contact: contact,
+                        contact_no: contact,
                         dependents: dep,
                         emergency_contacts: emg
                     })}
