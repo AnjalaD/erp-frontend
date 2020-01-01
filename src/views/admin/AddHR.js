@@ -7,6 +7,8 @@ import { HR_AVAILABILITY, EMPLOYEE_BY_ID } from '../../constants/api';
 import { makeOptions, fetchData } from '../../util/helper';
 import AdminUserForm from '../../components/form/AdminUserForm';
 import { PrimaryTheme } from '../../components/settings/Colours';
+import RegisterEmployee from '../level_3/RegisterEmployee';
+import ResetPassword from '../level_3/ResetPassword';
 
 const buttonStyle = {
     height: 40,
@@ -17,7 +19,7 @@ const buttonStyle = {
 
 const dangerButtonStyle = {
     height: 40,
-    width: '100%',
+    width: 300,
     color: '#000',
     backgroundColor: '#d32f2f'
 }
@@ -132,15 +134,25 @@ function AddHR() {
     );
 
     const changeHR = (
-        <Grid container
+        <Grid container spacing={2}
             direction='column'
             justify='center'
             alignItems='center'
             style={{ marginBottom: 24 }}
         >
-            <Grid item xs={8}>
+            <Grid item xs={12}>
                 <Button onClick={() => setHasHR(0)} style={dangerButtonStyle}>
                     Change HR Manager
+                </Button>
+            </Grid>
+            <Grid item xs={12}>
+                <Button onClick={() => setHasHR(4)} style={buttonStyle}>
+                    Register HRM
+                </Button>
+            </Grid>
+            <Grid item xs={12}>
+                <Button onClick={() => setHasHR(5)} style={buttonStyle}>
+                    Reset HRM Account
                 </Button>
             </Grid>
             <Typography align='center' style={{ marginTop: 24 }}>
@@ -163,6 +175,14 @@ function AddHR() {
                     prevStep={() => setHasHR(1)}
                     nextStep={() => window.location.reload()}
                 />
+            case 4:
+                return (
+                    <RegisterEmployee id={hr.employee_id} back={() => setHasHR(1)} />
+                );
+            case 5:
+                return (
+                    <ResetPassword id={hr.employee_id} back={() => setHasHR(1)} />
+                );
             default:
                 return null;
         }
