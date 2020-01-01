@@ -27,6 +27,7 @@ import LeaveReports from './views/level_2/LeaveReports';
 import RegisterEmployee from "./views/level_3/RegisterEmployee";
 import ResetPassword from "./views/level_3/ResetPassword";
 import AdminLogin from "./views/guest/AdminLogin";
+import Welcome from "./views/shared/Welcome";
 
 const reports = {
     title: 'Reports',
@@ -109,6 +110,13 @@ export const guestRoutes = [
 ];
 
 export const levelOneRoutes = [
+    {
+        path: '/',
+        component: Welcome,
+        title: 'Home',
+        root: true,
+        icon: faHome
+    },
     {
         path: '/userprofile',
         component: UserProfile,
