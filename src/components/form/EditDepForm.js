@@ -14,7 +14,7 @@ function EditDepForm({ dep, prevStep, id }) {
     const token = useSelector(state => state.status.token);
 
     const cleanDep = (dep) => {
-        const newDep = Object.assign(dep);
+        const newDep = Object.assign({}, dep);
         delete newDep.isNew;
         delete newDep.isEdit;
         delete newDep.old;

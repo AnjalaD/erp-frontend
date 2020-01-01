@@ -23,6 +23,7 @@ function SuperEmployees() {
     return (
         <Container maxWidth='md'>
             <CustomTable
+                title="My Employees"
                 columns={[
                     {
                         title: 'Emp. ID',

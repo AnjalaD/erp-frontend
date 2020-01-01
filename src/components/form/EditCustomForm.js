@@ -48,7 +48,7 @@ function EditCustomForm({ id, value, prevStep, nexStep }) {
             style={{ padding: 10, margin: 10, width: '100%' }}
         >
             <Typography variant="h4" style={{ width: '100%', textAlign: 'center' }}>
-                User Custom Detailes
+                User Custom Details
             </Typography>
             <Grid container spacing={1} >
                 {

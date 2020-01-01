@@ -57,6 +57,7 @@ function RequestedLeaves() {
     return (
         <Container maxWidth='md'>
             <CustomTable
+                title="Requested Leaves"
                 columns={[
                     {
                         title: 'Emp. ID',

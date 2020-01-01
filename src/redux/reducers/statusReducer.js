@@ -23,6 +23,7 @@ export default (state = initialState, { type, payload }) => {
             };
         case 'LOGOUT':
             Cookies.remove('user');
+            window.location.assign('/');
             return initialState;
         default:
             return state;
