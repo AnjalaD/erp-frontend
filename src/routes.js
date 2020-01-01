@@ -26,6 +26,7 @@ import { faPaperclip, faStickyNote, faUsers, faScroll, faUserEdit, faFileAlt, fa
 import LeaveReports from './views/level_2/LeaveReports';
 import RegisterEmployee from "./views/level_3/RegisterEmployee";
 import ResetPassword from "./views/level_3/ResetPassword";
+import AdminLogin from "./views/guest/AdminLogin";
 
 const reports = {
     title: 'Reports',
@@ -83,6 +84,11 @@ export const guestRoutes = [
     {
         path: '/',
         component: Login,
+        root: true
+    },
+    {
+        path: '/login-admin',
+        component: AdminLogin,
         root: true
     },
     {

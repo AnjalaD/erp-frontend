@@ -4,9 +4,15 @@ import { fetchData, makeOptions } from '../../util/helper';
 import EditableTable from '../../components/table/EditableTable';
 
 function ExtendedEditableTable(props) {
-    const { deleteMethod, insertMethod, updateMethod } = props;
+    const { insertMethod, updateMethod } = props;
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
+
+    const cleanObj = (obj) => {
+        const newObj = { ...obj }
+        delete newObj.tableData;
+        return newObj;
+    }
 
     const [dbData, setDbData] = useState([]);
 
@@ -20,24 +26,13 @@ function ExtendedEditableTable(props) {
         );
     }, [dispatch, token, props.dataApi]);
 
-    const del = (oldData, onSuccess, onFail) => {
-        console.log('oldData', oldData);
-        fetchData(
-            props.deleteApi,
-            makeOptions(token, deleteMethod || 'DELETE', oldData),
-            dispatch,
-            onSuccess,
-            onFail
-        )
-    };
-
     const update = (newData, oldData, onSuccess, onFail) => {
         console.log('newData', newData, oldData);
         fetchData(
             props.updateApi,
             makeOptions(token, updateMethod || 'PATCH', {
-                new: newData,
-                old: oldData
+                new: cleanObj(newData),
+                old: cleanObj(oldData)
             }),
             dispatch,
             onSuccess,
@@ -49,7 +44,7 @@ function ExtendedEditableTable(props) {
         console.log('newData', newData);
         fetchData(
             props.insertApi,
-            makeOptions(token, insertMethod || 'POST', newData),
+            makeOptions(token, insertMethod || 'POST', cleanObj(newData)),
             dispatch,
             onSuccess,
             onFail
@@ -63,7 +58,6 @@ function ExtendedEditableTable(props) {
             data={dbData}
             insert={insert}
             update={update}
-            delete={del}
         />
     )
 

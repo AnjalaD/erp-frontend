@@ -5,7 +5,7 @@ import { fetchData, makeOptions } from '../../util/helper';
 import CustomTable from '../../components/table/CustomTable';
 import { MTableToolbar } from 'material-table';
 import { SUPER_GET_LEAVES, SUPER_REJECT_LEAVE, SUPER_APPROVE_LEAVE } from '../../constants/api';
-import { REJECTED, APPROVED } from '../../constants/constants';
+import { REJECTED, APPROVED, PENDING } from '../../constants/constants';
 
 function RequestedLeaves() {
     const dispatch = useDispatch();
@@ -43,7 +43,7 @@ function RequestedLeaves() {
     useEffect(() => {
         fetchData(
             SUPER_GET_LEAVES,
-            makeOptions(token),
+            makeOptions(token, 'POST', { state: PENDING }),
             dispatch,
             (res) => res.json()
                 .then(res => setTableData(res))

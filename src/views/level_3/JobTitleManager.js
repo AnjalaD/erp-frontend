@@ -21,8 +21,7 @@ function JobTitleManager() {
                 ]}
                 dataApi={JOB_TITLES}
                 insertApi={JOB_TITLES_ADD}
-                updateApi={JOB_TITLES}
-                deleteApi={JOB_TITLES}
+                updateApi={JOB_TITLES_ADD}
             />
         </Container>
     )

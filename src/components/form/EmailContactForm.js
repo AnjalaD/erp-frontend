@@ -56,6 +56,7 @@ function EmailContactForm({ id, type, label, value, prevStep, api }) {
             fetchData(
                 api,
                 makeOptions(token, 'POST', {
+                    employee_id: id,
                     [type]: [{
                         employee_id: id,
                         [type]: state[i].value

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
 import ExtendedEditableTable from '../../components/table/ExtendedEditableTable';
-import { ORG_VIEW, ORG_INSERT, ORG_DELETE } from '../../constants/api';
+import { ORG_DETAILS } from '../../constants/api';
 
 export default function OrgDetails() {
     return (
@@ -19,10 +19,9 @@ export default function OrgDetails() {
                         field: 'value'
                     }
                 ]}
-                dataApi={ORG_VIEW}
-                insertApi={ORG_INSERT}
-                updateApi={ORG_INSERT}
-                deleteApi={ORG_DELETE}
+                dataApi={ORG_DETAILS}
+                insertApi={ORG_DETAILS}
+                updateApi={ORG_DETAILS}
             />
         </Container>
     )

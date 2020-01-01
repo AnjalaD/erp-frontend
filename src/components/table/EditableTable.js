@@ -64,23 +64,6 @@ function EditableTable(props) {
                             }
                         )
                     }),
-                onRowDelete: oldData =>
-                    new Promise((resolve, reject) => {
-                        props.delete(oldData,
-                            () => {
-                                resolve();
-                                setState(prevState => {
-                                    const data = [...prevState.data];
-                                    data.splice(data.indexOf(oldData), 1);
-                                    return { ...prevState, data };
-                                });
-                            },
-                            () => {
-                                setError('Error in deleting row!')
-                                reject();
-                            }
-                        )
-                    }),
             }}
             components={{
                 Toolbar: props => (

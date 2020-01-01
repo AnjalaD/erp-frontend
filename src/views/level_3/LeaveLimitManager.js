@@ -74,7 +74,6 @@ function LeaveLimitManager() {
                 dataApi={LEAVE_LIMITS}
                 insertApi={LEAVE_LIMITS_ADD}
                 updateApi={LEAVE_LIMITS}
-                deleteApi={LEAVE_LIMITS}
                 insertMethod='PUT'
             />
         </Container>

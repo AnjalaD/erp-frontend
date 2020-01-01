@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import LoginForm from '../../components/form/LoginForm';
 
 
-export default function SignIn(props) {
+export default function Login(props) {
     const [error, setError] = useState(null);
 
     const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export default function SignIn(props) {
         }
 
         dispatch(loading());
-        fetch(LOGIN, options)
+        fetch(props.loginApi || LOGIN, options)
             .then(res => {
                 res.clone().json()
                     .then(data => {
@@ -47,6 +47,6 @@ export default function SignIn(props) {
     };
 
     return (
-        <LoginForm loginHandler={loginHandler} error={error} />
+        <LoginForm loginHandler={loginHandler} error={error} {...props} />
     );
 }

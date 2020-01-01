@@ -7,9 +7,9 @@ export const SUPER_GET_LEAVES = HOST + '/supervisor/sub-leaves';
 export const SUPER_APPROVE_LEAVE = HOST + '/supervisor/subs';
 export const SUPER_REJECT_LEAVE = HOST + '/supervisor/subs';
 
-
 //guest
 export const LOGIN = HOST + '/user/login';
+export const ADMIN_LOGIN = HOST + '/user/login-admin';
 export const GET_USER = HOST + '/employee/profile';
 
 //level2
@@ -30,9 +30,10 @@ export const EDIT_EMP_DEPENDENTS = HOST + '/employee/dependent';
 export const EDIT_EMP_EMG_CONTACTS = HOST + '/employee/emergency';
 
 //level3
-export const NEW_EMPLOYEE = '/employee/add';
-export const REGISTER_EMPLOYEE = '/user/register';
-export const RESET_PASSWORD = '/user/password-reset'
+export const NEW_EMPLOYEE = HOST + '/employee/add';
+export const DELETE_EMPLOYEE = HOST + '/employee/delete';
+export const REGISTER_EMPLOYEE = HOST + '/user/register';
+export const RESET_PASSWORD = HOST + '/user/password-reset'
 
 export const JOB_TITLES = HOST + '/job-title/view';
 export const JOB_TITLES_ADD = HOST + '/job-title/add';
@@ -52,6 +53,4 @@ export const EMP_STATUS_ADD = HOST + '/employment-status/add';
 
 //admin
 export const HR_AVAILABILITY = HOST + '/employee/hr';
-export const ORG_INSERT = HOST + '/organization-info/insert';
-export const ORG_VIEW = HOST + '/organization-info/view';
-export const ORG_DELETE = HOST + '/organization-info/delete';
+export const ORG_DETAILS = HOST + '/organization-info';

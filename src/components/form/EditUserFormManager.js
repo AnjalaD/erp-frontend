@@ -2,27 +2,36 @@ import React, { useState, useEffect, Fragment } from 'react';
 import UserForm from './UserForm';
 import { fetchData, makeOptions } from '../../util/helper';
 import { useDispatch, useSelector } from 'react-redux';
-import { EMP_FORM_FIELDS, EDIT_EMP_BASIC_INFO, EDIT_EMP_CONTACTS, EDIT_EMP_EMAILS } from '../../constants/api';
+import { EMP_FORM_FIELDS, EDIT_EMP_BASIC_INFO, EDIT_EMP_CONTACTS, EDIT_EMP_EMAILS, DELETE_EMPLOYEE } from '../../constants/api';
 import Profile from '../profile/Profile';
 import { Grid, Button } from '@material-ui/core';
-import { COLOURS } from '../../constants/constants';
+import { COLOURS, LEVEL3 } from '../../constants/constants';
 import ActionBar from './ActionBar';
 import EmailContactForm from './EmailContactForm';
 import EditEmgForm from './EditEmgForm';
 import EditDepForm from './EditDepForm';
 import EditCustomForm from './EditCustomForm';
 import FullProfile from '../profile/FullProfile';
+import RegisterEmployee from '../../views/level_3/RegisterEmployee';
+import ResetPassword from '../../views/level_3/ResetPassword';
 
-const button2Style = {
+const buttonStyle = {
     height: 40,
     width: '100%',
     color: COLOURS.primary.darker,
     backgroundColor: COLOURS.primary.lighter
 }
 
+const dangerButtonStyle = {
+    height: 40,
+    width: '100%',
+    color: 'danger',
+    backgroundColor: '#d32f2f'
+}
+
 function EditUserFormManager({ oldUser, reload }) {
     const dispatch = useDispatch();
-    const token = useSelector(state => state.status.token);
+    const { access_level, token } = useSelector(state => state.status);
 
     const initFormFields = {
         job_title: [],
@@ -75,44 +84,78 @@ function EditUserFormManager({ oldUser, reload }) {
         );
     }
 
+    const deleteEmp = () => {
+        if (window.confirm('Do you want to delete this employee!')) {
+            fetchData(
+                DELETE_EMPLOYEE,
+                makeOptions(token, 'DELETE', {
+                    employee_id: id,
+                }),
+                dispatch,
+                home
+            );
+        }
+    }
+
     switch (step) {
         case 0:
             return (
                 <Fragment>
                     <Grid container spacing={2} style={{ marginTop: 24 }} justify='center'>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(1)}>
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(1)}>
                                 Edit Basic Details
                         </Button>
                         </Grid>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(3)} >
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(3)} >
                                 Edit Custom Details
-                        </Button>
+                            </Button>
                         </Grid>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(4)} >
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(4)} >
                                 Edit Emails
-                        </Button>
+                            </Button>
                         </Grid>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(5)} >
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(5)} >
                                 Edit Contact No.
-                        </Button>
+                            </Button>
                         </Grid>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(7)}>
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(7)}>
                                 Edit Dependent details
-                        </Button>
+                            </Button>
                         </Grid>
                         <Grid item xs={5} >
-                            <Button variant='contained' style={button2Style} onClick={() => setStep(9)} >
+                            <Button variant='contained' style={buttonStyle} onClick={() => setStep(9)} >
                                 Edit Emergency No.
-                        </Button>
+                            </Button>
                         </Grid >
+                        {
+                            access_level === LEVEL3 ?
+                                <Fragment>
+                                    <Grid item xs={5} >
+                                        <Button variant='contained' style={buttonStyle} onClick={() => setStep(10)}>
+                                            Register User
+                                    </Button>
+                                    </Grid>
+                                    <Grid item xs={5} >
+                                        <Button variant='contained' style={buttonStyle} onClick={() => setStep(11)} >
+                                            Reset User Account
+                                    </Button>
+                                    </Grid >
+                                    <Grid item xs={5} >
+                                        <Button variant='contained' style={dangerButtonStyle} onClick={deleteEmp} >
+                                            Remove Employee
+                                        </Button>
+                                    </Grid >
+                                </Fragment>
+                                : null
+                        }
                     </Grid >
                     <FullProfile profile={oldUser} style={{ marginTop: 24 }} />
-                </Fragment>
+                </Fragment >
             )
         case 1:
             return (
@@ -188,6 +231,14 @@ function EditUserFormManager({ oldUser, reload }) {
                     emg={emg}
                     prevStep={() => home()}
                 />
+            );
+        case 10:
+            return (
+                <RegisterEmployee id={id} back={home} />
+            );
+        case 11:
+            return (
+                <ResetPassword id={id} back={home} />
             );
         default:
             return null;

@@ -5,7 +5,7 @@ import { fetchData, makeOptions } from '../../util/helper';
 import { useDispatch, useSelector } from 'react-redux';
 import { REGISTER_EMPLOYEE } from '../../constants/api';
 
-function RegisterEmployee() {
+function RegisterEmployee(props) {
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
 
@@ -19,7 +19,7 @@ function RegisterEmployee() {
 
     return (
         <Container maxWidth='sm'>
-            <RegisterForm submit={submit} />
+            <RegisterForm submit={submit} {...props} />
         </Container>
     )
 }
