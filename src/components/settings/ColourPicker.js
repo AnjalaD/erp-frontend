@@ -30,7 +30,7 @@
 // }
 import React from 'react';
 import Radio from '@material-ui/core/Radio';
-import { Button, Typography,Card,Grid } from '@material-ui/core';
+import { Button, Typography,Card,Grid, FormControlLabel } from '@material-ui/core';
 import { Colours, PrimaryTheme } from './Colours';
 
 const ColourRadio = (props) => <Radio style={{ color: props.pallete.dark }} {...props} />
@@ -41,16 +41,21 @@ export default function ColourPicker(props) {
     const handleChange = event => {
         setSelectedValue(event.target.value);
     };
-    const Buttons = Colours.map((colour,key) => (
-        <ColourRadio
-            checked={selectedValue === colour.name}
-            onChange={handleChange}
-            value={colour.name}
-            name="radio-button-demo"
-            inputProps={{ 'aria-label': colour.name }}
-            pallete={colour.shades}
-            key = {key}
+    const Buttons = Colours.map((colour, key) => (
+        <FormControlLabel
+            value="bottom"
+            control={< ColourRadio
+                checked={selectedValue === colour.name}
+                onChange={handleChange}
+                value={colour.name}
+                name="radio-button-demo"
+                inputProps={{ 'aria-label': colour.name }}
+                pallete={colour.shades}
+                key={key}/>}
+            label={colour.name}
+            labelPlacement="bottom"
         />
+        
     ))
 
     return (
@@ -60,7 +65,7 @@ export default function ColourPicker(props) {
         >
             <Grid container spacing={1} >
                 <Grid container direction='row' alignItems='center'>
-                    <Typography varient='h5' style={{ padding: 10 }} >Select the {props.category} Colour</Typography>
+                    <Typography varient='h3'  style={{ padding: 10 }} ><b>Select the {props.category} Colour</b></Typography>
                 </Grid>
             
             {/* <Radio
