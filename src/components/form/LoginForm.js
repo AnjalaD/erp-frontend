@@ -7,29 +7,30 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { PrimaryTheme } from '../settings/Colours'
-
-const useStyles = makeStyles(theme => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: PrimaryTheme.shades.dark,
-    },
-    form: {
-        width: '100%',
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
-}));
+import { useSelector } from 'react-redux';
 
 function LoginForm(props) {
+    const PrimaryTheme = useSelector(state => state.colors);
+
+    const useStyles = makeStyles(theme => ({
+        paper: {
+            marginTop: theme.spacing(8),
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+        },
+        avatar: {
+            margin: theme.spacing(1),
+            backgroundColor: PrimaryTheme.shades.dark,
+        },
+        form: {
+            width: '100%',
+            marginTop: theme.spacing(1),
+        },
+        submit: {
+            margin: theme.spacing(3, 0, 2),
+        },
+    }));
     const classes = useStyles();
 
     const [username, setUsername] = useState('');
@@ -81,7 +82,7 @@ function LoginForm(props) {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        style={{ backgroundColor: PrimaryTheme.code}}
+                        style={{ backgroundColor: PrimaryTheme.code }}
                         className={classes.submit}
                         onClick={e => {
                             e.preventDefault();

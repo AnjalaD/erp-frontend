@@ -14,28 +14,27 @@ import EditCustomForm from './EditCustomForm';
 import FullProfile from '../profile/FullProfile';
 import RegisterEmployee from '../../views/level_3/RegisterEmployee';
 import ResetPassword from '../../views/level_3/ResetPassword';
-import { PrimaryTheme } from '../settings/Colours'
-
-const buttonStyle = {
-    height: 40,
-    width: '100%',
-    color: PrimaryTheme.shades.darker,
-    backgroundColor: PrimaryTheme.shades.lighter
-}
-
-const dangerButtonStyle = {
-    height: 40,
-    width: '100%',
-    backgroundColor: '#d32f2f'
-}
-
-const successButtonStyle = {
-    height: 40,
-    width: '100%',
-    backgroundColor: '#43a047'
-}
 
 function EditUserFormManager({ oldUser, reload }) {
+    const PrimaryTheme = useSelector(state => state.colors);
+    const buttonStyle = {
+        height: 40,
+        width: '100%',
+        color: PrimaryTheme.shades.darker,
+        backgroundColor: PrimaryTheme.shades.lighter
+    }
+
+    const dangerButtonStyle = {
+        height: 40,
+        width: '100%',
+        backgroundColor: '#d32f2f'
+    }
+
+    const successButtonStyle = {
+        height: 40,
+        width: '100%',
+        backgroundColor: '#43a047'
+    }
     const dispatch = useDispatch();
     const { access_level, token } = useSelector(state => state.status);
 

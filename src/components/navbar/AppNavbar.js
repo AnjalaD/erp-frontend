@@ -1,33 +1,27 @@
 import React, { useState } from 'react';
 import { Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
-import { URL } from '../../constants/constants';
-import { makeStyles } from '@material-ui/core/styles';
 import Person from '@material-ui/icons/Person';
 import { NavLink } from 'react-router-dom';
-import { PrimaryTheme } from '../settings/Colours'
 import { useDispatch } from 'react-redux';
 import { logout, remove_user } from '../../redux/actions';
 import { Button } from '@material-ui/core';
 import CustomDrawer from './CustomDrawer';
+import { useSelector } from 'react-redux';
 
-const useStyles = makeStyles(theme => ({
-    link: {
-        // backgroundColor: COLOURS.primary.light,
+export default function AppNavbar(props) {
+    const PrimaryTheme = useSelector(state => state.colors);
+
+    const linkStyle = {
         backgroundColor: PrimaryTheme.shades.light,
         textDecoration: 'none',
         marginLeft: '10px',
         '&:hover': {
-            // backgroundColor: COLOURS.primary.lighter,
             backgroundColor: PrimaryTheme.shades.lighter,
         },
-    },
-}));
+    };
 
-export default function AppNavbar(props) {
     const dispatch = useDispatch();
-
     const [isOpen, toggleNavbar] = useState(false);
-    const classes = useStyles();
 
     const user = (
         <Nav>
@@ -44,7 +38,7 @@ export default function AppNavbar(props) {
             </NavLink>
             </Button>
             <Button
-                className={classes.link}
+                style={linkStyle}
                 onClick={() => {
                     dispatch(logout());
                     dispatch(remove_user());
@@ -72,7 +66,7 @@ export default function AppNavbar(props) {
             >
                 <div>
                     <NavbarToggler onClick={e => toggleNavbar(!isOpen)} />
-                    <NavbarBrand style={{ marginLeft: 20 }} href="/" className={classes.topic}>{props.brand || 'ERP system'}</NavbarBrand>
+                    <NavbarBrand style={{ marginLeft: 20 }} href="/" >{props.brand || 'ERP system'}</NavbarBrand>
                 </div>
                 {props.loggedIn ? user : guest}
             </Navbar>

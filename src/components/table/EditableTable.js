@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import MaterialTable, { MTableToolbar } from 'material-table'
 import { Typography } from '@material-ui/core';
-import { PrimaryTheme } from '../settings/Colours'
+import { useSelector } from 'react-redux';
 
 function EditableTable(props) {
+    const PrimaryTheme = useSelector(state => state.colors);
+
     const [state, setState] = useState({
         columns: [...props.columns],
         data: [...props.data]

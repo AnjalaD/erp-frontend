@@ -5,10 +5,10 @@ import { fetchData, makeOptions, getLocalDate } from '../../util/helper';
 import { useDispatch, useSelector } from 'react-redux';
 import { DEPARTMENTS, LEAVE_REPORT } from '../../constants/api';
 import CustomTable from '../../components/table/CustomTable';
-import { PrimaryTheme } from '../../components/settings/Colours'
 import TextInput from '../../components/form/TextInput';
 
 function LeaveReports() {
+    const PrimaryTheme = useSelector(state => state.colors);
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
     const currentDate = getLocalDate(new Date());

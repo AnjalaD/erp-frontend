@@ -51,7 +51,7 @@ export const colours = [
     }
 ];
 
-export default (state = colours[0], { type, payload }) => {
+export default (state = colours[1], { type, payload }) => {
     switch (type) {
         case 'SET_COLOR':
             return payload

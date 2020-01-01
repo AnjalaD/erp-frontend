@@ -6,35 +6,34 @@ import Profile from '../../components/profile/Profile';
 import { HR_AVAILABILITY, EMPLOYEE_BY_ID } from '../../constants/api';
 import { makeOptions, fetchData } from '../../util/helper';
 import AdminUserForm from '../../components/form/AdminUserForm';
-import { PrimaryTheme } from '../../components/settings/Colours';
 import RegisterEmployee from '../level_3/RegisterEmployee';
 import ResetPassword from '../level_3/ResetPassword';
 
-const buttonStyle = {
-    height: 40,
-    width: 300,
-    backgroundColor: PrimaryTheme.shades.light,
-    color: PrimaryTheme.shades.darker
-}
-
-const dangerButtonStyle = {
-    height: 40,
-    width: 300,
-    color: '#000',
-    backgroundColor: '#d32f2f'
-}
-
-const button1Style = {
-    marginLeft: 10,
-    marginTop: 5,
-    fontSize: 18,
-    height: 55,
-    padding: 10,
-    backgroundColor: PrimaryTheme.shades.light,
-    color: PrimaryTheme.shades.darker
-};
-
 function AddHR() {
+    const PrimaryTheme = useSelector(state => state.colors);
+    const buttonStyle = {
+        height: 40,
+        width: 300,
+        backgroundColor: PrimaryTheme.shades.light,
+        color: PrimaryTheme.shades.darker
+    }
+
+    const dangerButtonStyle = {
+        height: 40,
+        width: 300,
+        color: '#000',
+        backgroundColor: '#d32f2f'
+    }
+
+    const button1Style = {
+        marginLeft: 10,
+        marginTop: 5,
+        fontSize: 18,
+        height: 55,
+        padding: 10,
+        backgroundColor: PrimaryTheme.shades.light,
+        color: PrimaryTheme.shades.darker
+    };
     const [hasHR, setHasHR] = useState(0);
     const [empId, setEmpId] = useState('');
     const [user, setUser] = useState(null);

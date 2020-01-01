@@ -3,9 +3,11 @@ import React from 'react';
 import { } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDotCircle } from '@fortawesome/free-solid-svg-icons';
-import { PrimaryTheme } from '../settings/Colours'
+import { useSelector } from 'react-redux';
 
 const ProfileRow = (props) => {
+    const PrimaryTheme = useSelector(state => state.colors);
+
     return (
         <Grid item xs={props.xs || 12}>
             <Box component="span"

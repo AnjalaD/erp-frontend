@@ -5,9 +5,10 @@ import TextInput from './TextInput';
 import SelectInput from './SelectInput';
 import { fetchData, makeOptions, getLocalDate } from '../../util/helper';
 import { APPLY_LEAVE } from '../../constants/api';
-import { PrimaryTheme } from '../settings/Colours'
 
 function LeaveForm(props) {
+    const PrimaryTheme = useSelector(state => state.colors);
+
     const currentDate = getLocalDate(new Date());
     const initState = {
         leave_type: '',
