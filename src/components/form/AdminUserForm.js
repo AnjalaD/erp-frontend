@@ -58,8 +58,10 @@ function AdminUserForm(props) {
             user={user}
             setUser={setUser}
             nextStep={submit}
+            custom={[]}
             prevStep={props.prevStep}
             formFields={formFields}
+
         />
     )
 }
