@@ -133,6 +133,7 @@ export const levelOneRoutes = [
         root: true,
         icon: faUserCircle
     },
+    settings,
     {
         title: 'Leave',
         icon: faPager,
@@ -153,7 +154,7 @@ export const levelOneRoutes = [
             }]
     },
     ...supervisorRoutes,
-    settings
+    
 ];
 
 export const levelTwoRoutes = [
@@ -282,8 +283,7 @@ export const levelThreeRoutes = [
             }]
     },
     reports,
-    ...supervisorRoutes,
-    settings
+    
 ];
 
 export const adminRoutes = [
