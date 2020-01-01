@@ -1,8 +1,9 @@
 import React from 'react'
 import MaterialTable from 'material-table'
-import { PrimaryTheme } from '../settings/Colours'
+import { useSelector } from 'react-redux';
 
 function CustomTable(props) {
+    const PrimaryTheme = useSelector(state => state.colors);
     const newProps = Object.assign({}, props);
     delete newProps.options;
 

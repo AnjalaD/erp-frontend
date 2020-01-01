@@ -1,36 +1,6 @@
-// import React, {useState} from 'react';
-// import ColourButton from './ColourButton';
-// import ColourViewer from './ColourViewer';
-// import { Colours} from './Colours';
-// import { Button } from '@material-ui/core';
-
-//function ColourPicker(props) {
-
-//     const changeSelectedColour = (colour) => () => {
-//         setSelectedColour(colour)
-//     }
-
-//     const colourList = Colours.map(colour => (
-//         <ColourButton colour={colour} key={colour.name} onClick={changeSelectedColour(colour.code)}/>
-//     ))
-
-//     const [selectedColour, setSelectedColour] = useState('#758392')
-
-
-//     return (
-//         <div>
-//             <h5>Select the {props.category} Colour</h5>
-//             {colourList}
-//             <ColourViewer colour={selectedColour} />
-//             <Button>Confirm</Button>
-
-//         </div>
-//     )
-
-// }
 import React from 'react';
 import Radio from '@material-ui/core/Radio';
-import { Button, Typography,Card,Grid, FormControlLabel } from '@material-ui/core';
+import { Button, Typography, Card, Grid, FormControlLabel } from '@material-ui/core';
 import { Colours, PrimaryTheme } from './Colours';
 
 const ColourRadio = (props) => <Radio style={{ color: props.pallete.dark }} {...props} />
@@ -51,11 +21,11 @@ export default function ColourPicker(props) {
                 name="radio-button-demo"
                 inputProps={{ 'aria-label': colour.name }}
                 pallete={colour.shades}
-                key={key}/>}
+                key={key} />}
             label={colour.name}
             labelPlacement="bottom"
         />
-        
+
     ))
 
     return (
@@ -65,13 +35,14 @@ export default function ColourPicker(props) {
         >
             <Grid container spacing={1} >
                 <Grid container direction='row' alignItems='center'>
-                    <Typography varient='h3'  style={{ padding: 10 }} ><b>Select the Preferred Colour Theme</b></Typography>
+                    <Typography varient='h3' style={{ padding: 10 }} ><b>Select the Preferred Colour Theme</b></Typography>
                 </Grid>
-            {Buttons}
-            <br />
+
+                {Buttons}
+                <br />
                 <Button style={{ margin: 10, padding: 10, backgroundColor: PrimaryTheme.shades.light, color: "#000000" }}
                     variant="contained"><b>Confirm</b></Button>
-        </Grid>
-    </Card>
+            </Grid>
+        </Card>
     );
 }

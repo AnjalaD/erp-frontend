@@ -2,10 +2,11 @@ import React from 'react'
 import { Box, Card, CardMedia, Typography, Grid, CardActionArea, Container } from '@material-ui/core'
 import { faDotCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { PrimaryTheme } from './settings/Colours';
 import logo from '../corporate-alumni001.jpg';
+import { useSelector } from 'react-redux';
 
 function Background({ brand }) {
+    const PrimaryTheme = useSelector(state => state.colors);
     return (
         <Container maxWidth="lg">
             <Box component="span" m={1}>

@@ -1,19 +1,22 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { PrimaryTheme } from '../../components/settings/Colours'
+import { useSelector } from 'react-redux';
 
-const useStyles = makeStyles(theme => ({
-    outbox: {
-        color: PrimaryTheme.shades.darker,
-        marginTop: theme.spacing(25),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        fontSize: '40',
-    }
-}));
+
 
 const RouterError = props => {
+    const PrimaryTheme = useSelector(state => state.colors);
+    const useStyles = makeStyles(theme => ({
+        outbox: {
+            color: PrimaryTheme.shades.darker,
+            marginTop: theme.spacing(25),
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            fontSize: '40',
+        }
+    }));
+
     const classes = useStyles();
     return (
         <div>

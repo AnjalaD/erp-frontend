@@ -5,18 +5,20 @@ import { fetchData, makeOptions } from '../../util/helper';
 import { EMPLOYEE_BY_ID } from '../../constants/api';
 import { useSelector, useDispatch } from 'react-redux';
 import EditUserFormManager from '../../components/form/EditUserFormManager';
-import { PrimaryTheme } from '../../components/settings/Colours'
-const button1Style = {
-    marginLeft: 10,
-    marginTop: 5,
-    fontSize: 18,
-    height: 55,
-    padding: 10,
-    color: PrimaryTheme.shades.darker,
-    backgroundColor: PrimaryTheme.shades.lighter
-};
 
 function EditEmp(props) {
+    const PrimaryTheme = useSelector(state => state.colors);
+
+    const button1Style = {
+        marginLeft: 10,
+        marginTop: 5,
+        fontSize: 18,
+        height: 55,
+        padding: 10,
+        color: PrimaryTheme.shades.darker,
+        backgroundColor: PrimaryTheme.shades.lighter
+    };
+
     const dispatch = useDispatch();
     const token = useSelector(state => state.status.token);
 

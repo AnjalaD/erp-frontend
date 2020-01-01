@@ -1,9 +1,10 @@
 import React from 'react';
 import { Grid, Button } from '@material-ui/core'
-import { PrimaryTheme } from '../settings/Colours'
-
+import { useSelector } from 'react-redux';
 
 function ActionBar(props) {
+    const PrimaryTheme = useSelector(state => state.colors);
+
     return (
         <Grid item xs={12} style={{ margin: 5, padding: 10 }} align="right">
             {
