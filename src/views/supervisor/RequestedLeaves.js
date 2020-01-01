@@ -24,7 +24,7 @@ function RequestedLeaves() {
                 state: REJECTED
             }),
             dispatch,
-            () => resolve(),
+            () => resolve(window.location.reload()),
             () => reject(setError('Error in rejecting request'))
         );
     };
@@ -39,7 +39,7 @@ function RequestedLeaves() {
                 state: APPROVED
             }),
             dispatch,
-            () => resolve(),
+            () => resolve(window.location.reload()),
             () => reject(setError('Error in approving request'))
         );
     };
