@@ -58,8 +58,8 @@ function UserFormManager({ oldUser, submit = null }) {
     }
 
     const [step, setStep] = useState(1);
-    const [email, setEmail] = useState(['']);
-    const [contact, setContact] = useState(['']);
+    const [email, setEmail] = useState([{ email: '' }]);
+    const [contact, setContact] = useState([{ contact_no: '' }]);
     const [user, setUser] = useState(initUser);
     const [custom, setCustom] = useState([]);
     const [dep, setDep] = useState([initDep]);

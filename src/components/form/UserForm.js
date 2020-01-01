@@ -129,7 +129,7 @@ function UserForm(props) {
                     email ?
                         <MultiTextInput
                             label="Email"
-                            value={email}
+                            value={email.email}
                             type='email'
                             add={() => setEmail([...email, { email: '' }])}
                             onChange={onMultiChange(email, setEmail, 'email')}
@@ -141,7 +141,7 @@ function UserForm(props) {
                     contact ?
                         <MultiTextInput
                             label="Contact No"
-                            value={contact}
+                            value={contact.contact}
                             add={() => setContact([...contact, { contact_no: '' }])}
                             onChange={onMultiChange(contact, setContact, 'contact_no')}
                             remove={multiRemove(contact, setContact)}
