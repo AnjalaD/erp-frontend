@@ -14,9 +14,9 @@ function UserForm(props) {
         }))
     }
 
-    const customHandler = (key, i) => (e) => {
+    const customHandler = (i) => (e) => {
         const newArr = custom.slice(0);
-        newArr[i][key] = e.target.value;
+        newArr[i].value = e.target.value;
         setCustom(newArr);
     }
 

@@ -54,7 +54,8 @@ function UserFormManager({ oldUser, submit = null }) {
         job_title: [],
         pay_grade: [],
         employment_status: [],
-        dept_name: []
+        dept_name: [],
+        custom: []
     }
 
     const [step, setStep] = useState(1);
@@ -71,7 +72,13 @@ function UserFormManager({ oldUser, submit = null }) {
             EMP_FORM_FIELDS,
             makeOptions(token),
             dispatch,
-            res => res.json().then(res => setFormFields(res))
+            res => res.json().then(res => {
+                setFormFields(res);
+                setCustom(res.custom_attributes.map(item => ({
+                    attribute: item,
+                    value: ''
+                })))
+            })
         )
     }, [dispatch, token]);
 
@@ -132,7 +139,14 @@ function UserFormManager({ oldUser, submit = null }) {
             return (
                 <Confirm
                     user={newuser} dep={dep} emg={emg}
-                    submit={newuser => submit(newuser)}
+                    submit={() => submit({
+                        employee: user,
+                        custom: custom,
+                        email: email,
+                        contact: contact,
+                        dependents: dep,
+                        emergency_contacts: emg
+                    })}
                     prevStep={prevStep}
                 />
             );

@@ -13,7 +13,7 @@ function AddNewEmp() {
     const submit = (newUser) => {
         fetchData(
             NEW_EMPLOYEE,
-            makeOptions(token, 'POST', {}),
+            makeOptions(token, 'POST', newUser),
             dispatch,
         );
     }
