@@ -1,4 +1,4 @@
-import { loading, new_message } from "../redux/actions";
+import { loading, new_message, logout } from "../redux/actions";
 import { TIMEZONE } from "../constants/constants";
 
 export const makeOptions = (token, method = 'GET', data = {}) => (
@@ -52,6 +52,12 @@ export const fetchData = (
                         type: 'error',
                         message: res.error
                     })))
+                } else if (res.status === 401) {
+                    dispatch(new_message({
+                        type: 'error',
+                        message: 'Session Expired! please signin again.'
+                    }));
+                    dispatch(logout());
                 } else if (res.status === 500) {
                     res.json().then(res => dispatch(new_message({
                         type: 'error',
