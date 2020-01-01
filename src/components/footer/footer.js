@@ -54,7 +54,7 @@ function Footer(props) {
                     {details['Name']}
                 </Typography>
                 <Typography className={classes.details} component="p" >
-                    <FontAwesomeIcon icon={faRegistered} />{details['Reg No.']}
+                    <FontAwesomeIcon icon={faRegistered} /> {details['Reg No.']}
                 </Typography>
                 <Typography component="p" className={classes.details}>
                     <FontAwesomeIcon icon={faBuilding} /> {details['Address Line 1']}
