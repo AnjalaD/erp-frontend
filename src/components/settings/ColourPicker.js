@@ -65,7 +65,7 @@ export default function ColourPicker(props) {
         >
             <Grid container spacing={1} >
                 <Grid container direction='row' alignItems='center'>
-                    <Typography varient='h3'  style={{ padding: 10 }} ><b>Select the {props.category} Colour</b></Typography>
+                    <Typography varient='h3'  style={{ padding: 10 }} ><b>Select the Preferred Colour Theme</b></Typography>
                 </Grid>
             
             {/* <Radio
