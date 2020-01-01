@@ -1,3 +1,4 @@
+import React,{useState} from 'react'
 
 export const Colours = [{
     name: 'Marshmellow',
@@ -51,3 +52,17 @@ export const Colours = [{
 }
 ]
 
+export const PrimaryTheme = {
+    name: 'Brick',
+    code: '#d6250f',
+    shades: {
+        darker: '#771409',
+        dark: '#a61d0c',
+        light: '#f03e29',
+        lighter: '#f36959'
+    }
+}
+
+//const [primaryColour, setprimaryColour] = useState(PrimaryTheme)
+
+//const changePrimaryColour = (theme) => setprimaryColour(theme)

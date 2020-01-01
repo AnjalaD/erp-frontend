@@ -18,7 +18,7 @@ export const DIVIDER = 'divider';
 
 export const COMPANY_NAME = 'JUPITER';
 
-export const COLOURS = {
+const COLOURS = {
     primary: {
         lighter: '#C5CAE9',
         light: '#7986CB',

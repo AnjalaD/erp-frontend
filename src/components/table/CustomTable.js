@@ -1,6 +1,6 @@
 import React from 'react'
 import MaterialTable from 'material-table'
-import { COLOURS } from '../../constants/constants';
+import { PrimaryTheme } from '../settings/Colours'
 
 function CustomTable(props) {
     return (
@@ -13,7 +13,7 @@ function CustomTable(props) {
                 pageSizeOptions: [5, 10, 50],
                 actionsColumnIndex: -1,
                 rowStyle: row => ({
-                    backgroundColor: row.tableData.id % 2 === 0 ? COLOURS.primary.lighter : '#FFF'
+                    backgroundColor: row.tableData.id % 2 === 0 ? PrimaryTheme.shades.lighter : '#FFF'
                 }),
                 ...props.options
             }}

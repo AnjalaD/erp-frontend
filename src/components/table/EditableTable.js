@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import MaterialTable, { MTableToolbar } from 'material-table'
 import { Typography } from '@material-ui/core';
-import { COLOURS } from '../../constants/constants';
+import { PrimaryTheme } from '../settings/Colours'
 
 function EditableTable(props) {
     const [state, setState] = useState({
@@ -80,7 +80,7 @@ function EditableTable(props) {
                 pageSize: 10 || props.pageSize,
                 pageSizeOptions: [5, 10, 50],
                 rowStyle: row => ({
-                    backgroundColor: row.tableData.id % 2 === 0 ? COLOURS.primary.lighter : '#FFF'
+                    backgroundColor: row.tableData.id % 2 === 0 ? PrimaryTheme.shades.lighter : '#FFF'
                 })
             }}
             {...props}

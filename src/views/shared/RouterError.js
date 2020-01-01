@@ -1,9 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { PrimaryTheme } from '../../components/settings/Colours'
 
 const useStyles = makeStyles(theme => ({
     outbox: {
+        color: PrimaryTheme.shades.darker,
         marginTop: theme.spacing(25),
         display: 'flex',
         flexDirection: 'column',

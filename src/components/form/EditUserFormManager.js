@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { EMP_FORM_FIELDS, EDIT_EMP_BASIC_INFO, EDIT_EMP_CONTACTS, EDIT_EMP_EMAILS, DELETE_EMPLOYEE } from '../../constants/api';
 import Profile from '../profile/Profile';
 import { Grid, Button } from '@material-ui/core';
-import { COLOURS, LEVEL3 } from '../../constants/constants';
+import { LEVEL3 } from '../../constants/constants';
 import ActionBar from './ActionBar';
 import EmailContactForm from './EmailContactForm';
 import EditEmgForm from './EditEmgForm';
@@ -14,12 +14,13 @@ import EditCustomForm from './EditCustomForm';
 import FullProfile from '../profile/FullProfile';
 import RegisterEmployee from '../../views/level_3/RegisterEmployee';
 import ResetPassword from '../../views/level_3/ResetPassword';
+import { PrimaryTheme } from '../settings/Colours'
 
 const buttonStyle = {
     height: 40,
     width: '100%',
-    color: COLOURS.primary.darker,
-    backgroundColor: COLOURS.primary.lighter
+    color: PrimaryTheme.shades.darker,
+    backgroundColor: PrimaryTheme.shades.lighter
 }
 
 const dangerButtonStyle = {

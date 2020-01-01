@@ -4,9 +4,9 @@ import UserFormManager from '../../components/form/UserFormManager'
 import { Grid, Button, Typography, Container } from '@material-ui/core';
 import TextInput from '../../components/form/TextInput';
 import Profile from '../../components/profile/Profile';
-import { COLOURS } from '../../constants/constants';
 import { HR_AVAILABILITY } from '../../constants/api';
 import { makeOptions, fetchData } from '../../util/helper';
+import { PrimaryTheme } from '../../components/settings/Colours'
 
 const button0Style = {
     fontSize: 22,
@@ -15,16 +15,16 @@ const button0Style = {
     minWidth: '300px',
     textAlign: 'center',
     margin: 10,
-    backgroundColor: COLOURS.primary.light,
-    color: COLOURS.primary.darker
+    backgroundColor: PrimaryTheme.shades.light,
+    color: PrimaryTheme.shades.darker
 };
 
 const button1Style = {
     marginLeft: 10,
     fontSize: 18,
     height: 60,
-    backgroundColor: COLOURS.primary.light,
-    color: COLOURS.primary.darker
+    backgroundColor: PrimaryTheme.shades.light,
+    color: PrimaryTheme.shades.darker
 };
 
 function AddHR() {

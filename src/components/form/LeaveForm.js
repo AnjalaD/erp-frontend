@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Card, Typography, Button } from '@material-ui/core';
 import TextInput from './TextInput';
-import { COLOURS } from '../../constants/constants';
 import SelectInput from './SelectInput';
 import { fetchData, makeOptions, getLocalDate } from '../../util/helper';
 import { APPLY_LEAVE } from '../../constants/api';
+import { PrimaryTheme } from '../settings/Colours'
 
 function LeaveForm(props) {
     const currentDate = getLocalDate(new Date());
@@ -67,7 +67,7 @@ function LeaveForm(props) {
                     rows={3}
                 />
                 <Grid item xs={12} style={{ margin: 20, padding: 5 }} align="right">
-                    <Button style={{ margin: 5, padding: 10, backgroundColor: COLOURS.primary.darker, color: COLOURS.primary.lighter }}
+                    <Button style={{ margin: 5, padding: 10, backgroundColor: PrimaryTheme.shades.darker, color: PrimaryTheme.shades.lighter }}
                         variant="contained"
                         onClick={submit}
                     >Submit</Button>
