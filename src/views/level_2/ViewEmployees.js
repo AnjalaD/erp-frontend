@@ -23,7 +23,11 @@ function ViewEmployees() {
                 pay_grade: "ALL"
             }),
             dispatch,
-            res => res.json().then(res => setTableData(res))
+            res => res.json()
+                .then(res => setTableData(res.map(item => ({
+                    ...item,
+                    active_status: item.active_status === 1 ? 'Active' : 'Inactive'
+                }))))
         );
     }, [dispatch, token])
 
@@ -46,6 +50,9 @@ function ViewEmployees() {
                     }, {
                         title: 'Department',
                         field: 'dept_name'
+                    }, {
+                        title: 'Status',
+                        field: 'active_status'
                     }
                 ]}
                 data={tableData}
@@ -56,7 +63,7 @@ function ViewEmployees() {
                         onClick: (event, row) => window.open(URL + '/edit-employee/' + row.employee_id)
                     }
                 ]}
-                title = "Employee Details"
+                title="Employee Details"
             />
         </Container>
     )
