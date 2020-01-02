@@ -20,6 +20,13 @@ function Reports() {
         job_title: "ALL",
         pay_grade: "ALL"
     };
+    const map_active_status = {
+        'Active': '1',
+        'Inactive': '0',
+        'ALL': 'ALL',
+        '1': 'Active',
+        '0': 'Inactive'
+    }
 
     const initFields = {
         job_title: [],
@@ -44,12 +51,15 @@ function Reports() {
     const onSubmit = () => {
         fetchData(
             FILTER_EMPLOYEES,
-            makeOptions(token, 'POST', state),
+            makeOptions(token, 'POST', {
+                ...state,
+                active_status: map_active_status[state.active_status]
+            }),
             dispatch,
             res => res.json()
                 .then(res => setTableData(res.map(item => ({
                     ...item,
-                    active_status: item.active_status === 1 ? 'Active' : 'Inactive'
+                    active_status: map_active_status[item.active_status]
                 }))))
         );
     }
@@ -104,7 +114,7 @@ function Reports() {
                         xs={2}
                         label='Active'
                         value={state.active_status}
-                        selection={['ALL', 1, 0]}
+                        selection={['ALL', 'Active', 'Inactive']}
                         onChange={onChange('active_status')}
                     />
                     <Grid item xs={1}>
