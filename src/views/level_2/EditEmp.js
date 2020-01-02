@@ -40,7 +40,13 @@ function EditEmp(props) {
         );
     };
 
-    useEffect(findEmp, [counter]);
+    const onLoad = () => {
+        if (empId) {
+            findEmp();
+        }
+    }
+
+    useEffect(onLoad, [counter]);
 
     return (
         <Container maxWidth='md'>
