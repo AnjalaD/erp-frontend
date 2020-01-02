@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { faBuilding, faPhone, faRegistered } from '@fortawesome/free-solid-svg-icons';
