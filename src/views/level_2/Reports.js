@@ -46,7 +46,11 @@ function Reports() {
             FILTER_EMPLOYEES,
             makeOptions(token, 'POST', state),
             dispatch,
-            res => res.json().then(res => setTableData(res))
+            res => res.json()
+                .then(res => setTableData(res.map(item => ({
+                    ...item,
+                    active_status: item.active_status === 1 ? 'Active' : 'Inactive'
+                }))))
         );
     }
 
