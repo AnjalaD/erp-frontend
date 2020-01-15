@@ -32,7 +32,7 @@ export default function Login(props) {
                                 erp_token: res.headers.get('erp-auth-token'),
                                 access_level: data.access_level,
                             };
-                            Cookies.set('user', JSON.stringify(userData), { path: '/' });
+                            Cookies.set('user', JSON.stringify(userData), { path: '/', expires:20 });
                             // window.sessionStorage.setItem('user', JSON.stringify(userData));
                             dispatch(login(userData));
                         } else {
