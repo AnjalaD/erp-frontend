@@ -39,7 +39,7 @@ export default function ColourPicker(props) {
 
     const submit = () => {
         dispatch(set_color(selectedValue))
-        Cookies.set('color', selectedValue, { path: '/' });
+        Cookies.set('color', selectedValue, { path: '/',expires:20 });
     };
 
     return (
